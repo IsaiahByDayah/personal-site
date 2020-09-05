@@ -16,10 +16,10 @@ exports.createPages = async ({ graphql, actions }) => {
         allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }, limit: 1000) {
           edges {
             node {
-              fields {
-                slug
-              }
               frontmatter {
+                hash
+                slug
+                date(formatString: "MM-DD-YYYY")
                 title
               }
             }
@@ -36,15 +36,16 @@ exports.createPages = async ({ graphql, actions }) => {
   // Create blog posts pages.
   const posts = result.data.allMarkdownRemark.edges
 
-  posts.forEach((post, index) => {
+  posts.forEach(({ node }, index) => {
     const previous = index === posts.length - 1 ? null : posts[index + 1].node
     const next = index === 0 ? null : posts[index - 1].node
 
     createPage({
-      path: post.node.fields.slug,
+      // NOTE: for consistency, this format needs to stay in sync with generateBlogPath() inside src/utils/blog.ts
+      path: `/blog/${node.frontmatter.date}-${node.frontmatter.slug}`,
       component: blogPostTemplate,
       context: {
-        slug: post.node.fields.slug,
+        hash: node.frontmatter.hash,
         previous,
         next,
       },

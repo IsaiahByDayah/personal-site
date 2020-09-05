@@ -5,6 +5,8 @@ import Bio from "components/Bio"
 import Layout from "components/Layout"
 import SEO from "components/SEO"
 
+import { generatePathForBlog } from "utils/blog"
+
 type BlogPostTemplatePageContext = {
   slug: string
   previous?: MarkDownRemark
@@ -15,12 +17,10 @@ type MarkDownRemark = {
   id: string
   excerpt: string
   html: string
-  fields: {
-    slug: string
-  }
   frontmatter: {
-    title: string
     date: string
+    slug: string
+    title: string
     description: string
   }
 }
@@ -34,14 +34,33 @@ type BlogPostTemplateData = {
   markdownRemark: MarkDownRemark
 }
 
+// export const pageQuery = graphql`
+//   query BlogPostBySlug($slug: String!) {
+//     site {
+//       siteMetadata {
+//         title
+//       }
+//     }
+//     markdownRemark(fields: { slug: { eq: $slug } }) {
+//       id
+//       excerpt(pruneLength: 160)
+//       html
+//       frontmatter {
+//         title
+//         date(formatString: "MMMM DD, YYYY")
+//         description
+//       }
+//     }
+//   }
+// `
 export const pageQuery = graphql`
-  query BlogPostBySlug($slug: String!) {
+  query BlogPostByHash($hash: String!) {
     site {
       siteMetadata {
         title
       }
     }
-    markdownRemark(fields: { slug: { eq: $slug } }) {
+    markdownRemark(frontmatter: { hash: { eq: $hash } }) {
       id
       excerpt(pruneLength: 160)
       html
@@ -60,6 +79,9 @@ const BlogPostTemplate: FC<BlogPostTemplateProps> = ({ pageContext, location, da
   const post = data.markdownRemark
   const siteTitle = data.site.siteMetadata.title
   const { previous, next } = pageContext
+
+  console.log("Previous: ", previous)
+  console.log("Next: ", next)
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -100,14 +122,16 @@ const BlogPostTemplate: FC<BlogPostTemplateProps> = ({ pageContext, location, da
         >
           <li>
             {previous && (
-              <Link to={previous.fields.slug} rel="prev">
+              // <Link to={previous.frontmatter.path} rel="prev">
+              <Link to={generatePathForBlog(previous)} rel="prev">
                 ← {previous.frontmatter.title}
               </Link>
             )}
           </li>
           <li>
             {next && (
-              <Link to={next.fields.slug} rel="next">
+              // <Link to={next.frontmatter.path} rel="next">
+              <Link to={generatePathForBlog(next)} rel="next">
                 {next.frontmatter.title} →
               </Link>
             )}

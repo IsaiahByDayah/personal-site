@@ -1,5 +1,10 @@
 import React, { FC } from "react"
+import { Link } from "gatsby"
 
-const Header: FC = () => <header>Hello, World! - Isaiah</header>
+const Header: FC = () => (
+  <header>
+    <Link to="/">Isaiah Smith</Link>
+  </header>
+)
 
 export default Header
