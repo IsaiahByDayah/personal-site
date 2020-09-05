@@ -5,8 +5,6 @@ import Bio from "components/Bio"
 import Layout from "components/Layout"
 import SEO from "components/SEO"
 
-import { rhythm, scale } from "../utils/typography"
-
 type BlogPostTemplatePageContext = {
   slug: string
   previous?: MarkDownRemark
@@ -70,7 +68,6 @@ const BlogPostTemplate: FC<BlogPostTemplateProps> = ({ pageContext, location, da
         <header>
           <h1
             style={{
-              marginTop: rhythm(1),
               marginBottom: 0,
             }}
           >
@@ -78,20 +75,14 @@ const BlogPostTemplate: FC<BlogPostTemplateProps> = ({ pageContext, location, da
           </h1>
           <p
             style={{
-              ...scale(-1 / 5),
               display: `block`,
-              marginBottom: rhythm(1),
             }}
           >
             {post.frontmatter.date}
           </p>
         </header>
         <section dangerouslySetInnerHTML={{ __html: post.html }} />
-        <hr
-          style={{
-            marginBottom: rhythm(1),
-          }}
-        />
+        <hr style={{}} />
         <footer>
           <Bio />
         </footer>

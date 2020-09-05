@@ -1,8 +1,6 @@
 import React, { FC } from "react"
 import { Link, withPrefix } from "gatsby"
 
-import { rhythm, scale } from "../utils/typography"
-
 type LayoutProps = {
   title: string
   location: {
@@ -18,8 +16,6 @@ const Layout: FC<LayoutProps> = ({ location, title, children }) => {
     header = (
       <h1
         style={{
-          ...scale(1.5),
-          marginBottom: rhythm(1.5),
           marginTop: 0,
         }}
       >
@@ -59,8 +55,6 @@ const Layout: FC<LayoutProps> = ({ location, title, children }) => {
       style={{
         marginLeft: `auto`,
         marginRight: `auto`,
-        maxWidth: rhythm(24),
-        padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
       }}
     >
       <header>{header}</header>

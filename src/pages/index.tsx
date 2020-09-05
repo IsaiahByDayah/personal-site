@@ -5,8 +5,6 @@ import Bio from "components/Bio"
 import Layout from "components/Layout"
 import SEO from "components/SEO"
 
-import { rhythm } from "../utils/typography"
-
 type Data = {
   site: {
     siteMetadata: {
@@ -67,11 +65,7 @@ const BlogIndex: FC<PageProps> = ({ location }) => {
         return (
           <article key={node.fields.slug}>
             <header>
-              <h3
-                style={{
-                  marginBottom: rhythm(1 / 4),
-                }}
-              >
+              <h3 style={{}}>
                 <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
                   {title}
                 </Link>
