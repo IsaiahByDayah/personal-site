@@ -1,6 +1,8 @@
 import React, { FC } from "react"
 import { Link, withPrefix } from "gatsby"
 
+import Header from "components/scaffold/Header"
+
 type LayoutProps = {
   title: string
   location: {
@@ -57,7 +59,8 @@ const Layout: FC<LayoutProps> = ({ location, title, children }) => {
         marginRight: `auto`,
       }}
     >
-      <header>{header}</header>
+      {/* <header>{header}</header> */}
+      <Header />
       <main>{children}</main>
       <footer>
         © {new Date().getFullYear()}, Built with
