@@ -1,12 +1,90 @@
-import React from "react"
-import { Link, graphql } from "gatsby"
+import React, { FC } from "react"
+import { Link, graphql, PageProps, useStaticQuery } from "gatsby"
 
-import Bio from "../components/bio"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Bio from "../components/Bio"
+import Layout from "../components/Layout"
+import SEO from "../components/SEO"
 import { rhythm, scale } from "../utils/typography"
 
-const BlogPostTemplate = ({ data, pageContext, location }) => {
+type PageContext = {
+  slug: string
+  previous?: MarkDownRemark
+  next?: MarkDownRemark
+}
+
+type MarkDownRemark = {
+  id: string
+  excerpt: string
+  html: string
+  fields: {
+    slug: string
+  }
+  frontmatter: {
+    title: string
+    date: string
+    description: string
+  }
+}
+
+type BlogPostTemplateData = {
+  site: {
+    siteMetadata: {
+      title: string
+    }
+  }
+  markdownRemark: MarkDownRemark
+}
+
+export const pageQuery = graphql`
+  query BlogPostBySlug($slug: String!) {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+    markdownRemark(fields: { slug: { eq: $slug } }) {
+      id
+      excerpt(pruneLength: 160)
+      html
+      frontmatter {
+        title
+        date(formatString: "MMMM DD, YYYY")
+        description
+      }
+    }
+  }
+`
+
+interface BlogPostTemplateProps extends PageProps {
+  pageContext: PageContext
+  data: BlogPostTemplateData
+}
+
+const BlogPostTemplate: FC<BlogPostTemplateProps> = ({
+  pageContext,
+  location,
+  data,
+}) => {
+  // const data: BlogPostTemplateData = useStaticQuery(graphql`
+  //   query BlogPostBySlug($slug: String!) {
+  //     site {
+  //       siteMetadata {
+  //         title
+  //       }
+  //     }
+  //     markdownRemark(fields: { slug: { eq: $slug } }) {
+  //       id
+  //       excerpt(pruneLength: 160)
+  //       html
+  //       frontmatter {
+  //         title
+  //         date(formatString: "MMMM DD, YYYY")
+  //         description
+  //       }
+  //     }
+  //   }
+  // `)
+
   const post = data.markdownRemark
   const siteTitle = data.site.siteMetadata.title
   const { previous, next } = pageContext
@@ -79,23 +157,3 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
 }
 
 export default BlogPostTemplate
-
-export const pageQuery = graphql`
-  query BlogPostBySlug($slug: String!) {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      id
-      excerpt(pruneLength: 160)
-      html
-      frontmatter {
-        title
-        date(formatString: "MMMM DD, YYYY")
-        description
-      }
-    }
-  }
-`
