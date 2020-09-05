@@ -7,7 +7,7 @@ import SEO from "components/SEO"
 
 import { rhythm, scale } from "../utils/typography"
 
-type PageContext = {
+type BlogPostTemplatePageContext = {
   slug: string
   previous?: MarkDownRemark
   next?: MarkDownRemark
@@ -56,34 +56,9 @@ export const pageQuery = graphql`
   }
 `
 
-// interface BlogPostTemplateProps extends PageProps {
-//   pageContext: PageContext
-//   data: BlogPostTemplateData
-// }
-
-type BlogPostTemplateProps = PageProps<BlogPostTemplateData, PageContext>
+type BlogPostTemplateProps = PageProps<BlogPostTemplateData, BlogPostTemplatePageContext>
 
 const BlogPostTemplate: FC<BlogPostTemplateProps> = ({ pageContext, location, data }) => {
-  // const data: BlogPostTemplateData = useStaticQuery(graphql`
-  //   query BlogPostBySlug($slug: String!) {
-  //     site {
-  //       siteMetadata {
-  //         title
-  //       }
-  //     }
-  //     markdownRemark(fields: { slug: { eq: $slug } }) {
-  //       id
-  //       excerpt(pruneLength: 160)
-  //       html
-  //       frontmatter {
-  //         title
-  //         date(formatString: "MMMM DD, YYYY")
-  //         description
-  //       }
-  //     }
-  //   }
-  // `)
-
   const post = data.markdownRemark
   const siteTitle = data.site.siteMetadata.title
   const { previous, next } = pageContext

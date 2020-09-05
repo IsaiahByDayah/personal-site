@@ -1,16 +1,16 @@
 module.exports = {
   parser: `@typescript-eslint/parser`,
   extends: [
-    // "plugin:react/recommended",
+    // NOTE: I don't think I actually _need_ these but they seems to be...well, recommended
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended",
     "prettier/@typescript-eslint",
   ],
   plugins: ["react", "react-hooks", "@typescript-eslint", "prettier"],
-  // parserOptions: {
-  //   ecmaVersion: 2018, // Allows for the parsing of modern ECMAScript features
-  //   sourceType: "module", // Allows for the use of imports
-  // },
   env: {
     browser: true,
     node: true,
@@ -21,24 +21,6 @@ module.exports = {
   rules: {
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
-    // quotes: "off",
-    // "@typescript-eslint/quotes": [
-    //   2,
-    //   "backtick",
-    //   {
-    //     avoidEscape: true,
-    //   },
-    // ],
-    // indent: ["error", 2, { SwitchCase: 1 }],
-    // "prettier/prettier": [
-    //   "error",
-    //   {
-    //     trailingComma: "es5",
-    //     semi: false,
-    //     singleQuote: false,
-    //     printWidth: 120,
-    //   },
-    // ],
   },
   setting: {},
 }
