@@ -1,9 +1,10 @@
 import React, { FC } from "react"
 import { Link, graphql, PageProps, useStaticQuery } from "gatsby"
 
-import Bio from "../components/Bio"
-import Layout from "../components/Layout"
-import SEO from "../components/SEO"
+import Bio from "components/Bio"
+import Layout from "components/Layout"
+import SEO from "components/SEO"
+
 import { rhythm } from "../utils/typography"
 
 type Data = {

@@ -1,9 +1,10 @@
 import React, { FC } from "react"
-import { Link, graphql, PageProps, useStaticQuery } from "gatsby"
+import { Link, graphql, PageProps } from "gatsby"
 
-import Bio from "../components/Bio"
-import Layout from "../components/Layout"
-import SEO from "../components/SEO"
+import Bio from "components/Bio"
+import Layout from "components/Layout"
+import SEO from "components/SEO"
+
 import { rhythm, scale } from "../utils/typography"
 
 type PageContext = {
@@ -55,16 +56,14 @@ export const pageQuery = graphql`
   }
 `
 
-interface BlogPostTemplateProps extends PageProps {
-  pageContext: PageContext
-  data: BlogPostTemplateData
-}
+// interface BlogPostTemplateProps extends PageProps {
+//   pageContext: PageContext
+//   data: BlogPostTemplateData
+// }
 
-const BlogPostTemplate: FC<BlogPostTemplateProps> = ({
-  pageContext,
-  location,
-  data,
-}) => {
+type BlogPostTemplateProps = PageProps<BlogPostTemplateData, PageContext>
+
+const BlogPostTemplate: FC<BlogPostTemplateProps> = ({ pageContext, location, data }) => {
   // const data: BlogPostTemplateData = useStaticQuery(graphql`
   //   query BlogPostBySlug($slug: String!) {
   //     site {
@@ -91,10 +90,7 @@ const BlogPostTemplate: FC<BlogPostTemplateProps> = ({
 
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO
-        title={post.frontmatter.title}
-        description={post.frontmatter.description || post.excerpt}
-      />
+      <SEO title={post.frontmatter.title} description={post.frontmatter.description || post.excerpt} />
       <article>
         <header>
           <h1

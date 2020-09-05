@@ -1,8 +1,8 @@
 import React, { FC } from "react"
 import { graphql, PageProps, useStaticQuery } from "gatsby"
 
-import Layout from "../components/Layout"
-import SEO from "../components/SEO"
+import Layout from "components/Layout"
+import SEO from "components/SEO"
 
 type Data = {
   site: {

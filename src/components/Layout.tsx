@@ -1,10 +1,17 @@
-import React from "react"
-import { Link } from "gatsby"
+import React, { FC } from "react"
+import { Link, withPrefix } from "gatsby"
 
 import { rhythm, scale } from "../utils/typography"
 
-const Layout = ({ location, title, children }) => {
-  const rootPath = `${__PATH_PREFIX__}/`
+type LayoutProps = {
+  title: string
+  location: {
+    pathname: string
+  }
+}
+
+const Layout: FC<LayoutProps> = ({ location, title, children }) => {
+  const rootPath = withPrefix("/")
   let header
 
   if (location.pathname === rootPath) {

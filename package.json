@@ -15,6 +15,7 @@
     "gatsby-plugin-manifest": "^2.4.27",
     "gatsby-plugin-offline": "^3.2.26",
     "gatsby-plugin-react-helmet": "^3.3.10",
+    "gatsby-plugin-resolve-src": "^2.1.0",
     "gatsby-plugin-sharp": "^2.6.31",
     "gatsby-plugin-typography": "^2.5.10",
     "gatsby-remark-copy-linked-files": "^2.3.13",
@@ -44,7 +45,9 @@
     "@typescript-eslint/parser": "^4.0.1",
     "eslint": "^7.8.1",
     "eslint-config-prettier": "^6.11.0",
+    "eslint-config-react": "^1.1.7",
     "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react-hooks": "^4.1.0",
     "prettier": "2.1.0",
     "typescript": "^4.0.2"
   },
