@@ -1,5 +1,7 @@
-import React, { FC } from "react"
+import React, { FC, useContext } from "react"
 import { Link, graphql, PageProps, useStaticQuery } from "gatsby"
+
+import { ThemeContext } from "providers/ThemeProvider"
 
 import Bio from "components/Bio"
 import Layout from "components/Layout"
@@ -56,6 +58,8 @@ const BlogIndex: FC<PageProps> = ({ location }) => {
     }
   `)
 
+  const { theme, setTheme } = useContext(ThemeContext)
+
   return (
     <Layout location={location} title={data.site.siteMetadata.title}>
       <SEO title="All posts" />
@@ -63,6 +67,7 @@ const BlogIndex: FC<PageProps> = ({ location }) => {
       <p>
         This is my home page. Visit my <Link to="/blog">blog</Link>
       </p>
+      <button onClick={() => setTheme(theme === "light" ? "dark" : "light")}>Switch Theme</button>
     </Layout>
   )
 }
