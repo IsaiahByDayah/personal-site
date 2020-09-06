@@ -1,6 +1,10 @@
+import { muiTheme } from "storybook-addon-material-ui"
+
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
 }
+
+export const decorators = [muiTheme()]
 
 // NOTE: This is needed to work with gatsby: https://www.gatsbyjs.com/docs/visual-testing-with-storybook/
 // Gatsby's Link overrides:
