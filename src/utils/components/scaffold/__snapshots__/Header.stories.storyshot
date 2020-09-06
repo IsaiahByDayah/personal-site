@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Scaffold/Header Basic 1`] = `
+<header>
+  <a
+    href="/"
+  >
+    Isaiah Smith
+  </a>
+</header>
+`;
