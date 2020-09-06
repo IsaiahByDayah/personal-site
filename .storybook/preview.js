@@ -1,6 +1,34 @@
+import "typeface-nunito"
+
+import ThemeDecorator from "decorators/ThemeDecorator"
+import { action } from "@storybook/addon-actions"
+import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport"
+
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
+  controls: { expanded: true, hideNoControlsWarning: true },
+  viewport: {
+    viewports: {
+      ...INITIAL_VIEWPORTS,
+    },
+  },
+  layout: "fullscreen",
 }
+
+export const globalTypes = {
+  theme: {
+    name: "Theme",
+    description: "Change the global theme",
+    defaultValue: "Light",
+    toolbar: {
+      icon: "paintbrush",
+      // array of plain string values or MenuItem shape (see below)
+      items: ["Light", "Dark"],
+    },
+  },
+}
+
+export const decorators = [ThemeDecorator]
 
 // NOTE: This is needed to work with gatsby: https://www.gatsbyjs.com/docs/visual-testing-with-storybook/
 // Gatsby's Link overrides:
