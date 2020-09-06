@@ -1,4 +1,4 @@
-// REF:  https://www.gatsbyjs.com/docs/unit-testing/#1-installing-dependencies
+// REF: https://www.gatsbyjs.com/docs/unit-testing
 
 const React = require("react")
 const gatsby = jest.requireActual("gatsby")
