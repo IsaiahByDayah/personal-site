@@ -3,7 +3,7 @@ import customParseFormat from "dayjs/plugin/customParseFormat"
 
 dayjs.extend(customParseFormat)
 
-type Blog = {
+export type Blog = {
   frontmatter: {
     date: string
     slug: string

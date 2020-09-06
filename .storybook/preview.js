@@ -1,4 +1,6 @@
-import "typeface-nunito"
+// We have to specify the .css file in the package so that jest will properly mock it in storyshots
+// REF: https://github.com/KyleAMathews/typefaces/issues/113
+import "typeface-nunito/index.css"
 
 import ThemeDecorator from "decorators/ThemeDecorator"
 import { action } from "@storybook/addon-actions"
