@@ -84,6 +84,7 @@
     "clean": "gatsby clean",
     "test": "jest",
     "test:watch": "jest --watch",
+    "test:ci": "npm run lint && npm run test",
     "type-check": "tsc --noEmit",
     "lint": "eslint . --ignore-path .gitignore --ext .ts,.tsx,.js",
     "storybook": "start-storybook -p 6006",
