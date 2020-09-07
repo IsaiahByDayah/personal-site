@@ -4,7 +4,7 @@ import { ThemeProvider, CssBaseline } from "@material-ui/core"
 
 import { getTheme } from "utils/themes"
 
-const ThemeDecorator = (Story: Story, context: StoryContext) => {
+const ThemeDecorator = (Story: Story, context: StoryContext): JSX.Element => {
   // Check for selected theme here
   const theme = getTheme(context.globals.theme)
 
