@@ -7,6 +7,7 @@ on:
   push:
     branches:
       - master
+      - feature/project-setup # For testing purposes. Remove before merging into master
 
 jobs:
   build:
