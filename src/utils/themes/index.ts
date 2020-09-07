@@ -10,4 +10,4 @@ const themeMaps: { [name in ThemeName]: Theme } = {
   dark: darkTheme,
 }
 
-export const getTheme = (val: ThemeName = "light") => themeMaps[val.toLowerCase() as ThemeName] ?? lightTheme
+export const getTheme = (val: ThemeName = "light"): Theme => themeMaps[val.toLowerCase() as ThemeName] ?? lightTheme

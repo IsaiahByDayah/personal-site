@@ -90,5 +90,6 @@
     "lint": "eslint . --ignore-path .gitignore --ext .ts,.tsx,.js",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
-  }
+  },
+  "pre-commit": [ "format", "lint" ]
 }

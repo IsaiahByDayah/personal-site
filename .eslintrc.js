@@ -21,6 +21,17 @@ module.exports = {
   rules: {
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
+    "react/prop-types": "off",
+    "react/display-name": "off",
   },
-  setting: {},
+  overrides: [
+    {
+      files: ["*.js", "*.jsx"],
+      rules: {
+        "@typescript-eslint/no-unused-vars": "off",
+        "@typescript-eslint/no-var-requires": "off",
+        "@typescript-eslint/explicit-module-boundary-types": "off",
+      },
+    },
+  ],
 }
