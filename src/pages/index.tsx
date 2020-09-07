@@ -68,6 +68,7 @@ const BlogIndex: FC<PageProps> = ({ location }) => {
         This is my home page. Visit my <Link to="/blog">blog</Link>
       </p>
       <button onClick={() => setTheme(theme === "light" ? "dark" : "light")}>Switch Theme</button>
+      <p>This was continuously deployed via Github Actions to Firebase Hosting</p>
     </Layout>
   )
 }
