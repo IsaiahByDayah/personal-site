@@ -7,6 +7,7 @@ const Layout: FC = ({ children }) => (
     style={{
       marginLeft: `auto`,
       marginRight: `auto`,
+      paddingTop: "100px",
     }}
   >
     {/* <header>{header}</header> */}

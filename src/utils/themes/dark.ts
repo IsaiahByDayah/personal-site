@@ -1,11 +1,11 @@
 import { createMuiTheme } from "@material-ui/core"
 
+import baseTheme from "utils/themes/base"
+
 const theme = createMuiTheme({
+  ...baseTheme,
   palette: {
     type: "dark",
-  },
-  typography: {
-    fontFamily: ["Nunito", "sans-serif"].join(","),
   },
 })
 

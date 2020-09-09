@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@material-ui/core": "^4.11.0",
+    "@material-ui/icons": "^4.9.1",
     "dayjs": "^1.8.35",
     "gatsby": "^2.24.53",
     "gatsby-image": "^2.4.16",
@@ -91,5 +92,8 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
-  "pre-commit": [ "format", "lint" ]
+  "pre-commit": [
+    "format",
+    "lint"
+  ]
 }

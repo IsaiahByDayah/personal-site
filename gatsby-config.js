@@ -79,7 +79,7 @@ module.exports = {
             google: [
               {
                 family: `Nunito`,
-                variants: [`300`, `400`, `500`],
+                variants: ["400", "900"],
               },
             ],
           },
