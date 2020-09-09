@@ -12,10 +12,8 @@ const useStyles = makeStyles(({ palette }) => ({
     textTransform: "none",
     color: palette.primary.main,
 
-    // backgroundColor: palette.grey[100],
     backgroundColor: palette.secondary.main,
     "&:hover": {
-      // backgroundColor: palette.grey[200],
       backgroundColor: palette.secondary.dark,
     },
   },
@@ -29,13 +27,13 @@ const useStyles = makeStyles(({ palette }) => ({
   },
 }))
 
-export type SideNavButtonProps = {
+export type NavigationButtonProps = {
   className?: string
   to: string
-  onClick: () => void
+  onClick?: () => void
 }
 
-const SideNavButton: FC<SideNavButtonProps> = ({ children, className, to, onClick }) => {
+const NavigationButton: FC<NavigationButtonProps> = ({ children, className, to, onClick }) => {
   const classes = useStyles()
 
   return (
@@ -55,4 +53,4 @@ const SideNavButton: FC<SideNavButtonProps> = ({ children, className, to, onClic
   )
 }
 
-export default SideNavButton
+export default NavigationButton

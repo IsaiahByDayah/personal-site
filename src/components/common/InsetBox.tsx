@@ -13,12 +13,12 @@ type StyleProps = {
 const useStyles = makeStyles<Theme, StyleProps>(({ palette, spacing, shape }) => ({
   root: ({ rounded, vertical, horizontal }) => {
     const hShadows = [
-      `inset ${spacing(0.5)}px 0px ${spacing(0.5)}px -${spacing(0.5)}px ${fade(palette.common.black, 0.25)}`,
-      `inset -${spacing(0.5)}px 0px ${spacing(0.5)}px -${spacing(0.5)}px ${fade(palette.common.black, 0.25)}`,
+      `inset ${spacing(0.5)}px 0px ${spacing(0.5)}px -${spacing(0.5)}px ${fade("#000000", 0.25)}`,
+      `inset -${spacing(0.5)}px 0px ${spacing(0.5)}px -${spacing(0.5)}px ${fade("#000000", 0.25)}`,
     ]
     const vShadows = [
-      `inset 0px ${spacing(0.5)}px ${spacing(0.5)}px -${spacing(0.5)}px ${fade(palette.common.black, 0.25)}`,
-      `inset 0px -${spacing(0.5)}px ${spacing(0.5)}px -${spacing(0.5)}px ${fade(palette.common.black, 0.25)}`,
+      `inset 0px ${spacing(0.5)}px ${spacing(0.5)}px -${spacing(0.5)}px ${fade("#000000", 0.25)}`,
+      `inset 0px -${spacing(0.5)}px ${spacing(0.5)}px -${spacing(0.5)}px ${fade("#000000", 0.25)}`,
     ]
 
     let shadows: string[] = []
@@ -29,7 +29,6 @@ const useStyles = makeStyles<Theme, StyleProps>(({ palette, spacing, shape }) =>
 
     return {
       backgroundColor: palette.secondary.main,
-      // boxShadow: `inset 0px 0px ${spacing(0.5)}px 0px ${fade(palette.common.black, 0.25)}`,
       boxShadow,
       borderRadius: rounded ? shape.borderRadius : undefined,
     }
