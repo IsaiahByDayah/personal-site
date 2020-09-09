@@ -2,7 +2,7 @@ import React, { FC, createContext, useState } from "react"
 
 export type ThemeName = "light" | "dark"
 
-interface ThemeContext {
+type ThemeContext = {
   theme: ThemeName
   setTheme: (newTheme: ThemeName) => void
 }

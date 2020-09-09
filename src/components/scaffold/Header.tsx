@@ -1,9 +1,16 @@
-import React, { FC } from "react"
-import { makeStyles, AppBar, Toolbar, IconButton, Typography, Avatar, Box } from "@material-ui/core"
+import React, { FC, useContext } from "react"
+import { makeStyles, fade, AppBar, Toolbar, IconButton, Typography, Avatar, Box } from "@material-ui/core"
 import { MenuRounded } from "@material-ui/icons"
 import { Link, useStaticQuery, graphql } from "gatsby"
 
-const useStyles = makeStyles(({ spacing }) => ({
+import { SideNavContext } from "providers/SideNavProvider"
+
+const useStyles = makeStyles(({ spacing, palette }) => ({
+  root: {
+    backgroundColor: palette.secondary.main,
+    boxShadow: `inset 0px -${spacing(0.5)}px ${spacing(0.5)}px -${spacing(0.5)}px ${fade(palette.common.black, 0.25)}`,
+    color: palette.secondary.contrastText,
+  },
   toolbar: {
     position: "relative",
   },
@@ -16,7 +23,6 @@ const useStyles = makeStyles(({ spacing }) => ({
     marginRight: spacing(2),
   },
   title: {
-    // flexGrow: 1,
     fontWeight: 900,
   },
 
@@ -25,20 +31,27 @@ const useStyles = makeStyles(({ spacing }) => ({
     margin: "auto",
   },
   link: {
+    // color: "inherit",
     textDecoration: "none",
+
+    "&:visited": {
+      color: palette.secondary.contrastText,
+    },
   },
 }))
 
-export type HeaderBaseprops = {
+export type HeaderBaseProps = {
   title: string
   avatar?: string
+  onOpen?: () => void
+  simple?: boolean
 }
 
-export const HeaderBase: FC<HeaderBaseprops> = ({ title, avatar }) => {
+export const HeaderBase: FC<HeaderBaseProps> = ({ title, avatar, onOpen, simple }) => {
   const classes = useStyles()
 
   return (
-    <AppBar color="default">
+    <AppBar className={classes.root} elevation={0}>
       <Toolbar className={classes.toolbar}>
         <Box className={classes.centered}>
           {avatar && <Avatar className={classes.avatar} src={avatar} />}
@@ -48,15 +61,18 @@ export const HeaderBase: FC<HeaderBaseprops> = ({ title, avatar }) => {
             </Link>
           </Typography>
         </Box>
-        <IconButton className={classes.menuButton} edge="start" color="inherit" aria-label="menu">
-          <MenuRounded />
-        </IconButton>
+        {onOpen && (
+          <IconButton className={classes.menuButton} edge="start" color="inherit" aria-label="menu" onClick={onOpen}>
+            <MenuRounded />
+          </IconButton>
+        )}
       </Toolbar>
     </AppBar>
   )
 }
 
 const Header = (): JSX.Element => {
+  const { setOpen } = useContext(SideNavContext)
   const data = useStaticQuery(graphql`
     query HeaderQuery {
       avatar: file(absolutePath: { regex: "/profile-pic.png/" }) {
@@ -74,7 +90,13 @@ const Header = (): JSX.Element => {
     }
   `)
 
-  return <HeaderBase title={data.site.siteMetadata.title} avatar={data.avatar.childImageSharp.fixed.src} />
+  return (
+    <HeaderBase
+      title={data.site.siteMetadata.title}
+      avatar={data.avatar.childImageSharp.fixed.src}
+      onOpen={() => setOpen(true)}
+    />
+  )
 }
 
 export default Header
