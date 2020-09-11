@@ -1,10 +1,10 @@
 import React from "react"
 import { Meta, Story } from "@storybook/react/types-6-0"
 
-import { SideNavDrawerContentBase, SideNavDrawerContentBaseProps } from "components/scaffold/SideNavDrawerContent"
+import SideNavDrawerContent, { SideNavDrawerContentProps } from "components/scaffold/SideNavDrawerContent"
 
 export default {
-  component: SideNavDrawerContentBase,
+  component: SideNavDrawerContent,
   title: "Scaffold/SideNavDrawerContent",
   args: {
     title: "Isaiah Smith",
@@ -12,4 +12,4 @@ export default {
   },
 } as Meta
 
-export const Basic: Story<SideNavDrawerContentBaseProps> = args => <SideNavDrawerContentBase {...args} />
+export const Basic: Story<SideNavDrawerContentProps> = args => <SideNavDrawerContent {...args} />

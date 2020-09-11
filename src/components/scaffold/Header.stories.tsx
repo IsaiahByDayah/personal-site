@@ -1,18 +1,14 @@
 import React from "react"
 import { Meta, Story } from "@storybook/react/types-6-0"
 
-import { HeaderBase, HeaderBaseProps } from "components/scaffold/Header"
+import Header, { HeaderProps } from "components/scaffold/Header"
 
 export default {
-  component: HeaderBase,
+  component: Header,
   title: "Scaffold/Header",
-  args: {
-    title: "Isaiah Smith",
-    avatar: "https://api.adorable.io/avatars/100/sample.png",
-  },
 } as Meta
 
-const Template: Story<HeaderBaseProps> = args => <HeaderBase {...args} />
+const Template: Story<HeaderProps> = args => <Header {...args} />
 
 export const Basic = Template.bind({})
 
