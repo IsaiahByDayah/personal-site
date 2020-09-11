@@ -10,7 +10,7 @@ import { SideNavContext } from "providers/SideNavProvider"
 
 import Socials from "components/common/Socials"
 
-const useStyles = makeStyles(({ spacing, palette }) => ({
+const useStyles = makeStyles(({ spacing, palette, shadows }) => ({
   root: {
     boxShadow: `inset 0px -${spacing(0.5)}px ${spacing(0.5)}px -${spacing(0.5)}px ${fade(palette.common.black, 0.25)}`,
   },
@@ -29,6 +29,7 @@ const useStyles = makeStyles(({ spacing, palette }) => ({
     height: spacing(4),
     width: spacing(4),
     marginRight: spacing(2),
+    boxShadow: shadows[3],
   },
   title: {
     fontWeight: 900,
