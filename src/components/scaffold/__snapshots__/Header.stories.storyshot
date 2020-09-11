@@ -1,0 +1,100 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Scaffold/Header Basic 1`] = `
+<header
+  className="scaffoldheader-basic-muipaper-root-1 scaffoldheader-basic-muiappbar-root-1 scaffoldheader-basic-muiappbar-positionfixed-1 scaffoldheader-basic-muiappbar-colorsecondary-1 scaffoldheader-basic-makestyles-root-1 mui-fixed scaffoldheader-basic-muipaper-elevation0-1"
+>
+  <div
+    className="scaffoldheader-basic-muitoolbar-root-1 scaffoldheader-basic-muitoolbar-regular-1 scaffoldheader-basic-makestyles-toolbar-1 scaffoldheader-basic-muitoolbar-gutters-1"
+  >
+    <div
+      className="scaffoldheader-basic-muibox-root-1 scaffoldheader-basic-muibox-root-2 scaffoldheader-basic-makestyles-nameandavatar-1 scaffoldheader-basic-makestyles-centered-1"
+    >
+      <div
+        className="scaffoldheader-basic-muiavatar-root-1 scaffoldheader-basic-muiavatar-circle-1 scaffoldheader-basic-makestyles-avatar-1"
+      >
+        <img
+          className="scaffoldheader-basic-muiavatar-img-1"
+          src="https://api.adorable.io/avatars/100/sample.png"
+        />
+      </div>
+      <h6
+        className="scaffoldheader-basic-muitypography-root-1 scaffoldheader-basic-makestyles-title-1 scaffoldheader-basic-muitypography-h6-1 scaffoldheader-basic-muitypography-aligncenter-1"
+      >
+        <a
+          className="scaffoldheader-basic-makestyles-link-1"
+          href="/"
+        >
+          Isaiah Smith
+        </a>
+      </h6>
+    </div>
+  </div>
+</header>
+`;
+
+exports[`Storyshots Scaffold/Header Complex 1`] = `
+<header
+  className="scaffoldheader-complex-muipaper-root-1 scaffoldheader-complex-muiappbar-root-1 scaffoldheader-complex-muiappbar-positionfixed-1 scaffoldheader-complex-muiappbar-colorsecondary-1 scaffoldheader-complex-makestyles-root-1 mui-fixed scaffoldheader-complex-muipaper-elevation0-1"
+>
+  <div
+    className="scaffoldheader-complex-muitoolbar-root-1 scaffoldheader-complex-muitoolbar-regular-1 scaffoldheader-complex-makestyles-toolbar-1 scaffoldheader-complex-muitoolbar-gutters-1"
+  >
+    <div
+      className="scaffoldheader-complex-muibox-root-1 scaffoldheader-complex-muibox-root-2 scaffoldheader-complex-makestyles-nameandavatar-1 scaffoldheader-complex-makestyles-centered-1"
+    >
+      <div
+        className="scaffoldheader-complex-muiavatar-root-1 scaffoldheader-complex-muiavatar-circle-1 scaffoldheader-complex-makestyles-avatar-1"
+      >
+        <img
+          className="scaffoldheader-complex-muiavatar-img-1"
+          src="https://api.adorable.io/avatars/100/sample.png"
+        />
+      </div>
+      <h6
+        className="scaffoldheader-complex-muitypography-root-1 scaffoldheader-complex-makestyles-title-1 scaffoldheader-complex-muitypography-h6-1 scaffoldheader-complex-muitypography-aligncenter-1"
+      >
+        <a
+          className="scaffoldheader-complex-makestyles-link-1"
+          href="/"
+        >
+          Isaiah Smith
+        </a>
+      </h6>
+    </div>
+  </div>
+</header>
+`;
+
+exports[`Storyshots Scaffold/Header Simple 1`] = `
+<header
+  className="scaffoldheader-simple-muipaper-root-1 scaffoldheader-simple-muiappbar-root-1 scaffoldheader-simple-muiappbar-positionfixed-1 scaffoldheader-simple-muiappbar-colorsecondary-1 scaffoldheader-simple-makestyles-root-1 mui-fixed scaffoldheader-simple-muipaper-elevation0-1"
+>
+  <div
+    className="scaffoldheader-simple-muitoolbar-root-1 scaffoldheader-simple-muitoolbar-regular-1 scaffoldheader-simple-makestyles-toolbar-1 scaffoldheader-simple-muitoolbar-gutters-1"
+  >
+    <div
+      className="scaffoldheader-simple-muibox-root-1 scaffoldheader-simple-muibox-root-2 scaffoldheader-simple-makestyles-nameandavatar-1 scaffoldheader-simple-makestyles-centered-1"
+    >
+      <div
+        className="scaffoldheader-simple-muiavatar-root-1 scaffoldheader-simple-muiavatar-circle-1 scaffoldheader-simple-makestyles-avatar-1"
+      >
+        <img
+          className="scaffoldheader-simple-muiavatar-img-1"
+          src="https://api.adorable.io/avatars/100/sample.png"
+        />
+      </div>
+      <h6
+        className="scaffoldheader-simple-muitypography-root-1 scaffoldheader-simple-makestyles-title-1 scaffoldheader-simple-muitypography-h6-1 scaffoldheader-simple-muitypography-aligncenter-1"
+      >
+        <a
+          className="scaffoldheader-simple-makestyles-link-1"
+          href="/"
+        >
+          Isaiah Smith
+        </a>
+      </h6>
+    </div>
+  </div>
+</header>
+`;

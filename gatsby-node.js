@@ -1,23 +1,25 @@
+// NOTE: Cannot use "import" here for whatever reason so these would not work...
+// import path from "path"
+// import { createFilePath } from "gatsby-source-filesystem"
+
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
-  const blogPost = path.resolve(`./src/templates/blog-post.js`)
+  const blogPostTemplate = path.resolve(`./src/templates/BlogPost.tsx`)
+
   const result = await graphql(
     `
       {
-        allMarkdownRemark(
-          sort: { fields: [frontmatter___date], order: DESC }
-          limit: 1000
-        ) {
+        allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }, limit: 1000) {
           edges {
             node {
-              fields {
-                slug
-              }
               frontmatter {
+                hash
+                slug
+                date(formatString: "MM-DD-YYYY")
                 title
               }
             }
@@ -34,15 +36,16 @@ exports.createPages = async ({ graphql, actions }) => {
   // Create blog posts pages.
   const posts = result.data.allMarkdownRemark.edges
 
-  posts.forEach((post, index) => {
+  posts.forEach(({ node }, index) => {
     const previous = index === posts.length - 1 ? null : posts[index + 1].node
     const next = index === 0 ? null : posts[index - 1].node
 
     createPage({
-      path: post.node.fields.slug,
-      component: blogPost,
+      // NOTE: for consistency, this format needs to stay in sync with generateBlogPath() inside src/utils/blog.ts
+      path: `/blog/${node.frontmatter.date}-${node.frontmatter.slug}`,
+      component: blogPostTemplate,
       context: {
-        slug: post.node.fields.slug,
+        hash: node.frontmatter.hash,
         previous,
         next,
       },

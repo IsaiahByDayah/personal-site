@@ -1,4 +1,6 @@
 ---
+slug: "hello-world"
+hash: "05-01-2015-hello-world"
 title: Hello World
 date: "2015-05-01T22:12:03.284Z"
 description: "Hello World"

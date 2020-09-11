@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Navigation/NavigationButton Basic 1`] = `
+<a
+  className="navigationnavigationbutton-basic-makestyles-root-1"
+  href="/"
+>
+  <button
+    className="navigationnavigationbutton-basic-muibuttonbase-root-1 navigationnavigationbutton-basic-muibutton-root-1 navigationnavigationbutton-basic-muibutton-text-1 navigationnavigationbutton-basic-makestyles-button-1 navigationnavigationbutton-basic-muibutton-fullwidth-1"
+    disabled={false}
+    onBlur={[Function]}
+    onDragLeave={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
+    tabIndex={0}
+    type="button"
+  >
+    <span
+      className="navigationnavigationbutton-basic-muibutton-label-1 navigationnavigationbutton-basic-makestyles-label-1"
+    >
+      <span
+        className="navigationnavigationbutton-basic-makestyles-content-1"
+      >
+        Label
+      </span>
+      <span
+        className="navigationnavigationbutton-basic-muibutton-endicon-1 navigationnavigationbutton-basic-muibutton-iconsizemedium-1"
+      >
+        <svg
+          aria-hidden={true}
+          className="navigationnavigationbutton-basic-muisvgicon-root-1"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M9.29 6.71c-.39.39-.39 1.02 0 1.41L13.17 12l-3.88 3.88c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l4.59-4.59c.39-.39.39-1.02 0-1.41L10.7 6.7c-.38-.38-1.02-.38-1.41.01z"
+          />
+        </svg>
+      </span>
+    </span>
+  </button>
+</a>
+`;
