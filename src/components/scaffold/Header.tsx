@@ -48,52 +48,20 @@ const useStyles = makeStyles(({ spacing, palette, shadows }) => ({
   },
 }))
 
-type HeaderData = {
-  avatar: {
-    childImageSharp: {
-      fixed: {
-        src: string
-      }
-    }
-  }
-  site: {
-    siteMetadata: {
-      title: string
-    }
-  }
-}
-
-export type HeaderProps = {
+export type HeaderBaseProps = {
+  title: string
+  avatar?: string
+  onOpen?: () => void
   simple?: boolean
 }
 
-const Header: FC<HeaderProps> = ({ simple }) => {
+export const HeaderBase: FC<HeaderBaseProps> = ({ title, avatar, onOpen, simple }) => {
   const classes = useStyles()
   const breakpoint = useBreakpoint()
-  const { setOpen } = useContext(SideNavContext)
-  const data: HeaderData = useStaticQuery(graphql`
-    query HeaderQuery {
-      avatar: file(absolutePath: { regex: "/profile-pic.png/" }) {
-        childImageSharp {
-          fixed(width: 100, height: 100) {
-            src
-          }
-        }
-      }
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
-
-  const title = data.site.siteMetadata.title
-  const avatar = data.avatar.childImageSharp.fixed.src
 
   const nameAndAvatar = (className?: string) => (
     <Box className={cx(classes.nameAndAvatar, className)}>
-      <Avatar className={classes.avatar} src={avatar} />
+      {avatar && <Avatar className={classes.avatar} src={avatar} />}
       <Typography className={classes.title} variant="h6" align="center">
         <Link className={classes.link} to="/">
           {title}
@@ -105,16 +73,11 @@ const Header: FC<HeaderProps> = ({ simple }) => {
   const simpleHeaderContent = (
     <>
       {nameAndAvatar(classes.centered)}
-
-      <IconButton
-        className={classes.menuButton}
-        edge="start"
-        color="inherit"
-        aria-label="menu"
-        onClick={() => setOpen(true)}
-      >
-        <MenuRounded />
-      </IconButton>
+      {onOpen && (
+        <IconButton className={classes.menuButton} edge="start" color="inherit" aria-label="menu" onClick={onOpen}>
+          <MenuRounded />
+        </IconButton>
+      )}
     </>
   )
 
@@ -132,6 +95,34 @@ const Header: FC<HeaderProps> = ({ simple }) => {
     <AppBar className={classes.root} elevation={0} color="secondary">
       <Toolbar className={classes.toolbar}>{headerContent}</Toolbar>
     </AppBar>
+  )
+}
+
+const Header = (): JSX.Element => {
+  const { setOpen } = useContext(SideNavContext)
+  const data = useStaticQuery(graphql`
+    query HeaderQuery {
+      avatar: file(absolutePath: { regex: "/profile-pic.png/" }) {
+        childImageSharp {
+          fixed(width: 100, height: 100) {
+            src
+          }
+        }
+      }
+      site {
+        siteMetadata {
+          title
+        }
+      }
+    }
+  `)
+
+  return (
+    <HeaderBase
+      title={data.site.siteMetadata.title}
+      avatar={data.avatar.childImageSharp.fixed.src}
+      onOpen={() => setOpen(true)}
+    />
   )
 }
 

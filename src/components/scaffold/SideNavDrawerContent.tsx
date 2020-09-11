@@ -57,19 +57,37 @@ const useStyles = makeStyles(({ spacing, shadows, palette }) => ({
   },
 }))
 
-type SideNavDrawerContentData = {
-  avatar: {
-    childImageSharp: {
-      fixed: {
-        src: string
-      }
-    }
-  }
-  site: {
-    siteMetadata: {
-      title: string
-    }
-  }
+export type SideNavDrawerContentBaseProps = {
+  className?: string
+  title: string
+  avatar?: string
+  onClick?: () => void
+}
+
+export const SideNavDrawerContentBase: FC<SideNavDrawerContentBaseProps> = ({ className, onClick, title, avatar }) => {
+  const classes = useStyles()
+
+  return (
+    <Box className={cx(classes.content, className)}>
+      <InsetBox className={classes.inset} variant="vertical">
+        {avatar && (
+          <Box className={classes.avatarContainer}>
+            <Avatar className={classes.avatar} src={avatar} />
+          </Box>
+        )}
+        <Typography className={classes.title} variant="h6" align="center">
+          {title}
+        </Typography>
+        <Socials className={classes.socials} size={2} />
+      </InsetBox>
+      <Box flexGrow={1}>
+        <NavigationButtons className={classes.buttons} onClick={onClick} />
+      </Box>
+      <InsetBox className={classes.toggleWrapper} variant="vertical">
+        <DarkModeToggle />
+      </InsetBox>
+    </Box>
+  )
 }
 
 export type SideNavDrawerContentProps = {
@@ -77,9 +95,8 @@ export type SideNavDrawerContentProps = {
   onClick?: () => void
 }
 
-const SideNavDrawerContent: FC<SideNavDrawerContentProps> = ({ className, onClick }) => {
-  const classes = useStyles()
-  const data: SideNavDrawerContentData = useStaticQuery(graphql`
+const SideNavDrawerContent: FC<SideNavDrawerContentProps> = props => {
+  const data = useStaticQuery(graphql`
     query SideNavDrawerContentQuery {
       avatar: file(absolutePath: { regex: "/profile-pic.png/" }) {
         childImageSharp {
@@ -95,28 +112,12 @@ const SideNavDrawerContent: FC<SideNavDrawerContentProps> = ({ className, onClic
       }
     }
   `)
-
-  const title = data.site.siteMetadata.title
-  const avatar = data.avatar.childImageSharp.fixed.src
-
   return (
-    <Box className={cx(classes.content, className)}>
-      <InsetBox className={classes.inset} variant="vertical">
-        <Box className={classes.avatarContainer}>
-          <Avatar className={classes.avatar} src={avatar} />
-        </Box>
-        <Typography className={classes.title} variant="h6" align="center">
-          {title}
-        </Typography>
-        <Socials className={classes.socials} size={2} />
-      </InsetBox>
-      <Box flexGrow={1}>
-        <NavigationButtons className={classes.buttons} onClick={onClick} />
-      </Box>
-      <InsetBox className={classes.toggleWrapper} variant="vertical">
-        <DarkModeToggle />
-      </InsetBox>
-    </Box>
+    <SideNavDrawerContentBase
+      {...props}
+      title={data.site.siteMetadata.title}
+      avatar={data.avatar.childImageSharp.fixed.src}
+    />
   )
 }
 
