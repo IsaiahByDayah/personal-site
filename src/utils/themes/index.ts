@@ -1,4 +1,4 @@
-import { Theme } from "@material-ui/core"
+import { Theme, responsiveFontSizes } from "@material-ui/core"
 
 import { ThemeName } from "providers/ThemeProvider"
 
@@ -10,4 +10,5 @@ const themeMaps: { [name in ThemeName]: Theme } = {
   dark: darkTheme,
 }
 
-export const getTheme = (val: ThemeName = "light"): Theme => themeMaps[val.toLowerCase() as ThemeName] ?? lightTheme
+export const getTheme = (val: ThemeName = "light"): Theme =>
+  responsiveFontSizes(themeMaps[val.toLowerCase() as ThemeName] ?? lightTheme)

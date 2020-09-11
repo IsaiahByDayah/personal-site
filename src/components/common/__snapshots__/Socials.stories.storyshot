@@ -2,11 +2,11 @@
 
 exports[`Storyshots Common/Socials Basic 1`] = `
 <div
-  className="MuiBox-root MuiBox-root-7"
+  className="commonsocials-basic-muibox-root-1 commonsocials-basic-muibox-root-2"
 >
   <a
     aria-disabled={false}
-    className="MuiButtonBase-root MuiIconButton-root makeStyles-link-4"
+    className="commonsocials-basic-muibuttonbase-root-1 commonsocials-basic-muiiconbutton-root-1 commonsocials-basic-makestyles-link-1"
     href="https://twitter.com/IsaiahByDayah"
     onBlur={[Function]}
     onDragLeave={[Function]}
@@ -24,10 +24,10 @@ exports[`Storyshots Common/Socials Basic 1`] = `
     target="_blank"
   >
     <span
-      className="MuiIconButton-label"
+      className="commonsocials-basic-muiiconbutton-label-1"
     >
       <svg
-        className="makeStyles-icon-5 makeStyles-icon-6"
+        className="commonsocials-basic-makestyles-icon-1 commonsocials-basic-makestyles-icon-2"
         role="presentation"
         style={Object {}}
         viewBox="0 0 24 24"
@@ -45,7 +45,7 @@ exports[`Storyshots Common/Socials Basic 1`] = `
   </a>
   <a
     aria-disabled={false}
-    className="MuiButtonBase-root MuiIconButton-root makeStyles-link-4"
+    className="commonsocials-basic-muibuttonbase-root-1 commonsocials-basic-muiiconbutton-root-1 commonsocials-basic-makestyles-link-1"
     href="https://www.twitch.tv/isaiahbydayah"
     onBlur={[Function]}
     onDragLeave={[Function]}
@@ -63,10 +63,10 @@ exports[`Storyshots Common/Socials Basic 1`] = `
     target="_blank"
   >
     <span
-      className="MuiIconButton-label"
+      className="commonsocials-basic-muiiconbutton-label-1"
     >
       <svg
-        className="makeStyles-icon-5 makeStyles-icon-6"
+        className="commonsocials-basic-makestyles-icon-1 commonsocials-basic-makestyles-icon-2"
         role="presentation"
         style={Object {}}
         viewBox="0 0 24 24"
@@ -84,7 +84,7 @@ exports[`Storyshots Common/Socials Basic 1`] = `
   </a>
   <a
     aria-disabled={false}
-    className="MuiButtonBase-root MuiIconButton-root makeStyles-link-4"
+    className="commonsocials-basic-muibuttonbase-root-1 commonsocials-basic-muiiconbutton-root-1 commonsocials-basic-makestyles-link-1"
     href="https://www.youtube.com/isaiahsmith"
     onBlur={[Function]}
     onDragLeave={[Function]}
@@ -102,11 +102,11 @@ exports[`Storyshots Common/Socials Basic 1`] = `
     target="_blank"
   >
     <span
-      className="MuiIconButton-label"
+      className="commonsocials-basic-muiiconbutton-label-1"
     >
       <svg
         aria-hidden={true}
-        className="MuiSvgIcon-root makeStyles-icon-5 makeStyles-icon-6"
+        className="commonsocials-basic-muisvgicon-root-1 commonsocials-basic-makestyles-icon-1 commonsocials-basic-makestyles-icon-2"
         focusable="false"
         viewBox="0 0 24 24"
       >
@@ -118,7 +118,7 @@ exports[`Storyshots Common/Socials Basic 1`] = `
   </a>
   <a
     aria-disabled={false}
-    className="MuiButtonBase-root MuiIconButton-root makeStyles-link-4"
+    className="commonsocials-basic-muibuttonbase-root-1 commonsocials-basic-muiiconbutton-root-1 commonsocials-basic-makestyles-link-1"
     href="https://github.com/IsaiahByDayah"
     onBlur={[Function]}
     onDragLeave={[Function]}
@@ -136,11 +136,11 @@ exports[`Storyshots Common/Socials Basic 1`] = `
     target="_blank"
   >
     <span
-      className="MuiIconButton-label"
+      className="commonsocials-basic-muiiconbutton-label-1"
     >
       <svg
         aria-hidden={true}
-        className="MuiSvgIcon-root makeStyles-icon-5 makeStyles-icon-6"
+        className="commonsocials-basic-muisvgicon-root-1 commonsocials-basic-makestyles-icon-1 commonsocials-basic-makestyles-icon-2"
         focusable="false"
         viewBox="0 0 24 24"
       >

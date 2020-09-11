@@ -2,11 +2,11 @@
 
 exports[`Storyshots Navigation/NavigationButton Basic 1`] = `
 <a
-  className="makeStyles-root-8"
+  className="navigationnavigationbutton-basic-makestyles-root-1"
   href="/"
 >
   <button
-    className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-button-9 MuiButton-fullWidth"
+    className="navigationnavigationbutton-basic-muibuttonbase-root-1 navigationnavigationbutton-basic-muibutton-root-1 navigationnavigationbutton-basic-muibutton-text-1 navigationnavigationbutton-basic-makestyles-button-1 navigationnavigationbutton-basic-muibutton-fullwidth-1"
     disabled={false}
     onBlur={[Function]}
     onDragLeave={[Function]}
@@ -23,19 +23,19 @@ exports[`Storyshots Navigation/NavigationButton Basic 1`] = `
     type="button"
   >
     <span
-      className="MuiButton-label makeStyles-label-10"
+      className="navigationnavigationbutton-basic-muibutton-label-1 navigationnavigationbutton-basic-makestyles-label-1"
     >
       <span
-        className="makeStyles-content-11"
+        className="navigationnavigationbutton-basic-makestyles-content-1"
       >
         Label
       </span>
       <span
-        className="MuiButton-endIcon MuiButton-iconSizeMedium"
+        className="navigationnavigationbutton-basic-muibutton-endicon-1 navigationnavigationbutton-basic-muibutton-iconsizemedium-1"
       >
         <svg
           aria-hidden={true}
-          className="MuiSvgIcon-root"
+          className="navigationnavigationbutton-basic-muisvgicon-root-1"
           focusable="false"
           viewBox="0 0 24 24"
         >

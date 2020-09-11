@@ -2,9 +2,11 @@
 // REF: https://github.com/KyleAMathews/typefaces/issues/113
 import "typeface-nunito/index.css"
 
-import ThemeDecorator from "decorators/ThemeDecorator"
 import { action } from "@storybook/addon-actions"
 import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport"
+
+import ThemeDecorator from "decorators/ThemeDecorator"
+import SnapshotStylesDecorator from "decorators/SnapshotStylesDecorator"
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -30,7 +32,7 @@ export const globalTypes = {
   },
 }
 
-export const decorators = [ThemeDecorator]
+export const decorators = [SnapshotStylesDecorator, ThemeDecorator]
 
 // NOTE: This is needed to work with gatsby: https://www.gatsbyjs.com/docs/visual-testing-with-storybook/
 // Gatsby's Link overrides:

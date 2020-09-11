@@ -2,27 +2,27 @@
 
 exports[`Storyshots Scaffold/Header Basic 1`] = `
 <header
-  className="MuiPaper-root MuiAppBar-root MuiAppBar-positionFixed MuiAppBar-colorSecondary makeStyles-root-19 mui-fixed MuiPaper-elevation0"
+  className="scaffoldheader-basic-muipaper-root-1 scaffoldheader-basic-muiappbar-root-1 scaffoldheader-basic-muiappbar-positionfixed-1 scaffoldheader-basic-muiappbar-colorsecondary-1 scaffoldheader-basic-makestyles-root-1 mui-fixed scaffoldheader-basic-muipaper-elevation0-1"
 >
   <div
-    className="MuiToolbar-root MuiToolbar-regular makeStyles-toolbar-20 MuiToolbar-gutters"
+    className="scaffoldheader-basic-muitoolbar-root-1 scaffoldheader-basic-muitoolbar-regular-1 scaffoldheader-basic-makestyles-toolbar-1 scaffoldheader-basic-muitoolbar-gutters-1"
   >
     <div
-      className="MuiBox-root MuiBox-root-27 makeStyles-nameAndAvatar-22 makeStyles-centered-26"
+      className="scaffoldheader-basic-muibox-root-1 scaffoldheader-basic-muibox-root-2 scaffoldheader-basic-makestyles-nameandavatar-1 scaffoldheader-basic-makestyles-centered-1"
     >
       <div
-        className="MuiAvatar-root MuiAvatar-circle makeStyles-avatar-23"
+        className="scaffoldheader-basic-muiavatar-root-1 scaffoldheader-basic-muiavatar-circle-1 scaffoldheader-basic-makestyles-avatar-1"
       >
         <img
-          className="MuiAvatar-img"
+          className="scaffoldheader-basic-muiavatar-img-1"
           src="https://api.adorable.io/avatars/100/sample.png"
         />
       </div>
       <h6
-        className="MuiTypography-root makeStyles-title-24 MuiTypography-h6 MuiTypography-alignCenter"
+        className="scaffoldheader-basic-muitypography-root-1 scaffoldheader-basic-makestyles-title-1 scaffoldheader-basic-muitypography-h6-1 scaffoldheader-basic-muitypography-aligncenter-1"
       >
         <a
-          className="makeStyles-link-25"
+          className="scaffoldheader-basic-makestyles-link-1"
           href="/"
         >
           Isaiah Smith
@@ -35,27 +35,27 @@ exports[`Storyshots Scaffold/Header Basic 1`] = `
 
 exports[`Storyshots Scaffold/Header Complex 1`] = `
 <header
-  className="MuiPaper-root MuiAppBar-root MuiAppBar-positionFixed MuiAppBar-colorSecondary makeStyles-root-37 mui-fixed MuiPaper-elevation0"
+  className="scaffoldheader-complex-muipaper-root-1 scaffoldheader-complex-muiappbar-root-1 scaffoldheader-complex-muiappbar-positionfixed-1 scaffoldheader-complex-muiappbar-colorsecondary-1 scaffoldheader-complex-makestyles-root-1 mui-fixed scaffoldheader-complex-muipaper-elevation0-1"
 >
   <div
-    className="MuiToolbar-root MuiToolbar-regular makeStyles-toolbar-38 MuiToolbar-gutters"
+    className="scaffoldheader-complex-muitoolbar-root-1 scaffoldheader-complex-muitoolbar-regular-1 scaffoldheader-complex-makestyles-toolbar-1 scaffoldheader-complex-muitoolbar-gutters-1"
   >
     <div
-      className="MuiBox-root MuiBox-root-45 makeStyles-nameAndAvatar-40 makeStyles-centered-44"
+      className="scaffoldheader-complex-muibox-root-1 scaffoldheader-complex-muibox-root-2 scaffoldheader-complex-makestyles-nameandavatar-1 scaffoldheader-complex-makestyles-centered-1"
     >
       <div
-        className="MuiAvatar-root MuiAvatar-circle makeStyles-avatar-41"
+        className="scaffoldheader-complex-muiavatar-root-1 scaffoldheader-complex-muiavatar-circle-1 scaffoldheader-complex-makestyles-avatar-1"
       >
         <img
-          className="MuiAvatar-img"
+          className="scaffoldheader-complex-muiavatar-img-1"
           src="https://api.adorable.io/avatars/100/sample.png"
         />
       </div>
       <h6
-        className="MuiTypography-root makeStyles-title-42 MuiTypography-h6 MuiTypography-alignCenter"
+        className="scaffoldheader-complex-muitypography-root-1 scaffoldheader-complex-makestyles-title-1 scaffoldheader-complex-muitypography-h6-1 scaffoldheader-complex-muitypography-aligncenter-1"
       >
         <a
-          className="makeStyles-link-43"
+          className="scaffoldheader-complex-makestyles-link-1"
           href="/"
         >
           Isaiah Smith
@@ -68,27 +68,27 @@ exports[`Storyshots Scaffold/Header Complex 1`] = `
 
 exports[`Storyshots Scaffold/Header Simple 1`] = `
 <header
-  className="MuiPaper-root MuiAppBar-root MuiAppBar-positionFixed MuiAppBar-colorSecondary makeStyles-root-28 mui-fixed MuiPaper-elevation0"
+  className="scaffoldheader-simple-muipaper-root-1 scaffoldheader-simple-muiappbar-root-1 scaffoldheader-simple-muiappbar-positionfixed-1 scaffoldheader-simple-muiappbar-colorsecondary-1 scaffoldheader-simple-makestyles-root-1 mui-fixed scaffoldheader-simple-muipaper-elevation0-1"
 >
   <div
-    className="MuiToolbar-root MuiToolbar-regular makeStyles-toolbar-29 MuiToolbar-gutters"
+    className="scaffoldheader-simple-muitoolbar-root-1 scaffoldheader-simple-muitoolbar-regular-1 scaffoldheader-simple-makestyles-toolbar-1 scaffoldheader-simple-muitoolbar-gutters-1"
   >
     <div
-      className="MuiBox-root MuiBox-root-36 makeStyles-nameAndAvatar-31 makeStyles-centered-35"
+      className="scaffoldheader-simple-muibox-root-1 scaffoldheader-simple-muibox-root-2 scaffoldheader-simple-makestyles-nameandavatar-1 scaffoldheader-simple-makestyles-centered-1"
     >
       <div
-        className="MuiAvatar-root MuiAvatar-circle makeStyles-avatar-32"
+        className="scaffoldheader-simple-muiavatar-root-1 scaffoldheader-simple-muiavatar-circle-1 scaffoldheader-simple-makestyles-avatar-1"
       >
         <img
-          className="MuiAvatar-img"
+          className="scaffoldheader-simple-muiavatar-img-1"
           src="https://api.adorable.io/avatars/100/sample.png"
         />
       </div>
       <h6
-        className="MuiTypography-root makeStyles-title-33 MuiTypography-h6 MuiTypography-alignCenter"
+        className="scaffoldheader-simple-muitypography-root-1 scaffoldheader-simple-makestyles-title-1 scaffoldheader-simple-muitypography-h6-1 scaffoldheader-simple-muitypography-aligncenter-1"
       >
         <a
-          className="makeStyles-link-34"
+          className="scaffoldheader-simple-makestyles-link-1"
           href="/"
         >
           Isaiah Smith

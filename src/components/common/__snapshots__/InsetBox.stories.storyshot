@@ -2,6 +2,6 @@
 
 exports[`Storyshots Common/InsetBox Basic 1`] = `
 <div
-  className="MuiBox-root MuiBox-root-3 makeStyles-root-1 makeStyles-root-2"
+  className="commoninsetbox-basic-muibox-root-1 commoninsetbox-basic-muibox-root-2 commoninsetbox-basic-makestyles-root-1 commoninsetbox-basic-makestyles-root-2"
 />
 `;

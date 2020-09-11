@@ -9,6 +9,7 @@ import useBreakpoint, { Breakpoint } from "hooks/useBreakpoint"
 import { SideNavContext } from "providers/SideNavProvider"
 
 import Socials from "components/common/Socials"
+import DarkModeToggle from "components/common/DarkModeToggle"
 
 const useStyles = makeStyles(({ spacing, palette, shadows }) => ({
   root: {
@@ -30,6 +31,7 @@ const useStyles = makeStyles(({ spacing, palette, shadows }) => ({
     width: spacing(4),
     marginRight: spacing(2),
     boxShadow: shadows[3],
+    backgroundColor: palette.grey[400],
   },
   title: {
     fontWeight: 900,
@@ -83,6 +85,7 @@ export const HeaderBase: FC<HeaderBaseProps> = ({ title, avatar, onOpen, simple 
     <>
       {nameAndAvatar()}
       <Socials />
+      <DarkModeToggle />
     </>
   )
 

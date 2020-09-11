@@ -1,4 +1,6 @@
-import React, { FC, createContext, useState } from "react"
+import React, { FC, createContext } from "react"
+
+import useLocalStorage from "hooks/useLocalStorage"
 
 export type ThemeName = "light" | "dark"
 
@@ -13,7 +15,7 @@ export const ThemeContext = createContext<ThemeContext>({
 })
 
 const ThemeProvider: FC = ({ children }) => {
-  const [theme, setTheme] = useState<ThemeName>("light")
+  const [theme, setTheme] = useLocalStorage<ThemeName>("THEME_SELECTION", "light")
 
   return (
     <ThemeContext.Provider

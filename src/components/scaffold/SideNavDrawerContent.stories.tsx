@@ -6,8 +6,9 @@ import { SideNavDrawerContentBase, SideNavDrawerContentBaseProps } from "compone
 export default {
   component: SideNavDrawerContentBase,
   title: "Scaffold/SideNavDrawerContent",
-  parameters: {
-    layout: "centered",
+  args: {
+    title: "Isaiah Smith",
+    avatar: "https://api.adorable.io/avatars/100/sample.png",
   },
 } as Meta
 
