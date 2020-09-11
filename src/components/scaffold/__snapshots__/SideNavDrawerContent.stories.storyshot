@@ -1,0 +1,150 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Scaffold/SideNavDrawerContent Basic 1`] = `
+<div
+  className="MuiBox-root MuiBox-root-48 makeStyles-content-46"
+>
+  <div
+    className="MuiBox-root MuiBox-root-51 makeStyles-root-49 makeStyles-buttons-47"
+  >
+    <a
+      className="makeStyles-root-52 makeStyles-navButton-50"
+      href="/blog"
+    >
+      <button
+        className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-button-53 MuiButton-fullWidth"
+        disabled={false}
+        onBlur={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
+      >
+        <span
+          className="MuiButton-label makeStyles-label-54"
+        >
+          <span
+            className="makeStyles-content-55"
+          >
+            Blog
+          </span>
+          <span
+            className="MuiButton-endIcon MuiButton-iconSizeMedium"
+          >
+            <svg
+              aria-hidden={true}
+              className="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M9.29 6.71c-.39.39-.39 1.02 0 1.41L13.17 12l-3.88 3.88c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l4.59-4.59c.39-.39.39-1.02 0-1.41L10.7 6.7c-.38-.38-1.02-.38-1.41.01z"
+              />
+            </svg>
+          </span>
+        </span>
+      </button>
+    </a>
+    <a
+      className="makeStyles-root-52 makeStyles-navButton-50"
+      href="/projects"
+    >
+      <button
+        className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-button-53 MuiButton-fullWidth"
+        disabled={false}
+        onBlur={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
+      >
+        <span
+          className="MuiButton-label makeStyles-label-54"
+        >
+          <span
+            className="makeStyles-content-55"
+          >
+            Projects
+          </span>
+          <span
+            className="MuiButton-endIcon MuiButton-iconSizeMedium"
+          >
+            <svg
+              aria-hidden={true}
+              className="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M9.29 6.71c-.39.39-.39 1.02 0 1.41L13.17 12l-3.88 3.88c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l4.59-4.59c.39-.39.39-1.02 0-1.41L10.7 6.7c-.38-.38-1.02-.38-1.41.01z"
+              />
+            </svg>
+          </span>
+        </span>
+      </button>
+    </a>
+    <a
+      className="makeStyles-root-52 makeStyles-navButton-50"
+      href="/about"
+    >
+      <button
+        className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-button-53 MuiButton-fullWidth"
+        disabled={false}
+        onBlur={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
+      >
+        <span
+          className="MuiButton-label makeStyles-label-54"
+        >
+          <span
+            className="makeStyles-content-55"
+          >
+            About
+          </span>
+          <span
+            className="MuiButton-endIcon MuiButton-iconSizeMedium"
+          >
+            <svg
+              aria-hidden={true}
+              className="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M9.29 6.71c-.39.39-.39 1.02 0 1.41L13.17 12l-3.88 3.88c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l4.59-4.59c.39-.39.39-1.02 0-1.41L10.7 6.7c-.38-.38-1.02-.38-1.41.01z"
+              />
+            </svg>
+          </span>
+        </span>
+      </button>
+    </a>
+  </div>
+</div>
+`;

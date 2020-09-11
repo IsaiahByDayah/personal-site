@@ -1,0 +1,100 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Scaffold/Header Basic 1`] = `
+<header
+  className="MuiPaper-root MuiAppBar-root MuiAppBar-positionFixed MuiAppBar-colorSecondary makeStyles-root-19 mui-fixed MuiPaper-elevation0"
+>
+  <div
+    className="MuiToolbar-root MuiToolbar-regular makeStyles-toolbar-20 MuiToolbar-gutters"
+  >
+    <div
+      className="MuiBox-root MuiBox-root-27 makeStyles-nameAndAvatar-22 makeStyles-centered-26"
+    >
+      <div
+        className="MuiAvatar-root MuiAvatar-circle makeStyles-avatar-23"
+      >
+        <img
+          className="MuiAvatar-img"
+          src="https://api.adorable.io/avatars/100/sample.png"
+        />
+      </div>
+      <h6
+        className="MuiTypography-root makeStyles-title-24 MuiTypography-h6 MuiTypography-alignCenter"
+      >
+        <a
+          className="makeStyles-link-25"
+          href="/"
+        >
+          Isaiah Smith
+        </a>
+      </h6>
+    </div>
+  </div>
+</header>
+`;
+
+exports[`Storyshots Scaffold/Header Complex 1`] = `
+<header
+  className="MuiPaper-root MuiAppBar-root MuiAppBar-positionFixed MuiAppBar-colorSecondary makeStyles-root-37 mui-fixed MuiPaper-elevation0"
+>
+  <div
+    className="MuiToolbar-root MuiToolbar-regular makeStyles-toolbar-38 MuiToolbar-gutters"
+  >
+    <div
+      className="MuiBox-root MuiBox-root-45 makeStyles-nameAndAvatar-40 makeStyles-centered-44"
+    >
+      <div
+        className="MuiAvatar-root MuiAvatar-circle makeStyles-avatar-41"
+      >
+        <img
+          className="MuiAvatar-img"
+          src="https://api.adorable.io/avatars/100/sample.png"
+        />
+      </div>
+      <h6
+        className="MuiTypography-root makeStyles-title-42 MuiTypography-h6 MuiTypography-alignCenter"
+      >
+        <a
+          className="makeStyles-link-43"
+          href="/"
+        >
+          Isaiah Smith
+        </a>
+      </h6>
+    </div>
+  </div>
+</header>
+`;
+
+exports[`Storyshots Scaffold/Header Simple 1`] = `
+<header
+  className="MuiPaper-root MuiAppBar-root MuiAppBar-positionFixed MuiAppBar-colorSecondary makeStyles-root-28 mui-fixed MuiPaper-elevation0"
+>
+  <div
+    className="MuiToolbar-root MuiToolbar-regular makeStyles-toolbar-29 MuiToolbar-gutters"
+  >
+    <div
+      className="MuiBox-root MuiBox-root-36 makeStyles-nameAndAvatar-31 makeStyles-centered-35"
+    >
+      <div
+        className="MuiAvatar-root MuiAvatar-circle makeStyles-avatar-32"
+      >
+        <img
+          className="MuiAvatar-img"
+          src="https://api.adorable.io/avatars/100/sample.png"
+        />
+      </div>
+      <h6
+        className="MuiTypography-root makeStyles-title-33 MuiTypography-h6 MuiTypography-alignCenter"
+      >
+        <a
+          className="makeStyles-link-34"
+          href="/"
+        >
+          Isaiah Smith
+        </a>
+      </h6>
+    </div>
+  </div>
+</header>
+`;

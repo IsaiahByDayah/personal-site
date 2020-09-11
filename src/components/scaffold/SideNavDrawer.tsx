@@ -1,69 +1,22 @@
 import React, { FC, useContext } from "react"
-import { makeStyles, Drawer, Box } from "@material-ui/core"
-import { useStaticQuery, graphql } from "gatsby"
+import { Drawer } from "@material-ui/core"
 
 import { SideNavContext } from "providers/SideNavProvider"
 
-import NavigationButtons from "components/navigation/NavigationButtons"
+import SideNavDrawerContent from "components/scaffold/SideNavDrawerContent"
 
-const useStyles = makeStyles(({ spacing }) => ({
-  content: {
-    width: spacing(32),
-  },
-
-  buttons: {
-    padding: spacing(2),
-  },
-}))
-
-export type SideNavDrawerBaseProps = {
-  className?: string
-  open: boolean
-  onClose: () => void
-  title: string
-  avatar?: string
-}
-
-export const SideNavDrawerBase: FC<SideNavDrawerBaseProps> = ({ className, open, onClose, title, avatar }) => {
-  const classes = useStyles()
-
-  return (
-    <Drawer className={className} open={open} onClose={onClose}>
-      <Box className={classes.content}>
-        <NavigationButtons className={classes.buttons} onClick={onClose} />
-      </Box>
-    </Drawer>
-  )
-}
-
+// NOTE: This is a seperate component because @material-ui's transition components (and anything that uses them) blows up during snapshot creation
 const SideNavDrawer: FC = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SideNavDrawerQuery {
-      avatar: file(absolutePath: { regex: "/profile-pic.png/" }) {
-        childImageSharp {
-          fixed(width: 100, height: 100) {
-            src
-          }
-        }
-      }
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
   const { open, setOpen } = useContext(SideNavContext)
+
+  const close = () => setOpen(false)
 
   return (
     <>
       {children}
-      <SideNavDrawerBase
-        open={open}
-        onClose={() => setOpen(false)}
-        title={data.site.siteMetadata.title}
-        avatar={data.avatar.childImageSharp.fixed.src}
-      />
+      <Drawer open={open} onClose={close}>
+        <SideNavDrawerContent onClick={close} />
+      </Drawer>
     </>
   )
 }
