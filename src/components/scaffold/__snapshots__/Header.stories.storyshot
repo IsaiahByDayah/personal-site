@@ -25,7 +25,7 @@ exports[`Storyshots Scaffold/Header Basic 1`] = `
           className="scaffoldheader-basic-makestyles-link-1"
           href="/"
         >
-          Isaiah Smith
+          Site Title
         </a>
       </h6>
     </div>
@@ -58,7 +58,7 @@ exports[`Storyshots Scaffold/Header Complex 1`] = `
           className="scaffoldheader-complex-makestyles-link-1"
           href="/"
         >
-          Isaiah Smith
+          Site Title
         </a>
       </h6>
     </div>
@@ -91,7 +91,7 @@ exports[`Storyshots Scaffold/Header Simple 1`] = `
           className="scaffoldheader-simple-makestyles-link-1"
           href="/"
         >
-          Isaiah Smith
+          Site Title
         </a>
       </h6>
     </div>
