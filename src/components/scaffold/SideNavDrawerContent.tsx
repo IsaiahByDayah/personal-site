@@ -11,7 +11,6 @@ import NavigationButtons from "components/navigation/NavigationButtons"
 
 const useStyles = makeStyles(({ spacing, shadows, palette }) => ({
   content: {
-    width: spacing(32),
     display: "flex",
     flexDirection: "column",
     height: "100%",

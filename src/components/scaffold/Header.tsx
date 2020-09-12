@@ -113,7 +113,11 @@ type HeaderData = {
   }
 }
 
-const Header = (): JSX.Element => {
+type HeaderProps = {
+  simple?: boolean
+}
+
+const Header: FC<HeaderProps> = props => {
   const { setOpen } = useContext(SideNavContext)
   const data: HeaderData = useStaticQuery(graphql`
     query HeaderQuery {
@@ -134,6 +138,7 @@ const Header = (): JSX.Element => {
 
   return (
     <HeaderBase
+      {...props}
       title={data.site.siteMetadata.title}
       avatar={data.avatar.childImageSharp.fixed.src}
       onOpen={() => setOpen(true)}
