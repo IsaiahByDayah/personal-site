@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Scaffold/Footer Basic 1`] = `
+<footer
+  className="scaffoldfooter-basic-muibox-root-1 scaffoldfooter-basic-muibox-root-2 scaffoldfooter-basic-makestyles-root-1 scaffoldfooter-basic-makestyles-root-2"
+>
+  © 
+  2020
+  , Made
+   
+  <a
+    href="https://www.twitch.tv/isaiahbydayah"
+    rel="noopener noreferrer"
+    target="_blank"
+  >
+    live and in the open
+  </a>
+   
+  by
+   
+  <a
+    href="https://twitter.com/IsaiahByDayah"
+    rel="noopener noreferrer"
+    target="_blank"
+  >
+    this person
+  </a>
+   
+  👋
+</footer>
+`;
