@@ -1,5 +1,5 @@
 import React, { FC, useContext } from "react"
-import { makeStyles, Switch, Box } from "@material-ui/core"
+import { makeStyles, Switch, Box, FormControlLabel } from "@material-ui/core"
 import { Brightness2Rounded, Brightness5Rounded } from "@material-ui/icons"
 import cx from "classnames"
 
@@ -29,7 +29,7 @@ export const DarkModeToggleBase: FC<DarkModeToggleBaseProps> = ({ className, dar
   return (
     <Box className={cx(classes.root, className)}>
       <Brightness5Rounded className={classes.icon} />
-      <Switch color="primary" checked={darkMode} onChange={onToggle} />
+      <Switch color="primary" checked={darkMode} onChange={onToggle} inputProps={{ "aria-label": "Theme Toggle" }} />
       <Brightness2Rounded className={classes.icon} />
     </Box>
   )

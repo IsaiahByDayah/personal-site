@@ -72,7 +72,7 @@ export const SideNavDrawerContentBase: FC<SideNavDrawerContentBaseProps> = ({ cl
       <InsetBox className={classes.inset} variant="vertical">
         {avatar && (
           <Box className={classes.avatarContainer}>
-            <Avatar className={classes.avatar} src={avatar} />
+            <Avatar className={classes.avatar} src={avatar} alt="avatar photo" />
           </Box>
         )}
         <Typography className={classes.title} variant="h6" align="center">

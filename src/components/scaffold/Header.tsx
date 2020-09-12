@@ -61,7 +61,7 @@ export const HeaderBase: FC<HeaderBaseProps> = ({ title, avatar, onOpen, simple 
 
   const nameAndAvatar = (className?: string) => (
     <Box className={cx(classes.nameAndAvatar, className)}>
-      {avatar && <Avatar className={classes.avatar} src={avatar} />}
+      {avatar && <Avatar className={classes.avatar} src={avatar} alt="avatar photo" />}
       <Typography className={classes.title} variant="h6" align="center">
         <Link className={classes.link} to="/">
           {title}

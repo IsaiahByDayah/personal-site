@@ -14,6 +14,7 @@ exports[`Storyshots Scaffold/Header Basic 1`] = `
         className="scaffoldheader-basic-muiavatar-root-1 scaffoldheader-basic-muiavatar-circle-1 scaffoldheader-basic-makestyles-avatar-1"
       >
         <img
+          alt="avatar photo"
           className="scaffoldheader-basic-muiavatar-img-1"
           src="https://api.adorable.io/avatars/100/sample.png"
         />
@@ -47,6 +48,7 @@ exports[`Storyshots Scaffold/Header Complex 1`] = `
         className="scaffoldheader-complex-muiavatar-root-1 scaffoldheader-complex-muiavatar-circle-1 scaffoldheader-complex-makestyles-avatar-1"
       >
         <img
+          alt="avatar photo"
           className="scaffoldheader-complex-muiavatar-img-1"
           src="https://api.adorable.io/avatars/100/sample.png"
         />
@@ -80,6 +82,7 @@ exports[`Storyshots Scaffold/Header Simple 1`] = `
         className="scaffoldheader-simple-muiavatar-root-1 scaffoldheader-simple-muiavatar-circle-1 scaffoldheader-simple-makestyles-avatar-1"
       >
         <img
+          alt="avatar photo"
           className="scaffoldheader-simple-muiavatar-img-1"
           src="https://api.adorable.io/avatars/100/sample.png"
         />
