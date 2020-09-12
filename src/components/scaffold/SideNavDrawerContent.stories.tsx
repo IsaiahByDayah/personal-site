@@ -1,15 +1,28 @@
 import React from "react"
 import { Meta, Story } from "@storybook/react/types-6-0"
 
-import { SideNavDrawerContentBase, SideNavDrawerContentBaseProps } from "components/scaffold/SideNavDrawerContent"
+import SideNavDrawerContent, {
+  SideNavDrawerContentProps,
+  SideNavDrawerContentBase,
+  SideNavDrawerContentBaseProps,
+} from "components/scaffold/SideNavDrawerContent"
 
 export default {
-  component: SideNavDrawerContentBase,
   title: "Scaffold/SideNavDrawerContent",
-  args: {
-    title: "Isaiah Smith",
-    avatar: "https://api.adorable.io/avatars/100/sample.png",
+  argTypes: {
+    onClick: {},
   },
 } as Meta
 
 export const Basic: Story<SideNavDrawerContentBaseProps> = args => <SideNavDrawerContentBase {...args} />
+Basic.args = {
+  title: "Site Title",
+  avatar: "https://api.adorable.io/avatars/100/sample.png",
+}
+
+export const Default: Story<SideNavDrawerContentProps> = args => <SideNavDrawerContent {...args} />
+Default.parameters = {
+  storyshots: {
+    disable: true,
+  },
+}
