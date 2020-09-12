@@ -90,13 +90,28 @@ export const SideNavDrawerContentBase: FC<SideNavDrawerContentBaseProps> = ({ cl
   )
 }
 
+type SideNavDrawerContentData = {
+  avatar: {
+    childImageSharp: {
+      fixed: {
+        src: string
+      }
+    }
+  }
+  site: {
+    siteMetadata: {
+      title: string
+    }
+  }
+}
+
 export type SideNavDrawerContentProps = {
   className?: string
   onClick?: () => void
 }
 
 const SideNavDrawerContent: FC<SideNavDrawerContentProps> = props => {
-  const data = useStaticQuery(graphql`
+  const data: SideNavDrawerContentData = useStaticQuery(graphql`
     query SideNavDrawerContentQuery {
       avatar: file(absolutePath: { regex: "/profile-pic.png/" }) {
         childImageSharp {
@@ -112,6 +127,7 @@ const SideNavDrawerContent: FC<SideNavDrawerContentProps> = props => {
       }
     }
   `)
+
   return (
     <SideNavDrawerContentBase
       {...props}

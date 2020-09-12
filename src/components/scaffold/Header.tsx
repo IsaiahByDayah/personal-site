@@ -98,9 +98,24 @@ export const HeaderBase: FC<HeaderBaseProps> = ({ title, avatar, onOpen, simple 
   )
 }
 
+type HeaderData = {
+  avatar: {
+    childImageSharp: {
+      fixed: {
+        src: string
+      }
+    }
+  }
+  site: {
+    siteMetadata: {
+      title: string
+    }
+  }
+}
+
 const Header = (): JSX.Element => {
   const { setOpen } = useContext(SideNavContext)
-  const data = useStaticQuery(graphql`
+  const data: HeaderData = useStaticQuery(graphql`
     query HeaderQuery {
       avatar: file(absolutePath: { regex: "/profile-pic.png/" }) {
         childImageSharp {

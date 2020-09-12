@@ -22,7 +22,7 @@ exports[`Storyshots Scaffold/SideNavDrawerContent Basic 1`] = `
     <h6
       className="scaffoldsidenavdrawercontent-basic-muitypography-root-1 scaffoldsidenavdrawercontent-basic-makestyles-title-1 scaffoldsidenavdrawercontent-basic-muitypography-h6-1 scaffoldsidenavdrawercontent-basic-muitypography-aligncenter-1"
     >
-      Isaiah Smith
+      Site Title
     </h6>
     <div
       className="scaffoldsidenavdrawercontent-basic-muibox-root-1 scaffoldsidenavdrawercontent-basic-muibox-root-5 scaffoldsidenavdrawercontent-basic-makestyles-socials-1"
