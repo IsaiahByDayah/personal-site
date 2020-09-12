@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Common/Post Basic 1`] = `
+<div
+  className="commonpost-basic-muibox-root-1 commonpost-basic-muibox-root-2"
+>
+  <a
+    className="commonpost-basic-makestyles-link-1"
+    href="/"
+  >
+    <img
+      alt="sample article thumbnail"
+      className="commonpost-basic-makestyles-thumbnail-1"
+      src="https://images.unsplash.com/photo-1522798435862-6283b845139c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=720"
+    />
+  </a>
+  <span
+    className="commonpost-basic-muitypography-root-1 commonpost-basic-makestyles-secondary-1 commonpost-basic-muitypography-caption-1 commonpost-basic-muitypography-colorprimary-1"
+  >
+    December 25, 2000
+  </span>
+  <h6
+    className="commonpost-basic-muitypography-root-1 commonpost-basic-makestyles-primary-1 commonpost-basic-muitypography-h6-1"
+  >
+    <a
+      className="commonpost-basic-makestyles-link-1"
+      href="/"
+    >
+      Velit pariatur ut amet adipisicing dolore laborum quis duis
+    </a>
+  </h6>
+  <p
+    className="commonpost-basic-muitypography-root-1 commonpost-basic-makestyles-exceprt-1 commonpost-basic-muitypography-body1-1"
+  >
+    Labore sint proident id enim voluptate cupidatat voluptate nulla ullamco eiusmod. Adipisicing esse esse enim esse Lorem veniam excepteur in ipsum et qui ad. Laboris exercitation mollit amet officia duis et qui aliquip incididunt proident aliqua esse ad nisi.
+  </p>
+</div>
+`;

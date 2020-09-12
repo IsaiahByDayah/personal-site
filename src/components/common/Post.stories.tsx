@@ -33,6 +33,7 @@ export default {
     secondary: "December 25, 2000",
     excerpt:
       "Labore sint proident id enim voluptate cupidatat voluptate nulla ullamco eiusmod. Adipisicing esse esse enim esse Lorem veniam excepteur in ipsum et qui ad. Laboris exercitation mollit amet officia duis et qui aliquip incididunt proident aliqua esse ad nisi.",
+    to: "/",
   },
 } as Meta
 

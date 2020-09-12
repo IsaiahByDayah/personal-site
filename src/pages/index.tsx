@@ -1,7 +1,9 @@
 import React, { FC } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 
-import Index from "components/page-templates/Index"
+import { generatePathForBlog } from "utils/blog"
+
+import Home from "components/page-templates/Home"
 
 type IndexPageData = {
   allMarkdownRemark: {
@@ -42,7 +44,19 @@ const IndexPage: FC = () => {
     }
   `)
 
-  return <Index />
+  return (
+    <Home
+      // posts={data.allMarkdownRemark.edges
+      //   .map(edge => edge.node)
+      //   .map(node => ({
+      //     excerpt: node.excerpt,
+      //     title: node.frontmatter.title,
+      //     date: node.frontmatter.date,
+      //     slug: node.frontmatter.slug,
+      //   }))}
+      posts={[]}
+    />
+  )
 }
 export default IndexPage
 
