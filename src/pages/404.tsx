@@ -2,7 +2,7 @@ import React, { FC } from "react"
 import { graphql, PageProps, useStaticQuery } from "gatsby"
 
 import Layout from "components/Layout"
-import SEO from "components/SEO"
+import SEO from "components/scaffold/SEO"
 
 type Data = {
   site: {

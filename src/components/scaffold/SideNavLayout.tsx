@@ -10,10 +10,12 @@ const SideNavLayout: FC = ({ children }) => (
     <Header />
     <Container component="main">
       <Grid container spacing={2}>
-        <Grid component={Box} item display={{ xs: "none", sm: "block" }} sm={4}>
+        <Grid component={Box} item display={{ xs: "none", sm: "block" }} sm={4} md={3}>
           <SideNavContent />
         </Grid>
-        <Grid item>{children}</Grid>
+        <Grid item xs={12} sm={8}>
+          {children}
+        </Grid>
       </Grid>
     </Container>
     <Footer />

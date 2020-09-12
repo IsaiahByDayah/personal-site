@@ -3,7 +3,7 @@ import { Link, graphql, PageProps } from "gatsby"
 
 import Bio from "components/Bio"
 import Layout from "components/Layout"
-import SEO from "components/SEO"
+import SEO from "components/scaffold/SEO"
 
 import { generatePathForBlog } from "utils/blog"
 
