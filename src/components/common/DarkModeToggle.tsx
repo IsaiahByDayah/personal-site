@@ -1,5 +1,5 @@
 import React, { FC, useContext } from "react"
-import { makeStyles, Switch, Box, FormControlLabel } from "@material-ui/core"
+import { makeStyles, Switch, Box } from "@material-ui/core"
 import { Brightness2Rounded, Brightness5Rounded } from "@material-ui/icons"
 import cx from "classnames"
 

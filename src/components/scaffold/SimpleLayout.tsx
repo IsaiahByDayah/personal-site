@@ -15,7 +15,7 @@ const SingleColumnLayout: FC = ({ children }) => {
   return (
     <Box pt={10} display="flex" flexDirection="column" height="100vh">
       <Header simple={true} />
-      <Container className={classes.container} component="main">
+      <Container className={classes.container} component="main" maxWidth="md">
         <>{children}</>
       </Container>
       <Footer />

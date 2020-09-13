@@ -94,7 +94,7 @@
     "test:watch": "jest --watch",
     "test:ci": "npm run lint && npm run test",
     "type-check": "tsc --noEmit",
-    "lint": "eslint . --ignore-path .gitignore --ext .ts,.tsx,.js",
+    "lint": "eslint . --ext .ts,.tsx,.js",
     "storybook": "NODE_ENV=test start-storybook -p 6006 -s ./public",
     "build-storybook": "NODE_ENV=test build-storybook -s ./public",
     "copy-static-queries": "cp -r ./public/page-data/sq/d ./public/static",
