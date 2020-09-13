@@ -27,8 +27,8 @@ export const NavigationButtons: FC<NavigationButtonsProps> = ({ className, onCli
 
   return (
     <Box className={cx(classes.root, className)}>
-      <NavigationButton className={classes.navButton} to="/blog" onClick={onClick}>
-        Blog
+      <NavigationButton className={classes.navButton} to="/" onClick={onClick}>
+        Home
       </NavigationButton>
       <NavigationButton className={classes.navButton} to="/projects" onClick={onClick}>
         Projects
