@@ -12,6 +12,7 @@ module.exports = {
     },
   },
   plugins: [
+    "gatsby-plugin-graphql-codegen",
     "gatsby-plugin-resolve-src",
     {
       resolve: "gatsby-source-filesystem",

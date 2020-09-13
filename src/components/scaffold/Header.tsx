@@ -4,6 +4,8 @@ import { MenuRounded } from "@material-ui/icons"
 import { Link, useStaticQuery, graphql } from "gatsby"
 import cx from "classnames"
 
+import { HeaderQuery } from "../../../graphql-types"
+
 import useBreakpoint, { Breakpoint } from "hooks/useBreakpoint"
 
 import { SideNavContext } from "providers/SideNavProvider"
@@ -98,29 +100,14 @@ export const HeaderBase: FC<HeaderBaseProps> = ({ title, avatar, onOpen, simple 
   )
 }
 
-type HeaderData = {
-  avatar: {
-    childImageSharp: {
-      fixed: {
-        src: string
-      }
-    }
-  }
-  site: {
-    siteMetadata: {
-      title: string
-    }
-  }
-}
-
 type HeaderProps = {
   simple?: boolean
 }
 
 const Header: FC<HeaderProps> = props => {
   const { setOpen } = useContext(SideNavContext)
-  const data: HeaderData = useStaticQuery(graphql`
-    query HeaderQuery {
+  const data: HeaderQuery = useStaticQuery(graphql`
+    query Header {
       avatar: file(absolutePath: { regex: "/profile-pic.png/" }) {
         childImageSharp {
           fixed(width: 100, height: 100) {
@@ -139,8 +126,8 @@ const Header: FC<HeaderProps> = props => {
   return (
     <HeaderBase
       {...props}
-      title={data.site.siteMetadata.title}
-      avatar={data.avatar.childImageSharp.fixed.src}
+      title={data.site?.siteMetadata?.title ?? ""}
+      avatar={data.avatar?.childImageSharp?.fixed?.src}
       onOpen={() => setOpen(true)}
     />
   )

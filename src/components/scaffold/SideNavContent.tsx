@@ -3,12 +3,16 @@ import { makeStyles, Box } from "@material-ui/core"
 import { useStaticQuery, graphql } from "gatsby"
 import cx from "classnames"
 
+import { SideNavContentQuery } from "../../../graphql-types"
+
 import NavigationButtons from "components/navigation/NavigationButtons"
 
 const useStyles = makeStyles(({ spacing }) => ({
   root: {},
-  buttons: {
-    padding: spacing(2),
+  navItem: {
+    "&:not(:first-child)": {
+      marginTop: spacing(2),
+    },
   },
 }))
 
@@ -24,24 +28,9 @@ export const SideNavContentBase: FC<SideNavContentBaseProps> = ({ className, onC
 
   return (
     <Box className={cx(classes.root, className)}>
-      <NavigationButtons className={classes.buttons} onClick={onClick} />
+      <NavigationButtons className={classes.navItem} onClick={onClick} />
     </Box>
   )
-}
-
-type SideNavContentData = {
-  avatar: {
-    childImageSharp: {
-      fixed: {
-        src: string
-      }
-    }
-  }
-  site: {
-    siteMetadata: {
-      title: string
-    }
-  }
 }
 
 export type SideNavContentProps = {
@@ -50,8 +39,8 @@ export type SideNavContentProps = {
 }
 
 const SideNavContent: FC<SideNavContentProps> = props => {
-  const data: SideNavContentData = useStaticQuery(graphql`
-    query SideNavContentQuery {
+  const data: SideNavContentQuery = useStaticQuery(graphql`
+    query SideNavContent {
       avatar: file(absolutePath: { regex: "/profile-pic.png/" }) {
         childImageSharp {
           fixed(width: 100, height: 100) {
@@ -70,8 +59,8 @@ const SideNavContent: FC<SideNavContentProps> = props => {
   return (
     <SideNavContentBase
       {...props}
-      title={data.site.siteMetadata.title}
-      avatar={data.avatar.childImageSharp.fixed.src}
+      title={data.site?.siteMetadata?.title ?? ""}
+      avatar={data.avatar?.childImageSharp?.fixed?.src}
     />
   )
 }

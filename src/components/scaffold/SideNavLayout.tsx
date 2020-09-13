@@ -1,25 +1,41 @@
 import React, { FC } from "react"
-import { Box, Container, Grid } from "@material-ui/core"
+import { Box, Container, Grid, makeStyles } from "@material-ui/core"
 
 import Header from "components/scaffold/Header"
 import Footer from "components/scaffold/Footer"
 import SideNavContent from "components/scaffold/SideNavContent"
 
-const SideNavLayout: FC = ({ children }) => (
-  <Box pt={8}>
-    <Header />
-    <Container component="main">
-      <Grid container spacing={2}>
-        <Grid component={Box} item display={{ xs: "none", sm: "block" }} sm={4} md={3}>
-          <SideNavContent />
+const useStyles = makeStyles(({ spacing }) => ({
+  side: {
+    position: "sticky",
+    top: spacing(10),
+  },
+  container: {
+    flexGrow: 1,
+    marginBottom: spacing(2),
+  },
+}))
+
+const SideNavLayout: FC = ({ children }) => {
+  const classes = useStyles()
+  return (
+    <Box pt={10} display="flex" flexDirection="column" height="100vh">
+      <Header />
+      <Container className={classes.container} component="main">
+        <Grid container spacing={2}>
+          <Grid component={Box} item display={{ xs: "none", sm: "block" }} sm={3}>
+            <Box className={classes.side}>
+              <SideNavContent />
+            </Box>
+          </Grid>
+          <Grid item xs={12} sm={9}>
+            <Box>{children}</Box>
+          </Grid>
         </Grid>
-        <Grid item xs={12} sm={8}>
-          {children}
-        </Grid>
-      </Grid>
-    </Container>
-    <Footer />
-  </Box>
-)
+      </Container>
+      <Footer />
+    </Box>
+  )
+}
 
 export default SideNavLayout
