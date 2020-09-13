@@ -5,7 +5,7 @@ exports[`Storyshots Scaffold/SideNavContent Basic 1`] = `
   className="scaffoldsidenavcontent-basic-muibox-root-1 scaffoldsidenavcontent-basic-muibox-root-2 scaffoldsidenavcontent-basic-makestyles-root-1"
 >
   <div
-    className="scaffoldsidenavcontent-basic-muibox-root-1 scaffoldsidenavcontent-basic-muibox-root-3 scaffoldsidenavcontent-basic-makestyles-root-2 scaffoldsidenavcontent-basic-makestyles-buttons-1"
+    className="scaffoldsidenavcontent-basic-muibox-root-1 scaffoldsidenavcontent-basic-muibox-root-3 scaffoldsidenavcontent-basic-makestyles-root-2 scaffoldsidenavcontent-basic-makestyles-navitem-1"
   >
     <a
       className="scaffoldsidenavcontent-basic-makestyles-root-3 scaffoldsidenavcontent-basic-makestyles-navbutton-1"

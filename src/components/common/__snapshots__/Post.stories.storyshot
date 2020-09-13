@@ -8,11 +8,15 @@ exports[`Storyshots Common/Post Basic 1`] = `
     className="commonpost-basic-makestyles-link-1"
     href="/"
   >
-    <img
-      alt="sample article thumbnail"
-      className="commonpost-basic-makestyles-thumbnail-1"
-      src="https://images.unsplash.com/photo-1522798435862-6283b845139c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=720"
-    />
+    <div
+      className="commonpost-basic-makestyles-thumbnailcontainer-1"
+    >
+      <img
+        alt="sample article thumbnail"
+        className="commonpost-basic-makestyles-thumbnail-1"
+        src="https://images.unsplash.com/photo-1522798435862-6283b845139c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=720"
+      />
+    </div>
   </a>
   <span
     className="commonpost-basic-muitypography-root-1 commonpost-basic-makestyles-secondary-1 commonpost-basic-muitypography-caption-1 commonpost-basic-muitypography-colorprimary-1"
