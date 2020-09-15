@@ -1,6 +1,6 @@
 import React, { FC } from "react"
 
-import SideNavLayout from "components/scaffold/SideNavLayout"
+import TwoColumnLayout from "components/scaffold/TwoColumnLayout"
 import SEO from "components/scaffold/SEO"
 
 import Post, { PostProps } from "components/common/Post"
@@ -14,12 +14,12 @@ export type HomeProps = {
 }
 
 const Home: FC<HomeProps> = ({ posts }) => (
-  <SideNavLayout>
+  <TwoColumnLayout>
     <SEO title="Hey! 👋🏾" />
     {posts.map(({ key, ...post }) => (
       <Post key={key} {...post} marginBottom={6} />
     ))}
-  </SideNavLayout>
+  </TwoColumnLayout>
 )
 
 export default Home

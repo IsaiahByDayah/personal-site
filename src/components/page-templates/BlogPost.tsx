@@ -4,7 +4,7 @@ import { makeStyles, Container, Typography, Box } from "@material-ui/core"
 import Thumbnail from "components/common/Thumbnail"
 
 import SEO from "components/scaffold/SEO"
-import SimpleLayout from "components/scaffold/SimpleLayout"
+import SingleColumnLayout from "components/scaffold/SingleColumnLayout"
 
 const useStyles = makeStyles(({ spacing }) => ({
   thumbnail: {
@@ -48,7 +48,7 @@ export type BlogPostProps = {
 const BlogPost: FC<BlogPostProps> = ({ html, title, description, excerpt, thumbnail, date, readTime }) => {
   const classes = useStyles()
   return (
-    <SimpleLayout>
+    <SingleColumnLayout>
       <SEO title={title} description={description || excerpt} />
       {thumbnail && (
         <Container className={classes.thumbnail} maxWidth="sm" disableGutters>
@@ -62,7 +62,7 @@ const BlogPost: FC<BlogPostProps> = ({ html, title, description, excerpt, thumbn
         {title}
       </Typography>
       <section dangerouslySetInnerHTML={{ __html: html }} />
-    </SimpleLayout>
+    </SingleColumnLayout>
   )
 }
 

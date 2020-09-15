@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import React, { FC, ElementType } from "react"
 import { makeStyles, Box, Container } from "@material-ui/core"
 
 import Header from "components/scaffold/Header"
@@ -10,12 +10,16 @@ const useStyles = makeStyles({
   },
 })
 
-const SingleColumnLayout: FC = ({ children }) => {
+type SingleColumnLayoutProps = {
+  component?: ElementType
+}
+
+const SingleColumnLayout: FC<SingleColumnLayoutProps> = ({ children, component = "main" }) => {
   const classes = useStyles()
   return (
     <Box pt={10} display="flex" flexDirection="column" height="100vh">
       <Header simple={true} />
-      <Container className={classes.container} component="main" maxWidth="md">
+      <Container className={classes.container} component={component} maxWidth="md">
         <>{children}</>
       </Container>
       <Footer />

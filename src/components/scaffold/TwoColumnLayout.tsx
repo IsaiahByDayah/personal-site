@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import React, { FC, ElementType } from "react"
 import { Box, Container, Grid, makeStyles } from "@material-ui/core"
 
 import Header from "components/scaffold/Header"
@@ -16,20 +16,24 @@ const useStyles = makeStyles(({ spacing }) => ({
   },
 }))
 
-const SideNavLayout: FC = ({ children }) => {
+type TwoColumnLayoutProps = {
+  component?: ElementType
+}
+
+const TwoColumnLayout: FC<TwoColumnLayoutProps> = ({ children, component = "main" }) => {
   const classes = useStyles()
   return (
     <Box pt={10} display="flex" flexDirection="column" height="100vh">
       <Header />
-      <Container className={classes.container} component="main">
+      <Container className={classes.container}>
         <Grid container spacing={2}>
           <Grid component={Box} item display={{ xs: "none", sm: "block" }} sm={3}>
-            <Box className={classes.side}>
+            <Box className={classes.side} component="nav">
               <SideNavContent />
             </Box>
           </Grid>
           <Grid item xs={12} sm={9}>
-            <Box>{children}</Box>
+            <Box component={component}>{children}</Box>
           </Grid>
         </Grid>
       </Container>
@@ -38,4 +42,4 @@ const SideNavLayout: FC = ({ children }) => {
   )
 }
 
-export default SideNavLayout
+export default TwoColumnLayout
