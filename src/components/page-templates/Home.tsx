@@ -15,7 +15,7 @@ export type HomeProps = {
 
 const Home: FC<HomeProps> = ({ posts }) => (
   <TwoColumnLayout>
-    <SEO title="Hey! 👋🏾" />
+    <SEO title="👋🏾" />
     {posts.map(({ key, ...post }) => (
       <Post key={key} {...post} marginBottom={6} />
     ))}

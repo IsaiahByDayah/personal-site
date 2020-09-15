@@ -48,7 +48,7 @@ export type BlogPostProps = {
 const BlogPost: FC<BlogPostProps> = ({ html, title, description, excerpt, thumbnail, date, readTime }) => {
   const classes = useStyles()
   return (
-    <SingleColumnLayout>
+    <SingleColumnLayout component="article">
       <SEO title={title} description={description || excerpt} />
       {thumbnail && (
         <Container className={classes.thumbnail} maxWidth="sm" disableGutters>
