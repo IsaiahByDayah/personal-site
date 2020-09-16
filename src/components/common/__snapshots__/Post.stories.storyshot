@@ -9,7 +9,7 @@ exports[`Storyshots Common/Post Basic 1`] = `
     href="/"
   >
     <div
-      className="commonpost-basic-makestyles-thumbnailcontainer-1"
+      className="commonpost-basic-muibox-root-1 commonpost-basic-muibox-root-3"
     >
       <img
         alt="sample article thumbnail"

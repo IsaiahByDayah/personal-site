@@ -6,7 +6,7 @@ exports[`Storyshots Navigation/NavigationButtons Basic 1`] = `
 >
   <a
     className="navigationnavigationbuttons-basic-makestyles-root-2 navigationnavigationbuttons-basic-makestyles-navbutton-1"
-    href="/blog"
+    href="/"
   >
     <button
       className="navigationnavigationbuttons-basic-muibuttonbase-root-1 navigationnavigationbuttons-basic-muibutton-root-1 navigationnavigationbuttons-basic-muibutton-text-1 navigationnavigationbuttons-basic-makestyles-button-1 navigationnavigationbuttons-basic-muibutton-fullwidth-1"
@@ -31,7 +31,7 @@ exports[`Storyshots Navigation/NavigationButtons Basic 1`] = `
         <span
           className="navigationnavigationbuttons-basic-makestyles-content-1"
         >
-          Blog
+          Home
         </span>
         <span
           className="navigationnavigationbuttons-basic-muibutton-endicon-1 navigationnavigationbuttons-basic-muibutton-iconsizemedium-1"

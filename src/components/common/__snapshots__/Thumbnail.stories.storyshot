@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Common/Thumbnail Basic 1`] = `
+<div
+  className="commonthumbnail-basic-muibox-root-1 commonthumbnail-basic-muibox-root-2"
+>
+  <img
+    alt="sample article thumbnail"
+    className="commonthumbnail-basic-makestyles-thumbnail-1"
+    src="https://images.unsplash.com/photo-1522798435862-6283b845139c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=720"
+  />
+</div>
+`;

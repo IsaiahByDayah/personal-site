@@ -8,6 +8,9 @@ export default {
   title: "Blog/Closing",
   parameters: {
     layout: "centered",
+    storyshots: {
+      disable: true,
+    },
   },
   args: {
     url: "https://www.isaiahsmith.dev",

@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Blog/OtherPost Basic 1`] = `
+<a
+  className="blogotherpost-basic-makestyles-root-1"
+  href="/"
+>
+  <div
+    className="blogotherpost-basic-muibox-root-1 blogotherpost-basic-muibox-root-2 blogotherpost-basic-makestyles-thumbnail-1"
+  >
+    <img
+      alt="sample article thumbnail"
+      className="blogotherpost-basic-makestyles-thumbnail-2"
+      src="https://images.unsplash.com/photo-1522798435862-6283b845139c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=720"
+    />
+  </div>
+  <span
+    className="blogotherpost-basic-muitypography-root-1 blogotherpost-basic-makestyles-title-1 blogotherpost-basic-muitypography-caption-1"
+  >
+    Some Title
+  </span>
+</a>
+`;

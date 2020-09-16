@@ -53,6 +53,6 @@ WithAvatar.args = {
 export const WithStatic: Story = () => <Bio />
 WithStatic.parameters = {
   storyshots: {
-    disabled: true,
+    disable: true,
   },
 }

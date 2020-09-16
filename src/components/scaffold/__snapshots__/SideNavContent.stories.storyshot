@@ -9,7 +9,7 @@ exports[`Storyshots Scaffold/SideNavContent Basic 1`] = `
   >
     <a
       className="scaffoldsidenavcontent-basic-makestyles-root-3 scaffoldsidenavcontent-basic-makestyles-navbutton-1"
-      href="/blog"
+      href="/"
     >
       <button
         className="scaffoldsidenavcontent-basic-muibuttonbase-root-1 scaffoldsidenavcontent-basic-muibutton-root-1 scaffoldsidenavcontent-basic-muibutton-text-1 scaffoldsidenavcontent-basic-makestyles-button-1 scaffoldsidenavcontent-basic-muibutton-fullwidth-1"
@@ -34,7 +34,7 @@ exports[`Storyshots Scaffold/SideNavContent Basic 1`] = `
           <span
             className="scaffoldsidenavcontent-basic-makestyles-content-1"
           >
-            Blog
+            Home
           </span>
           <span
             className="scaffoldsidenavcontent-basic-muibutton-endicon-1 scaffoldsidenavcontent-basic-muibutton-iconsizemedium-1"
