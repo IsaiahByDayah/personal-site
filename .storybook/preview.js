@@ -5,6 +5,7 @@ import "typeface-nunito/index.css"
 import { action } from "@storybook/addon-actions"
 import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport"
 
+import RouterDecorator from "decorators/RouterDecorator"
 import ThemeDecorator from "decorators/ThemeDecorator"
 import SnapshotStylesDecorator from "decorators/SnapshotStylesDecorator"
 
@@ -32,7 +33,7 @@ export const globalTypes = {
   },
 }
 
-export const decorators = [SnapshotStylesDecorator, ThemeDecorator]
+export const decorators = [RouterDecorator, SnapshotStylesDecorator, ThemeDecorator]
 
 // NOTE: This is needed to work with gatsby: https://www.gatsbyjs.com/docs/visual-testing-with-storybook/
 // Gatsby's Link overrides:

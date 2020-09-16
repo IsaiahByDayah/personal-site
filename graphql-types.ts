@@ -2265,10 +2265,14 @@ export type SiteFieldsEnum =
   | 'buildTime'
   | 'siteMetadata___title'
   | 'siteMetadata___author___name'
-  | 'siteMetadata___author___summary'
+  | 'siteMetadata___author___social___twitter'
+  | 'siteMetadata___author___social___twitch'
+  | 'siteMetadata___author___social___youTube'
+  | 'siteMetadata___author___social___instagram'
+  | 'siteMetadata___author___social___github'
+  | 'siteMetadata___author___social___tiktok'
   | 'siteMetadata___description'
   | 'siteMetadata___siteUrl'
-  | 'siteMetadata___social___twitter'
   | 'port'
   | 'host'
   | 'polyfill'
@@ -3137,17 +3141,34 @@ export type SiteSiteMetadata = {
   author?: Maybe<SiteSiteMetadataAuthor>;
   description?: Maybe<Scalars['String']>;
   siteUrl?: Maybe<Scalars['String']>;
-  social?: Maybe<SiteSiteMetadataSocial>;
 };
 
 export type SiteSiteMetadataAuthor = {
   name?: Maybe<Scalars['String']>;
-  summary?: Maybe<Scalars['String']>;
+  social?: Maybe<SiteSiteMetadataAuthorSocial>;
 };
 
 export type SiteSiteMetadataAuthorFilterInput = {
   name?: Maybe<StringQueryOperatorInput>;
-  summary?: Maybe<StringQueryOperatorInput>;
+  social?: Maybe<SiteSiteMetadataAuthorSocialFilterInput>;
+};
+
+export type SiteSiteMetadataAuthorSocial = {
+  twitter?: Maybe<Scalars['String']>;
+  twitch?: Maybe<Scalars['String']>;
+  youTube?: Maybe<Scalars['String']>;
+  instagram?: Maybe<Scalars['String']>;
+  github?: Maybe<Scalars['String']>;
+  tiktok?: Maybe<Scalars['String']>;
+};
+
+export type SiteSiteMetadataAuthorSocialFilterInput = {
+  twitter?: Maybe<StringQueryOperatorInput>;
+  twitch?: Maybe<StringQueryOperatorInput>;
+  youTube?: Maybe<StringQueryOperatorInput>;
+  instagram?: Maybe<StringQueryOperatorInput>;
+  github?: Maybe<StringQueryOperatorInput>;
+  tiktok?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SiteSiteMetadataFilterInput = {
@@ -3155,15 +3176,6 @@ export type SiteSiteMetadataFilterInput = {
   author?: Maybe<SiteSiteMetadataAuthorFilterInput>;
   description?: Maybe<StringQueryOperatorInput>;
   siteUrl?: Maybe<StringQueryOperatorInput>;
-  social?: Maybe<SiteSiteMetadataSocialFilterInput>;
-};
-
-export type SiteSiteMetadataSocial = {
-  twitter?: Maybe<Scalars['String']>;
-};
-
-export type SiteSiteMetadataSocialFilterInput = {
-  twitter?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SiteSortInput = {
@@ -3187,7 +3199,10 @@ export type StringQueryOperatorInput = {
 export type BioQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type BioQuery = { avatar?: Maybe<{ childImageSharp?: Maybe<{ fixed?: Maybe<GatsbyImageSharpFixedFragment> }> }>, site?: Maybe<{ siteMetadata?: Maybe<{ author?: Maybe<Pick<SiteSiteMetadataAuthor, 'name' | 'summary'>>, social?: Maybe<Pick<SiteSiteMetadataSocial, 'twitter'>> }> }> };
+export type BioQuery = { avatar?: Maybe<{ childImageSharp?: Maybe<{ fixed?: Maybe<GatsbyImageSharpFixedFragment> }> }>, site?: Maybe<{ siteMetadata?: Maybe<{ author?: Maybe<(
+        Pick<SiteSiteMetadataAuthor, 'name'>
+        & { social?: Maybe<Pick<SiteSiteMetadataAuthorSocial, 'twitter' | 'twitch'>> }
+      )> }> }> };
 
 export type HeaderQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -3199,7 +3214,7 @@ export type SeoQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type SeoQuery = { site?: Maybe<{ siteMetadata?: Maybe<(
       Pick<SiteSiteMetadata, 'title' | 'description'>
-      & { social?: Maybe<Pick<SiteSiteMetadataSocial, 'twitter'>> }
+      & { author?: Maybe<{ social?: Maybe<Pick<SiteSiteMetadataAuthorSocial, 'twitter'>> }> }
     )> }> };
 
 export type SideNavContentQueryVariables = Exact<{ [key: string]: never; }>;

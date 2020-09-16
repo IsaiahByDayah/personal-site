@@ -23,6 +23,7 @@ const theme = createMuiTheme({
     background: {
       default: "#2E2E2E",
     },
+    divider: "rgba(255, 255, 255, 0.12)",
   },
   overrides: {
     MuiCssBaseline: {

@@ -20,7 +20,7 @@ const SingleColumnLayout: FC<SingleColumnLayoutProps> = ({ children, component =
     <Box pt={10} display="flex" flexDirection="column" height="100vh">
       <Header simple={true} />
       <Container className={classes.container} component={component} maxWidth="md">
-        <>{children}</>
+        <Box pb={2}>{children}</Box>
       </Container>
       <Footer />
     </Box>

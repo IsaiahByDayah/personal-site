@@ -26,8 +26,10 @@ const SEO: FC<SEOProps> = ({ title, description = "", lang = "en", meta = [] }) 
           siteMetadata {
             title
             description
-            social {
-              twitter
+            author {
+              social {
+                twitter
+              }
             }
           }
         }
@@ -67,7 +69,7 @@ const SEO: FC<SEOProps> = ({ title, description = "", lang = "en", meta = [] }) 
         },
         {
           name: `twitter:creator`,
-          content: data.site?.siteMetadata?.social?.twitter ?? "",
+          content: data.site?.siteMetadata?.author?.social?.twitter ?? "",
         },
         {
           name: `twitter:title`,
