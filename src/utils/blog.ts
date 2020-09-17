@@ -3,16 +3,14 @@ import customParseFormat from "dayjs/plugin/customParseFormat"
 
 dayjs.extend(customParseFormat)
 
-export type Blog = {
-  frontmatter: {
-    date: string
-    slug: string
-  }
+export type BlogData = {
+  date: string
+  slug: string
 }
 
 // NOTE: for consistency, this function is copied inside gatsby-node.js to create blog post paths
-export const generatePathForBlog = (blog?: Blog, incomingDateFormat?: string): string => {
+export const generatePathForBlog = (blog?: BlogData, incomingDateFormat?: string): string => {
   if (!blog) return "/"
-  const date = dayjs(blog.frontmatter.date, incomingDateFormat).format("MM-DD-YYYY")
-  return `/blog/${date}-${blog.frontmatter.slug}`
+  const date = dayjs(blog.date, incomingDateFormat).format("MM-DD-YYYY")
+  return `/blog/${date}-${blog.slug}`
 }

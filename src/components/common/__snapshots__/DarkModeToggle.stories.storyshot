@@ -37,6 +37,7 @@ exports[`Storyshots Common/DarkModeToggle Basic 1`] = `
         className="commondarkmodetoggle-basic-muiiconbutton-label-1"
       >
         <input
+          aria-label="Theme Toggle"
           className="commondarkmodetoggle-basic-privateswitchbase-input-1 commondarkmodetoggle-basic-muiswitch-input-1"
           onChange={[Function]}
           type="checkbox"

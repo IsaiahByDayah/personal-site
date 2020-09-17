@@ -1,24 +1,15 @@
 import React, { FC } from "react"
+import { Box } from "@material-ui/core"
 
 import Header from "components/scaffold/Header"
+import Footer from "components/scaffold/Footer"
 
 const Layout: FC = ({ children }) => (
-  <div
-    style={{
-      marginLeft: `auto`,
-      marginRight: `auto`,
-      paddingTop: "100px",
-    }}
-  >
-    {/* <header>{header}</header> */}
+  <Box pt={8}>
     <Header />
     <main>{children}</main>
-    <footer>
-      © {new Date().getFullYear()}, Built with
-      {` `}
-      <a href="https://www.gatsbyjs.org">Gatsby</a>
-    </footer>
-  </div>
+    <Footer />
+  </Box>
 )
 
 export default Layout

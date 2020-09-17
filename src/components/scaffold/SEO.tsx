@@ -9,6 +9,8 @@ import React, { FC } from "react"
 import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
+import { SeoQuery } from "../../../graphql-types"
+
 type SEOProps = {
   title: string
   description?: string
@@ -16,16 +18,18 @@ type SEOProps = {
   meta?: { [key: string]: string }[]
 }
 
-const SEO: FC<SEOProps> = ({ title, description, lang = "en", meta = [] }) => {
-  const { site } = useStaticQuery(
+const SEO: FC<SEOProps> = ({ title, description = "", lang = "en", meta = [] }) => {
+  const data: SeoQuery = useStaticQuery(
     graphql`
-      query {
+      query Seo {
         site {
           siteMetadata {
             title
             description
-            social {
-              twitter
+            author {
+              social {
+                twitter
+              }
             }
           }
         }
@@ -33,7 +37,7 @@ const SEO: FC<SEOProps> = ({ title, description, lang = "en", meta = [] }) => {
     `
   )
 
-  const metaDescription = description || site.siteMetadata.description
+  const metaDescription = (description || data.site?.siteMetadata?.description) ?? ""
 
   return (
     <Helmet
@@ -41,7 +45,7 @@ const SEO: FC<SEOProps> = ({ title, description, lang = "en", meta = [] }) => {
         lang,
       }}
       title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
+      titleTemplate={`%s | ${data.site?.siteMetadata?.title ?? ""}`}
       meta={[
         {
           name: `description`,
@@ -65,7 +69,7 @@ const SEO: FC<SEOProps> = ({ title, description, lang = "en", meta = [] }) => {
         },
         {
           name: `twitter:creator`,
-          content: site.siteMetadata.social.twitter,
+          content: data.site?.siteMetadata?.author?.social?.twitter ?? "",
         },
         {
           name: `twitter:title`,

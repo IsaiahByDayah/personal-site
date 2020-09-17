@@ -29,7 +29,7 @@ export const DarkModeToggleBase: FC<DarkModeToggleBaseProps> = ({ className, dar
   return (
     <Box className={cx(classes.root, className)}>
       <Brightness5Rounded className={classes.icon} />
-      <Switch color="primary" checked={darkMode} onChange={onToggle} />
+      <Switch color="primary" checked={darkMode} onChange={onToggle} inputProps={{ "aria-label": "Theme Toggle" }} />
       <Brightness2Rounded className={classes.icon} />
     </Box>
   )

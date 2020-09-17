@@ -1,0 +1,176 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Blog/Bio Basic 1`] = `
+<div
+  className="blogbio-basic-muibox-root-1 blogbio-basic-muibox-root-2 blogbio-basic-makestyles-root-1"
+  summary="Eiusmod ullamco ut incididunt labore magna cillum eu."
+  twitter="movieotter"
+>
+  <p
+    className="blogbio-basic-muitypography-root-1 blogbio-basic-muitypography-body2-1"
+  >
+    Written by me, 
+    <strong>
+      Lorem Fugiat
+    </strong>
+    . Born and raised in Buffalo, NY, I traded in my snow boots for AllBirds and moved to The Bay Area to be a software engineer at 
+    <a
+      className="blogbio-basic-muitypography-root-1 blogbio-basic-muilink-root-1 blogbio-basic-muilink-underlinehover-1 blogbio-basic-makestyles-link-1 blogbio-basic-muitypography-colorprimary-1"
+      href="https://www.ign.com"
+      onBlur={[Function]}
+      onFocus={[Function]}
+      rel="noopener"
+      target="_blank"
+    >
+      IGN.com
+    </a>
+    . Now though, you can find me in sunny SoCal 🌞. I'm always working on something new and interesting in my spare time, so stop by my 
+    <a
+      className="blogbio-basic-muitypography-root-1 blogbio-basic-muilink-root-1 blogbio-basic-muilink-underlinehover-1 blogbio-basic-makestyles-link-1 blogbio-basic-muitypography-colorprimary-1"
+      href="https://www.twitch.tv/undefined"
+      onBlur={[Function]}
+      onFocus={[Function]}
+      rel="noopener"
+      target="_blank"
+    >
+      Twitch
+    </a>
+     channel, or better yet, follow me on 
+    <a
+      className="blogbio-basic-muitypography-root-1 blogbio-basic-muilink-root-1 blogbio-basic-muilink-underlinehover-1 blogbio-basic-makestyles-link-1 blogbio-basic-muitypography-colorprimary-1"
+      href="https://www.twitter.com/undefined"
+      onBlur={[Function]}
+      onFocus={[Function]}
+      rel="noopener"
+      target="_blank"
+    >
+      Twitter
+    </a>
+     to see what I'm up to!
+  </p>
+</div>
+`;
+
+exports[`Storyshots Blog/Bio With Avatar 1`] = `
+<div
+  className="blogbio-with-avatar-muibox-root-1 blogbio-with-avatar-muibox-root-2 blogbio-with-avatar-makestyles-root-1"
+  summary="Eiusmod ullamco ut incididunt labore magna cillum eu."
+  twitter="movieotter"
+>
+  <div
+    className="blogbio-with-avatar-makestyles-avatar-1 gatsby-image-wrapper"
+    style={
+      Object {
+        "display": "inline-block",
+        "height": 50,
+        "overflow": "hidden",
+        "position": "relative",
+        "width": 50,
+      }
+    }
+  >
+    <img
+      alt=""
+      aria-hidden={true}
+      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsSAAALEgHS3X78AAADt0lEQVQ4y3WUS2wbVRSGZ+zM2OPYaZrUTmM7UQotFYkUpbEdJ21TO0lpXo5tJRVNIbGaziS2m4AXdAFSF4gFILFIEVCKkNiVlwR9pCUkm5ZKiAVLEAI2CBbdVAK1YoM9cw//nZnUiRRf6fe5M/ecb/5z544FwR51LteTWCfLTnsuO2X5EGK/5HJdhUpuxR1ErHPI8o66XQdfdFbBUcB+QPF/sttVAYAESSLcKwP6mpkkSY6a0O0OUZSEHmNOQp1Egugkj0cpN/q8ZYnfEx0PXG53wCqQxFruRDs2QH9xmChJ5cDeBrY02M0+OjtMn54bZaszCfZc14GKIIgRnt/gq3dcGo/vCtyyf5TD0KKheBR2+XSCfffyNLtdmKJb+RTbXM7oGxcy9O7pxCjPvzo77Kzl0ASi1RjaMjhUURT2/vNJE/a1NkE3FicRJyuby1m6nZ+6wvPXi2nHzaVUbSD2pluUZIaWqCPQxL5YGGe3llImDGIo1r8ppvn8t7X8lMRrMK+9hxgKQH8cat1Hg8+0G2iPXbdgBBhD1L9Fy5jft2FiLYfCwzdV0+Wro7HVtXyKSsO9lS0QRNc1E2wC0frPcCrXdMjHS0NHTOBc37PHN1emqTR0hG8+4y1+pU7QxnKGMNfvFNKEffx9dXrQzfOxtrvDrrYWgX78xGz9vbmxd9Tj3TTTc5DdL80w3vrb6WMUaW/Re9oCVBzsvsvzmr2Ko+ZXwsf4Qb/wxrk5E3rxZGRtf0M9rc6cqFwc6aWxzg56fSKuf3hmiDpbm39FiteqFoVQn1aFBWPWRUcsJ/hjBcdC4qhsnbGRDxo9+DIEoQyx2ehhuleaNnD2qHVP/T+49zTPcze2mS5DfaoFBF2EnMGY+sT+W2eyp7BXf2M/OdDgQIj8Po/OI/RLsvOws2pKdZou8bNjD57qPx/d27v4ZXI4RxvFKcLBNV4ZiVBP2E9el0z4n2FeXxMFurL/hvvz3wej53PhgQuiDRVth6oH4AR0DaK2gSLtiyzS/ORZYz0/QXdXMuxOMcOuzI7QZ/NDlDn1AmuKFal9oEDh/gIB9BPqclvt+gBcx1PMRQ7EdQVizYCOnZxjH+fSjIPvraTocy3Luo4tUEtUZcjRAdND8TyFB5Z53SVu808bZC0CFLSgLAw1AdoRV2khNUuXX8zSieQ8NUc0cw0v0zagwcAinGqPhFB8iRfr9gIXC9nJXCik/Ygc7I9qFIiaDyMLppoPtusMHvmRMaogjVXB6o7C8DZtg20zYcX/AZMost9Qti5qAAAAAElFTkSuQmCC"
+      style={
+        Object {
+          "height": "100%",
+          "left": 0,
+          "objectFit": "cover",
+          "objectPosition": "center",
+          "opacity": 1,
+          "position": "absolute",
+          "top": 0,
+          "transitionDelay": "500ms",
+          "width": "100%",
+        }
+      }
+    />
+    <picture>
+      <source
+        srcSet="/static/4ff986be0da3f690607e73f511d31856/8ba1e/profile-pic.png 1x,
+/static/4ff986be0da3f690607e73f511d31856/f937a/profile-pic.png 1.5x,
+/static/4ff986be0da3f690607e73f511d31856/71eb7/profile-pic.png 2x"
+      />
+      <img
+        alt="Lorem Fugiat"
+        height={50}
+        loading="lazy"
+        onLoad={[Function]}
+        src="/static/4ff986be0da3f690607e73f511d31856/8ba1e/profile-pic.png"
+        srcSet="/static/4ff986be0da3f690607e73f511d31856/8ba1e/profile-pic.png 1x,
+/static/4ff986be0da3f690607e73f511d31856/f937a/profile-pic.png 1.5x,
+/static/4ff986be0da3f690607e73f511d31856/71eb7/profile-pic.png 2x"
+        style={
+          Object {
+            "height": "100%",
+            "left": 0,
+            "objectFit": "cover",
+            "objectPosition": "center",
+            "opacity": 0,
+            "position": "absolute",
+            "top": 0,
+            "transition": "opacity 500ms",
+            "width": "100%",
+          }
+        }
+        width={50}
+      />
+    </picture>
+    <noscript
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "<picture><source srcset=\\"/static/4ff986be0da3f690607e73f511d31856/8ba1e/profile-pic.png 1x,
+/static/4ff986be0da3f690607e73f511d31856/f937a/profile-pic.png 1.5x,
+/static/4ff986be0da3f690607e73f511d31856/71eb7/profile-pic.png 2x\\" /><img loading=\\"lazy\\" width=\\"50\\" height=\\"50\\" srcset=\\"/static/4ff986be0da3f690607e73f511d31856/8ba1e/profile-pic.png 1x,
+/static/4ff986be0da3f690607e73f511d31856/f937a/profile-pic.png 1.5x,
+/static/4ff986be0da3f690607e73f511d31856/71eb7/profile-pic.png 2x\\" src=\\"/static/4ff986be0da3f690607e73f511d31856/8ba1e/profile-pic.png\\" alt=\\"Lorem Fugiat\\" style=\\"position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center\\"/></picture>",
+        }
+      }
+    />
+  </div>
+  <p
+    className="blogbio-with-avatar-muitypography-root-1 blogbio-with-avatar-muitypography-body2-1"
+  >
+    Written by me, 
+    <strong>
+      Lorem Fugiat
+    </strong>
+    . Born and raised in Buffalo, NY, I traded in my snow boots for AllBirds and moved to The Bay Area to be a software engineer at 
+    <a
+      className="blogbio-with-avatar-muitypography-root-1 blogbio-with-avatar-muilink-root-1 blogbio-with-avatar-muilink-underlinehover-1 blogbio-with-avatar-makestyles-link-1 blogbio-with-avatar-muitypography-colorprimary-1"
+      href="https://www.ign.com"
+      onBlur={[Function]}
+      onFocus={[Function]}
+      rel="noopener"
+      target="_blank"
+    >
+      IGN.com
+    </a>
+    . Now though, you can find me in sunny SoCal 🌞. I'm always working on something new and interesting in my spare time, so stop by my 
+    <a
+      className="blogbio-with-avatar-muitypography-root-1 blogbio-with-avatar-muilink-root-1 blogbio-with-avatar-muilink-underlinehover-1 blogbio-with-avatar-makestyles-link-1 blogbio-with-avatar-muitypography-colorprimary-1"
+      href="https://www.twitch.tv/undefined"
+      onBlur={[Function]}
+      onFocus={[Function]}
+      rel="noopener"
+      target="_blank"
+    >
+      Twitch
+    </a>
+     channel, or better yet, follow me on 
+    <a
+      className="blogbio-with-avatar-muitypography-root-1 blogbio-with-avatar-muilink-root-1 blogbio-with-avatar-muilink-underlinehover-1 blogbio-with-avatar-makestyles-link-1 blogbio-with-avatar-muitypography-colorprimary-1"
+      href="https://www.twitter.com/undefined"
+      onBlur={[Function]}
+      onFocus={[Function]}
+      rel="noopener"
+      target="_blank"
+    >
+      Twitter
+    </a>
+     to see what I'm up to!
+  </p>
+</div>
+`;

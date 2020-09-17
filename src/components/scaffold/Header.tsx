@@ -4,6 +4,8 @@ import { MenuRounded } from "@material-ui/icons"
 import { Link, useStaticQuery, graphql } from "gatsby"
 import cx from "classnames"
 
+import { HeaderQuery } from "../../../graphql-types"
+
 import useBreakpoint, { Breakpoint } from "hooks/useBreakpoint"
 
 import { SideNavContext } from "providers/SideNavProvider"
@@ -61,7 +63,7 @@ export const HeaderBase: FC<HeaderBaseProps> = ({ title, avatar, onOpen, simple 
 
   const nameAndAvatar = (className?: string) => (
     <Box className={cx(classes.nameAndAvatar, className)}>
-      {avatar && <Avatar className={classes.avatar} src={avatar} />}
+      {avatar && <Avatar className={classes.avatar} src={avatar} alt="avatar photo" />}
       <Typography className={classes.title} variant="h6" align="center">
         <Link className={classes.link} to="/">
           {title}
@@ -98,25 +100,14 @@ export const HeaderBase: FC<HeaderBaseProps> = ({ title, avatar, onOpen, simple 
   )
 }
 
-type HeaderData = {
-  avatar: {
-    childImageSharp: {
-      fixed: {
-        src: string
-      }
-    }
-  }
-  site: {
-    siteMetadata: {
-      title: string
-    }
-  }
+type HeaderProps = {
+  simple?: boolean
 }
 
-const Header = (): JSX.Element => {
+const Header: FC<HeaderProps> = props => {
   const { setOpen } = useContext(SideNavContext)
-  const data: HeaderData = useStaticQuery(graphql`
-    query HeaderQuery {
+  const data: HeaderQuery = useStaticQuery(graphql`
+    query Header {
       avatar: file(absolutePath: { regex: "/profile-pic.png/" }) {
         childImageSharp {
           fixed(width: 100, height: 100) {
@@ -134,8 +125,9 @@ const Header = (): JSX.Element => {
 
   return (
     <HeaderBase
-      title={data.site.siteMetadata.title}
-      avatar={data.avatar.childImageSharp.fixed.src}
+      {...props}
+      title={data.site?.siteMetadata?.title ?? ""}
+      avatar={data.avatar?.childImageSharp?.fixed?.src}
       onOpen={() => setOpen(true)}
     />
   )

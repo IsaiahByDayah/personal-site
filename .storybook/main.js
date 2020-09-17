@@ -2,7 +2,7 @@ const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin")
 
 module.exports = {
   stories: ["../src/**/*.stories.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
-  addons: ["@storybook/addon-links", "@storybook/addon-essentials"],
+  addons: ["@storybook/addon-links", "@storybook/addon-essentials", "@storybook/addon-a11y"],
 
   // NOTE: This is needed to work with gatsby: https://www.gatsbyjs.com/docs/visual-testing-with-storybook/
   webpackFinal: async config => {

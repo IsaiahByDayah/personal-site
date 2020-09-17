@@ -1,40 +1,15 @@
-import React, { FC, useContext } from "react"
-import { Link, graphql, PageProps, useStaticQuery } from "gatsby"
+import React, { FC } from "react"
+import { graphql, useStaticQuery } from "gatsby"
 
-import { ThemeContext } from "providers/ThemeProvider"
+import { IndexPageQuery } from "../../graphql-types"
 
-import Bio from "components/Bio"
-import Layout from "components/Layout"
-import SEO from "components/SEO"
+import { generatePathForBlog } from "utils/blog"
 
-type Data = {
-  site: {
-    siteMetadata: {
-      title: string
-    }
-  }
-  allMarkdownRemark: {
-    edges: [
-      {
-        node: {
-          excerpt: string
-          fields: {
-            slug: string
-          }
-          frontmatter: {
-            date: string
-            title: string
-            description: string
-          }
-        }
-      }
-    ]
-  }
-}
+import Home from "components/page-templates/Home"
 
-const BlogIndex: FC<PageProps> = ({ location }) => {
-  const data: Data = useStaticQuery(graphql`
-    query {
+const IndexPage: FC = () => {
+  const data: IndexPageQuery = useStaticQuery(graphql`
+    query IndexPage {
       site {
         siteMetadata {
           title
@@ -44,13 +19,20 @@ const BlogIndex: FC<PageProps> = ({ location }) => {
         edges {
           node {
             excerpt
-            fields {
-              slug
-            }
             frontmatter {
-              date(formatString: "MMMM DD, YYYY")
+              hash
+              slug
+              date(formatString: "MMMM Do, YYYY")
               title
               description
+              thumbnail_alt
+              thumbnail {
+                childImageSharp {
+                  fixed(width: 1080) {
+                    src
+                  }
+                }
+              }
             }
           }
         }
@@ -58,19 +40,34 @@ const BlogIndex: FC<PageProps> = ({ location }) => {
     }
   `)
 
-  const { theme, setTheme } = useContext(ThemeContext)
-
   return (
-    <Layout location={location} title={data.site.siteMetadata.title}>
-      <SEO title="All posts" />
-      <Bio />
-      <p>
-        This is my home page. Visit my <Link to="/blog">blog</Link>
-      </p>
-      <button onClick={() => setTheme(theme === "light" ? "dark" : "light")}>Switch Theme</button>
-      <p>This was continuously deployed via Github Actions to Firebase Hosting</p>
-    </Layout>
+    <Home
+      posts={data.allMarkdownRemark.edges
+        .map(edge => edge.node)
+        .map((node, index) => {
+          const thumbnail =
+            (node.frontmatter?.thumbnail?.childImageSharp?.fixed?.src &&
+              node.frontmatter?.thumbnail_alt && {
+                alt: node.frontmatter.thumbnail_alt,
+                src: node.frontmatter.thumbnail.childImageSharp?.fixed?.src,
+              }) ||
+            undefined
+
+          return {
+            key: node.frontmatter?.hash ?? `post-${index}`,
+            primary: node.frontmatter?.title,
+            secondary: node.frontmatter?.date,
+            excerpt: node.frontmatter?.description ?? node.excerpt,
+            to: generatePathForBlog(
+              (node.frontmatter?.date &&
+                node.frontmatter.slug && { date: node.frontmatter.date, slug: node.frontmatter.slug }) ||
+                undefined,
+              "MMMM Do, YYYY"
+            ),
+            thumbnail,
+          }
+        })}
+    />
   )
 }
-
-export default BlogIndex
+export default IndexPage

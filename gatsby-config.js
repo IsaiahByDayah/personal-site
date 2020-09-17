@@ -3,15 +3,20 @@ module.exports = {
     title: "Isaiah Smith",
     author: {
       name: "Isaiah Smith",
-      summary: "from The Bay Area to SoCal, always working on something cool.",
+      social: {
+        twitter: "IsaiahByDayah",
+        twitch: "IsaiahByDayah",
+        youTube: "isaiahsmith",
+        instagram: "isaiahbydayah",
+        github: "isaiahbydayah",
+        tiktok: "isaiahbydayah",
+      },
     },
     description: "Dev blog and personal site for my solo dev and indie hacker projects.",
     siteUrl: "https://www.isaiahsmith.dev",
-    social: {
-      twitter: "IsaiahByDayah",
-    },
   },
   plugins: [
+    "gatsby-plugin-graphql-codegen",
     "gatsby-plugin-resolve-src",
     {
       resolve: "gatsby-source-filesystem",

@@ -3,6 +3,8 @@ import { makeStyles, Box, Typography, Avatar } from "@material-ui/core"
 import { useStaticQuery, graphql } from "gatsby"
 import cx from "classnames"
 
+import { SideNavDrawerContentQuery } from "../../../graphql-types"
+
 import InsetBox from "components/common/InsetBox"
 import Socials from "components/common/Socials"
 import DarkModeToggle from "components/common/DarkModeToggle"
@@ -11,7 +13,6 @@ import NavigationButtons from "components/navigation/NavigationButtons"
 
 const useStyles = makeStyles(({ spacing, shadows, palette }) => ({
   content: {
-    width: spacing(32),
     display: "flex",
     flexDirection: "column",
     height: "100%",
@@ -72,7 +73,7 @@ export const SideNavDrawerContentBase: FC<SideNavDrawerContentBaseProps> = ({ cl
       <InsetBox className={classes.inset} variant="vertical">
         {avatar && (
           <Box className={classes.avatarContainer}>
-            <Avatar className={classes.avatar} src={avatar} />
+            <Avatar className={classes.avatar} src={avatar} alt="avatar photo" />
           </Box>
         )}
         <Typography className={classes.title} variant="h6" align="center">
@@ -90,29 +91,14 @@ export const SideNavDrawerContentBase: FC<SideNavDrawerContentBaseProps> = ({ cl
   )
 }
 
-type SideNavDrawerContentData = {
-  avatar: {
-    childImageSharp: {
-      fixed: {
-        src: string
-      }
-    }
-  }
-  site: {
-    siteMetadata: {
-      title: string
-    }
-  }
-}
-
 export type SideNavDrawerContentProps = {
   className?: string
   onClick?: () => void
 }
 
 const SideNavDrawerContent: FC<SideNavDrawerContentProps> = props => {
-  const data: SideNavDrawerContentData = useStaticQuery(graphql`
-    query SideNavDrawerContentQuery {
+  const data: SideNavDrawerContentQuery = useStaticQuery(graphql`
+    query SideNavDrawerContent {
       avatar: file(absolutePath: { regex: "/profile-pic.png/" }) {
         childImageSharp {
           fixed(width: 100, height: 100) {
@@ -131,8 +117,8 @@ const SideNavDrawerContent: FC<SideNavDrawerContentProps> = props => {
   return (
     <SideNavDrawerContentBase
       {...props}
-      title={data.site.siteMetadata.title}
-      avatar={data.avatar.childImageSharp.fixed.src}
+      title={data.site?.siteMetadata?.title ?? ""}
+      avatar={data.avatar?.childImageSharp?.fixed?.src}
     />
   )
 }

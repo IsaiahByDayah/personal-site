@@ -14,6 +14,7 @@ exports[`Storyshots Scaffold/SideNavDrawerContent Basic 1`] = `
         className="scaffoldsidenavdrawercontent-basic-muiavatar-root-1 scaffoldsidenavdrawercontent-basic-muiavatar-circle-1 scaffoldsidenavdrawercontent-basic-makestyles-avatar-1"
       >
         <img
+          alt="avatar photo"
           className="scaffoldsidenavdrawercontent-basic-muiavatar-img-1"
           src="https://api.adorable.io/avatars/100/sample.png"
         />
@@ -183,7 +184,7 @@ exports[`Storyshots Scaffold/SideNavDrawerContent Basic 1`] = `
     >
       <a
         className="scaffoldsidenavdrawercontent-basic-makestyles-root-4 scaffoldsidenavdrawercontent-basic-makestyles-navbutton-1"
-        href="/blog"
+        href="/"
       >
         <button
           className="scaffoldsidenavdrawercontent-basic-muibuttonbase-root-1 scaffoldsidenavdrawercontent-basic-muibutton-root-1 scaffoldsidenavdrawercontent-basic-muibutton-text-1 scaffoldsidenavdrawercontent-basic-makestyles-button-1 scaffoldsidenavdrawercontent-basic-muibutton-fullwidth-1"
@@ -208,7 +209,7 @@ exports[`Storyshots Scaffold/SideNavDrawerContent Basic 1`] = `
             <span
               className="scaffoldsidenavdrawercontent-basic-makestyles-content-2"
             >
-              Blog
+              Home
             </span>
             <span
               className="scaffoldsidenavdrawercontent-basic-muibutton-endicon-1 scaffoldsidenavdrawercontent-basic-muibutton-iconsizemedium-1"
@@ -360,6 +361,7 @@ exports[`Storyshots Scaffold/SideNavDrawerContent Basic 1`] = `
             className="scaffoldsidenavdrawercontent-basic-muiiconbutton-label-1"
           >
             <input
+              aria-label="Theme Toggle"
               checked={false}
               className="scaffoldsidenavdrawercontent-basic-privateswitchbase-input-1 scaffoldsidenavdrawercontent-basic-muiswitch-input-1"
               onChange={[Function]}
