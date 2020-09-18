@@ -1,5 +1,6 @@
 import React from "react"
 import { Meta, Story } from "@storybook/react/types-6-0"
+import { Box } from "@material-ui/core"
 
 import OtherPost, { OtherPostProps } from "components/blog/OtherPost"
 
@@ -21,3 +22,13 @@ export default {
 } as Meta
 
 export const Basic: Story<OtherPostProps> = args => <OtherPost {...args} />
+
+export const CappedWidth: Story<OtherPostProps & { maxWidth: number }> = ({ maxWidth, ...args }) => (
+  <Box maxWidth={maxWidth}>
+    <OtherPost {...args} />
+  </Box>
+)
+CappedWidth.args = {
+  maxWidth: 300,
+  title: "Esse enim ad esse amet duis consequat veniam nostrud fugiat",
+}

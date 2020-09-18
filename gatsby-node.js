@@ -85,8 +85,8 @@ exports.createPages = async ({ graphql, actions }) => {
       }) ||
       undefined
 
-    const previousThumbnailSrc = get(next, "frontmatter.thumbnail.childImageSharp.fixed.src")
-    const previousThumbnailAlt = get(next, "frontmatter.thumbnail_alt")
+    const previousThumbnailSrc = get(previous, "frontmatter.thumbnail.childImageSharp.fixed.src")
+    const previousThumbnailAlt = get(previous, "frontmatter.thumbnail_alt")
     const previousPost =
       (previous && {
         title: previous.frontmatter.title,
