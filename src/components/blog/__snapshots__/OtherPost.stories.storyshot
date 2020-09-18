@@ -15,9 +15,35 @@ exports[`Storyshots Blog/OtherPost Basic 1`] = `
     />
   </div>
   <span
-    className="blogotherpost-basic-muitypography-root-1 blogotherpost-basic-makestyles-title-1 blogotherpost-basic-muitypography-caption-1"
+    className="blogotherpost-basic-muitypography-root-1 blogotherpost-basic-makestyles-title-1 blogotherpost-basic-makestyles-title-2 blogotherpost-basic-muitypography-caption-1"
   >
     Some Title
   </span>
 </a>
+`;
+
+exports[`Storyshots Blog/OtherPost Capped Width 1`] = `
+<div
+  className="blogotherpost-capped-width-muibox-root-1 blogotherpost-capped-width-muibox-root-2"
+>
+  <a
+    className="blogotherpost-capped-width-makestyles-root-1"
+    href="/"
+  >
+    <div
+      className="blogotherpost-capped-width-muibox-root-1 blogotherpost-capped-width-muibox-root-3 blogotherpost-capped-width-makestyles-thumbnail-1"
+    >
+      <img
+        alt="sample article thumbnail"
+        className="blogotherpost-capped-width-makestyles-thumbnail-2"
+        src="https://images.unsplash.com/photo-1522798435862-6283b845139c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=720"
+      />
+    </div>
+    <span
+      className="blogotherpost-capped-width-muitypography-root-1 blogotherpost-capped-width-makestyles-title-1 blogotherpost-capped-width-makestyles-title-2 blogotherpost-capped-width-muitypography-caption-1"
+    >
+      Esse enim ad esse amet duis consequat veniam nostrud fugiat
+    </span>
+  </a>
+</div>
 `;

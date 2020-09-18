@@ -77,7 +77,7 @@ const BlogPostTemplate: FC<BlogPostTemplateProps> = ({ pageContext, data }) => {
       next={
         nextPost && {
           ...nextPost,
-          to: generatePathForBlog(previousPost),
+          to: generatePathForBlog(nextPost),
         }
       }
     />

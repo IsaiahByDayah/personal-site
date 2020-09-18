@@ -121,7 +121,7 @@ const BlogPost: FC<BlogPostProps> = ({
               <Typography className={cx(classes.direction, classes.next)} variant="body2">
                 Next <ArrowForwardRounded className={cx(classes.icon, classes.nextIcon)} />
               </Typography>
-              <OtherPost {...next} />
+              <OtherPost {...next} alignTitle="right" />
             </Grid>
           )}
         </Grid>
