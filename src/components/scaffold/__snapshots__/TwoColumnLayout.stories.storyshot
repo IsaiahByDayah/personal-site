@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Scaffold/TwoColumnLayout Basic 1`] = `
+<div
+  className="scaffoldtwocolumnlayout-basic-muicontainer-root-1 scaffoldtwocolumnlayout-basic-makestyles-container-1 scaffoldtwocolumnlayout-basic-muicontainer-maxwidthlg-1"
+>
+  <div
+    className="scaffoldtwocolumnlayout-basic-muigrid-root-1 scaffoldtwocolumnlayout-basic-muigrid-container-1 scaffoldtwocolumnlayout-basic-muigrid-spacing-xs-2-1"
+  >
+    <div
+      className="scaffoldtwocolumnlayout-basic-muibox-root-1 scaffoldtwocolumnlayout-basic-muibox-root-2 scaffoldtwocolumnlayout-basic-muigrid-root-1 scaffoldtwocolumnlayout-basic-muigrid-item-1 scaffoldtwocolumnlayout-basic-muigrid-grid-sm-3-1"
+    >
+      <nav
+        className="scaffoldtwocolumnlayout-basic-muibox-root-1 scaffoldtwocolumnlayout-basic-muibox-root-3 scaffoldtwocolumnlayout-basic-makestyles-side-1"
+      >
+        The Side
+      </nav>
+    </div>
+    <div
+      className="scaffoldtwocolumnlayout-basic-muigrid-root-1 scaffoldtwocolumnlayout-basic-muigrid-item-1 scaffoldtwocolumnlayout-basic-muigrid-grid-xs-12-1 scaffoldtwocolumnlayout-basic-muigrid-grid-sm-9-1"
+    >
+      <main
+        className="scaffoldtwocolumnlayout-basic-muibox-root-1 scaffoldtwocolumnlayout-basic-muibox-root-4"
+      >
+        Hello, World!
+      </main>
+    </div>
+  </div>
+</div>
+`;
