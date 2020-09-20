@@ -1,8 +1,7 @@
-import React, { FC, ElementType } from "react"
+import React, { FC, ElementType, useContext, useEffect } from "react"
 import { makeStyles, Box, Container } from "@material-ui/core"
 
-import Header from "components/scaffold/Header"
-import Footer from "components/scaffold/Footer"
+import { HeaderSimpleContext } from "providers/HeaderSimpleProvider"
 
 const useStyles = makeStyles({
   container: {
@@ -16,14 +15,17 @@ type SingleColumnLayoutProps = {
 
 const SingleColumnLayout: FC<SingleColumnLayoutProps> = ({ children, component = "main" }) => {
   const classes = useStyles()
+  const { setSimple } = useContext(HeaderSimpleContext)
+
+  useEffect(() => {
+    setSimple(true)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   return (
-    <Box pt={10} display="flex" flexDirection="column" height="100vh">
-      <Header simple={true} />
-      <Container className={classes.container} component={component} maxWidth="md">
-        <Box pb={2}>{children}</Box>
-      </Container>
-      <Footer />
-    </Box>
+    <Container className={classes.container} component={component} maxWidth="md">
+      <Box pb={2}>{children}</Box>
+    </Container>
   )
 }
 

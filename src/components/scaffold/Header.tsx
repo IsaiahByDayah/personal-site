@@ -9,6 +9,7 @@ import { HeaderQuery } from "../../../graphql-types"
 import useBreakpoint, { Breakpoint } from "hooks/useBreakpoint"
 
 import { SideNavContext } from "providers/SideNavProvider"
+import { HeaderSimpleContext } from "providers/HeaderSimpleProvider"
 
 import Socials from "components/common/Socials"
 import DarkModeToggle from "components/common/DarkModeToggle"
@@ -100,12 +101,10 @@ export const HeaderBase: FC<HeaderBaseProps> = ({ title, avatar, onOpen, simple 
   )
 }
 
-type HeaderProps = {
-  simple?: boolean
-}
-
-const Header: FC<HeaderProps> = props => {
+const Header: FC = () => {
   const { setOpen } = useContext(SideNavContext)
+  const { simple } = useContext(HeaderSimpleContext)
+
   const data: HeaderQuery = useStaticQuery(graphql`
     query Header {
       avatar: file(absolutePath: { regex: "/profile-pic.png/" }) {
@@ -125,10 +124,10 @@ const Header: FC<HeaderProps> = props => {
 
   return (
     <HeaderBase
-      {...props}
       title={data.site?.siteMetadata?.title ?? ""}
       avatar={data.avatar?.childImageSharp?.fixed?.src}
       onOpen={() => setOpen(true)}
+      simple={simple}
     />
   )
 }

@@ -1,16 +1,16 @@
 import React from "react"
 import { Meta, Story } from "@storybook/react/types-6-0"
 
-import TwoColumnLayout from "components/scaffold/TwoColumnLayout"
+import { TwoColumnLayoutBase, TwoColumnLayoutBaseProps } from "components/scaffold/TwoColumnLayout"
 
 export default {
-  component: TwoColumnLayout,
+  component: TwoColumnLayoutBase,
   title: "Scaffold/TwoColumnLayout",
-  parameters: {
-    storyshots: {
-      disable: true,
-    },
-  },
 } as Meta
 
-export const Basic: Story = () => <TwoColumnLayout>Hello, World!</TwoColumnLayout>
+export const Basic: Story<TwoColumnLayoutBaseProps> = args => (
+  <TwoColumnLayoutBase {...args}>Hello, World!</TwoColumnLayoutBase>
+)
+Basic.args = {
+  side: "The Side",
+}
