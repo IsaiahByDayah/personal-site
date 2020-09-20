@@ -3227,11 +3227,6 @@ export type SideNavDrawerContentQueryVariables = Exact<{ [key: string]: never; }
 
 export type SideNavDrawerContentQuery = { avatar?: Maybe<{ childImageSharp?: Maybe<{ fixed?: Maybe<Pick<ImageSharpFixed, 'src'>> }> }>, site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title'>> }> };
 
-export type Unnamed_1_QueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type Unnamed_1_Query = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title'>> }> };
-
 export type IndexPageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
