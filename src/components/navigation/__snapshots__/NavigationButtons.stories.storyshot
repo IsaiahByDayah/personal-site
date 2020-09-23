@@ -52,52 +52,6 @@ exports[`Storyshots Navigation/NavigationButtons Basic 1`] = `
   </a>
   <a
     className="navigationnavigationbuttons-basic-makestyles-root-2 navigationnavigationbuttons-basic-makestyles-navbutton-1"
-    href="/projects"
-  >
-    <button
-      className="navigationnavigationbuttons-basic-muibuttonbase-root-1 navigationnavigationbuttons-basic-muibutton-root-1 navigationnavigationbuttons-basic-muibutton-text-1 navigationnavigationbuttons-basic-makestyles-button-1 navigationnavigationbuttons-basic-muibutton-fullwidth-1"
-      disabled={false}
-      onBlur={[Function]}
-      onDragLeave={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex={0}
-      type="button"
-    >
-      <span
-        className="navigationnavigationbuttons-basic-muibutton-label-1 navigationnavigationbuttons-basic-makestyles-label-1"
-      >
-        <span
-          className="navigationnavigationbuttons-basic-makestyles-content-1"
-        >
-          Projects
-        </span>
-        <span
-          className="navigationnavigationbuttons-basic-muibutton-endicon-1 navigationnavigationbuttons-basic-muibutton-iconsizemedium-1"
-        >
-          <svg
-            aria-hidden={true}
-            className="navigationnavigationbuttons-basic-muisvgicon-root-1"
-            focusable="false"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M9.29 6.71c-.39.39-.39 1.02 0 1.41L13.17 12l-3.88 3.88c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l4.59-4.59c.39-.39.39-1.02 0-1.41L10.7 6.7c-.38-.38-1.02-.38-1.41.01z"
-            />
-          </svg>
-        </span>
-      </span>
-    </button>
-  </a>
-  <a
-    className="navigationnavigationbuttons-basic-makestyles-root-2 navigationnavigationbuttons-basic-makestyles-navbutton-1"
     href="/about"
   >
     <button
