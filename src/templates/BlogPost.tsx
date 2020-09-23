@@ -25,8 +25,8 @@ type OtherPost = {
 
 export const pageQuery = graphql`
   query BlogPostTemplate($id: String!) {
-    markdownRemark(id: { eq: $id }) {
-      html
+    mdx(id: { eq: $id }) {
+      body
       frontmatter {
         title
         thumbnail {
@@ -52,22 +52,23 @@ const BlogPostTemplate: FC<BlogPostTemplateProps> = ({ pageContext, data }) => {
   const { previousPost, nextPost } = pageContext
 
   const thumbnail =
-    (data.markdownRemark?.frontmatter?.thumbnail?.childImageSharp?.fixed?.src &&
-      data.markdownRemark.frontmatter.thumbnail_alt && {
-        src: data.markdownRemark.frontmatter.thumbnail.childImageSharp.fixed.src,
-        alt: data.markdownRemark.frontmatter.thumbnail_alt,
+    (data.mdx?.frontmatter?.thumbnail?.childImageSharp?.fixed?.src &&
+      data.mdx.frontmatter.thumbnail_alt && {
+        src: data.mdx.frontmatter.thumbnail.childImageSharp.fixed.src,
+        alt: data.mdx.frontmatter.thumbnail_alt,
       }) ||
     undefined
 
   return (
     <BlogPost
-      date={data.markdownRemark?.frontmatter?.date ?? ""}
-      html={data.markdownRemark?.html ?? ""}
-      readTime={data.markdownRemark?.timeToRead ?? 0}
-      title={data.markdownRemark?.frontmatter?.title ?? ""}
+      date={data.mdx?.frontmatter?.date ?? ""}
+      // html={data.mdx?.html ?? ""}
+      body={data.mdx?.body ?? ""}
+      readTime={data.mdx?.timeToRead ?? 0}
+      title={data.mdx?.frontmatter?.title ?? ""}
       thumbnail={thumbnail}
-      description={data.markdownRemark?.frontmatter?.description ?? ""}
-      excerpt={data.markdownRemark?.excerpt ?? ""}
+      description={data.mdx?.frontmatter?.description ?? ""}
+      excerpt={data.mdx?.excerpt ?? ""}
       previous={
         previousPost && {
           ...previousPost,
