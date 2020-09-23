@@ -3,6 +3,7 @@ import { makeStyles, Container, Typography, Grid } from "@material-ui/core"
 import { ArrowBackRounded, ArrowForwardRounded } from "@material-ui/icons"
 import { useLocation } from "@reach/router"
 import cx from "classnames"
+import { MDXRenderer } from "gatsby-plugin-mdx"
 
 import Thumbnail from "components/common/Thumbnail"
 
@@ -49,7 +50,7 @@ const useStyles = makeStyles(({ spacing }) => ({
 }))
 
 export type BlogPostProps = {
-  html: string
+  body: string
   title: string
   date: string
   readTime: number
@@ -78,7 +79,7 @@ export type BlogPostProps = {
 }
 
 const BlogPost: FC<BlogPostProps> = ({
-  html,
+  body,
   title,
   description,
   excerpt,
@@ -104,7 +105,7 @@ const BlogPost: FC<BlogPostProps> = ({
       <Typography className={classes.title} variant="h4">
         {title}
       </Typography>
-      <section dangerouslySetInnerHTML={{ __html: html }} />
+      <MDXRenderer>{body}</MDXRenderer>
       {(previous || next) && (
         <Grid className={classes.otherPosts} container justify="space-between">
           {previous && (

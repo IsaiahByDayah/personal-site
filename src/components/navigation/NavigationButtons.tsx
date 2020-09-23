@@ -30,9 +30,9 @@ export const NavigationButtons: FC<NavigationButtonsProps> = ({ className, onCli
       <NavigationButton className={classes.navButton} to="/" onClick={onClick}>
         Home
       </NavigationButton>
-      <NavigationButton className={classes.navButton} to="/projects" onClick={onClick}>
+      {/* <NavigationButton className={classes.navButton} to="/projects" onClick={onClick}>
         Projects
-      </NavigationButton>
+      </NavigationButton> */}
       <NavigationButton className={classes.navButton} to="/about" onClick={onClick}>
         About
       </NavigationButton>

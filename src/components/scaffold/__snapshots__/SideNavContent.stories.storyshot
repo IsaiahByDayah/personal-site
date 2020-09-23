@@ -55,52 +55,6 @@ exports[`Storyshots Scaffold/SideNavContent Basic 1`] = `
     </a>
     <a
       className="scaffoldsidenavcontent-basic-makestyles-root-3 scaffoldsidenavcontent-basic-makestyles-navbutton-1"
-      href="/projects"
-    >
-      <button
-        className="scaffoldsidenavcontent-basic-muibuttonbase-root-1 scaffoldsidenavcontent-basic-muibutton-root-1 scaffoldsidenavcontent-basic-muibutton-text-1 scaffoldsidenavcontent-basic-makestyles-button-1 scaffoldsidenavcontent-basic-muibutton-fullwidth-1"
-        disabled={false}
-        onBlur={[Function]}
-        onDragLeave={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        tabIndex={0}
-        type="button"
-      >
-        <span
-          className="scaffoldsidenavcontent-basic-muibutton-label-1 scaffoldsidenavcontent-basic-makestyles-label-1"
-        >
-          <span
-            className="scaffoldsidenavcontent-basic-makestyles-content-1"
-          >
-            Projects
-          </span>
-          <span
-            className="scaffoldsidenavcontent-basic-muibutton-endicon-1 scaffoldsidenavcontent-basic-muibutton-iconsizemedium-1"
-          >
-            <svg
-              aria-hidden={true}
-              className="scaffoldsidenavcontent-basic-muisvgicon-root-1"
-              focusable="false"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M9.29 6.71c-.39.39-.39 1.02 0 1.41L13.17 12l-3.88 3.88c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l4.59-4.59c.39-.39.39-1.02 0-1.41L10.7 6.7c-.38-.38-1.02-.38-1.41.01z"
-              />
-            </svg>
-          </span>
-        </span>
-      </button>
-    </a>
-    <a
-      className="scaffoldsidenavcontent-basic-makestyles-root-3 scaffoldsidenavcontent-basic-makestyles-navbutton-1"
       href="/about"
     >
       <button

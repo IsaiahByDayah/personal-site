@@ -15,7 +15,7 @@ const IndexPage: FC = () => {
           title
         }
       }
-      allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+      allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
         edges {
           node {
             excerpt
@@ -42,7 +42,7 @@ const IndexPage: FC = () => {
 
   return (
     <Home
-      posts={data.allMarkdownRemark.edges
+      posts={data.allMdx.edges
         .map(edge => edge.node)
         .map((node, index) => {
           const thumbnail =
