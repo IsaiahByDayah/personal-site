@@ -50,7 +50,6 @@ const useStyles = makeStyles(({ spacing }) => ({
 }))
 
 export type BlogPostProps = {
-  // html: string
   body: string
   title: string
   date: string
@@ -80,7 +79,6 @@ export type BlogPostProps = {
 }
 
 const BlogPost: FC<BlogPostProps> = ({
-  // html,
   body,
   title,
   description,
@@ -107,7 +105,6 @@ const BlogPost: FC<BlogPostProps> = ({
       <Typography className={classes.title} variant="h4">
         {title}
       </Typography>
-      {/* <section dangerouslySetInnerHTML={{ __html: html }} /> */}
       <MDXRenderer>{body}</MDXRenderer>
       {(previous || next) && (
         <Grid className={classes.otherPosts} container justify="space-between">

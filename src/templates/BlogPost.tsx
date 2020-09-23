@@ -62,7 +62,6 @@ const BlogPostTemplate: FC<BlogPostTemplateProps> = ({ pageContext, data }) => {
   return (
     <BlogPost
       date={data.mdx?.frontmatter?.date ?? ""}
-      // html={data.mdx?.html ?? ""}
       body={data.mdx?.body ?? ""}
       readTime={data.mdx?.timeToRead ?? 0}
       title={data.mdx?.frontmatter?.title ?? ""}
