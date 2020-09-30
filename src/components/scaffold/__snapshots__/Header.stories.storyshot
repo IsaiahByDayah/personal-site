@@ -23,8 +23,10 @@ exports[`Storyshots Scaffold/Header Basic 1`] = `
         className="scaffoldheader-basic-muitypography-root-1 scaffoldheader-basic-makestyles-title-1 scaffoldheader-basic-muitypography-h6-1 scaffoldheader-basic-muitypography-aligncenter-1"
       >
         <a
-          className="scaffoldheader-basic-makestyles-link-1"
+          className="scaffoldheader-basic-muitypography-root-1 scaffoldheader-basic-muilink-root-1 scaffoldheader-basic-muilink-underlinehover-1 scaffoldheader-basic-makestyles-link-1 scaffoldheader-basic-muitypography-colorprimary-1"
           href="/"
+          onBlur={[Function]}
+          onFocus={[Function]}
         >
           Site Title
         </a>
@@ -57,8 +59,10 @@ exports[`Storyshots Scaffold/Header Complex 1`] = `
         className="scaffoldheader-complex-muitypography-root-1 scaffoldheader-complex-makestyles-title-1 scaffoldheader-complex-muitypography-h6-1 scaffoldheader-complex-muitypography-aligncenter-1"
       >
         <a
-          className="scaffoldheader-complex-makestyles-link-1"
+          className="scaffoldheader-complex-muitypography-root-1 scaffoldheader-complex-muilink-root-1 scaffoldheader-complex-muilink-underlinehover-1 scaffoldheader-complex-makestyles-link-1 scaffoldheader-complex-muitypography-colorprimary-1"
           href="/"
+          onBlur={[Function]}
+          onFocus={[Function]}
         >
           Site Title
         </a>
@@ -91,8 +95,10 @@ exports[`Storyshots Scaffold/Header Simple 1`] = `
         className="scaffoldheader-simple-muitypography-root-1 scaffoldheader-simple-makestyles-title-1 scaffoldheader-simple-muitypography-h6-1 scaffoldheader-simple-muitypography-aligncenter-1"
       >
         <a
-          className="scaffoldheader-simple-makestyles-link-1"
+          className="scaffoldheader-simple-muitypography-root-1 scaffoldheader-simple-muilink-root-1 scaffoldheader-simple-muilink-underlinehover-1 scaffoldheader-simple-makestyles-link-1 scaffoldheader-simple-muitypography-colorprimary-1"
           href="/"
+          onBlur={[Function]}
+          onFocus={[Function]}
         >
           Site Title
         </a>

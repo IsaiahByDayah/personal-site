@@ -1,7 +1,7 @@
 import React, { FC, useContext } from "react"
-import { makeStyles, fade, AppBar, Toolbar, IconButton, Typography, Avatar, Box } from "@material-ui/core"
+import { makeStyles, fade, AppBar, Toolbar, IconButton, Typography, Avatar, Box, Link } from "@material-ui/core"
 import { MenuRounded } from "@material-ui/icons"
-import { Link, useStaticQuery, graphql } from "gatsby"
+import { Link as RouterLink, useStaticQuery, graphql } from "gatsby"
 import cx from "classnames"
 
 import { HeaderQuery } from "../../../graphql-types"
@@ -41,6 +41,11 @@ const useStyles = makeStyles(({ spacing, palette, shadows }) => ({
   },
   link: {
     textDecoration: "none",
+
+    "&:link": {
+      color: palette.secondary.contrastText,
+    },
+
     "&:visited": {
       color: palette.secondary.contrastText,
     },
@@ -66,7 +71,7 @@ export const HeaderBase: FC<HeaderBaseProps> = ({ title, avatar, onOpen, simple 
     <Box className={cx(classes.nameAndAvatar, className)}>
       {avatar && <Avatar className={classes.avatar} src={avatar} alt="avatar photo" />}
       <Typography className={classes.title} variant="h6" align="center">
-        <Link className={classes.link} to="/">
+        <Link className={classes.link} component={RouterLink} to="/">
           {title}
         </Link>
       </Typography>

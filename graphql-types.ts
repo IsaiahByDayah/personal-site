@@ -695,10 +695,9 @@ export type FileFieldsEnum =
   | 'childMdx___rawBody'
   | 'childMdx___fileAbsolutePath'
   | 'childMdx___frontmatter___title'
-  | 'childMdx___frontmatter___slug'
   | 'childMdx___frontmatter___hash'
   | 'childMdx___frontmatter___date'
-  | 'childMdx___frontmatter___description'
+  | 'childMdx___frontmatter___slug'
   | 'childMdx___frontmatter___thumbnail___sourceInstanceName'
   | 'childMdx___frontmatter___thumbnail___absolutePath'
   | 'childMdx___frontmatter___thumbnail___relativePath'
@@ -736,6 +735,7 @@ export type FileFieldsEnum =
   | 'childMdx___frontmatter___thumbnail___id'
   | 'childMdx___frontmatter___thumbnail___children'
   | 'childMdx___frontmatter___thumbnail_alt'
+  | 'childMdx___frontmatter___description'
   | 'childMdx___slug'
   | 'childMdx___body'
   | 'childMdx___excerpt'
@@ -1476,10 +1476,9 @@ export type MdxFieldsEnum =
   | 'rawBody'
   | 'fileAbsolutePath'
   | 'frontmatter___title'
-  | 'frontmatter___slug'
   | 'frontmatter___hash'
   | 'frontmatter___date'
-  | 'frontmatter___description'
+  | 'frontmatter___slug'
   | 'frontmatter___thumbnail___sourceInstanceName'
   | 'frontmatter___thumbnail___absolutePath'
   | 'frontmatter___thumbnail___relativePath'
@@ -1543,6 +1542,7 @@ export type MdxFieldsEnum =
   | 'frontmatter___thumbnail___childMdx___id'
   | 'frontmatter___thumbnail___childMdx___children'
   | 'frontmatter___thumbnail_alt'
+  | 'frontmatter___description'
   | 'slug'
   | 'body'
   | 'excerpt'
@@ -1670,12 +1670,12 @@ export type MdxFilterInput = {
 
 export type MdxFrontmatter = {
   title: Scalars['String'];
-  slug?: Maybe<Scalars['String']>;
   hash?: Maybe<Scalars['String']>;
   date?: Maybe<Scalars['Date']>;
-  description?: Maybe<Scalars['String']>;
+  slug?: Maybe<Scalars['String']>;
   thumbnail?: Maybe<File>;
   thumbnail_alt?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
 };
 
 
@@ -1688,12 +1688,12 @@ export type MdxFrontmatterDateArgs = {
 
 export type MdxFrontmatterFilterInput = {
   title?: Maybe<StringQueryOperatorInput>;
-  slug?: Maybe<StringQueryOperatorInput>;
   hash?: Maybe<StringQueryOperatorInput>;
   date?: Maybe<DateQueryOperatorInput>;
-  description?: Maybe<StringQueryOperatorInput>;
+  slug?: Maybe<StringQueryOperatorInput>;
   thumbnail?: Maybe<FileFilterInput>;
   thumbnail_alt?: Maybe<StringQueryOperatorInput>;
+  description?: Maybe<StringQueryOperatorInput>;
 };
 
 export type MdxGroupConnection = {
@@ -2413,78 +2413,10 @@ export type SitePageConnectionGroupArgs = {
 
 export type SitePageContext = {
   id?: Maybe<Scalars['String']>;
-  previousPost?: Maybe<SitePageContextPreviousPost>;
-  nextPost?: Maybe<SitePageContextNextPost>;
 };
 
 export type SitePageContextFilterInput = {
   id?: Maybe<StringQueryOperatorInput>;
-  previousPost?: Maybe<SitePageContextPreviousPostFilterInput>;
-  nextPost?: Maybe<SitePageContextNextPostFilterInput>;
-};
-
-export type SitePageContextNextPost = {
-  title?: Maybe<Scalars['String']>;
-  slug?: Maybe<Scalars['String']>;
-  date?: Maybe<Scalars['Date']>;
-  thumbnail?: Maybe<SitePageContextNextPostThumbnail>;
-};
-
-
-export type SitePageContextNextPostDateArgs = {
-  formatString?: Maybe<Scalars['String']>;
-  fromNow?: Maybe<Scalars['Boolean']>;
-  difference?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
-};
-
-export type SitePageContextNextPostFilterInput = {
-  title?: Maybe<StringQueryOperatorInput>;
-  slug?: Maybe<StringQueryOperatorInput>;
-  date?: Maybe<DateQueryOperatorInput>;
-  thumbnail?: Maybe<SitePageContextNextPostThumbnailFilterInput>;
-};
-
-export type SitePageContextNextPostThumbnail = {
-  src?: Maybe<Scalars['String']>;
-  alt?: Maybe<Scalars['String']>;
-};
-
-export type SitePageContextNextPostThumbnailFilterInput = {
-  src?: Maybe<StringQueryOperatorInput>;
-  alt?: Maybe<StringQueryOperatorInput>;
-};
-
-export type SitePageContextPreviousPost = {
-  title?: Maybe<Scalars['String']>;
-  slug?: Maybe<Scalars['String']>;
-  date?: Maybe<Scalars['Date']>;
-  thumbnail?: Maybe<SitePageContextPreviousPostThumbnail>;
-};
-
-
-export type SitePageContextPreviousPostDateArgs = {
-  formatString?: Maybe<Scalars['String']>;
-  fromNow?: Maybe<Scalars['Boolean']>;
-  difference?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
-};
-
-export type SitePageContextPreviousPostFilterInput = {
-  title?: Maybe<StringQueryOperatorInput>;
-  slug?: Maybe<StringQueryOperatorInput>;
-  date?: Maybe<DateQueryOperatorInput>;
-  thumbnail?: Maybe<SitePageContextPreviousPostThumbnailFilterInput>;
-};
-
-export type SitePageContextPreviousPostThumbnail = {
-  src?: Maybe<Scalars['String']>;
-  alt?: Maybe<Scalars['String']>;
-};
-
-export type SitePageContextPreviousPostThumbnailFilterInput = {
-  src?: Maybe<StringQueryOperatorInput>;
-  alt?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SitePageEdge = {
@@ -2501,16 +2433,6 @@ export type SitePageFieldsEnum =
   | 'matchPath'
   | 'isCreatedByStatefulCreatePages'
   | 'context___id'
-  | 'context___previousPost___title'
-  | 'context___previousPost___slug'
-  | 'context___previousPost___date'
-  | 'context___previousPost___thumbnail___src'
-  | 'context___previousPost___thumbnail___alt'
-  | 'context___nextPost___title'
-  | 'context___nextPost___slug'
-  | 'context___nextPost___date'
-  | 'context___nextPost___thumbnail___src'
-  | 'context___nextPost___thumbnail___alt'
   | 'pluginCreator___id'
   | 'pluginCreator___parent___id'
   | 'pluginCreator___parent___parent___id'
