@@ -12,6 +12,11 @@ const useStyles = makeStyles<Theme, StyleProps>(({ spacing, palette }) => ({
     textDecoration: "none",
 
     color: palette.secondary.contrastText,
+
+    "&:link": {
+      color: palette.secondary.contrastText,
+    },
+
     "&:visited": {
       color: palette.secondary.contrastText,
     },
