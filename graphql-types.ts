@@ -1937,8 +1937,6 @@ export type QuerySiteArgs = {
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
   port?: Maybe<IntQueryOperatorInput>;
   host?: Maybe<StringQueryOperatorInput>;
-  polyfill?: Maybe<BooleanQueryOperatorInput>;
-  pathPrefix?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
@@ -2051,8 +2049,6 @@ export type Site = Node & {
   siteMetadata?: Maybe<SiteSiteMetadata>;
   port?: Maybe<Scalars['Int']>;
   host?: Maybe<Scalars['String']>;
-  polyfill?: Maybe<Scalars['Boolean']>;
-  pathPrefix?: Maybe<Scalars['String']>;
   id: Scalars['ID'];
   parent?: Maybe<Node>;
   children: Array<Node>;
@@ -2262,8 +2258,6 @@ export type SiteFieldsEnum =
   | 'siteMetadata___siteUrl'
   | 'port'
   | 'host'
-  | 'polyfill'
-  | 'pathPrefix'
   | 'id'
   | 'parent___id'
   | 'parent___parent___id'
@@ -2356,8 +2350,6 @@ export type SiteFilterInput = {
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
   port?: Maybe<IntQueryOperatorInput>;
   host?: Maybe<StringQueryOperatorInput>;
-  polyfill?: Maybe<BooleanQueryOperatorInput>;
-  pathPrefix?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
@@ -2413,10 +2405,78 @@ export type SitePageConnectionGroupArgs = {
 
 export type SitePageContext = {
   id?: Maybe<Scalars['String']>;
+  previousPost?: Maybe<SitePageContextPreviousPost>;
+  nextPost?: Maybe<SitePageContextNextPost>;
 };
 
 export type SitePageContextFilterInput = {
   id?: Maybe<StringQueryOperatorInput>;
+  previousPost?: Maybe<SitePageContextPreviousPostFilterInput>;
+  nextPost?: Maybe<SitePageContextNextPostFilterInput>;
+};
+
+export type SitePageContextNextPost = {
+  title?: Maybe<Scalars['String']>;
+  slug?: Maybe<Scalars['String']>;
+  date?: Maybe<Scalars['Date']>;
+  thumbnail?: Maybe<SitePageContextNextPostThumbnail>;
+};
+
+
+export type SitePageContextNextPostDateArgs = {
+  formatString?: Maybe<Scalars['String']>;
+  fromNow?: Maybe<Scalars['Boolean']>;
+  difference?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+};
+
+export type SitePageContextNextPostFilterInput = {
+  title?: Maybe<StringQueryOperatorInput>;
+  slug?: Maybe<StringQueryOperatorInput>;
+  date?: Maybe<DateQueryOperatorInput>;
+  thumbnail?: Maybe<SitePageContextNextPostThumbnailFilterInput>;
+};
+
+export type SitePageContextNextPostThumbnail = {
+  src?: Maybe<Scalars['String']>;
+  alt?: Maybe<Scalars['String']>;
+};
+
+export type SitePageContextNextPostThumbnailFilterInput = {
+  src?: Maybe<StringQueryOperatorInput>;
+  alt?: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePageContextPreviousPost = {
+  title?: Maybe<Scalars['String']>;
+  slug?: Maybe<Scalars['String']>;
+  date?: Maybe<Scalars['Date']>;
+  thumbnail?: Maybe<SitePageContextPreviousPostThumbnail>;
+};
+
+
+export type SitePageContextPreviousPostDateArgs = {
+  formatString?: Maybe<Scalars['String']>;
+  fromNow?: Maybe<Scalars['Boolean']>;
+  difference?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+};
+
+export type SitePageContextPreviousPostFilterInput = {
+  title?: Maybe<StringQueryOperatorInput>;
+  slug?: Maybe<StringQueryOperatorInput>;
+  date?: Maybe<DateQueryOperatorInput>;
+  thumbnail?: Maybe<SitePageContextPreviousPostThumbnailFilterInput>;
+};
+
+export type SitePageContextPreviousPostThumbnail = {
+  src?: Maybe<Scalars['String']>;
+  alt?: Maybe<Scalars['String']>;
+};
+
+export type SitePageContextPreviousPostThumbnailFilterInput = {
+  src?: Maybe<StringQueryOperatorInput>;
+  alt?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SitePageEdge = {
@@ -2433,6 +2493,16 @@ export type SitePageFieldsEnum =
   | 'matchPath'
   | 'isCreatedByStatefulCreatePages'
   | 'context___id'
+  | 'context___previousPost___title'
+  | 'context___previousPost___slug'
+  | 'context___previousPost___date'
+  | 'context___previousPost___thumbnail___src'
+  | 'context___previousPost___thumbnail___alt'
+  | 'context___nextPost___title'
+  | 'context___nextPost___slug'
+  | 'context___nextPost___date'
+  | 'context___nextPost___thumbnail___src'
+  | 'context___nextPost___thumbnail___alt'
   | 'pluginCreator___id'
   | 'pluginCreator___parent___id'
   | 'pluginCreator___parent___parent___id'
