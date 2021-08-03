@@ -27,9 +27,7 @@ exports.createPages = async ({ graphql, actions }) => {
               frontmatter {
                 thumbnail {
                   childImageSharp {
-                    fixed {
-                      src
-                    }
+                    gatsbyImageData(placeholder: BLURRED, layout: FIXED)
                   }
                 }
                 thumbnail_alt
@@ -42,9 +40,7 @@ exports.createPages = async ({ graphql, actions }) => {
               frontmatter {
                 thumbnail {
                   childImageSharp {
-                    fixed {
-                      src
-                    }
+                    gatsbyImageData(placeholder: BLURRED, layout: FIXED)
                   }
                 }
                 thumbnail_alt

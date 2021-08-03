@@ -4,7 +4,7 @@ import { Link } from "gatsby"
 
 import Thumbnail from "components/common/Thumbnail"
 
-const useStyles = makeStyles(({ spacing, palette, shape, shadows }) => ({
+const useStyles = makeStyles(({ spacing, palette }) => ({
   primary: {
     fontWeight: 900,
     margin: spacing(0.5, 0, 1, 0),

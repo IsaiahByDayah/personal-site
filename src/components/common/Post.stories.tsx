@@ -25,8 +25,7 @@ export default {
   },
   args: {
     thumbnail: {
-      src:
-        "https://images.unsplash.com/photo-1522798435862-6283b845139c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=720",
+      src: "https://images.unsplash.com/photo-1522798435862-6283b845139c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=720",
       alt: "sample article thumbnail",
     },
     primary: "Velit pariatur ut amet adipisicing dolore laborum quis duis",

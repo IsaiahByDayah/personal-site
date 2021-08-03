@@ -1,17 +1,17 @@
 import React, { FC } from "react"
 import { MDXProvider as MDXP } from "@mdx-js/react"
-import { Typography } from "@material-ui/core"
+// import { Typography } from "@material-ui/core"
 
-const Paragraph: FC<unknown> = props => <Typography variant="body1" gutterBottom {...props} />
-const Heading1: FC<unknown> = props => <Typography variant="h1" gutterBottom {...props} />
-const Heading2: FC<unknown> = props => <Typography variant="h2" gutterBottom {...props} />
-const Heading3: FC<unknown> = props => <Typography variant="h3" gutterBottom {...props} />
-const Heading4: FC<unknown> = props => <Typography variant="h4" gutterBottom {...props} />
-const Heading5: FC<unknown> = props => <Typography variant="h5" gutterBottom {...props} />
-const Heading6: FC<unknown> = props => <Typography variant="h6" gutterBottom {...props} />
-const BlockQuote: FC<unknown> = props => (
-  <Typography style={{ marginLeft: 40, fontStyle: "italic" }} component="blockquote" gutterBottom {...props} />
-)
+// const Paragraph: FC<unknown> = props => <Typography variant="body1" gutterBottom {...props} />
+// const Heading1: FC<unknown> = props => <Typography variant="h1" gutterBottom {...props} />
+// const Heading2: FC<unknown> = props => <Typography variant="h2" gutterBottom {...props} />
+// const Heading3: FC<unknown> = props => <Typography variant="h3" gutterBottom {...props} />
+// const Heading4: FC<unknown> = props => <Typography variant="h4" gutterBottom {...props} />
+// const Heading5: FC<unknown> = props => <Typography variant="h5" gutterBottom {...props} />
+// const Heading6: FC<unknown> = props => <Typography variant="h6" gutterBottom {...props} />
+// const BlockQuote: FC<unknown> = props => (
+//   <Typography style={{ marginLeft: 40, fontStyle: "italic" }} component="blockquote" gutterBottom {...props} />
+// )
 
 const components = {
   // p: Paragraph,

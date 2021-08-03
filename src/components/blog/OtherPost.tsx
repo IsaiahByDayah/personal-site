@@ -1,4 +1,4 @@
-import React, { FC, CSSProperties } from "react"
+import React, { FC } from "react"
 import { makeStyles, Theme, Typography } from "@material-ui/core"
 import { Link } from "gatsby"
 

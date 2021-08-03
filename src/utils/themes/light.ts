@@ -65,10 +65,11 @@ const theme = createMuiTheme({
           hyphens: "none",
         },
 
-        'pre[class*="language-"]::selection, pre[class*="language-"] ::selection, code[class*="language-"]::selection, code[class*="language-"] ::selection': {
-          textShadow: "none",
-          background: "#b3d4fc",
-        },
+        'pre[class*="language-"]::selection, pre[class*="language-"] ::selection, code[class*="language-"]::selection, code[class*="language-"] ::selection':
+          {
+            textShadow: "none",
+            background: "#b3d4fc",
+          },
 
         "@media print": {
           'code[class*="language-"], pre[class*="language-"]': {

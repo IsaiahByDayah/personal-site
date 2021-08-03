@@ -1,5 +1,5 @@
 import React, { FC } from "react"
-import { makeStyles, Box, Divider, Typography, Badge, Link } from "@material-ui/core"
+import { makeStyles, Box, Divider, Typography, Link } from "@material-ui/core"
 import {
   TwitterShareButton,
   TwitterIcon,
