@@ -1,5 +1,6 @@
 import React, { FC } from "react"
-import { makeStyles, Theme, Box, BoxProps, fade } from "@material-ui/core"
+import { makeStyles, Theme, Box, BoxProps } from "@material-ui/core"
+import { alpha } from "@material-ui/core/styles"
 import cx from "classnames"
 
 type InsetBoxVariant = "all" | "horizontal" | "vertical"
@@ -13,12 +14,12 @@ type StyleProps = {
 const useStyles = makeStyles<Theme, StyleProps>(({ palette, spacing, shape }) => ({
   root: ({ rounded, vertical, horizontal }) => {
     const hShadows = [
-      `inset ${spacing(0.5)}px 0px ${spacing(0.5)}px -${spacing(0.5)}px ${fade("#000000", 0.25)}`,
-      `inset -${spacing(0.5)}px 0px ${spacing(0.5)}px -${spacing(0.5)}px ${fade("#000000", 0.25)}`,
+      `inset ${spacing(0.5)}px 0px ${spacing(0.5)}px -${spacing(0.5)}px ${alpha("#000000", 0.25)}`,
+      `inset -${spacing(0.5)}px 0px ${spacing(0.5)}px -${spacing(0.5)}px ${alpha("#000000", 0.25)}`,
     ]
     const vShadows = [
-      `inset 0px ${spacing(0.5)}px ${spacing(0.5)}px -${spacing(0.5)}px ${fade("#000000", 0.25)}`,
-      `inset 0px -${spacing(0.5)}px ${spacing(0.5)}px -${spacing(0.5)}px ${fade("#000000", 0.25)}`,
+      `inset 0px ${spacing(0.5)}px ${spacing(0.5)}px -${spacing(0.5)}px ${alpha("#000000", 0.25)}`,
+      `inset 0px -${spacing(0.5)}px ${spacing(0.5)}px -${spacing(0.5)}px ${alpha("#000000", 0.25)}`,
     ]
 
     let shadows: string[] = []

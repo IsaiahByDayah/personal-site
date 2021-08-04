@@ -31,9 +31,7 @@ export const pageQuery = graphql`
         title
         thumbnail {
           childImageSharp {
-            fixed {
-              src
-            }
+            gatsbyImageData(placeholder: BLURRED, layout: FIXED)
           }
         }
         thumbnail_alt
@@ -52,9 +50,9 @@ const BlogPostTemplate: FC<BlogPostTemplateProps> = ({ pageContext, data }) => {
   const { previousPost, nextPost } = pageContext
 
   const thumbnail =
-    (data.mdx?.frontmatter?.thumbnail?.childImageSharp?.fixed?.src &&
+    (data.mdx?.frontmatter?.thumbnail?.childImageSharp?.gatsbyImageData?.src &&
       data.mdx.frontmatter.thumbnail_alt && {
-        src: data.mdx.frontmatter.thumbnail.childImageSharp.fixed.src,
+        src: data.mdx.frontmatter.thumbnail.childImageSharp.gatsbyImageData.src,
         alt: data.mdx.frontmatter.thumbnail_alt,
       }) ||
     undefined

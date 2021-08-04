@@ -1,6 +1,6 @@
-import { createMuiTheme } from "@material-ui/core"
+import { createTheme } from "@material-ui/core/styles"
 
-const theme = createMuiTheme({
+const theme = createTheme({
   typography: {
     fontFamily: ["Nunito", "sans-serif"].join(","),
   },

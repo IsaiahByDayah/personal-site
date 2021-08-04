@@ -1,8 +1,8 @@
-import { createMuiTheme } from "@material-ui/core"
+import { createTheme } from "@material-ui/core/styles"
 
 import baseTheme from "utils/themes/base"
 
-const theme = createMuiTheme({
+const theme = createTheme({
   ...baseTheme,
   palette: {
     ...baseTheme.palette,

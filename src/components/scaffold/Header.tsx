@@ -1,5 +1,6 @@
 import React, { FC, useContext } from "react"
-import { makeStyles, fade, AppBar, Toolbar, IconButton, Typography, Avatar, Box, Link } from "@material-ui/core"
+import { makeStyles, AppBar, Toolbar, IconButton, Typography, Avatar, Box, Link } from "@material-ui/core"
+import { alpha } from "@material-ui/core/styles"
 import { MenuRounded } from "@material-ui/icons"
 import { Link as RouterLink, useStaticQuery, graphql } from "gatsby"
 import cx from "classnames"
@@ -16,7 +17,7 @@ import DarkModeToggle from "components/common/DarkModeToggle"
 
 const useStyles = makeStyles(({ spacing, palette, shadows }) => ({
   root: {
-    boxShadow: `inset 0px -${spacing(0.5)}px ${spacing(0.5)}px -${spacing(0.5)}px ${fade(palette.common.black, 0.25)}`,
+    boxShadow: `inset 0px -${spacing(0.5)}px ${spacing(0.5)}px -${spacing(0.5)}px ${alpha(palette.common.black, 0.25)}`,
   },
   toolbar: {
     position: "relative",
@@ -114,9 +115,7 @@ const Header: FC = () => {
     query Header {
       avatar: file(absolutePath: { regex: "/profile-pic.png/" }) {
         childImageSharp {
-          fixed(width: 100, height: 100) {
-            src
-          }
+          gatsbyImageData(width: 100, height: 100, placeholder: BLURRED, layout: FIXED)
         }
       }
       site {
@@ -130,7 +129,7 @@ const Header: FC = () => {
   return (
     <HeaderBase
       title={data.site?.siteMetadata?.title ?? ""}
-      avatar={data.avatar?.childImageSharp?.fixed?.src}
+      avatar={data.avatar?.childImageSharp?.gatsbyImageData?.src}
       onOpen={() => setOpen(true)}
       simple={simple}
     />

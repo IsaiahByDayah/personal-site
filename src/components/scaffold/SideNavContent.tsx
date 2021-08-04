@@ -23,7 +23,7 @@ export type SideNavContentBaseProps = {
   onClick?: () => void
 }
 
-export const SideNavContentBase: FC<SideNavContentBaseProps> = ({ className, onClick, title, avatar }) => {
+export const SideNavContentBase: FC<SideNavContentBaseProps> = ({ className, onClick }) => {
   const classes = useStyles()
 
   return (
@@ -43,9 +43,7 @@ const SideNavContent: FC<SideNavContentProps> = props => {
     query SideNavContent {
       avatar: file(absolutePath: { regex: "/profile-pic.png/" }) {
         childImageSharp {
-          fixed(width: 100, height: 100) {
-            src
-          }
+          gatsbyImageData(width: 100, height: 100, placeholder: BLURRED, layout: FIXED)
         }
       }
       site {
@@ -60,7 +58,7 @@ const SideNavContent: FC<SideNavContentProps> = props => {
     <SideNavContentBase
       {...props}
       title={data.site?.siteMetadata?.title ?? ""}
-      avatar={data.avatar?.childImageSharp?.fixed?.src}
+      avatar={data.avatar?.childImageSharp?.gatsbyImageData?.src}
     />
   )
 }

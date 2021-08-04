@@ -8,7 +8,7 @@
 import React, { FC } from "react"
 import { Box, BoxProps, Typography, Link } from "@material-ui/core"
 import { useStaticQuery, graphql } from "gatsby"
-import Image, { FixedObject } from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 import { makeStyles } from "@material-ui/core"
 import cx from "classnames"
 
@@ -67,7 +67,7 @@ export const BioBase: FC<BioBaseProps> = ({ className, avatar, name, social, ...
 
   return (
     <Box className={cx(classes.root, className)} {...rest}>
-      {avatar && <Image className={classes.avatar} fixed={avatar} alt={name} />}
+      {avatar && <GatsbyImage image={avatar} className={classes.avatar} alt={name} />}
       <Typography variant="body2">
         Written by me, <strong>{name}</strong>. Born and raised in Buffalo, NY, I traded in my snow boots for AllBirds
         and moved to The Bay Area to be a software engineer at {ign}. Now though, you can find me in sunny SoCal 🌞.
@@ -83,9 +83,7 @@ const Bio: FC<BoxProps> = props => {
     query Bio {
       avatar: file(absolutePath: { regex: "/profile-pic.png/" }) {
         childImageSharp {
-          fixed(width: 50, height: 50) {
-            ...GatsbyImageSharpFixed
-          }
+          gatsbyImageData(width: 50, height: 50, layout: FIXED)
         }
       }
       site {
@@ -104,7 +102,7 @@ const Bio: FC<BoxProps> = props => {
 
   return (
     <BioBase
-      avatar={(data.avatar?.childImageSharp?.fixed as FixedObject) ?? undefined}
+      avatar={(data.avatar?.childImageSharp?.gatsbyImageData as FixedObject) ?? undefined}
       name={data.site?.siteMetadata?.author?.name ?? ""}
       social={data.site?.siteMetadata?.author?.social}
       {...props}

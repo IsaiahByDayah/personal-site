@@ -31,6 +31,7 @@ const IndexPage: FC = () => {
                   fixed(width: 1080) {
                     src
                   }
+                  gatsbyImageData(width: 1080, placeholder: BLURRED, layout: FIXED)
                 }
               }
             }
@@ -46,10 +47,10 @@ const IndexPage: FC = () => {
         .map(edge => edge.node)
         .map((node, index) => {
           const thumbnail =
-            (node.frontmatter?.thumbnail?.childImageSharp?.fixed?.src &&
+            (node.frontmatter?.thumbnail?.childImageSharp?.gatsbyImageData?.placeholder?.images?.fallback?.src &&
               node.frontmatter?.thumbnail_alt && {
                 alt: node.frontmatter.thumbnail_alt,
-                src: node.frontmatter.thumbnail.childImageSharp?.fixed?.src,
+                src: node.frontmatter.thumbnail.childImageSharp?.gatsbyImageData?.placeholder?.images?.fallback?.src,
               }) ||
             undefined
 
