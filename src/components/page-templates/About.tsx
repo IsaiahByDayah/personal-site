@@ -31,7 +31,7 @@ const Home: FC = () => {
         <a className={classes.special} target="_blank" rel="noopener noreferrer" href="https://www.photomode.io">
           Photomode.io
         </a>
-        , a small social media platform for gamers to share photos they&apos;ve captured in games, and{" "}
+        , a small social media platform for gamers to share photos they&apos;ve captured in games,{" "}
         <a
           className={classes.special}
           target="_blank"
