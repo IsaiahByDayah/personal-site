@@ -2,7 +2,7 @@ import React, { FC } from "react"
 import { makeStyles, Theme, Box, IconButton } from "@material-ui/core"
 import { YouTube, GitHub } from "@material-ui/icons"
 import Icon from "@mdi/react"
-import { mdiTwitter, mdiTwitch } from "@mdi/js"
+import { mdiTwitter, mdiTwitch, mdiPatreon } from "@mdi/js"
 
 type StyleProps = {
   size: number
@@ -68,10 +68,19 @@ const Socials: FC<SocialsProps> = ({ className, size = 3 }) => {
         component="a"
         target="_blank"
         rel="noopener"
+        href="https://www.patreon.com/isaiahbydayah"
+      >
+        <Icon className={classes.icon} path={mdiPatreon} />
+      </IconButton>
+      {/* <IconButton
+        className={classes.link}
+        component="a"
+        target="_blank"
+        rel="noopener"
         href="https://github.com/IsaiahByDayah"
       >
         <GitHub className={classes.icon} />
-      </IconButton>
+      </IconButton> */}
     </Box>
   )
 }
