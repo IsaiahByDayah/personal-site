@@ -1,13 +1,15 @@
-// We have to specify the .css file in the package so that jest will properly mock it in storyshots
-// REF: https://github.com/KyleAMathews/typefaces/issues/113
-import "typeface-nunito/index.css"
-
-import { action } from "@storybook/addon-actions"
 import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport"
+// import { SnackbarProvider } from "notistack"
 
-import RouterDecorator from "decorators/RouterDecorator"
-import ThemeDecorator from "decorators/ThemeDecorator"
-import SnapshotStylesDecorator from "decorators/SnapshotStylesDecorator"
+import decorator from "lib/decorator"
+
+import CssBaselined from "components/scaffold/CssBaselined"
+// import AccountProvider from "components/scaffold/AccountProvider"
+
+// import AuthDecorator, { ALL_AUTH_STATES } from "components/storybook-decorators/AuthDecorator"
+import ThemeDecorator from "components/storybook-decorators/ThemeDecorator"
+// import DrawerDecorator from "components/storybook-decorators/DrawerDecorator"
+import NextRouterDecorator from "components/storybook-decorators/NextRouterDecorator"
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -15,9 +17,23 @@ export const parameters = {
   viewport: {
     viewports: {
       ...INITIAL_VIEWPORTS,
+      HD: {
+        name: "1080p",
+        styles: { height: "1080px", width: "1920px" },
+        type: "desktop",
+      },
+      UHD: {
+        name: "1440p",
+        styles: { height: "1440px", width: "2560px" },
+        type: "desktop",
+      },
+      MEGAHD: {
+        name: "4K",
+        styles: { height: "2160px", width: "3840px" },
+        type: "desktop",
+      },
     },
   },
-  layout: "fullscreen",
 }
 
 export const globalTypes = {
@@ -27,27 +43,27 @@ export const globalTypes = {
     defaultValue: "Light",
     toolbar: {
       icon: "paintbrush",
-      // array of plain string values or MenuItem shape (see below)
       items: ["Light", "Dark"],
     },
   },
+  // drawerOpen: {
+  //   name: "Drawer",
+  //   description: "Open or close the side navigation drawer",
+  //   defaultValue: "Close",
+  //   toolbar: {
+  //     icon: "menu",
+  //     items: ["Close", "Open"],
+  //   },
+  // },
 }
 
-export const decorators = [RouterDecorator, SnapshotStylesDecorator, ThemeDecorator]
-
-// NOTE: This is needed to work with gatsby: https://www.gatsbyjs.com/docs/visual-testing-with-storybook/
-// Gatsby's Link overrides:
-// Gatsby Link calls the `enqueue` & `hovering` methods on the global variable ___loader.
-// This global object isn't set in storybook context, requiring you to override it to empty functions (no-op),
-// so Gatsby Link doesn't throw any errors.
-global.___loader = {
-  enqueue: () => {},
-  hovering: () => {},
-}
-// This global variable is prevents the "__BASE_PATH__ is not defined" error inside Storybook.
-global.__BASE_PATH__ = "/"
-// Navigating through a gatsby app using gatsby-link or any other gatsby component will use the `___navigate` method.
-// In Storybook it makes more sense to log an action than doing an actual navigate. Checkout the actions addon docs for more info: https://github.com/storybookjs/storybook/tree/master/addons/actions.
-window.___navigate = pathname => {
-  action("NavigateTo:")(pathname)
-}
+// NOTE: [Inner Most Decorator, ..., Outer Most Decorator]
+export const decorators = [
+  // decorator(SnackbarProvider),
+  // decorator(AccountProvider),
+  // AuthDecorator,
+  decorator(CssBaselined),
+  ThemeDecorator,
+  // DrawerDecorator,
+  NextRouterDecorator,
+]
