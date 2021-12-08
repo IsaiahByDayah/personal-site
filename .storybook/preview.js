@@ -6,7 +6,7 @@ import CssBaselined from "components/scaffold/CssBaselined"
 import ThemeProvider from "components/scaffold/ThemeProvider"
 
 import ThemeSelectionDecorator from "components/storybook-decorators/ThemeSelectionDecorator"
-// import DrawerDecorator from "components/storybook-decorators/DrawerDecorator"
+import DrawerDecorator from "components/storybook-decorators/DrawerDecorator"
 import NextRouterDecorator from "components/storybook-decorators/NextRouterDecorator"
 
 export const parameters = {
@@ -44,15 +44,15 @@ export const globalTypes = {
       items: ["Light", "Dark"],
     },
   },
-  // drawerOpen: {
-  //   name: "Drawer",
-  //   description: "Open or close the side navigation drawer",
-  //   defaultValue: "Close",
-  //   toolbar: {
-  //     icon: "menu",
-  //     items: ["Close", "Open"],
-  //   },
-  // },
+  drawerOpen: {
+    name: "Drawer",
+    description: "Open or close the side navigation drawer",
+    defaultValue: "Open",
+    toolbar: {
+      icon: "menu",
+      items: ["Close", "Open"],
+    },
+  },
 }
 
 // NOTE: [Inner Most Decorator, ..., Outer Most Decorator]
@@ -60,6 +60,6 @@ export const decorators = [
   decorator(CssBaselined),
   decorator(ThemeProvider),
   ThemeSelectionDecorator,
-  // DrawerDecorator,
+  DrawerDecorator,
   NextRouterDecorator,
 ]

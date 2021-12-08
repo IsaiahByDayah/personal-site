@@ -11,12 +11,13 @@ import {
 import { MenuRounded } from "@mui/icons-material"
 import NextLink from "next/link"
 
-// import { SideNavContext } from "providers/SideNavProvider"
+import { DrawerContext } from "components/scaffold/DrawerProvider"
 
 import { onMobileSx, getOffMobileSx } from "components/common/OnMobile"
 import Socials from "components/common/Socials"
 
 export const Header = () => {
+  const { toggleDrawer } = useContext(DrawerContext)
   return (
     <AppBar
       sx={{
@@ -41,8 +42,8 @@ export const Header = () => {
             sx={{
               boxShadow: 3,
               backgroundColor: "grey.400",
-              height: ({ spacing }) => spacing(4),
-              width: ({ spacing }) => spacing(4),
+              height: ({ spacing }) => ({ xs: spacing(4), sm: spacing(5) }),
+              width: ({ spacing }) => ({ xs: spacing(4), sm: spacing(5) }),
             }}
             src="/images/profile-pic.png"
             alt="avatar photo"
@@ -73,7 +74,7 @@ export const Header = () => {
           edge="end"
           color="inherit"
           aria-label="menu"
-          // onClick={onOpen}
+          onClick={() => toggleDrawer()}
         >
           <MenuRounded />
         </IconButton>

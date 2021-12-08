@@ -7,7 +7,7 @@ import DarkModeToggle, {
 
 export default {
   component: DarkModeToggle,
-  title: "Common/DarkModeToggle",
+  title: "Components/DarkModeToggle",
   parameters: {
     layout: "centered",
   },

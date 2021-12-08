@@ -5,7 +5,7 @@ import Socials, { SocialsProps } from "components/common/Socials"
 
 export default {
   component: Socials,
-  title: "Common/Socials",
+  title: "Components/Socials",
   parameters: {
     layout: "centered",
   },
