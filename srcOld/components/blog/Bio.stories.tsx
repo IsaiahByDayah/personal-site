@@ -1,5 +1,4 @@
-import React from "react"
-import { Meta, Story } from "@storybook/react/types-6-0"
+import { Meta, Story } from "@storybook/react"
 
 import Bio, { BioBase, BioBaseProps } from "components/blog/Bio"
 
@@ -20,7 +19,7 @@ const avatar = {
     "/static/4ff986be0da3f690607e73f511d31856/8ba1e/profile-pic.png 1x,\n/static/4ff986be0da3f690607e73f511d31856/f937a/profile-pic.png 1.5x,\n/static/4ff986be0da3f690607e73f511d31856/71eb7/profile-pic.png 2x",
 }
 
-export const Basic: Story<BioBaseProps> = args => <BioBase {...args} />
+export const Basic: Story<BioBaseProps> = (args) => <BioBase {...args} />
 Basic.argTypes = {
   name: {
     control: "text",
@@ -41,7 +40,7 @@ Basic.args = {
   twitter: "movieotter",
 }
 
-export const WithAvatar: Story<BioBaseProps> = args => <BioBase {...args} />
+export const WithAvatar: Story<BioBaseProps> = (args) => <BioBase {...args} />
 WithAvatar.argTypes = {
   ...Basic.argTypes,
 }

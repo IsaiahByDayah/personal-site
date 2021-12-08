@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import { FC } from "react"
 import { makeStyles, Theme, Box, IconButton } from "@material-ui/core"
 import { YouTube, GitHub } from "@material-ui/icons"
 import Icon from "@mdi/react"

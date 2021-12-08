@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import { FC } from "react"
 import { makeStyles, Typography } from "@material-ui/core"
 
 import TwoColumnLayout from "components/scaffold/TwoColumnLayout"
@@ -23,15 +23,22 @@ const Home: FC = () => {
       <p>Hey there, and welcome 👋🏾!</p>
 
       <p>
-        My name&apos;s <strong>Isaiah Smith</strong> and I&apos;m a developer, designer, and streamer.
+        My name&apos;s <strong>Isaiah Smith</strong> and I&apos;m a developer,
+        designer, and streamer.
       </p>
 
       <p>
         I&apos;m an indiependent creator working on projects such as{" "}
-        <a className={classes.special} target="_blank" rel="noopener noreferrer" href="https://www.photomode.io">
+        <a
+          className={classes.special}
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.photomode.io"
+        >
           Photomode.io
         </a>
-        , a small social media platform for gamers to share photos they&apos;ve captured in games,{" "}
+        , a small social media platform for gamers to share photos they&apos;ve
+        captured in games,{" "}
         <a
           className={classes.special}
           target="_blank"
@@ -40,16 +47,24 @@ const Home: FC = () => {
         >
           Hosted Overlay
         </a>
-        , a small open-source stream overlay tool built using web technology, and{" "}
-        <a className={classes.special} target="_blank" rel="noopener noreferrer" href="https://www.movieotter.com">
+        , a small open-source stream overlay tool built using web technology,
+        and{" "}
+        <a
+          className={classes.special}
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.movieotter.com"
+        >
           MovieOtter
         </a>
         , a site for logging and recommending movies and tv shows to friends.
       </p>
 
       <p>
-        Most recently, I&apos;ve began working on my own indie game about expanding and managing various campgrounds in
-        a nature park. I build and talk through a lot of the game design and development while livestreaming over on my{" "}
+        Most recently, I&apos;ve began working on my own indie game about
+        expanding and managing various campgrounds in a nature park. I build and
+        talk through a lot of the game design and development while
+        livestreaming over on my{" "}
         <a
           className={classes.special}
           target="_blank"
@@ -80,8 +95,9 @@ const Home: FC = () => {
       </p>
 
       <p>
-        If you&apos;ve ever wondered what it takes to build web apps and video games, I recommend checking out the above
-        mentioned channels, as well as consider following me on{" "}
+        If you&apos;ve ever wondered what it takes to build web apps and video
+        games, I recommend checking out the above mentioned channels, as well as
+        consider following me on{" "}
         <a
           className={classes.special}
           target="_blank"
@@ -93,7 +109,10 @@ const Home: FC = () => {
         , which is where I tend to share most of what I&apos;m working on.
       </p>
 
-      <p>I like to explore a bunch of different tools and technologies, but the things I use most often are: </p>
+      <p>
+        I like to explore a bunch of different tools and technologies, but the
+        things I use most often are:{" "}
+      </p>
       <ul>
         <li>
           <a
@@ -109,7 +128,12 @@ const Home: FC = () => {
           </Typography>
         </li>
         <li>
-          <a className={classes.special} target="_blank" rel="noopener noreferrer" href="https://www.reactjs.org/">
+          <a
+            className={classes.special}
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://www.reactjs.org/"
+          >
             React JS
           </a>{" "}
           <Typography variant="caption" color="textSecondary">
@@ -117,7 +141,12 @@ const Home: FC = () => {
           </Typography>
         </li>
         <li>
-          <a className={classes.special} target="_blank" rel="noopener noreferrer" href="https://material-ui.com/">
+          <a
+            className={classes.special}
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://material-ui.com/"
+          >
             Material-UI
           </a>{" "}
           <Typography variant="caption" color="textSecondary">
@@ -125,7 +154,12 @@ const Home: FC = () => {
           </Typography>
         </li>
         <li>
-          <a className={classes.special} target="_blank" rel="noopener noreferrer" href="https://firebase.google.com/">
+          <a
+            className={classes.special}
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://firebase.google.com/"
+          >
             Google&apos;s Firebase
           </a>{" "}
           <Typography variant="caption" color="textSecondary">
@@ -133,7 +167,12 @@ const Home: FC = () => {
           </Typography>
         </li>
         <li>
-          <a className={classes.special} target="_blank" rel="noopener noreferrer" href="https://firebase.google.com/">
+          <a
+            className={classes.special}
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://firebase.google.com/"
+          >
             Figma
           </a>{" "}
           <Typography variant="caption" color="textSecondary">
@@ -141,7 +180,12 @@ const Home: FC = () => {
           </Typography>
         </li>
         <li>
-          <a className={classes.special} target="_blank" rel="noopener noreferrer" href="https://www.aseprite.org/">
+          <a
+            className={classes.special}
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://www.aseprite.org/"
+          >
             Aseprite
           </a>{" "}
           <Typography variant="caption" color="textSecondary">
@@ -150,7 +194,12 @@ const Home: FC = () => {
         </li>
         <li>
           and{" "}
-          <a className={classes.special} target="_blank" rel="noopener noreferrer" href="https://www.godotengine.org">
+          <a
+            className={classes.special}
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://www.godotengine.org"
+          >
             Godot Engine
           </a>{" "}
           <Typography variant="caption" color="textSecondary">
@@ -160,8 +209,8 @@ const Home: FC = () => {
       </ul>
 
       <p>
-        If any of this sounds interesting to you, or if you have any questions about the stuff I do, get in touch!
-        I&apos;m always available on{" "}
+        If any of this sounds interesting to you, or if you have any questions
+        about the stuff I do, get in touch! I&apos;m always available on{" "}
         <a
           className={classes.special}
           target="_blank"
@@ -179,7 +228,8 @@ const Home: FC = () => {
         >
           live streams
         </a>{" "}
-        every <strong>Monday and Wednesday starting at 3:00 pm pacific time</strong>.
+        every{" "}
+        <strong>Monday and Wednesday starting at 3:00 pm pacific time</strong>.
       </p>
 
       <p>
@@ -196,9 +246,10 @@ const Home: FC = () => {
             Patreon
           </a>
         </strong>
-        . Not only does it help me, as an indiependent creator, continue to make my projects and videos, but I also try
-        to give back by providing cool looks into the design and development process, and often ask my patrons for ideas
-        of things we can add into the projects.
+        . Not only does it help me, as an indiependent creator, continue to make
+        my projects and videos, but I also try to give back by providing cool
+        looks into the design and development process, and often ask my patrons
+        for ideas of things we can add into the projects.
       </p>
 
       <p>Thanks for stopping by and I hope to see you online! ✌🏾</p>

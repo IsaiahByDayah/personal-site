@@ -1,5 +1,4 @@
-import React from "react"
-import { Meta, Story } from "@storybook/react/types-6-0"
+import { Meta, Story } from "@storybook/react"
 
 import Home, { HomeProps } from "components/page-templates/Home"
 
@@ -41,4 +40,4 @@ export default {
   },
 } as Meta
 
-export const Basic: Story<HomeProps> = args => <Home {...args} />
+export const Basic: Story<HomeProps> = (args) => <Home {...args} />

@@ -1,4 +1,4 @@
-import React, { FC, ElementType, useContext, useEffect, ReactNode } from "react"
+import { FC, ElementType, useContext, useEffect, ReactNode } from "react"
 import { Box, Container, Grid, makeStyles } from "@material-ui/core"
 
 import { HeaderSimpleContext } from "providers/HeaderSimpleProvider"
@@ -49,7 +49,10 @@ type TwoColumnLayoutProps = {
   component?: ElementType
 }
 
-const TwoColumnLayout: FC<TwoColumnLayoutProps> = ({ children, component = "main" }) => {
+const TwoColumnLayout: FC<TwoColumnLayoutProps> = ({
+  children,
+  component = "main",
+}) => {
   const { setSimple } = useContext(HeaderSimpleContext)
 
   useEffect(() => {

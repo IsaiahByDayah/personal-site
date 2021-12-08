@@ -1,5 +1,4 @@
-import React from "react"
-import { Meta, Story } from "@storybook/react/types-6-0"
+import { Meta, Story } from "@storybook/react"
 
 import Header, { HeaderBase, HeaderBaseProps } from "components/scaffold/Header"
 
@@ -7,7 +6,7 @@ export default {
   title: "Scaffold/Header",
 } as Meta
 
-const Template: Story<HeaderBaseProps> = args => <HeaderBase {...args} />
+const Template: Story<HeaderBaseProps> = (args) => <HeaderBase {...args} />
 
 export const Basic = Template.bind({})
 Basic.args = {

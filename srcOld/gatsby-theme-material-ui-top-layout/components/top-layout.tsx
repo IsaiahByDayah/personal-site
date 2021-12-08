@@ -1,4 +1,4 @@
-import React, { FC, useContext } from "react"
+import { FC, useContext } from "react"
 import ThemeTopLayout from "gatsby-theme-material-ui-top-layout/src/components/top-layout"
 
 import { getTheme } from "utils/themes"

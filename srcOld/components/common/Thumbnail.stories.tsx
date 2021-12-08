@@ -1,5 +1,4 @@
-import React from "react"
-import { Meta, Story } from "@storybook/react/types-6-0"
+import { Meta, Story } from "@storybook/react"
 
 import Thumbnail, { ThumbnailProps } from "components/common/Thumbnail"
 
@@ -25,4 +24,4 @@ export default {
   },
 } as Meta
 
-export const Basic: Story<ThumbnailProps> = args => <Thumbnail {...args} />
+export const Basic: Story<ThumbnailProps> = (args) => <Thumbnail {...args} />

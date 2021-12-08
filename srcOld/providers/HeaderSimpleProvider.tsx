@@ -1,4 +1,4 @@
-import React, { FC, createContext, useState } from "react"
+import { FC, createContext, useState } from "react"
 
 type HeaderSimpleContext = {
   simple: boolean

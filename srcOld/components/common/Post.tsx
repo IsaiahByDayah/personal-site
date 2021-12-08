@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from "react"
+import { FC, ReactNode } from "react"
 import { makeStyles, Box, BoxProps, Typography } from "@material-ui/core"
 import { Link } from "gatsby"
 
@@ -41,7 +41,15 @@ export interface PostProps extends BoxProps {
   to?: string
 }
 
-const Post: FC<PostProps> = ({ className, thumbnail, primary, secondary, excerpt, to, ...rest }) => {
+const Post: FC<PostProps> = ({
+  className,
+  thumbnail,
+  primary,
+  secondary,
+  excerpt,
+  to,
+  ...rest
+}) => {
   const classes = useStyles()
 
   let _thumbnail = thumbnail ? <Thumbnail {...thumbnail} width="100%" /> : null
@@ -70,14 +78,22 @@ const Post: FC<PostProps> = ({ className, thumbnail, primary, secondary, excerpt
     )
   const _secondary =
     typeof secondary === "string" ? (
-      <Typography className={classes.secondary} color="primary" variant="caption">
+      <Typography
+        className={classes.secondary}
+        color="primary"
+        variant="caption"
+      >
         {secondary}
       </Typography>
     ) : (
       primary
     )
   const _exceprt =
-    typeof excerpt === "string" ? <Typography className={classes.exceprt}>{excerpt}</Typography> : primary
+    typeof excerpt === "string" ? (
+      <Typography className={classes.exceprt}>{excerpt}</Typography>
+    ) : (
+      primary
+    )
 
   return (
     <Box className={className} maxWidth="100%" {...rest}>

@@ -1,5 +1,4 @@
-import React from "react"
-import { Meta, Story } from "@storybook/react/types-6-0"
+import { Meta, Story } from "@storybook/react"
 
 import SideNavContent, {
   SideNavContentProps,
@@ -14,13 +13,17 @@ export default {
   },
 } as Meta
 
-export const Basic: Story<SideNavContentBaseProps> = args => <SideNavContentBase {...args} />
+export const Basic: Story<SideNavContentBaseProps> = (args) => (
+  <SideNavContentBase {...args} />
+)
 Basic.args = {
   title: "Site Title",
   avatar: "https://api.adorable.io/avatars/100/sample.png",
 }
 
-export const Default: Story<SideNavContentProps> = args => <SideNavContent {...args} />
+export const Default: Story<SideNavContentProps> = (args) => (
+  <SideNavContent {...args} />
+)
 Default.parameters = {
   storyshots: {
     disable: true,

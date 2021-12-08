@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import { FC } from "react"
 import { makeStyles, Box, Typography, Avatar } from "@material-ui/core"
 import { useStaticQuery, graphql } from "gatsby"
 import cx from "classnames"
@@ -65,7 +65,12 @@ export type SideNavDrawerContentBaseProps = {
   onClick?: () => void
 }
 
-export const SideNavDrawerContentBase: FC<SideNavDrawerContentBaseProps> = ({ className, onClick, title, avatar }) => {
+export const SideNavDrawerContentBase: FC<SideNavDrawerContentBaseProps> = ({
+  className,
+  onClick,
+  title,
+  avatar,
+}) => {
   const classes = useStyles()
 
   return (
@@ -73,7 +78,11 @@ export const SideNavDrawerContentBase: FC<SideNavDrawerContentBaseProps> = ({ cl
       <InsetBox className={classes.inset} variant="vertical">
         {avatar && (
           <Box className={classes.avatarContainer}>
-            <Avatar className={classes.avatar} src={avatar} alt="avatar photo" />
+            <Avatar
+              className={classes.avatar}
+              src={avatar}
+              alt="avatar photo"
+            />
           </Box>
         )}
         <Typography className={classes.title} variant="h6" align="center">
@@ -96,7 +105,7 @@ export type SideNavDrawerContentProps = {
   onClick?: () => void
 }
 
-const SideNavDrawerContent: FC<SideNavDrawerContentProps> = props => {
+const SideNavDrawerContent: FC<SideNavDrawerContentProps> = (props) => {
   const data: SideNavDrawerContentQuery = useStaticQuery(graphql`
     query SideNavDrawerContent {
       avatar: file(absolutePath: { regex: "/profile-pic.png/" }) {

@@ -1,5 +1,4 @@
-import React from "react"
-import { Meta, Story } from "@storybook/react/types-6-0"
+import { Meta, Story } from "@storybook/react"
 
 import InsetBox, { InsetBoxProps } from "components/common/InsetBox"
 
@@ -11,7 +10,7 @@ export default {
   },
 } as Meta
 
-export const Basic: Story<InsetBoxProps> = args => <InsetBox {...args} />
+export const Basic: Story<InsetBoxProps> = (args) => <InsetBox {...args} />
 Basic.args = {
   height: 200,
   width: 200,

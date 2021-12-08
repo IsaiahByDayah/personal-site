@@ -1,4 +1,4 @@
-import React, { FC, CSSProperties } from "react"
+import { FC, CSSProperties } from "react"
 import { makeStyles, Theme, Typography } from "@material-ui/core"
 import { Link } from "gatsby"
 
@@ -59,7 +59,12 @@ export type OtherPostProps = {
   alignTitle?: "left" | "right" | "center"
 }
 
-const OtherPost: FC<OtherPostProps> = ({ to, title, thumbnail, alignTitle = "left" }) => {
+const OtherPost: FC<OtherPostProps> = ({
+  to,
+  title,
+  thumbnail,
+  alignTitle = "left",
+}) => {
   const classes = useStyles({ alignTitle })
   return (
     <Link className={classes.root} to={to}>

@@ -1,5 +1,4 @@
-import React from "react"
-import { Meta, Story } from "@storybook/react/types-6-0"
+import { Meta, Story } from "@storybook/react"
 
 import SingleColumnLayout from "components/scaffold/SingleColumnLayout"
 
@@ -8,4 +7,6 @@ export default {
   title: "Scaffold/SingleColumnLayout",
 } as Meta
 
-export const Basic: Story = () => <SingleColumnLayout>Hello, World!</SingleColumnLayout>
+export const Basic: Story = () => (
+  <SingleColumnLayout>Hello, World!</SingleColumnLayout>
+)

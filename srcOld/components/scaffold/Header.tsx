@@ -1,5 +1,15 @@
-import React, { FC, useContext } from "react"
-import { makeStyles, fade, AppBar, Toolbar, IconButton, Typography, Avatar, Box, Link } from "@material-ui/core"
+import { FC, useContext } from "react"
+import {
+  makeStyles,
+  fade,
+  AppBar,
+  Toolbar,
+  IconButton,
+  Typography,
+  Avatar,
+  Box,
+  Link,
+} from "@material-ui/core"
 import { MenuRounded } from "@material-ui/icons"
 import { Link as RouterLink, useStaticQuery, graphql } from "gatsby"
 import cx from "classnames"
@@ -16,7 +26,9 @@ import DarkModeToggle from "components/common/DarkModeToggle"
 
 const useStyles = makeStyles(({ spacing, palette, shadows }) => ({
   root: {
-    boxShadow: `inset 0px -${spacing(0.5)}px ${spacing(0.5)}px -${spacing(0.5)}px ${fade(palette.common.black, 0.25)}`,
+    boxShadow: `inset 0px -${spacing(0.5)}px ${spacing(0.5)}px -${spacing(
+      0.5
+    )}px ${fade(palette.common.black, 0.25)}`,
   },
   toolbar: {
     position: "relative",
@@ -63,13 +75,20 @@ export type HeaderBaseProps = {
   simple?: boolean
 }
 
-export const HeaderBase: FC<HeaderBaseProps> = ({ title, avatar, onOpen, simple }) => {
+export const HeaderBase: FC<HeaderBaseProps> = ({
+  title,
+  avatar,
+  onOpen,
+  simple,
+}) => {
   const classes = useStyles()
   const breakpoint = useBreakpoint()
 
   const nameAndAvatar = (className?: string) => (
     <Box className={cx(classes.nameAndAvatar, className)}>
-      {avatar && <Avatar className={classes.avatar} src={avatar} alt="avatar photo" />}
+      {avatar && (
+        <Avatar className={classes.avatar} src={avatar} alt="avatar photo" />
+      )}
       <Typography className={classes.title} variant="h6" align="center">
         <Link className={classes.link} component={RouterLink} to="/">
           {title}
@@ -82,7 +101,13 @@ export const HeaderBase: FC<HeaderBaseProps> = ({ title, avatar, onOpen, simple 
     <>
       {nameAndAvatar(classes.centered)}
       {onOpen && (
-        <IconButton className={classes.menuButton} edge="start" color="inherit" aria-label="menu" onClick={onOpen}>
+        <IconButton
+          className={classes.menuButton}
+          edge="start"
+          color="inherit"
+          aria-label="menu"
+          onClick={onOpen}
+        >
           <MenuRounded />
         </IconButton>
       )}
@@ -97,7 +122,10 @@ export const HeaderBase: FC<HeaderBaseProps> = ({ title, avatar, onOpen, simple 
     </>
   )
 
-  const headerContent = simple || breakpoint === Breakpoint.xs ? simpleHeaderContent : complexHeaderContent
+  const headerContent =
+    simple || breakpoint === Breakpoint.xs
+      ? simpleHeaderContent
+      : complexHeaderContent
 
   return (
     <AppBar className={classes.root} elevation={0} color="secondary">

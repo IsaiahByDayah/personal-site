@@ -1,5 +1,4 @@
-import React from "react"
-import { Meta, Story } from "@storybook/react/types-6-0"
+import { Meta, Story } from "@storybook/react"
 
 import BlogPost, { BlogPostProps } from "components/page-templates/BlogPost"
 
@@ -56,6 +55,6 @@ export default {
   },
 } as Meta
 
-const Template: Story<BlogPostProps> = args => <BlogPost {...args} />
+const Template: Story<BlogPostProps> = (args) => <BlogPost {...args} />
 
 export const Basic = Template.bind({})

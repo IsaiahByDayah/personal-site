@@ -1,14 +1,18 @@
-import React, { PropsWithChildren } from "react"
-import { Meta, Story } from "@storybook/react/types-6-0"
+import { PropsWithChildren } from "react"
+import { Meta, Story } from "@storybook/react"
 
-import NavigationButton, { NavigationButtonProps } from "components/navigation/NavigationButton"
+import NavigationButton, {
+  NavigationButtonProps,
+} from "components/navigation/NavigationButton"
 
 export default {
   component: NavigationButton,
   title: "Navigation/NavigationButton",
 } as Meta
 
-export const Basic: Story<PropsWithChildren<NavigationButtonProps>> = args => <NavigationButton {...args} />
+export const Basic: Story<PropsWithChildren<NavigationButtonProps>> = (
+  args
+) => <NavigationButton {...args} />
 Basic.argTypes = {
   onClick: {},
 }

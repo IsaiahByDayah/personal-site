@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import { FC } from "react"
 import { makeStyles, Box, BoxProps } from "@material-ui/core"
 
 const useStyles = makeStyles(({ shape, shadows }) => ({
@@ -24,11 +24,23 @@ export interface ThumbnailProps extends BoxProps {
   aspectRatio?: number
 }
 
-const Thumbnail: FC<ThumbnailProps> = ({ className, src, alt, aspectRatio = 2, ...rest }) => {
+const Thumbnail: FC<ThumbnailProps> = ({
+  className,
+  src,
+  alt,
+  aspectRatio = 2,
+  ...rest
+}) => {
   const classes = useStyles()
 
   return (
-    <Box className={className} minWidth={100} {...rest} position="relative" paddingTop={`${(1 / aspectRatio) * 100}%`}>
+    <Box
+      className={className}
+      minWidth={100}
+      {...rest}
+      position="relative"
+      paddingTop={`${(1 / aspectRatio) * 100}%`}
+    >
       <img className={classes.thumbnail} src={src} alt={alt} />
     </Box>
   )

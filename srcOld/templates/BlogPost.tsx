@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import { FC } from "react"
 import { graphql, PageProps } from "gatsby"
 
 import { BlogPostTemplateQuery } from "../../graphql-types"
@@ -46,7 +46,10 @@ export const pageQuery = graphql`
   }
 `
 
-type BlogPostTemplateProps = PageProps<BlogPostTemplateQuery, BlogPostTemplatePageContext>
+type BlogPostTemplateProps = PageProps<
+  BlogPostTemplateQuery,
+  BlogPostTemplatePageContext
+>
 
 const BlogPostTemplate: FC<BlogPostTemplateProps> = ({ pageContext, data }) => {
   const { previousPost, nextPost } = pageContext

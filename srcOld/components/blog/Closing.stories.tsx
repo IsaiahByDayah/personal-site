@@ -1,5 +1,4 @@
-import React from "react"
-import { Meta, Story } from "@storybook/react/types-6-0"
+import { Meta, Story } from "@storybook/react"
 
 import Closing, { ClosingProps } from "components/blog/Closing"
 
@@ -18,4 +17,4 @@ export default {
   },
 } as Meta
 
-export const Basic: Story<ClosingProps> = args => <Closing {...args} />
+export const Basic: Story<ClosingProps> = (args) => <Closing {...args} />

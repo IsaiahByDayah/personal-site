@@ -1,5 +1,12 @@
-import React, { FC } from "react"
-import { makeStyles, Box, Divider, Typography, Badge, Link } from "@material-ui/core"
+import { FC } from "react"
+import {
+  makeStyles,
+  Box,
+  Divider,
+  Typography,
+  Badge,
+  Link,
+} from "@material-ui/core"
 import {
   TwitterShareButton,
   TwitterIcon,
@@ -53,15 +60,29 @@ const Closing: FC<ClosingProps> = ({ url, title }) => {
         <b>Share:</b>
       </Typography>
       <Box>
-        <TwitterShareButton className={classes.iconButton} url={url} title={title}>
+        <TwitterShareButton
+          className={classes.iconButton}
+          url={url}
+          title={title}
+        >
           <TwitterIcon className={classes.icon} size={24} />
         </TwitterShareButton>
 
-        <FacebookShareButton className={classes.iconButton} url={url} quote={title}>
+        <FacebookShareButton
+          className={classes.iconButton}
+          url={url}
+          quote={title}
+        >
           <FacebookIcon className={classes.icon} size={24} />
         </FacebookShareButton>
 
-        <RedditShareButton className={classes.iconButton} url={url} title={title} windowWidth={660} windowHeight={460}>
+        <RedditShareButton
+          className={classes.iconButton}
+          url={url}
+          title={title}
+          windowWidth={660}
+          windowHeight={460}
+        >
           <RedditIcon className={classes.icon} size={24} />
         </RedditShareButton>
 
@@ -84,7 +105,8 @@ const Closing: FC<ClosingProps> = ({ url, title }) => {
       <Divider className={classes.divider} />
       <Bio py={2} />
       <Typography className={classes.error} variant="body2">
-        See an error somewhere? Pobody&apos;s nerfect. This whole site is built in the open so feel free to{" "}
+        See an error somewhere? Pobody&apos;s nerfect. This whole site is built
+        in the open so feel free to{" "}
         <Link
           className={classes.link}
           target="_blank"

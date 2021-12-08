@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import { FC } from "react"
 import { makeStyles, Container, Typography, Grid } from "@material-ui/core"
 import { ArrowBackRounded, ArrowForwardRounded } from "@material-ui/icons"
 import { useLocation } from "@reach/router"
@@ -100,7 +100,8 @@ const BlogPost: FC<BlogPostProps> = ({
         </Container>
       )}
       <Typography variant="caption" color="primary">
-        {date} <span className={classes.bullet}>&bull;</span> {Math.max(1, readTime)} min read
+        {date} <span className={classes.bullet}>&bull;</span>{" "}
+        {Math.max(1, readTime)} min read
       </Typography>
       <Typography className={classes.title} variant="h4">
         {title}
@@ -110,8 +111,14 @@ const BlogPost: FC<BlogPostProps> = ({
         <Grid className={classes.otherPosts} container justify="space-between">
           {previous && (
             <Grid item xs={5} md={4}>
-              <Typography className={cx(classes.direction, classes.previous)} variant="body2">
-                <ArrowBackRounded className={cx(classes.icon, classes.previousIcon)} /> Previous
+              <Typography
+                className={cx(classes.direction, classes.previous)}
+                variant="body2"
+              >
+                <ArrowBackRounded
+                  className={cx(classes.icon, classes.previousIcon)}
+                />{" "}
+                Previous
               </Typography>
               <OtherPost {...previous} />
             </Grid>
@@ -119,8 +126,14 @@ const BlogPost: FC<BlogPostProps> = ({
           <Grid item xs={1} />
           {next && (
             <Grid item xs={5} md={4}>
-              <Typography className={cx(classes.direction, classes.next)} variant="body2">
-                Next <ArrowForwardRounded className={cx(classes.icon, classes.nextIcon)} />
+              <Typography
+                className={cx(classes.direction, classes.next)}
+                variant="body2"
+              >
+                Next{" "}
+                <ArrowForwardRounded
+                  className={cx(classes.icon, classes.nextIcon)}
+                />
               </Typography>
               <OtherPost {...next} alignTitle="right" />
             </Grid>

@@ -1,4 +1,3 @@
-import React from "react"
 import { Meta, Story } from "@storybook/react"
 
 import Socials, { SocialsProps } from "components/common/Socials"

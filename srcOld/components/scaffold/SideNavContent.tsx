@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import { FC } from "react"
 import { makeStyles, Box } from "@material-ui/core"
 import { useStaticQuery, graphql } from "gatsby"
 import cx from "classnames"
@@ -23,7 +23,12 @@ export type SideNavContentBaseProps = {
   onClick?: () => void
 }
 
-export const SideNavContentBase: FC<SideNavContentBaseProps> = ({ className, onClick, title, avatar }) => {
+export const SideNavContentBase: FC<SideNavContentBaseProps> = ({
+  className,
+  onClick,
+  title,
+  avatar,
+}) => {
   const classes = useStyles()
 
   return (
@@ -38,7 +43,7 @@ export type SideNavContentProps = {
   onClick?: () => void
 }
 
-const SideNavContent: FC<SideNavContentProps> = props => {
+const SideNavContent: FC<SideNavContentProps> = (props) => {
   const data: SideNavContentQuery = useStaticQuery(graphql`
     query SideNavContent {
       avatar: file(absolutePath: { regex: "/profile-pic.png/" }) {

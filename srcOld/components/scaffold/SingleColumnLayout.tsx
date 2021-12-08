@@ -1,4 +1,4 @@
-import React, { FC, ElementType, useContext, useEffect } from "react"
+import { FC, ElementType, useContext, useEffect } from "react"
 import { makeStyles, Box, Container } from "@material-ui/core"
 
 import { HeaderSimpleContext } from "providers/HeaderSimpleProvider"
@@ -13,7 +13,10 @@ type SingleColumnLayoutProps = {
   component?: ElementType
 }
 
-const SingleColumnLayout: FC<SingleColumnLayoutProps> = ({ children, component = "main" }) => {
+const SingleColumnLayout: FC<SingleColumnLayoutProps> = ({
+  children,
+  component = "main",
+}) => {
   const classes = useStyles()
   const { setSimple } = useContext(HeaderSimpleContext)
 
@@ -23,7 +26,11 @@ const SingleColumnLayout: FC<SingleColumnLayoutProps> = ({ children, component =
   }, [])
 
   return (
-    <Container className={classes.container} component={component} maxWidth="md">
+    <Container
+      className={classes.container}
+      component={component}
+      maxWidth="md"
+    >
       <Box pb={2}>{children}</Box>
     </Container>
   )

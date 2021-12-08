@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import { FC } from "react"
 import { makeStyles, Box } from "@material-ui/core"
 import cx from "classnames"
 
@@ -22,7 +22,10 @@ export type NavigationButtonsProps = {
   onClick?: () => void
 }
 
-export const NavigationButtons: FC<NavigationButtonsProps> = ({ className, onClick }) => {
+export const NavigationButtons: FC<NavigationButtonsProps> = ({
+  className,
+  onClick,
+}) => {
   const classes = useStyles()
 
   return (
@@ -33,7 +36,11 @@ export const NavigationButtons: FC<NavigationButtonsProps> = ({ className, onCli
       {/* <NavigationButton className={classes.navButton} to="/projects" onClick={onClick}>
         Projects
       </NavigationButton> */}
-      <NavigationButton className={classes.navButton} to="/about" onClick={onClick}>
+      <NavigationButton
+        className={classes.navButton}
+        to="/about"
+        onClick={onClick}
+      >
         About
       </NavigationButton>
     </Box>

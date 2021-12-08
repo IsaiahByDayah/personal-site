@@ -1,7 +1,9 @@
-import React from "react"
-import { Meta, Story } from "@storybook/react/types-6-0"
+import { Meta, Story } from "@storybook/react"
 
-import { DarkModeToggleBase, DarkModeToggleBaseProps } from "components/common/DarkModeToggle"
+import {
+  DarkModeToggleBase,
+  DarkModeToggleBaseProps,
+} from "components/common/DarkModeToggle"
 
 export default {
   component: DarkModeToggleBase,
@@ -11,4 +13,6 @@ export default {
   },
 } as Meta
 
-export const Basic: Story<DarkModeToggleBaseProps> = args => <DarkModeToggleBase {...args} />
+export const Basic: Story<DarkModeToggleBaseProps> = (args) => (
+  <DarkModeToggleBase {...args} />
+)

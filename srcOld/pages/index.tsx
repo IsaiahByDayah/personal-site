@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import { FC } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 
 import { IndexPageQuery } from "../../graphql-types"
@@ -43,7 +43,7 @@ const IndexPage: FC = () => {
   return (
     <Home
       posts={data.allMdx.edges
-        .map(edge => edge.node)
+        .map((edge) => edge.node)
         .map((node, index) => {
           const thumbnail =
             (node.frontmatter?.thumbnail?.childImageSharp?.fixed?.src &&
@@ -60,7 +60,10 @@ const IndexPage: FC = () => {
             excerpt: node.frontmatter?.description ?? node.excerpt,
             to: generatePathForBlog(
               (node.frontmatter?.date &&
-                node.frontmatter.slug && { date: node.frontmatter.date, slug: node.frontmatter.slug }) ||
+                node.frontmatter.slug && {
+                  date: node.frontmatter.date,
+                  slug: node.frontmatter.slug,
+                }) ||
                 undefined,
               "MMMM Do, YYYY"
             ),

@@ -1,4 +1,4 @@
-import React, { FC, useContext } from "react"
+import { FC, useContext } from "react"
 import { Drawer, Box } from "@material-ui/core"
 
 import { SideNavContext } from "providers/SideNavProvider"

@@ -1,13 +1,15 @@
 // NOTE: Current Storybook addons aren't updated for NextJS v12 so using custom one
 // REF: https://github.com/lifeiscontent/storybook-addon-next-router/blob/master/src/decorators.tsx
 
-import React from "react"
 import { action } from "@storybook/addon-actions"
-import { StoryContext, Story } from "@storybook/react/types-6-0"
+import { StoryContext, Story } from "@storybook/react"
 import { RouterContext } from "next/dist/shared/lib/router-context"
 import Router, { NextRouter } from "next/router"
 
-const NextRouterDecorator = (Story: Story, context: StoryContext): JSX.Element => {
+const NextRouterDecorator = (
+  Story: Story,
+  context: StoryContext
+): JSX.Element => {
   const parameters = context.parameters.nextRouter ?? {}
 
   Router.router = {

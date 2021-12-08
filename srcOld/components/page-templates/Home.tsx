@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import { FC } from "react"
 
 import TwoColumnLayout from "components/scaffold/TwoColumnLayout"
 import SEO from "components/scaffold/SEO"

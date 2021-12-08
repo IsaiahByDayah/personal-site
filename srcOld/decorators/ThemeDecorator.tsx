@@ -1,5 +1,4 @@
-import React from "react"
-import { StoryContext, Story } from "@storybook/react/types-6-0"
+import { StoryContext, Story } from "@storybook/react"
 import { ThemeProvider, CssBaseline } from "@material-ui/core"
 
 import { getTheme } from "utils/themes"

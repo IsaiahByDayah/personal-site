@@ -5,7 +5,7 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React, { FC } from "react"
+import { FC } from "react"
 import { Box, BoxProps, Typography, Link } from "@material-ui/core"
 import { useStaticQuery, graphql } from "gatsby"
 import Image, { FixedObject } from "gatsby-image"
@@ -45,22 +45,43 @@ export interface BioBaseProps extends BoxProps {
   } | null
 }
 
-export const BioBase: FC<BioBaseProps> = ({ className, avatar, name, social, ...rest }) => {
+export const BioBase: FC<BioBaseProps> = ({
+  className,
+  avatar,
+  name,
+  social,
+  ...rest
+}) => {
   const classes = useStyles()
 
   const twitter = (
-    <Link className={classes.link} target="_blank" rel="noopener" href={`https://www.twitter.com/${social?.twitter}`}>
+    <Link
+      className={classes.link}
+      target="_blank"
+      rel="noopener"
+      href={`https://www.twitter.com/${social?.twitter}`}
+    >
       Twitter
     </Link>
   )
   const twitch = (
-    <Link className={classes.link} target="_blank" rel="noopener" href={`https://www.twitch.tv/${social?.twitch}`}>
+    <Link
+      className={classes.link}
+      target="_blank"
+      rel="noopener"
+      href={`https://www.twitch.tv/${social?.twitch}`}
+    >
       Twitch
     </Link>
   )
 
   const ign = (
-    <Link className={classes.link} target="_blank" rel="noopener" href={`https://www.ign.com`}>
+    <Link
+      className={classes.link}
+      target="_blank"
+      rel="noopener"
+      href={`https://www.ign.com`}
+    >
       IGN.com
     </Link>
   )
@@ -69,16 +90,18 @@ export const BioBase: FC<BioBaseProps> = ({ className, avatar, name, social, ...
     <Box className={cx(classes.root, className)} {...rest}>
       {avatar && <Image className={classes.avatar} fixed={avatar} alt={name} />}
       <Typography variant="body2">
-        Written by me, <strong>{name}</strong>. Born and raised in Buffalo, NY, I traded in my snow boots for AllBirds
-        and moved to The Bay Area to be a software engineer at {ign}. Now though, you can find me in sunny SoCal 🌞.
-        I&apos;m always working on something new and interesting in my spare time, so stop by my {twitch} channel, or
-        better yet, follow me on {twitter} to see what I&apos;m up to!
+        Written by me, <strong>{name}</strong>. Born and raised in Buffalo, NY,
+        I traded in my snow boots for AllBirds and moved to The Bay Area to be a
+        software engineer at {ign}. Now though, you can find me in sunny SoCal
+        🌞. I&apos;m always working on something new and interesting in my spare
+        time, so stop by my {twitch} channel, or better yet, follow me on{" "}
+        {twitter} to see what I&apos;m up to!
       </Typography>
     </Box>
   )
 }
 
-const Bio: FC<BoxProps> = props => {
+const Bio: FC<BoxProps> = (props) => {
   const data: BioQuery = useStaticQuery(graphql`
     query Bio {
       avatar: file(absolutePath: { regex: "/profile-pic.png/" }) {

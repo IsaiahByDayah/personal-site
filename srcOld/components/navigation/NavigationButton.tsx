@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import { FC } from "react"
 import { makeStyles, Button } from "@material-ui/core"
 import { ChevronRightRounded } from "@material-ui/icons"
 import { Link } from "gatsby"
@@ -33,7 +33,12 @@ export type NavigationButtonProps = {
   onClick?: () => void
 }
 
-const NavigationButton: FC<NavigationButtonProps> = ({ children, className, to, onClick }) => {
+const NavigationButton: FC<NavigationButtonProps> = ({
+  children,
+  className,
+  to,
+  onClick,
+}) => {
   const classes = useStyles()
 
   return (

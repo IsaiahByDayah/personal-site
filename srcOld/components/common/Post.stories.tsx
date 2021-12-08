@@ -1,5 +1,4 @@
-import React from "react"
-import { Meta, Story } from "@storybook/react/types-6-0"
+import { Meta, Story } from "@storybook/react"
 
 import Post, { PostProps } from "components/common/Post"
 
@@ -25,8 +24,7 @@ export default {
   },
   args: {
     thumbnail: {
-      src:
-        "https://images.unsplash.com/photo-1522798435862-6283b845139c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=720",
+      src: "https://images.unsplash.com/photo-1522798435862-6283b845139c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=720",
       alt: "sample article thumbnail",
     },
     primary: "Velit pariatur ut amet adipisicing dolore laborum quis duis",
@@ -37,4 +35,4 @@ export default {
   },
 } as Meta
 
-export const Basic: Story<PostProps> = args => <Post {...args} />
+export const Basic: Story<PostProps> = (args) => <Post {...args} />
