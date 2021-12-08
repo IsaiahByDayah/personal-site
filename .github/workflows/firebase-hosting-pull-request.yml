@@ -13,11 +13,11 @@ jobs:
           node-version: "16"
       - run: yarn install
       - run: yarn test:ci
-      # - run: yarn build
-      # - uses: FirebaseExtended/action-hosting-deploy@v0
-      #   with:
-      #     repoToken: "${{ secrets.GITHUB_TOKEN }}"
-      #     firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_PERSONAL_SITE_DBCE8 }}"
-      #     projectId: personal-site-dbce8
-      #   env:
-      #     FIREBASE_CLI_PREVIEWS: hostingchannels
+      - run: yarn build
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: "${{ secrets.GITHUB_TOKEN }}"
+          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_PERSONAL_SITE_DBCE8 }}"
+          projectId: personal-site-dbce8
+        env:
+          FIREBASE_CLI_PREVIEWS: hostingchannels
