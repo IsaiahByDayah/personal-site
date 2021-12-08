@@ -1,13 +1,11 @@
 import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport"
-// import { SnackbarProvider } from "notistack"
 
 import decorator from "lib/decorator"
 
 import CssBaselined from "components/scaffold/CssBaselined"
-// import AccountProvider from "components/scaffold/AccountProvider"
+import ThemeProvider from "components/scaffold/ThemeProvider"
 
-// import AuthDecorator, { ALL_AUTH_STATES } from "components/storybook-decorators/AuthDecorator"
-import ThemeDecorator from "components/storybook-decorators/ThemeDecorator"
+import ThemeSelectionDecorator from "components/storybook-decorators/ThemeSelectionDecorator"
 // import DrawerDecorator from "components/storybook-decorators/DrawerDecorator"
 import NextRouterDecorator from "components/storybook-decorators/NextRouterDecorator"
 
@@ -59,11 +57,9 @@ export const globalTypes = {
 
 // NOTE: [Inner Most Decorator, ..., Outer Most Decorator]
 export const decorators = [
-  // decorator(SnackbarProvider),
-  // decorator(AccountProvider),
-  // AuthDecorator,
   decorator(CssBaselined),
-  ThemeDecorator,
+  decorator(ThemeProvider),
+  ThemeSelectionDecorator,
   // DrawerDecorator,
   NextRouterDecorator,
 ]

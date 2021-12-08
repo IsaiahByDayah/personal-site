@@ -1,4 +1,4 @@
-import { createContext, FC, Dispatch, SetStateAction } from "react"
+import { useCallback, createContext, FC, Dispatch, SetStateAction } from "react"
 import { useMediaQuery } from "@mui/material"
 
 import useLocalStorage from "hooks/useLocalStorage"
@@ -28,11 +28,16 @@ const ThemeSelectionProvider: FC = ({ children }) => {
     prefersDarkMode ? "dark" : "light"
   )
 
-  const toggleThemeSelection = () => setThemeSelection(themeSelection === "light" ? "dark" : "light")
+  const toggleThemeSelection = useCallback(
+    () => setThemeSelection((curr) => (curr === "light" ? "dark" : "light")),
+    [setThemeSelection]
+  )
 
   return (
     <InvisibleUntilMounted>
-      <ThemeSelectionContext.Provider value={{ themeSelection, setThemeSelection, toggleThemeSelection }}>
+      <ThemeSelectionContext.Provider
+        value={{ themeSelection, setThemeSelection, toggleThemeSelection }}
+      >
         {children}
       </ThemeSelectionContext.Provider>
     </InvisibleUntilMounted>
