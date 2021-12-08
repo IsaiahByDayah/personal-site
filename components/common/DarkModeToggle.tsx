@@ -1,7 +1,8 @@
 import { useContext } from "react"
-import { IconButton } from "@mui/material"
+import { Icon, IconButton } from "@mui/material"
 import { SystemStyleObject } from "@mui/system"
-import { Brightness2Rounded, Brightness5Rounded } from "@mui/icons-material"
+// import { Brightness2Rounded, Brightness5Rounded } from "@mui/icons-material"
+import { RiMoonFill, RiLightbulbLine } from "react-icons/ri"
 
 import { ThemeSelectionContext } from "components/scaffold/ThemeSelectionProvider"
 
@@ -21,9 +22,9 @@ const DarkModeToggle = ({ sx }: DarkModeToggleProps) => {
   return (
     <IconButton sx={sx} onClick={() => toggleThemeSelection()}>
       {themeSelection === "dark" ? (
-        <Brightness2Rounded sx={iconSx} />
+        <Icon sx={iconSx} component={RiLightbulbLine} />
       ) : (
-        <Brightness5Rounded sx={iconSx} />
+        <Icon sx={iconSx} component={RiMoonFill} />
       )}
     </IconButton>
   )

@@ -10,7 +10,7 @@ import ThemeSelectionProvider from "components/scaffold/ThemeSelectionProvider"
 import ThemeProvider from "components/scaffold/ThemeProvider"
 import CssBaselined from "components/scaffold/CssBaselined"
 import Header from "components/scaffold/Header"
-// import Drawer from "components/scaffold/Drawer"
+import Drawer from "components/scaffold/Drawer"
 // import Footer from "components/scaffold/Footer"
 // import ScrollToTopFab from "components/scaffold/ScrollToTopFab"
 
@@ -40,6 +40,7 @@ const MyApp = ({
               </Head>
               <Header />
               <Component {...pageProps} />
+              <Drawer />
             </CssBaselined>
           </CacheProvider>
         </ThemeProvider>

@@ -1,65 +1,20 @@
-import React, { FC } from "react"
+import { useContext } from "react"
 import { Stack, Box, Typography, Avatar } from "@mui/material"
 import { SystemStyleObject, Theme } from "@mui/system"
 
-// import NavigationButtons from "components/navigation/NavigationButtons"
+import Navigation from "components/scaffold/Navigation"
+import { ThemeSelectionContext } from "components/scaffold/ThemeSelectionProvider"
 
 import { InsetStack } from "components/common/Inset"
 import Socials from "components/common/Socials"
 import DarkModeToggle from "components/common/DarkModeToggle"
 
-// const useStyles = makeStyles(({ spacing, shadows, palette }) => ({
-//   content: {
-//     display: "flex",
-//     flexDirection: "column",
-//     height: "100%",
-//   },
-
-//   inset: {
-//     padding: spacing(2),
-//     marginTop: spacing(8),
-//   },
-//   avatarContainer: {
-//     height: spacing(4),
-//     position: "relative",
-//     marginBottom: spacing(),
-//   },
-//   avatar: {
-//     backgroundColor: palette.grey[400],
-//     height: spacing(12),
-//     width: spacing(12),
-//     boxShadow: shadows[3],
-//     position: "absolute",
-//     bottom: 0,
-//     left: "50%",
-//     transform: "TranslateX(-50%)",
-//   },
-//   title: {
-//     fontWeight: 900,
-//   },
-//   socials: {
-//     display: "flex",
-//     justifyContent: "space-between",
-//     marginTop: spacing(),
-//     padding: spacing(0, 1),
-//   },
-
-//   buttons: {
-//     padding: spacing(2),
-//   },
-
-//   toggleWrapper: {
-//     display: "flex",
-//     justifyContent: "flex-end",
-//     padding: spacing(0.5, 2),
-//   },
-// }))
-
 export type DrawerContentProps = {
   sx?: SystemStyleObject<Theme>
 }
 
-export const DrawerContent: FC<DrawerContentProps> = ({ sx }) => {
+export const DrawerContent = ({ sx }: DrawerContentProps) => {
+  const { themeSelection } = useContext(ThemeSelectionContext)
   return (
     <Stack sx={sx} height={1} spacing={2}>
       <InsetStack
@@ -100,15 +55,20 @@ export const DrawerContent: FC<DrawerContentProps> = ({ sx }) => {
         <Socials />
       </InsetStack>
 
-      {/* <NavigationButtons className={classes.buttons} onClick={onClick} /> */}
+      <Navigation sx={{ px: 2 }} />
 
       <InsetStack
         sx={{ backgroundColor: "background.paper" }}
         variant="vertical"
         direction="row"
+        alignItems="center"
         justifyContent="center"
-        p={1}
+        py={1}
+        spacing={1}
       >
+        <Typography>
+          Lights {themeSelection === "light" ? "Out" : "On"}?
+        </Typography>
         <DarkModeToggle />
       </InsetStack>
     </Stack>

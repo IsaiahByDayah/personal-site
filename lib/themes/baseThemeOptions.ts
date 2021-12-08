@@ -10,15 +10,14 @@ const baseThemeOptions: ThemeOptions = {
     },
   },
   components: {
-    // MuiButton: {
-    //   styleOverrides: {
-    //     root: {
-    //       textTransform: "none",
-    //       fontWeight: "bold",
-    //       letterSpacing: "1px",
-    //     },
-    //   },
-    // },
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          textTransform: "none",
+          letterSpacing: "1px",
+        },
+      },
+    },
     // MuiCssBaseline: {
     //   styleOverrides: `
     //     .firebase-emulator-warning {
