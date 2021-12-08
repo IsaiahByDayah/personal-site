@@ -41,7 +41,7 @@ export const TwoColumnLayout = ({ sx, children }: TwoColumnLayoutProps) => (
         <Stack direction="column" spacing={2}>
           <Navigation />
 
-          <DarkModeToggleInset sx={{ borderRadius: 1 }} />
+          <DarkModeToggleInset sx={{ borderRadius: 4 }} />
         </Stack>
       </Grid>
       <Grid item xs={12} sm={9} component="main">
