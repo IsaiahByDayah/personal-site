@@ -1,6 +1,6 @@
 import { FC } from "react"
-import { Stack, IconButton } from "@mui/material"
-import { SystemStyleObject, Theme } from "@mui/system"
+import { Theme, Stack, IconButton } from "@mui/material"
+import { SystemStyleObject } from "@mui/system"
 import { YouTube, GitHub, Twitter } from "@mui/icons-material"
 import { SiTwitch, SiPatreon } from "react-icons/si"
 

@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react"
-import { SwipeableDrawer } from "@mui/material"
-import { SystemStyleObject, Theme } from "@mui/system"
+import { Theme, SwipeableDrawer } from "@mui/material"
+import { SystemStyleObject } from "@mui/system"
 import { useRouter } from "next/router"
 
 import { DrawerContext } from "components/scaffold/DrawerProvider"

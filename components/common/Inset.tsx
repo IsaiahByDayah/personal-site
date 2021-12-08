@@ -1,29 +1,29 @@
-import { alpha, Box, BoxProps, Stack, StackProps } from "@mui/material"
-import { SystemStyleObject, Theme } from "@mui/system"
+import { alpha, Theme, Box, BoxProps, Stack, StackProps } from "@mui/material"
+import { SystemStyleObject } from "@mui/system"
 
 export type InsetBoxVariant = "all" | "horizontal" | "vertical"
 
 export const getInsetSx = (
   variant: InsetBoxVariant
 ): SystemStyleObject<Theme> => ({
-  boxShadow: ({ spacing }) => {
+  boxShadow: ({ spacing, palette }) => {
     const hShadows = [
       `inset ${spacing(0.5)} 0px ${spacing(0.5)} -${spacing(0.5)} ${alpha(
-        "#000000",
+        palette.common.black,
         0.25
       )}`,
       `inset -${spacing(0.5)} 0px ${spacing(0.5)} -${spacing(0.5)} ${alpha(
-        "#000000",
+        palette.common.black,
         0.25
       )}`,
     ]
     const vShadows = [
       `inset 0px ${spacing(0.5)} ${spacing(0.5)} -${spacing(0.5)} ${alpha(
-        "#000000",
+        palette.common.black,
         0.25
       )}`,
       `inset 0px -${spacing(0.5)} ${spacing(0.5)} -${spacing(0.5)} ${alpha(
-        "#000000",
+        palette.common.black,
         0.25
       )}`,
     ]

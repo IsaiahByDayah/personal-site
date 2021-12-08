@@ -1,6 +1,6 @@
 import { useContext } from "react"
-import { Stack, Box, Typography, Avatar } from "@mui/material"
-import { SystemStyleObject, Theme } from "@mui/system"
+import { Theme, Stack, Box, Typography, Avatar } from "@mui/material"
+import { SystemStyleObject } from "@mui/system"
 
 import Navigation from "components/scaffold/Navigation"
 import { ThemeSelectionContext } from "components/scaffold/ThemeSelectionProvider"

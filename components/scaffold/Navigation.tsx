@@ -1,5 +1,5 @@
-import { Stack } from "@mui/material"
-import { SystemStyleObject, Theme } from "@mui/system"
+import { Theme, Stack } from "@mui/material"
+import { SystemStyleObject } from "@mui/system"
 import NextLink from "next/link"
 
 import NavigationButton from "components/common/NavigationButton"
