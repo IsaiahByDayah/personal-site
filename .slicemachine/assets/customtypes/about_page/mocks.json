@@ -1,0 +1,17 @@
+{
+  "id": "fe25b200-ec26-467c-8bb2-4f3a5ed5724b",
+  "uid": "dolores-occaecati-soluta",
+  "type": "about_page",
+  "data": {
+    "thumbnail": {
+      "dimensions": {
+        "width": 900,
+        "height": 500
+      },
+      "alt": "Placeholder image",
+      "copyright": null,
+      "url": "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?w=900&h=500&fit=crop"
+    },
+    "myColor": "#de5f3a"
+  }
+}

@@ -1,5 +1,7 @@
+import { Typography } from "@mui/material"
+
 const Home = () => {
-  return <div>Hello, World!</div>
+  return <Typography>Hello, World!</Typography>
 }
 
 export default Home
