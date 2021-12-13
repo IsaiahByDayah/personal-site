@@ -1,25 +1,10 @@
 {
-  "id": "about_page",
+  "id": "about-page",
   "label": "About Page",
   "repeatable": false,
   "status": true,
   "json": {
     "Main": {
-      "thumbnail": {
-        "config": {
-          "label": "thumbnail",
-          "constraint": {},
-          "thumbnails": []
-        },
-        "type": "Image"
-      },
-      "myColor": {
-        "config": {
-          "label": "myColor",
-          "placeholder": ""
-        },
-        "type": "Color"
-      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",

@@ -1,9 +1,9 @@
-import { RichText, RichTextProps } from "prismic-reactjs"
+import { PrismicRichText, PrismicRichTextProps } from "@prismicio/react"
 
-import { htmlSerializer } from "lib/prismicHelpers"
+import { richTextComponents } from "lib/prismicHelpers"
 
-const MuiRichText = (props: RichTextProps) => (
-  <RichText htmlSerializer={htmlSerializer} {...props} />
+const MuiRichText = (props: PrismicRichTextProps) => (
+  <PrismicRichText components={richTextComponents} {...props} />
 )
 
 export default MuiRichText
