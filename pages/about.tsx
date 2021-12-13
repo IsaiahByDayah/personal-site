@@ -1,16 +1,20 @@
 import { GetStaticProps } from "next"
-import { Stack } from "@mui/material"
-import { Document } from "@prismicio/client/types/documents"
+import { SliceZone } from "@prismicio/react"
+import { PrismicDocument, SliceZone as ISliceZone } from "@prismicio/types"
 
-import { Client } from "lib/prismicHelpers"
+import { Client, sliceZoneComponents } from "lib/prismicHelpers"
 
-import RichText from "slices/RichText"
-import Quote from "slices/Quote"
+import Slices from "slices/slice-types"
+
+type AboutPageDocumentType = PrismicDocument<{ slices: ISliceZone<Slices> }>
 
 export const getStaticProps: GetStaticProps<AboutProps> = async () => {
-  let document: Document | undefined = undefined
+  let document: AboutPageDocumentType | undefined = undefined
   try {
-    document = await Client().getSingle("about_page", {})
+    document = (await Client().getSingle(
+      "about-page",
+      {}
+    )) as AboutPageDocumentType
   } catch (e) {}
 
   if (!document)
@@ -26,26 +30,13 @@ export const getStaticProps: GetStaticProps<AboutProps> = async () => {
 }
 
 interface AboutProps {
-  document: Document
+  document: AboutPageDocumentType
 }
 
 const About = ({ document }: AboutProps) => {
   console.log("Document: ", document)
   return (
-    <>
-      {document.data.slices.map((slice: any) => {
-        switch (slice.slice_type) {
-          case "rich_text":
-            return (
-              <Stack spacing={2}>
-                <RichText slice={slice} />
-              </Stack>
-            )
-          case "quote":
-            return <Quote slice={slice} />
-        }
-      })}
-    </>
+    <SliceZone slices={document.data.slices} components={sliceZoneComponents} />
   )
 }
 
