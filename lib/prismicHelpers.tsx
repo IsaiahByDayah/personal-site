@@ -1,8 +1,8 @@
 // REF: https://prismic.io/docs/technologies/nextjs#3.2.-prismic-helpers
 
-import { Typography, Link } from "@mui/material"
+import { Typography, Link, Stack } from "@mui/material"
 import Prismic from "@prismicio/client"
-import { Elements } from "prismic-reactjs"
+import { JSXMapSerializer, SliceZoneComponents } from "@prismicio/react"
 import NextLink from "next/link"
 import {
   apiEndpoint,
@@ -11,27 +11,27 @@ import {
   Router,
 } from "prismicConfiguration"
 
-// Helper function to convert Prismic Rich Text links to Next/Link components
-export const customLink = (type, element, content, children, index) => (
-  <NextLink key={index} href={linkResolver(element.data)} passHref>
-    <a>{content}</a>
-  </NextLink>
-)
+import Slices from "slices/slice-types"
+import RichText from "slices/RichText"
+import Quote from "slices/Quote"
 
-// Helper function to convert Prismic Rich Text links to Next/Link components
-export const htmlSerializer = (type, element, content, children, key) => {
-  switch (type) {
-    case Elements.paragraph:
-      return <Typography>{children}</Typography>
-    case Elements.hyperlink:
-      return (
-        <NextLink href={linkResolver(element.data)} passHref>
-          <Link>{children}</Link>
-        </NextLink>
-      )
-    default:
-      return null
-  }
+export const richTextComponents: JSXMapSerializer = {
+  paragraph: ({ children }) => <Typography>{children}</Typography>,
+  hyperlink: ({ children, node }) => (
+    // TODO: check the final href and if internal, use next/link, else use a tag (see PrismicLink compoennt)
+    <NextLink href={linkResolver(node.data)} passHref>
+      <Link>{children}</Link>
+    </NextLink>
+  ),
+}
+
+export const sliceZoneComponents: SliceZoneComponents<Slices> = {
+  rich_text: (props) => (
+    <Stack spacing={2}>
+      <RichText {...props} />
+    </Stack>
+  ),
+  quote: Quote,
 }
 
 // -- @prismicio/client initialisation
@@ -42,8 +42,8 @@ export const Client = (req = null) =>
 // Options to be passed to the Client
 const createClientOptions = (
   req = null,
-  prismicAccessToken = null,
-  routes = null
+  prismicAccessToken: string | null | undefined = null,
+  routes: any = null
 ) => {
   const reqOption = req ? { req } : {}
   const accessTokenOption = prismicAccessToken
