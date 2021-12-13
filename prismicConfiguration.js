@@ -1,3 +1,4 @@
+import { LinkType } from "@prismicio/types"
 // REF: https://prismic.io/docs/technologies/nextjs#3.2.-prismic-helpers
 
 // -- Prismic Repo Name
@@ -12,12 +13,26 @@ export const apiEndpoint = `https://${repoName}.cdn.prismic.io/api/v2`
 // Generate a token in your dashboard and configure it here if your repository is private
 export const accessToken = ""
 
+////////////////////////////
+// REF: https://prismic.io/docs/core-concepts/link-resolver-route-resolver
+////////////////////////////
+
 // -- Link resolution rules
 // Manages the url links to internal Prismic documents
 export const linkResolver = (doc) => {
-  if (doc.type === "about_page") {
-    return `/about`
+  switch (doc.link_type) {
+    case LinkType.Web:
+      if (doc.url) return doc.url
+      break
+    case LinkType.Document:
+      if (doc.url) return doc.url
+      // MARK: Handle custom client side paths here
+      break
+    case LinkType.Media:
+      if (doc.url) return doc.url
+      break
   }
+
   return "/"
 }
 
@@ -26,7 +41,7 @@ export const linkResolver = (doc) => {
 export const Router = {
   routes: [
     {
-      type: "about_page",
+      type: "about-page",
       path: "/about",
     },
   ],
