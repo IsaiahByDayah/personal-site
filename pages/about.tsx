@@ -2,7 +2,7 @@ import { GetStaticProps } from "next"
 import { SliceZone } from "@prismicio/react"
 import { PrismicDocument, SliceZone as ISliceZone } from "@prismicio/types"
 
-import { Client, sliceZoneComponents } from "lib/prismicHelpers"
+import { Client, sliceZoneComponents } from "lib/prismic/util"
 
 import Slices from "slices/slice-types"
 

@@ -1,31 +1,56 @@
-import { GetStaticProps } from "next"
+import { GetStaticProps, GetStaticPaths } from "next"
+import { castArray, head } from "lodash"
 import { Pagination } from "@mui/material"
 import { useRouter } from "next/router"
 
-import { getBlogPage, getTotalBlogPages } from "lib/prismic/util"
+import { getTotalBlogPages, getBlogPage } from "lib/prismic/util"
 import { BlogPostDocument } from "lib/prismic/types"
 
 import Blogroll from "components/common/Blogroll"
 
-export const getStaticProps: GetStaticProps<HomeProps> = async () => {
-  const blogPosts = await getBlogPage()
+export const getStaticPaths: GetStaticPaths = async () => {
+  const totalBlogPages = await getTotalBlogPages()
+
+  const pages = Array(totalBlogPages)
+    .fill(null)
+    .map((_, index) => `${index + 1}`)
+
+  return {
+    paths: pages.map((page) => ({ params: { page } })),
+    fallback: false,
+  }
+}
+
+export const getStaticProps: GetStaticProps<BlogPageProps> = async ({
+  params,
+}) => {
+  const page = parseInt(head(castArray(params?.page)) ?? "")
+
+  if (isNaN(page))
+    return {
+      notFound: true,
+    }
+
+  const blogPosts = await getBlogPage(page)
 
   const totalPages = await getTotalBlogPages()
 
   return {
     props: {
+      page,
       totalPages,
       blogPosts,
     },
   }
 }
 
-interface HomeProps {
+interface BlogPageProps {
+  page: number
   totalPages: number
   blogPosts: BlogPostDocument[]
 }
 
-const Home = ({ totalPages, blogPosts }: HomeProps) => {
+const BlogPage = ({ page, totalPages, blogPosts }: BlogPageProps) => {
   const router = useRouter()
   return (
     <Blogroll
@@ -42,9 +67,11 @@ const Home = ({ totalPages, blogPosts }: HomeProps) => {
     >
       {totalPages > 1 && (
         <Pagination
-          sx={{ alignSelf: "center" }}
+          sx={{
+            alignSelf: "center",
+          }}
           count={totalPages}
-          page={1}
+          page={page}
           onChange={(_, page) => router.push(`/blog/${page}`)}
         />
       )}
@@ -52,4 +79,4 @@ const Home = ({ totalPages, blogPosts }: HomeProps) => {
   )
 }
 
-export default Home
+export default BlogPage

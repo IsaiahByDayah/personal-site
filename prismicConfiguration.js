@@ -44,5 +44,9 @@ export const Router = {
       type: "about-page",
       path: "/about",
     },
+    {
+      type: "blog-post",
+      path: "/blog/post/:uid",
+    },
   ],
 }

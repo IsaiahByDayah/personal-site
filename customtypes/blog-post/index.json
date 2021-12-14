@@ -5,6 +5,35 @@
   "status": true,
   "json": {
     "Main": {
+      "thumbnail": {
+        "config": {
+          "label": "thumbnail",
+          "constraint": {},
+          "thumbnails": []
+        },
+        "type": "Image"
+      },
+      "title": {
+        "config": {
+          "label": "title",
+          "placeholder": ""
+        },
+        "type": "Text"
+      },
+      "excerpt": {
+        "config": {
+          "label": "excerpt",
+          "placeholder": ""
+        },
+        "type": "Text"
+      },
+      "uid": {
+        "config": {
+          "label": "slug",
+          "placeholder": "some-slugified-text"
+        },
+        "type": "UID"
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",

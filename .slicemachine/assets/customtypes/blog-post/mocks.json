@@ -1,6 +1,18 @@
 {
-  "id": "87af26c1-a3f6-428b-b6d9-2ba4740d97d0",
-  "uid": "est-ut-rerum",
+  "id": "5521662c-0692-4929-840a-73a7b5681593",
+  "uid": "necessitatibus-quo-atque",
   "type": "blog-post",
-  "data": {}
+  "data": {
+    "thumbnail": {
+      "dimensions": {
+        "width": 900,
+        "height": 500
+      },
+      "alt": "Placeholder image",
+      "copyright": null,
+      "url": "https://images.unsplash.com/photo-1537498425277-c283d32ef9db?w=900&h=500&fit=crop"
+    },
+    "title": "synthesize compelling technologies",
+    "excerpt": "evolve B2B vortals"
+  }
 }
