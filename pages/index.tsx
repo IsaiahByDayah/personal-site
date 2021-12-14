@@ -20,7 +20,7 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
   }
 }
 
-interface HomeProps {
+export interface HomeProps {
   totalPages: number
   blogPosts: BlogPostDocument[]
 }

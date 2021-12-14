@@ -53,7 +53,7 @@ export const getStaticProps: GetStaticProps<BlogPostProps> = async ({
   }
 }
 
-interface BlogPostProps {
+export interface BlogPostProps {
   document: BlogPostDocumentType
 }
 

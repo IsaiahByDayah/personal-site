@@ -20,20 +20,23 @@ import Quote from "slices/Quote"
 export const PAGE_SIZE = 20
 
 export const richTextComponents: JSXMapSerializer = {
-  paragraph: ({ children }) => <Typography>{children}</Typography>,
-  hyperlink: ({ children, node, ...rest }) => {
+  paragraph: ({ children, key }) => (
+    <Typography key={key}>{children}</Typography>
+  ),
+  hyperlink: ({ children, node, key }) => {
     // console.log("hyperlink props: ", node, rest)
     return (
       // TODO: check the final href and if internal, use next/link, else use a tag (see PrismicLink compoennt)
-      <NextLink href={linkResolver(node.data)} passHref>
+      <NextLink key={key} href={linkResolver(node.data)} passHref>
         <Link rel="none" target={(node.data as any).target}>
           {children}
         </Link>
       </NextLink>
     )
   },
-  image: ({ node }) => (
+  image: ({ node, key }) => (
     <Box
+      key={key}
       maxWidth={1}
       component="img"
       src={node.url}
@@ -44,7 +47,7 @@ export const richTextComponents: JSXMapSerializer = {
 
 export const sliceZoneComponents: SliceZoneComponents<Slices> = {
   rich_text: (props) => (
-    <Stack spacing={2}>
+    <Stack key={`${props.slice.slice_type}-${props.index}`} spacing={2}>
       <RichText {...props} />
     </Stack>
   ),

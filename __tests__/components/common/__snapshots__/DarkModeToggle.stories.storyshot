@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots Common/DarkModeToggle Basic 1`] = `
+exports[`Storyshots Components/DarkModeToggle Basic 1`] = `
 <button
   className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
   disabled={false}
@@ -22,14 +22,29 @@ exports[`Storyshots Common/DarkModeToggle Basic 1`] = `
 >
   <svg
     aria-hidden={true}
-    className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-19pfvcb-MuiSvgIcon-root"
-    data-testid="Brightness5RoundedIcon"
-    focusable="false"
+    className="material-icons notranslate MuiIcon-root MuiIcon-fontSizeMedium css-1go37dt-MuiIcon-root"
+    fill="currentColor"
+    height="1em"
+    stroke="currentColor"
+    strokeWidth="0"
+    style={
+      Object {
+        "color": undefined,
+      }
+    }
     viewBox="0 0 24 24"
+    width="1em"
+    xmlns="http://www.w3.org/2000/svg"
   >
-    <path
-      d="m20 15.31 2.6-2.6c.39-.39.39-1.02 0-1.41L20 8.69V5c0-.55-.45-1-1-1h-3.69l-2.6-2.6a.9959.9959 0 0 0-1.41 0L8.69 4H5c-.55 0-1 .45-1 1v3.69l-2.6 2.6c-.39.39-.39 1.02 0 1.41L4 15.3V19c0 .55.45 1 1 1h3.69l2.6 2.6c.39.39 1.02.39 1.41 0l2.6-2.6H19c.55 0 1-.45 1-1v-3.69zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"
-    />
+    <g>
+      <path
+        d="M0 0h24v24H0z"
+        fill="none"
+      />
+      <path
+        d="M11.38 2.019a7.5 7.5 0 1 0 10.6 10.6C21.662 17.854 17.316 22 12.001 22 6.477 22 2 17.523 2 12c0-5.315 4.146-9.661 9.38-9.981z"
+      />
+    </g>
   </svg>
 </button>
 `;

@@ -44,7 +44,7 @@ export const getStaticProps: GetStaticProps<BlogPageProps> = async ({
   }
 }
 
-interface BlogPageProps {
+export interface BlogPageProps {
   page: number
   totalPages: number
   blogPosts: BlogPostDocument[]
