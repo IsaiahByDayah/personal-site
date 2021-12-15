@@ -14,7 +14,7 @@ export interface TwoColumnLayoutProps {
 
 export const TwoColumnLayout = ({ sx, children }: TwoColumnLayoutProps) => (
   <Container sx={sx} maxWidth="xl">
-    <Grid container spacing={2}>
+    <Grid container spacing={5}>
       <Grid
         item
         sm={3}

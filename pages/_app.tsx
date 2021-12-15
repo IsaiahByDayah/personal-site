@@ -1,6 +1,5 @@
 import { AppProps } from "next/app"
 import Head from "next/head"
-// import { useScrollTrigger, Stack, Toolbar, Box, Fade } from "@mui/material"
 import { Toolbar } from "@mui/material"
 import { CacheProvider, EmotionCache } from "@emotion/react"
 

@@ -2,9 +2,16 @@
   "_cts": {
     "about": {},
     "about_page": {},
-    "blog-post": {},
+    "blog-post": {
+      "tags": {},
+      "projects": {}
+    },
     "about-page": {},
-    "homepage": {}
+    "homepage": {},
+    "project": {
+      "tags": {}
+    },
+    "tag": {}
   },
   "slices": {}
 }

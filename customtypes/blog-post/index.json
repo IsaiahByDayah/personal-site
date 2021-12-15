@@ -34,6 +34,44 @@
         },
         "type": "UID"
       },
+      "tags": {
+        "config": {
+          "label": "tags",
+          "placeholder": "",
+          "fields": {
+            "tag": {
+              "config": {
+                "label": "tag",
+                "customtypes": [
+                  "tag"
+                ],
+                "select": "document"
+              },
+              "type": "Link"
+            }
+          }
+        },
+        "type": "Group"
+      },
+      "projects": {
+        "config": {
+          "label": "projects",
+          "placeholder": "",
+          "fields": {
+            "project": {
+              "config": {
+                "label": "project",
+                "customtypes": [
+                  "project"
+                ],
+                "select": "document"
+              },
+              "type": "Link"
+            }
+          }
+        },
+        "type": "Group"
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",

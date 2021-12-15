@@ -41,7 +41,7 @@ const Post = ({
         <Box
           width={1}
           borderRadius={1}
-          boxShadow={2}
+          boxShadow={4}
           component="img"
           {...thumbnailProps}
         />

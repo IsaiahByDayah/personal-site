@@ -1,6 +1,6 @@
 {
-  "id": "5521662c-0692-4929-840a-73a7b5681593",
-  "uid": "necessitatibus-quo-atque",
+  "id": "0349c7b6-2040-47d1-8ad5-fbae84b9a47f",
+  "uid": "dignissimos-aut-voluptate",
   "type": "blog-post",
   "data": {
     "thumbnail": {
@@ -10,9 +10,55 @@
       },
       "alt": "Placeholder image",
       "copyright": null,
-      "url": "https://images.unsplash.com/photo-1537498425277-c283d32ef9db?w=900&h=500&fit=crop"
+      "url": "https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?w=900&h=500&fit=crop"
     },
-    "title": "synthesize compelling technologies",
-    "excerpt": "evolve B2B vortals"
+    "title": "unleash global e-services",
+    "excerpt": "deploy e-business experiences",
+    "tags": [
+      {
+        "tag": {
+          "link_type": "Web",
+          "url": "https://slicemachine.dev"
+        }
+      },
+      {
+        "tag": {
+          "link_type": "Web",
+          "url": "https://prismic.io"
+        }
+      },
+      {
+        "tag": {
+          "link_type": "Web",
+          "url": "http://google.com"
+        }
+      },
+      {
+        "tag": {
+          "link_type": "Web",
+          "url": "http://twitter.com"
+        }
+      }
+    ],
+    "projects": [
+      {
+        "project": {
+          "link_type": "Web",
+          "url": "https://prismic.io"
+        }
+      },
+      {
+        "project": {
+          "link_type": "Web",
+          "url": "https://prismic.io"
+        }
+      },
+      {
+        "project": {
+          "link_type": "Web",
+          "url": "https://prismic.io"
+        }
+      }
+    ]
   }
 }

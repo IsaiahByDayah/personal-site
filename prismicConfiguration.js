@@ -52,5 +52,13 @@ export const Router = {
       type: "blog-post",
       path: "/blog/post/:uid",
     },
+    {
+      type: "tag",
+      path: "/tag/:uid",
+    },
+    {
+      type: "project",
+      path: "/project/:uid",
+    },
   ],
 }

@@ -7,9 +7,6 @@ import { BlogPostDocument } from "lib/prismic/types"
 export default {
   title: "Pages/Home",
   component: Home,
-  parameters: {
-    layout: "fullscreen",
-  },
 } as Meta
 
 export const Basic: Story<HomeProps> = (args) => <Home {...args} />
@@ -36,9 +33,3 @@ Basic.args = {
     } as BlogPostDocument,
   ],
 }
-
-// thumbnailProps: {
-//   alt: "some random photo",
-// },
-// href: "/",
-// publishDate: new Date("6/13/1993"),
