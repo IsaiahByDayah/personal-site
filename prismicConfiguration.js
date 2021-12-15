@@ -41,6 +41,10 @@ export const linkResolver = (doc) => {
 export const Router = {
   routes: [
     {
+      type: "homepage",
+      path: "/",
+    },
+    {
       type: "about-page",
       path: "/about",
     },
