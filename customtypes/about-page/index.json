@@ -1,0 +1,24 @@
+{
+  "id": "about-page",
+  "label": "About Page",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {
+            "rich_text": {
+              "type": "SharedSlice"
+            },
+            "quote": {
+              "type": "SharedSlice"
+            }
+          }
+        }
+      }
+    }
+  }
+}

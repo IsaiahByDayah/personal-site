@@ -20,5 +20,11 @@
     "incremental": true
   },
   "exclude": ["node_modules", "srcOld"],
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "slices/index.js",
+    "slices/TextImageRight/index.js"
+  ]
 }

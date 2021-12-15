@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots Common/Socials Basic 1`] = `
+exports[`Storyshots Components/Socials Basic 1`] = `
 <div
   className="css-w4z10b-MuiStack-root"
 >

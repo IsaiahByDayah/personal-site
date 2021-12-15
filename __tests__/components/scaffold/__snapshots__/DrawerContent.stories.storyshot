@@ -1,69 +1,32 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots Scaffold/Header Basic 1`] = `
-<header
-  className="MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiAppBar-root MuiAppBar-colorSecondary MuiAppBar-positionFixed mui-fixed css-1mbxrep-MuiPaper-root-MuiAppBar-root"
+exports[`Storyshots Scaffold/DrawerContent Basic 1`] = `
+<div
+  className="css-zwbr96-MuiStack-root"
 >
   <div
-    className="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular css-1oqd32v-MuiToolbar-root-MuiStack-root"
+    className="css-1fold1x-MuiStack-root"
   >
     <div
-      className="css-1yo1jo6-MuiStack-root"
+      className="MuiBox-root css-tnzb5j"
     >
       <div
-        className="MuiAvatar-root MuiAvatar-circular css-1dc16kx-MuiAvatar-root"
+        className="MuiAvatar-root MuiAvatar-circular css-a46ij7-MuiAvatar-root"
       >
         <img
-          alt="avatar photo"
+          alt="isaiah's profile picture"
           className="MuiAvatar-img css-1pqm26d-MuiAvatar-img"
           src="/images/profile-pic.png"
         />
       </div>
-      <a
-        className="MuiTypography-root MuiTypography-h6 MuiLink-root MuiLink-underlineAlways css-x0oxj-MuiTypography-root-MuiLink-root"
-        href="/"
-        onBlur={[Function]}
-        onClick={[Function]}
-        onFocus={[Function]}
-        onMouseEnter={[Function]}
-      >
-        Isaiah Smith
-      </a>
     </div>
-    <button
-      aria-label="menu"
-      className="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-edgeEnd MuiIconButton-sizeMedium css-a96e0y-MuiButtonBase-root-MuiIconButton-root"
-      disabled={false}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onContextMenu={[Function]}
-      onDragLeave={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex={0}
-      type="button"
+    <h6
+      className="MuiTypography-root MuiTypography-h6 MuiTypography-alignCenter css-azcbt6-MuiTypography-root"
     >
-      <svg
-        aria-hidden={true}
-        className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-        data-testid="MenuRoundedIcon"
-        focusable="false"
-        viewBox="0 0 24 24"
-      >
-        <path
-          d="M4 18h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1s.45 1 1 1zm0-5h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1s.45 1 1 1zM3 7c0 .55.45 1 1 1h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1z"
-        />
-      </svg>
-    </button>
+      Isaiah Smith
+    </h6>
     <div
-      className="css-veumtp-MuiStack-root"
+      className="css-w4z10b-MuiStack-root"
     >
       <a
         className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-uxkf7g-MuiButtonBase-root-MuiIconButton-root"
@@ -240,5 +203,138 @@ exports[`Storyshots Scaffold/Header Basic 1`] = `
       </a>
     </div>
   </div>
-</header>
+  <div
+    className="css-16ab8cl-MuiStack-root"
+  >
+    <a
+      className="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-fullWidth MuiButtonBase-root  css-1pv1op7-MuiButtonBase-root-MuiButton-root"
+      href="/"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onContextMenu={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+    >
+      Home
+      <span
+        className="MuiButton-endIcon MuiButton-iconSizeMedium css-1gnd1fd-MuiButton-endIcon"
+      >
+        <svg
+          aria-hidden={true}
+          className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+          data-testid="ChevronRightRoundedIcon"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M9.29 6.71c-.39.39-.39 1.02 0 1.41L13.17 12l-3.88 3.88c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l4.59-4.59c.39-.39.39-1.02 0-1.41L10.7 6.7c-.38-.38-1.02-.38-1.41.01z"
+          />
+        </svg>
+      </span>
+    </a>
+    <a
+      className="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-fullWidth MuiButtonBase-root  css-1pv1op7-MuiButtonBase-root-MuiButton-root"
+      href="/about"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onContextMenu={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+    >
+      About
+      <span
+        className="MuiButton-endIcon MuiButton-iconSizeMedium css-1gnd1fd-MuiButton-endIcon"
+      >
+        <svg
+          aria-hidden={true}
+          className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+          data-testid="ChevronRightRoundedIcon"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M9.29 6.71c-.39.39-.39 1.02 0 1.41L13.17 12l-3.88 3.88c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l4.59-4.59c.39-.39.39-1.02 0-1.41L10.7 6.7c-.38-.38-1.02-.38-1.41.01z"
+          />
+        </svg>
+      </span>
+    </a>
+  </div>
+  <div
+    className="css-ruuv8g-MuiStack-root"
+  >
+    <p
+      className="MuiTypography-root MuiTypography-body1 css-17l2ekb-MuiTypography-root"
+    >
+      Lights 
+      Out
+      ?
+    </p>
+    <button
+      className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onContextMenu={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <svg
+        aria-hidden={true}
+        className="material-icons notranslate MuiIcon-root MuiIcon-fontSizeMedium css-1go37dt-MuiIcon-root"
+        fill="currentColor"
+        height="1em"
+        stroke="currentColor"
+        strokeWidth="0"
+        style={
+          Object {
+            "color": undefined,
+          }
+        }
+        viewBox="0 0 24 24"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g>
+          <path
+            d="M0 0h24v24H0z"
+            fill="none"
+          />
+          <path
+            d="M11.38 2.019a7.5 7.5 0 1 0 10.6 10.6C21.662 17.854 17.316 22 12.001 22 6.477 22 2 17.523 2 12c0-5.315 4.146-9.661 9.38-9.981z"
+          />
+        </g>
+      </svg>
+    </button>
+  </div>
+</div>
 `;
