@@ -58,8 +58,8 @@
     "test:ci": "jest --verbose && yarn lint",
     "type-check": "tsc --noEmit",
     "storybook": "start-storybook -p 6006 -s public",
-    "deploy": "firebase deploy",
-    "slicemachine": "start-slicemachine"
+    "sm": "start-slicemachine",
+    "deploy": "firebase deploy"
   },
   "eslintConfig": {
     "extends": [
