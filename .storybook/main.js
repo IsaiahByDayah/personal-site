@@ -1,50 +1,36 @@
-const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin")
+const path = require("path")
+
+// REF: https://mui.com/guides/migration-v4/#storybook-emotion-with-v5
+const toPath = (filePath) => path.join(process.cwd(), filePath)
 
 module.exports = {
-  stories: ["../src/**/*.stories.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
-  addons: ["@storybook/addon-links", "@storybook/addon-essentials", "@storybook/addon-a11y"],
-
-  // NOTE: This is needed to work with gatsby: https://www.gatsbyjs.com/docs/visual-testing-with-storybook/
-  webpackFinal: async config => {
-    // Transpile Gatsby module because Gatsby includes un-transpiled ES6 code.
-    config.module.rules[0].exclude = [/node_modules\/(?!(gatsby)\/)/]
-    // use installed babel-loader which is v8.0-beta (which is meant to work with @babel/core@7)
-    config.module.rules[0].use[0].loader = require.resolve("babel-loader")
-    // use @babel/preset-react for JSX and env (instead of staged presets)
-    config.module.rules[0].use[0].options.presets = [
-      require.resolve("@babel/preset-react"),
-      require.resolve("@babel/preset-env"),
-    ]
-    config.module.rules[0].use[0].options.plugins = [
-      // use @babel/plugin-proposal-class-properties for class arrow functions
-      require.resolve("@babel/plugin-proposal-class-properties"),
-      // use babel-plugin-remove-graphql-queries to remove static queries from components when rendering in storybook
-      require.resolve("babel-plugin-remove-graphql-queries"),
-    ]
-    // Prefer Gatsby ES6 entrypoint (module) over commonjs (main) entrypoint
-    config.resolve.mainFields = ["browser", "module", "main"]
-
-    config.module.rules.push({
-      test: /\.(ts|tsx)$/,
-      loader: require.resolve("babel-loader"),
-      options: {
-        presets: [["react-app", { flow: false, typescript: true }]],
-        plugins: [
-          require.resolve("@babel/plugin-proposal-class-properties"),
-          // use babel-plugin-remove-graphql-queries to remove static queries from components when rendering in storybook
-          require.resolve("babel-plugin-remove-graphql-queries"),
-        ],
+  webpackFinal: async (config) => {
+    return {
+      ...config,
+      resolve: {
+        ...config.resolve,
+        modules: [...config.resolve.modules, path.resolve(__dirname, "..")],
+        alias: {
+          ...config.resolve.alias,
+          "@emotion/core": toPath("node_modules/@emotion/react"),
+          "emotion-theming": toPath("node_modules/@emotion/react"),
+        },
       },
-    })
-    config.resolve.extensions.push(".ts", ".tsx")
-
-    // NOTE: This enables absolute import paths in stories
-    config.resolve.plugins.push(
-      new TsconfigPathsPlugin({
-        /* options: see below */
-      })
-    )
-
-    return config
+    }
   },
+  stories: [
+    "../components/**/*.stories.mdx",
+    "../components/**/*.stories.@(js|jsx|ts|tsx)",
+    "../hooks/**/*.stories.mdx",
+    "../hooks/**/*.stories.@(js|jsx|ts|tsx)",
+    "../__pages__/**/*.stories.mdx",
+    "../__pages__/**/*.stories.@(js|jsx|ts|tsx)",
+    "../.slicemachine/**/*.stories.mdx",
+    "../.slicemachine/**/*.stories.@(js|jsx|ts|tsx)",
+  ],
+  addons: [
+    "@storybook/addon-links",
+    "@storybook/addon-essentials",
+    "@storybook/addon-a11y",
+  ],
 }
