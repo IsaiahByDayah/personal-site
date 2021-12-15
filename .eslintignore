@@ -1,3 +1,10 @@
+graphql-types.ts
+
+##########################
+## The following is a mirror of .gitignore because thats what the script originally used as its ignore list
+## REF: "lint": "eslint . --ignore-path .gitignore --ext .ts,.tsx,.js",
+##########################
+
 # Logs
 logs
 *.log
