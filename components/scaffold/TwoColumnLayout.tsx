@@ -7,44 +7,34 @@ import Navigation from "components/scaffold/Navigation"
 import DarkModeToggleInset from "components/common/DarkModeToggleInset"
 import { getOffMobileSx } from "components/common/OnMobile"
 
-// import { HeaderSimpleContext } from "providers/HeaderSimpleProvider"
-
-// import SideNavContent from "components/scaffold/SideNavContent"
-
-// const useStyles = makeStyles(({ spacing }) => ({
-//   side: {
-//     position: "sticky",
-//     top: spacing(10),
-//   },
-//   container: {
-//     flexGrow: 1,
-//     marginBottom: spacing(2),
-//   },
-// }))
-
 export interface TwoColumnLayoutProps {
   sx?: SystemStyleObject<Theme>
   children?: ReactNode
 }
 
 export const TwoColumnLayout = ({ sx, children }: TwoColumnLayoutProps) => (
-  <Container sx={sx}>
+  <Container sx={sx} maxWidth="xl">
     <Grid container spacing={2}>
       <Grid
         item
         sm={3}
+        xl={2}
         sx={{
-          // position: "sticky",
           ...getOffMobileSx("block"),
         }}
       >
-        <Stack direction="column" spacing={2}>
+        <Stack
+          direction="column"
+          spacing={2}
+          position="sticky"
+          top={({ spacing }) => spacing(10)}
+        >
           <Navigation />
 
           <DarkModeToggleInset sx={{ borderRadius: 4 }} />
         </Stack>
       </Grid>
-      <Grid item xs={12} sm={9} component="main">
+      <Grid item xs={12} sm={9} xl={10} component="main">
         {children}
       </Grid>
     </Grid>
