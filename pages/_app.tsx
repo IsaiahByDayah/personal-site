@@ -12,7 +12,7 @@ import ThemeProvider from "components/scaffold/ThemeProvider"
 import CssBaselined from "components/scaffold/CssBaselined"
 import Header from "components/scaffold/Header"
 import Drawer from "components/scaffold/Drawer"
-// import Footer from "components/scaffold/Footer"
+import Footer from "components/scaffold/Footer"
 import TwoColumnLayout from "components/scaffold/TwoColumnLayout"
 
 // Client-side cache, shared for the whole session of the user in the browser.
@@ -45,6 +45,7 @@ const MyApp = ({
                 <Component {...pageProps} />
               </TwoColumnLayout>
               <Drawer />
+              <Footer />
             </CssBaselined>
           </CacheProvider>
         </ThemeProvider>
