@@ -8,7 +8,7 @@ export default {
   title: "Pages/Home",
   component: Home,
   parameters: {
-    storyshots: { disabled: true },
+    storyshots: { disable: true },
   },
 } as Meta
 
