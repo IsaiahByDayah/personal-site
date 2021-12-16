@@ -2,16 +2,16 @@
 
 exports[`Storyshots Scaffold/TwoColumnLayout Basic 1`] = `
 <div
-  className="MuiContainer-root MuiContainer-maxWidthLg css-1oqqzyl-MuiContainer-root"
+  className="MuiContainer-root MuiContainer-maxWidthXl css-19r6kue-MuiContainer-root"
 >
   <div
-    className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2 css-mhc70k-MuiGrid-root"
+    className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-5 css-1ld3b9g-MuiGrid-root"
   >
     <div
-      className="MuiGrid-root MuiGrid-item MuiGrid-grid-sm-3 css-v3f2xy-MuiGrid-root"
+      className="MuiGrid-root MuiGrid-item MuiGrid-grid-sm-3 MuiGrid-grid-xl-2 css-eyxkg5-MuiGrid-root"
     >
       <div
-        className="css-1p5q5e5-MuiStack-root"
+        className="css-1xs4qv6-MuiStack-root"
       >
         <div
           className="css-1okj3ks-MuiStack-root"
@@ -149,7 +149,7 @@ exports[`Storyshots Scaffold/TwoColumnLayout Basic 1`] = `
       </div>
     </div>
     <main
-      className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-9 css-d75gfe-MuiGrid-root"
+      className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-9 MuiGrid-grid-xl-10 css-15olo4u-MuiGrid-root"
     >
       Hello, World!
     </main>
