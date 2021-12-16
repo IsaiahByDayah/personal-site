@@ -11,7 +11,7 @@ import TwoColumnLayout from "components/scaffold/TwoColumnLayout"
 export const getStaticPaths: GetStaticPaths = async () => {
   const slugs = await getProjectSlugs()
 
-  console.log("All Blog Slugs: ", slugs)
+  console.log("All Project Slugs: ", slugs)
 
   return {
     paths: slugs.map((slug) => ({

@@ -7,6 +7,9 @@ import { BlogPostDocument } from "lib/prismic/types"
 export default {
   title: "Pages/Home",
   component: Home,
+  parameters: {
+    storyshots: { disabled: true },
+  },
 } as Meta
 
 export const Basic: Story<HomeProps> = (args) => <Home {...args} />

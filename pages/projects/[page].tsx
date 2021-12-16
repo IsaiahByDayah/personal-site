@@ -67,15 +67,14 @@ const BlogPage = ({ page, totalPages, projects, tags }: BlogPageProps) => {
     <TagsContext.Provider value={tags}>
       <TwoColumnLayout sx={{ py: 2 }}>
         <Blogroll
-          posts={projects.map((project) => ({
+          items={projects.map((project) => ({
             href: project.url ?? "/",
-            publishDate: new Date(project.last_publication_date),
             thumbnailProps: {
               src: project.data.image.url,
               alt: project.data.image.alt,
             },
-            title: project.data.title,
-            excerpt: project.data.summary,
+            primary: project.data.title,
+            secondary: project.data.summary,
           }))}
           emptyMessage="No Projects."
         >

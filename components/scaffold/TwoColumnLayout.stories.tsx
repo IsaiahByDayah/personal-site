@@ -7,6 +7,9 @@ import TwoColumnLayout, {
 export default {
   component: TwoColumnLayout,
   title: "Scaffold/TwoColumnLayout",
+  parameters: {
+    storyshots: { disable: true },
+  },
 } as Meta
 
 export const Basic: Story<TwoColumnLayoutProps> = (args) => (

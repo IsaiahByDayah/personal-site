@@ -63,15 +63,15 @@ const BlogPage = ({ page, totalPages, blogPosts, tags }: BlogPageProps) => {
     <TagsContext.Provider value={tags}>
       <TwoColumnLayout sx={{ py: 2 }}>
         <Blogroll
-          posts={blogPosts.map((blogPost) => ({
+          items={blogPosts.map((blogPost) => ({
             href: blogPost.url ?? "/",
-            publishDate: new Date(blogPost.last_publication_date),
+            meta: new Date(blogPost.last_publication_date),
             thumbnailProps: {
               src: blogPost.data.thumbnail.url,
               alt: blogPost.data.thumbnail.alt,
             },
-            title: blogPost.data.title,
-            excerpt: blogPost.data.excerpt,
+            primary: blogPost.data.title,
+            secondary: blogPost.data.excerpt,
           }))}
         >
           {totalPages > 1 && (

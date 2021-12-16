@@ -127,6 +127,18 @@ exports[`Storyshots Components/Blogroll Basic 1`] = `
 </div>
 `;
 
+exports[`Storyshots Components/Blogroll Empty 1`] = `
+<div
+  className="css-pnq1z9-MuiStack-root"
+>
+  <p
+    className="MuiTypography-root MuiTypography-body1 MuiTypography-alignCenter css-1yzr3uv-MuiTypography-root"
+  >
+    No Items.
+  </p>
+</div>
+`;
+
 exports[`Storyshots Components/Blogroll Loading 1`] = `
 <div
   className="css-pnq1z9-MuiStack-root"
