@@ -31,13 +31,51 @@ exports[`Storyshots Components/BlogrollItem Basic 1`] = `
     onFocus={[Function]}
     onMouseEnter={[Function]}
   >
-    Some Title Goes Here
+    Primary Text Here
   </a>
   <p
     className="MuiTypography-root MuiTypography-body1 css-fik8n3-MuiTypography-root"
   >
-    Sint laboris qui ut laboris fugiat proident laborum cupidatat commodo cupidatat mollit incididunt. Duis eu fugiat quis ipsum non enim adipisicing. Ea voluptate labore minim dolore occaecat nulla culpa sint nisi velit enim sunt reprehenderit consectetur. Minim pariatur fugiat esse quis Lorem mollit labore elit tempor duis anim quis elit cupidatat. Adipisicing excepteur qui ad id id laborum officia ullamco eiusmod dolor consequat sunt dolore mollit. Consectetur amet sint sit occaecat velit laboris ea irure ut dolor est. Laboris mollit et ullamco consequat elit irure sit dolore amet qui culpa minim incididunt deserunt.
+    Secondary text here. In dolorem consequatur non. Est non ex magni quibusdam numquam non dolor et quos. Occaecati vel qui.
   </p>
+  <div
+    className="MuiBox-root css-0"
+  >
+    <div
+      className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-1 css-a5rdam-MuiGrid-root"
+    >
+      <div
+        className="MuiGrid-root MuiGrid-item css-13i4rnv-MuiGrid-root"
+      >
+        <div
+          className="MuiChip-root MuiChip-outlined MuiChip-sizeSmall MuiChip-colorPrimary MuiChip-outlinedPrimary css-gho882-MuiChip-root"
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+        >
+          <span
+            className="MuiChip-label MuiChip-labelSmall css-wjsjww-MuiChip-label"
+          >
+            hello
+          </span>
+        </div>
+      </div>
+      <div
+        className="MuiGrid-root MuiGrid-item css-13i4rnv-MuiGrid-root"
+      >
+        <div
+          className="MuiChip-root MuiChip-outlined MuiChip-sizeSmall MuiChip-colorPrimary MuiChip-outlinedPrimary css-gho882-MuiChip-root"
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+        >
+          <span
+            className="MuiChip-label MuiChip-labelSmall css-wjsjww-MuiChip-label"
+          >
+            world
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 `;
 
@@ -72,7 +110,7 @@ exports[`Storyshots Components/BlogrollItem Minimal 1`] = `
     onFocus={[Function]}
     onMouseEnter={[Function]}
   >
-    Some Title Goes Here
+    Primary Text Here
   </a>
 </div>
 `;
