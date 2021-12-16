@@ -2,9 +2,14 @@ import { GetStaticProps } from "next"
 import { SliceZone } from "@prismicio/react"
 import { PrismicDocument, SliceZone as ISliceZone } from "@prismicio/types"
 
-import { Client, sliceZoneComponents } from "lib/prismic/util"
+import { Client, getAllTags, sliceZoneComponents } from "lib/prismic/util"
 
 import Slices from "slices/slice-types"
+
+import { TagDocument } from "lib/prismic/types"
+
+import { TagsContext } from "components/scaffold/TagsProvider"
+import TwoColumnLayout from "components/scaffold/TwoColumnLayout"
 
 type AboutPageDocumentType = PrismicDocument<{ slices: ISliceZone<Slices> }>
 
@@ -22,22 +27,30 @@ export const getStaticProps: GetStaticProps<AboutProps> = async () => {
       notFound: true,
     }
 
+  const tags = await getAllTags()
+
   return {
     props: {
       document,
+      tags,
     },
   }
 }
 
 interface AboutProps {
   document: AboutPageDocumentType
+  tags: TagDocument[]
 }
 
-const About = ({ document }: AboutProps) => {
-  console.log("Document: ", document)
-  return (
-    <SliceZone slices={document.data.slices} components={sliceZoneComponents} />
-  )
-}
+const About = ({ document, tags }: AboutProps) => (
+  <TagsContext.Provider value={tags}>
+    <TwoColumnLayout sx={{ py: 2 }}>
+      <SliceZone
+        slices={document.data.slices}
+        components={sliceZoneComponents}
+      />
+    </TwoColumnLayout>
+  </TagsContext.Provider>
+)
 
 export default About

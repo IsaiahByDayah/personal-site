@@ -18,16 +18,15 @@ const baseThemeOptions: ThemeOptions = {
         },
       },
     },
-    // MuiCssBaseline: {
-    //   styleOverrides: `
-    //     .firebase-emulator-warning {
-    //       display: none;
-    //     }
-    //     html, body, #__next {
-    //       height: 100%;
-    //     }
-    //   `,
-    // },
+    MuiCssBaseline: {
+      styleOverrides: `
+        html, body, #__next {
+          height: 100vh;
+          display: flex;
+          flex-direction: column;
+        }
+      `,
+    },
   },
 }
 

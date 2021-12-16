@@ -7,6 +7,7 @@ import Post, { PostProps } from "components/common/Post"
 export interface BlogrollProps {
   sx?: SystemStyleObject<Theme>
   posts?: Omit<PostProps, "sx">[]
+  emptyMessage?: string
   children?: ReactNode
 }
 
@@ -15,7 +16,9 @@ const Blogroll = ({ sx, posts, children }: BlogrollProps) => (
     {posts?.map((post, index) => (
       <Post key={`${post.title}-${index}`} {...post} />
     ))}
-    {posts?.length === 0 && <Typography align="center">No posts.</Typography>}
+    {posts?.length === 0 && (
+      <Typography align="center">{emptyMessage ?? "No posts."}</Typography>
+    )}
     {children}
   </Stack>
 )

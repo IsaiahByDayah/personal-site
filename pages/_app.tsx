@@ -1,6 +1,6 @@
 import { AppProps } from "next/app"
 import Head from "next/head"
-import { Toolbar } from "@mui/material"
+import { Toolbar, Box } from "@mui/material"
 import { CacheProvider, EmotionCache } from "@emotion/react"
 
 import createEmotionCache from "lib/createEmotionCache"
@@ -10,9 +10,7 @@ import ThemeSelectionProvider from "components/scaffold/ThemeSelectionProvider"
 import ThemeProvider from "components/scaffold/ThemeProvider"
 import CssBaselined from "components/scaffold/CssBaselined"
 import Header from "components/scaffold/Header"
-import Drawer from "components/scaffold/Drawer"
 import Footer from "components/scaffold/Footer"
-import TwoColumnLayout from "components/scaffold/TwoColumnLayout"
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache()
@@ -40,10 +38,8 @@ const MyApp = ({
               </Head>
               <Header />
               <Toolbar />
-              <TwoColumnLayout sx={{ py: 2 }}>
-                <Component {...pageProps} />
-              </TwoColumnLayout>
-              <Drawer />
+              <Component {...pageProps} />
+              <Box flexGrow={1} />
               <Footer />
             </CssBaselined>
           </CacheProvider>

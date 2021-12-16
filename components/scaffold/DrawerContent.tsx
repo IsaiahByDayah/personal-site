@@ -6,13 +6,14 @@ import Navigation from "components/scaffold/Navigation"
 import { InsetStack } from "components/common/Inset"
 import Socials from "components/common/Socials"
 import DarkModeToggleInset from "components/common/DarkModeToggleInset"
+import Tags from "components/common/Tags"
 
 export type DrawerContentProps = {
   sx?: SystemStyleObject<Theme>
 }
 
 export const DrawerContent = ({ sx }: DrawerContentProps) => (
-  <Stack sx={sx} height={1} spacing={2}>
+  <Stack sx={sx} height={1} spacing={5}>
     <InsetStack
       variant="vertical"
       direction="column"
@@ -54,6 +55,8 @@ export const DrawerContent = ({ sx }: DrawerContentProps) => (
     <Navigation sx={{ px: 2 }} />
 
     <DarkModeToggleInset variant="vertical" />
+
+    <Tags sx={{ px: 2 }} />
   </Stack>
 )
 

@@ -27,6 +27,13 @@
         },
         "type": "Text"
       },
+      "summary": {
+        "config": {
+          "label": "summary",
+          "placeholder": ""
+        },
+        "type": "Text"
+      },
       "url": {
         "config": {
           "label": "url",

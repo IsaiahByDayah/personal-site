@@ -3,8 +3,12 @@ import { castArray, head } from "lodash"
 import { Pagination } from "@mui/material"
 import { useRouter } from "next/router"
 
-import { getTotalBlogPages, getBlogPage, getAllTags } from "lib/prismic/util"
-import { BlogPostDocument, TagDocument } from "lib/prismic/types"
+import {
+  getTotalProjectsPages,
+  getProjectsPage,
+  getAllTags,
+} from "lib/prismic/util"
+import { ProjectDocument, TagDocument } from "lib/prismic/types"
 
 import { TagsContext } from "components/scaffold/TagsProvider"
 import TwoColumnLayout from "components/scaffold/TwoColumnLayout"
@@ -12,9 +16,9 @@ import TwoColumnLayout from "components/scaffold/TwoColumnLayout"
 import Blogroll from "components/common/Blogroll"
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const totalBlogPages = await getTotalBlogPages()
+  const totalPages = await getTotalProjectsPages()
 
-  const pages = Array(totalBlogPages)
+  const pages = Array(totalPages)
     .fill(null)
     .map((_, index) => `${index + 1}`)
 
@@ -34,9 +38,9 @@ export const getStaticProps: GetStaticProps<BlogPageProps> = async ({
       notFound: true,
     }
 
-  const blogPosts = await getBlogPage(page)
+  const projects = await getProjectsPage(page)
 
-  const totalPages = await getTotalBlogPages()
+  const totalPages = await getTotalProjectsPages()
 
   const tags = await getAllTags()
 
@@ -44,7 +48,7 @@ export const getStaticProps: GetStaticProps<BlogPageProps> = async ({
     props: {
       page,
       totalPages,
-      blogPosts,
+      projects,
       tags,
     },
   }
@@ -53,26 +57,27 @@ export const getStaticProps: GetStaticProps<BlogPageProps> = async ({
 export interface BlogPageProps {
   page: number
   totalPages: number
-  blogPosts: BlogPostDocument[]
+  projects: ProjectDocument[]
   tags: TagDocument[]
 }
 
-const BlogPage = ({ page, totalPages, blogPosts, tags }: BlogPageProps) => {
+const BlogPage = ({ page, totalPages, projects, tags }: BlogPageProps) => {
   const router = useRouter()
   return (
     <TagsContext.Provider value={tags}>
       <TwoColumnLayout sx={{ py: 2 }}>
         <Blogroll
-          posts={blogPosts.map((blogPost) => ({
-            href: blogPost.url ?? "/",
-            publishDate: new Date(blogPost.last_publication_date),
+          posts={projects.map((project) => ({
+            href: project.url ?? "/",
+            publishDate: new Date(project.last_publication_date),
             thumbnailProps: {
-              src: blogPost.data.thumbnail.url,
-              alt: blogPost.data.thumbnail.alt,
+              src: project.data.image.url,
+              alt: project.data.image.alt,
             },
-            title: blogPost.data.title,
-            excerpt: blogPost.data.excerpt,
+            title: project.data.title,
+            excerpt: project.data.summary,
           }))}
+          emptyMessage="No Projects."
         >
           {totalPages > 1 && (
             <Pagination

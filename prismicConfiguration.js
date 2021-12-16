@@ -33,6 +33,7 @@ export const linkResolver = (doc) => {
       break
   }
 
+  if (doc.url) return doc.url
   return "/"
 }
 
@@ -54,7 +55,7 @@ export const Router = {
     },
     {
       type: "tag",
-      path: "/tag/:uid",
+      path: "/tag/:uid/1",
     },
     {
       type: "project",

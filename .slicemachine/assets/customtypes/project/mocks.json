@@ -1,6 +1,6 @@
 {
-  "id": "f41abc72-4950-4830-85f0-e3712b8b96b4",
-  "uid": "porro-quia-aliquam",
+  "id": "fcd1cd3b-31d7-446d-8934-242d5299792d",
+  "uid": "est-quibusdam-quia",
   "type": "project",
   "data": {
     "image": {
@@ -10,17 +10,18 @@
       },
       "alt": "Placeholder image",
       "copyright": null,
-      "url": "https://images.unsplash.com/photo-1531771686035-25f47595c87a?w=900&h=500&fit=crop"
+      "url": "https://images.unsplash.com/photo-1593642633279-1796119d5482?w=900&h=500&fit=crop"
     },
-    "title": "engage seamless experiences",
+    "title": "orchestrate wireless e-markets",
+    "summary": "maximize ubiquitous technologies",
     "url": {
       "link_type": "Web",
-      "url": "http://google.com"
+      "url": "https://prismic.io"
     },
     "description": [
       {
         "type": "paragraph",
-        "text": "Quis ipsum laboris sunt ipsum nostrud est sint cillum.",
+        "text": "Reprehenderit ipsum deserunt magna quis ut dolore consectetur officia adipisicing sunt proident cupidatat officia Lorem. Incididunt est cillum officia eiusmod ipsum dolore non. Aute consequat fugiat laborum veniam consequat exercitation ex id mollit fugiat consequat in non.",
         "spans": []
       }
     ],
@@ -29,7 +30,7 @@
         "highlight": [
           {
             "type": "paragraph",
-            "text": "Labore et minim proident commodo fugiat nostrud cillum eiusmod non.",
+            "text": "Sunt laborum irure dolor aliqua consequat. Laborum est reprehenderit eiusmod enim.",
             "spans": []
           }
         ]
@@ -38,7 +39,16 @@
         "highlight": [
           {
             "type": "paragraph",
-            "text": "Excepteur id nisi consectetur aliquip proident eiusmod Lorem consectetur veniam nulla aliqua. In nostrud nostrud commodo duis dolore et incididunt dolor eiusmod elit proident ea ullamco.",
+            "text": "Aute culpa deserunt ad nisi.",
+            "spans": []
+          }
+        ]
+      },
+      {
+        "highlight": [
+          {
+            "type": "paragraph",
+            "text": "Adipisicing non cillum culpa.",
             "spans": []
           }
         ]
@@ -48,40 +58,28 @@
       {
         "tag": {
           "link_type": "Web",
-          "url": "http://google.com"
-        }
-      },
-      {
-        "tag": {
-          "link_type": "Web",
-          "url": "http://google.com"
-        }
-      },
-      {
-        "tag": {
-          "link_type": "Web",
-          "url": "https://prismic.io"
-        }
-      },
-      {
-        "tag": {
-          "link_type": "Web",
           "url": "http://twitter.com"
         }
       },
       {
         "tag": {
           "link_type": "Web",
-          "url": "http://google.com"
+          "url": "https://slicemachine.dev"
+        }
+      },
+      {
+        "tag": {
+          "link_type": "Web",
+          "url": "https://slicemachine.dev"
         }
       }
     ],
     "client": [
       {
-        "name": "envisioneer sticky blockchains",
+        "name": "morph customized e-business",
         "url": {
           "link_type": "Web",
-          "url": "https://prismic.io"
+          "url": "http://google.com"
         },
         "photo": {
           "dimensions": {
@@ -90,21 +88,21 @@
           },
           "alt": "Placeholder image",
           "copyright": null,
-          "url": "https://images.unsplash.com/photo-1551739440-5dd934d3a94a?w=900&h=500&fit=crop"
+          "url": "https://images.unsplash.com/photo-1589652717521-10c0d092dea9?w=900&h=500&fit=crop"
         },
         "bio": [
           {
             "type": "paragraph",
-            "text": "Amet occaecat quis magna.",
+            "text": "Sunt enim pariatur deserunt elit. Nulla eiusmod exercitation magna exercitation et incididunt.",
             "spans": []
           }
         ]
       },
       {
-        "name": "utilize cross-platform paradigms",
+        "name": "leverage efficient ROI",
         "url": {
           "link_type": "Web",
-          "url": "https://prismic.io"
+          "url": "http://google.com"
         },
         "photo": {
           "dimensions": {
@@ -113,21 +111,21 @@
           },
           "alt": "Placeholder image",
           "copyright": null,
-          "url": "https://images.unsplash.com/photo-1544731612-de7f96afe55f?w=900&h=500&fit=crop"
+          "url": "https://images.unsplash.com/photo-1600804931749-2da4ce26c869?w=900&h=500&fit=crop"
         },
         "bio": [
           {
             "type": "paragraph",
-            "text": "Aute duis anim adipisicing amet nulla ut consectetur elit. Ut laboris eu commodo est aliquip aliqua eiusmod ad sunt duis fugiat.",
+            "text": "Culpa ut exercitation id voluptate amet est deserunt fugiat aute laborum. Ad aliquip esse tempor tempor ad id et adipisicing nulla est eu eu adipisicing. Culpa do ad cupidatat aute magna exercitation.",
             "spans": []
           }
         ]
       },
       {
-        "name": "integrate extensible technologies",
+        "name": "leverage distributed paradigms",
         "url": {
           "link_type": "Web",
-          "url": "http://twitter.com"
+          "url": "http://google.com"
         },
         "photo": {
           "dimensions": {
@@ -136,12 +134,12 @@
           },
           "alt": "Placeholder image",
           "copyright": null,
-          "url": "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=900&h=500&fit=crop"
+          "url": "https://images.unsplash.com/photo-1587614295999-6c1c13675117?w=900&h=500&fit=crop"
         },
         "bio": [
           {
             "type": "paragraph",
-            "text": "Commodo reprehenderit non laboris laborum nostrud aliquip Lorem do.",
+            "text": "Eu aute sint Lorem aliquip deserunt incididunt cupidatat pariatur qui exercitation sint proident veniam consectetur tempor.",
             "spans": []
           }
         ]

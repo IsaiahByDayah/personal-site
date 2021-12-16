@@ -11,13 +11,18 @@ import {
   Router,
 } from "prismicConfiguration"
 
-import { BlogPostDocument } from "lib/prismic/types"
+import {
+  BlogPostDocument,
+  TagDocument,
+  ProjectDocument,
+} from "lib/prismic/types"
 
 import Slices from "slices/slice-types"
 import RichText from "slices/RichText"
 import Quote from "slices/Quote"
 
-export const PAGE_SIZE = 20
+export const MAX_PAGE_SIZE = 100
+export const BLOG_POST_PAGE_SIZE = 20
 
 export const richTextComponents: JSXMapSerializer = {
   paragraph: ({ children, key }) => (
@@ -92,7 +97,7 @@ export const getBlogPage = async (page: number = 1) => {
       ],
       orderings: `[last_publication_date]`,
       page,
-      pageSize: PAGE_SIZE,
+      pageSize: BLOG_POST_PAGE_SIZE,
     }
   )
 
@@ -107,7 +112,7 @@ export const getTotalBlogPages = async () => {
     ],
     {
       fetch: ["blog-post.uid"],
-      pageSize: PAGE_SIZE,
+      pageSize: BLOG_POST_PAGE_SIZE,
     }
   )
   return response.total_pages
@@ -130,8 +135,130 @@ export const getBlogSlugs = async () => {
       ],
       {
         fetch: "blog-post.uid",
-        // pageSize: 100,
-        pageSize: PAGE_SIZE,
+        pageSize: MAX_PAGE_SIZE,
+        page,
+      }
+    )
+
+    const responseSlugs = response.results.map((blogPost) => blogPost.uid!)
+    slugs.push(...responseSlugs)
+  } while (slugs.length < response.total_results_size)
+
+  return slugs
+}
+
+export const getTagPage = async (tagId: string, page: number = 1) => {
+  const response = await Client().query(
+    [
+      Prismic.Predicates.at("document.type", "blog-post"),
+      Prismic.Predicates.has("my.blog-post.uid"),
+      Prismic.Predicates.at("my.blog-post.tags.tag", tagId),
+    ],
+    {
+      fetch: [
+        "blog-post.uid",
+        "blog-post.title",
+        "blog-post.thumbnail",
+        "blog-post.excerpt",
+      ],
+      orderings: `[last_publication_date]`,
+      page,
+      pageSize: BLOG_POST_PAGE_SIZE,
+    }
+  )
+
+  return response.results as BlogPostDocument[]
+}
+
+export const getTotalTagPages = async (tagId: string) => {
+  const response = await Client().query(
+    [
+      Prismic.Predicates.at("document.type", "blog-post"),
+      Prismic.Predicates.has("my.blog-post.uid"),
+      Prismic.Predicates.at("my.blog-post.tags.tag", tagId),
+    ],
+    {
+      fetch: ["blog-post.uid"],
+      pageSize: BLOG_POST_PAGE_SIZE,
+    }
+  )
+  return response.total_pages
+}
+
+export const getAllTags = async () => {
+  const tags: TagDocument[] = []
+
+  let response:
+    | Awaited<ReturnType<ReturnType<typeof Client>["query"]>>
+    | undefined = undefined
+
+  do {
+    const page: number = response ? response.page + 1 : 1
+    response = await Client().query(
+      [
+        Prismic.Predicates.at("document.type", "tag"),
+        Prismic.Predicates.has("my.tag.uid"),
+      ],
+      {
+        pageSize: MAX_PAGE_SIZE,
+        page,
+      }
+    )
+
+    tags.push(...(response.results as TagDocument[]))
+  } while (tags.length < response.total_results_size)
+
+  return tags
+}
+
+export const getProjectsPage = async (page: number = 1) => {
+  const response = await Client().query(
+    [
+      Prismic.Predicates.at("document.type", "project"),
+      Prismic.Predicates.has("my.project.uid"),
+    ],
+    {
+      orderings: `[last_publication_date]`,
+      page,
+      pageSize: BLOG_POST_PAGE_SIZE,
+    }
+  )
+
+  return response.results as ProjectDocument[]
+}
+
+export const getTotalProjectsPages = async () => {
+  const response = await Client().query(
+    [
+      Prismic.Predicates.at("document.type", "project"),
+      Prismic.Predicates.has("my.project.uid"),
+    ],
+    {
+      fetch: ["project.uid"],
+      pageSize: BLOG_POST_PAGE_SIZE,
+    }
+  )
+  return response.total_pages
+}
+
+export const getProjectSlugs = async () => {
+  const slugs: string[] = []
+
+  let response:
+    | Awaited<ReturnType<ReturnType<typeof Client>["query"]>>
+    | undefined = undefined
+
+  do {
+    const page: number = response ? response.page + 1 : 1
+    // console.log(`getBlogSlugs: Fetching page ${page}`)
+    response = await Client().query(
+      [
+        Prismic.Predicates.at("document.type", "project"),
+        Prismic.Predicates.has("my.project.uid"),
+      ],
+      {
+        fetch: "project.uid",
+        pageSize: MAX_PAGE_SIZE,
         page,
       }
     )

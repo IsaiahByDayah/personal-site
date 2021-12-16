@@ -14,9 +14,9 @@ export const Navigation = ({ sx }: NavigationProps) => (
       <NavigationButton fullWidth>Home</NavigationButton>
     </NextLink>
 
-    {/* <NextLink href="/projects" passHref>
+    <NextLink href="/projects/1" passHref>
       <NavigationButton fullWidth>Projects</NavigationButton>
-    </NextLink> */}
+    </NextLink>
 
     <NextLink href="/about" passHref>
       <NavigationButton fullWidth>About</NavigationButton>
