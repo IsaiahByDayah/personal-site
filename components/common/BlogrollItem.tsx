@@ -4,6 +4,10 @@ import { SystemStyleObject } from "@mui/system"
 import NextLink from "next/link"
 import dayjs from "dayjs"
 
+import { TagDocument } from "lib/prismic/types"
+
+import Tags from "components/common/Tags"
+
 export interface BlogrollItemProps {
   sx?: SystemStyleObject<Theme>
   thumbnailProps: ImgHTMLAttributes<HTMLImageElement>
@@ -11,6 +15,7 @@ export interface BlogrollItemProps {
   primary: string
   secondary?: string
   href: string
+  tags?: (TagDocument | string)[]
 }
 
 const BlogrollItem = ({
@@ -20,6 +25,7 @@ const BlogrollItem = ({
   primary,
   secondary,
   href,
+  tags,
 }: BlogrollItemProps) => {
   return (
     <Stack sx={sx} spacing={1}>
@@ -74,6 +80,7 @@ const BlogrollItem = ({
         </Link>
       </NextLink>
       {secondary && <Typography color="text.secondary">{secondary}</Typography>}
+      <Tags label={false} tags={tags} />
     </Stack>
   )
 }

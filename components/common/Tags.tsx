@@ -4,18 +4,15 @@ import { SystemStyleObject } from "@mui/system"
 
 import { TagDocument } from "lib/prismic/types"
 
-import { TagsContext } from "components/scaffold/TagsProvider"
-
 import Tag from "components/common/Tag"
 
 export type TagsProps = {
   sx?: SystemStyleObject<Theme>
   label?: string | false
+  tags?: (TagDocument | string)[]
 }
 
-export const Tags = ({ sx, label = "Tags" }: TagsProps) => {
-  const tags = useContext(TagsContext)
-
+export const Tags = ({ sx, label = "Tags", tags }: TagsProps) => {
   if (tags === undefined) return null
 
   return (
@@ -26,8 +23,8 @@ export const Tags = ({ sx, label = "Tags" }: TagsProps) => {
         </Typography>
       )}
       <Grid container spacing={1}>
-        {tags.map((tag) => (
-          <Grid key={tag.id} item>
+        {tags.map((tag: string | TagDocument) => (
+          <Grid key={typeof tag === "string" ? tag : tag.id} item>
             <Tag tag={tag} />
           </Grid>
         ))}

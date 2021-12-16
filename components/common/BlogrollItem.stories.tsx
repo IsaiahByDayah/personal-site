@@ -14,7 +14,7 @@ export const Minimal: Story<BlogrollItemProps> = (args) => (
   <BlogrollItem {...args} />
 )
 Minimal.args = {
-  primary: "Some Title Goes Here",
+  primary: "Primary Text Here",
   href: "/",
   meta: new Date("6/13/1993"),
   thumbnailProps: {
@@ -29,6 +29,7 @@ export const Basic: Story<BlogrollItemProps> = (args) => (
 Basic.args = {
   ...Minimal.args,
   meta: "Custom meta information",
+  tags: ["hello", "world"],
   secondary:
-    "Sint laboris qui ut laboris fugiat proident laborum cupidatat commodo cupidatat mollit incididunt. Duis eu fugiat quis ipsum non enim adipisicing. Ea voluptate labore minim dolore occaecat nulla culpa sint nisi velit enim sunt reprehenderit consectetur. Minim pariatur fugiat esse quis Lorem mollit labore elit tempor duis anim quis elit cupidatat. Adipisicing excepteur qui ad id id laborum officia ullamco eiusmod dolor consequat sunt dolore mollit. Consectetur amet sint sit occaecat velit laboris ea irure ut dolor est. Laboris mollit et ullamco consequat elit irure sit dolore amet qui culpa minim incididunt deserunt.",
+    "Secondary text here. In dolorem consequatur non. Est non ex magni quibusdam numquam non dolor et quos. Occaecati vel qui.",
 }

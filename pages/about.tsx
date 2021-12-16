@@ -1,31 +1,15 @@
 import { GetStaticProps } from "next"
 import { SliceZone } from "@prismicio/react"
-import { PrismicDocument, SliceZone as ISliceZone } from "@prismicio/types"
 
-import { Client, getAllTags, sliceZoneComponents } from "lib/prismic/util"
+import { getAboutPage, getAllTags, sliceZoneComponents } from "lib/prismic/util"
 
-import Slices from "slices/slice-types"
-
-import { TagDocument } from "lib/prismic/types"
+import { AboutPageDocument, TagDocument } from "lib/prismic/types"
 
 import { TagsContext } from "components/scaffold/TagsProvider"
 import TwoColumnLayout from "components/scaffold/TwoColumnLayout"
 
-type AboutPageDocumentType = PrismicDocument<{ slices: ISliceZone<Slices> }>
-
 export const getStaticProps: GetStaticProps<AboutProps> = async () => {
-  let document: AboutPageDocumentType | undefined = undefined
-  try {
-    document = (await Client().getSingle(
-      "about-page",
-      {}
-    )) as AboutPageDocumentType
-  } catch (e) {}
-
-  if (!document)
-    return {
-      notFound: true,
-    }
+  const document = await getAboutPage()
 
   const tags = await getAllTags()
 
@@ -38,19 +22,32 @@ export const getStaticProps: GetStaticProps<AboutProps> = async () => {
 }
 
 interface AboutProps {
-  document: AboutPageDocumentType
+  document: AboutPageDocument
   tags: TagDocument[]
 }
 
-const About = ({ document, tags }: AboutProps) => (
-  <TagsContext.Provider value={tags}>
-    <TwoColumnLayout sx={{ py: 2 }}>
-      <SliceZone
-        slices={document.data.slices}
-        components={sliceZoneComponents}
-      />
-    </TwoColumnLayout>
-  </TagsContext.Provider>
-)
+const About = ({ document, tags }: AboutProps) => {
+  console.log("About Document Slices: ", document.data.slices)
+  return (
+    <TagsContext.Provider value={tags}>
+      <TwoColumnLayout sx={{ py: 2 }}>
+        <SliceZone
+          slices={document.data.slices}
+          components={sliceZoneComponents}
+        />
+      </TwoColumnLayout>
+    </TagsContext.Provider>
+  )
+}
+// const About = ({ document, tags }: AboutProps) => (
+//   <TagsContext.Provider value={tags}>
+//     <TwoColumnLayout sx={{ py: 2 }}>
+//       <SliceZone
+//         slices={document.data.slices}
+//         components={sliceZoneComponents}
+//       />
+//     </TwoColumnLayout>
+//   </TagsContext.Provider>
+// )
 
 export default About

@@ -3,7 +3,12 @@ import { castArray, head } from "lodash"
 import { Pagination } from "@mui/material"
 import { useRouter } from "next/router"
 
-import { getTotalBlogPages, getBlogPage, getAllTags } from "lib/prismic/util"
+import {
+  getTotalBlogPages,
+  getBlogPage,
+  getAllTags,
+  blogPostDocumentsToBlogrollItemProps,
+} from "lib/prismic/util"
 import { BlogPostDocument, TagDocument } from "lib/prismic/types"
 
 import { TagsContext } from "components/scaffold/TagsProvider"
@@ -62,18 +67,7 @@ const BlogPage = ({ page, totalPages, blogPosts, tags }: BlogPageProps) => {
   return (
     <TagsContext.Provider value={tags}>
       <TwoColumnLayout sx={{ py: 2 }}>
-        <Blogroll
-          items={blogPosts.map((blogPost) => ({
-            href: blogPost.url ?? "/",
-            meta: new Date(blogPost.last_publication_date),
-            thumbnailProps: {
-              src: blogPost.data.thumbnail.url,
-              alt: blogPost.data.thumbnail.alt,
-            },
-            primary: blogPost.data.title,
-            secondary: blogPost.data.excerpt,
-          }))}
-        >
+        <Blogroll items={blogPostDocumentsToBlogrollItemProps(blogPosts)}>
           {totalPages > 1 && (
             <Pagination
               sx={{
@@ -82,6 +76,8 @@ const BlogPage = ({ page, totalPages, blogPosts, tags }: BlogPageProps) => {
               count={totalPages}
               page={page}
               onChange={(_, page) => router.push(`/blog/${page}`)}
+              hidePrevButton={page === 1}
+              hideNextButton={page === totalPages}
             />
           )}
         </Blogroll>

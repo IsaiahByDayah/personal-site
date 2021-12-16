@@ -15,9 +15,7 @@ export default {
 } as Meta
 
 const Template: Story<{ tags?: TagDocument[] }> = ({ tags }) => (
-  <TagsContext.Provider value={tags}>
-    <Tags />
-  </TagsContext.Provider>
+  <Tags tags={tags} />
 )
 
 export const Basic = Template.bind({})

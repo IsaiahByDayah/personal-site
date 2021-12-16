@@ -13,10 +13,15 @@ export default {
   },
 } as Meta
 
-export const Basic: Story<PropsWithChildren<TagProps>> = (args) => (
-  <Tag {...args} />
-)
-Basic.args = {
+const Template: Story<PropsWithChildren<TagProps>> = (args) => <Tag {...args} />
+
+export const FromString = Template.bind({})
+FromString.args = {
+  tag: "voluptatum",
+}
+
+export const FromDocument = Template.bind({})
+FromDocument.args = {
   tag: {
     data: {
       name: "Assumenda",

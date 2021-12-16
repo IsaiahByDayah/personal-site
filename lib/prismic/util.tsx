@@ -4,6 +4,7 @@ import { Typography, Box, Link, Stack } from "@mui/material"
 import Prismic from "@prismicio/client"
 import { JSXMapSerializer, SliceZoneComponents } from "@prismicio/react"
 import NextLink from "next/link"
+import dayjs from "dayjs"
 import {
   apiEndpoint,
   accessToken,
@@ -12,24 +13,33 @@ import {
 } from "prismicConfiguration"
 
 import {
+  AboutPageDocument,
   BlogPostDocument,
   TagDocument,
   ProjectDocument,
 } from "lib/prismic/types"
 
 import Slices from "slices/slice-types"
-import RichText from "slices/RichText"
+import RichText, { RichTextSlice } from "slices/RichText"
 import Quote from "slices/Quote"
+
+import { BlogrollItemProps } from "components/common/BlogrollItem"
 
 export const MAX_PAGE_SIZE = 100
 export const BLOG_POST_PAGE_SIZE = 20
+export const PROJECT_PAGE_SIZE = 20
+
+///////////////////////////
+///////////////////////////
+// Setup Helpers & Modules
+///////////////////////////
+///////////////////////////
 
 export const richTextComponents: JSXMapSerializer = {
   paragraph: ({ children, key }) => (
     <Typography key={key}>{children}</Typography>
   ),
   hyperlink: ({ children, node, key }) => {
-    // console.log("hyperlink props: ", node, rest)
     return (
       // TODO: check the final href and if internal, use next/link, else use a tag (see PrismicLink compoennt)
       <NextLink key={key} href={linkResolver(node.data)} passHref>
@@ -59,6 +69,12 @@ export const sliceZoneComponents: SliceZoneComponents<Slices> = {
   quote: Quote,
 }
 
+///////////////////////////
+///////////////////////////
+// API Helpers and FUnctions
+///////////////////////////
+///////////////////////////
+
 // -- @prismicio/client initialisation
 // Initialises the Prismic Client that's used for querying the API and passes it any query options.
 export const Client = (req = null) =>
@@ -82,6 +98,11 @@ const createClientOptions = (
   }
 }
 
+export const getAboutPage = async () => {
+  const document = await Client().getSingle("about-page", {})
+  return document as AboutPageDocument
+}
+
 export const getBlogPage = async (page: number = 1) => {
   const response = await Client().query(
     [
@@ -94,7 +115,9 @@ export const getBlogPage = async (page: number = 1) => {
         "blog-post.title",
         "blog-post.thumbnail",
         "blog-post.excerpt",
+        "blog-post.tags",
       ],
+      fetchLinks: ["tag.name"],
       orderings: `[last_publication_date]`,
       page,
       pageSize: BLOG_POST_PAGE_SIZE,
@@ -127,7 +150,6 @@ export const getBlogSlugs = async () => {
 
   do {
     const page: number = response ? response.page + 1 : 1
-    // console.log(`getBlogSlugs: Fetching page ${page}`)
     response = await Client().query(
       [
         Prismic.Predicates.at("document.type", "blog-post"),
@@ -147,6 +169,36 @@ export const getBlogSlugs = async () => {
   return slugs
 }
 
+export const getBlogBySlug = async (slug: string) => {
+  const document = await Client().getByUID("blog-post", slug, {})
+  return document as BlogPostDocument
+}
+
+export const getSurroundingBlogPosts = async (blogId: string) => {
+  const previous = (
+    await Client().query(Prismic.Predicates.at("document.type", "blog-post"), {
+      fetchLinks: ["tag.name"],
+      pageSize: 1,
+      after: blogId,
+      orderings: "[document.last_publication_date desc]",
+    })
+  ).results[0] as BlogPostDocument | undefined
+
+  const next = (
+    await Client().query(Prismic.Predicates.at("document.type", "blog-post"), {
+      fetchLinks: ["tag.name"],
+      pageSize: 1,
+      after: blogId,
+      orderings: "[document.last_publication_date]",
+    })
+  ).results[0] as BlogPostDocument | undefined
+
+  return {
+    previous: previous ?? null,
+    next: next ?? null,
+  }
+}
+
 export const getTagPage = async (tagId: string, page: number = 1) => {
   const response = await Client().query(
     [
@@ -161,6 +213,7 @@ export const getTagPage = async (tagId: string, page: number = 1) => {
         "blog-post.thumbnail",
         "blog-post.excerpt",
       ],
+      fetchLinks: ["tag.name"],
       orderings: `[last_publication_date]`,
       page,
       pageSize: BLOG_POST_PAGE_SIZE,
@@ -211,6 +264,11 @@ export const getAllTags = async () => {
   return tags
 }
 
+export const getTagByUID = async (uid: string) => {
+  const tag = await Client().getByUID("tag", uid, {})
+  return tag as TagDocument
+}
+
 export const getProjectsPage = async (page: number = 1) => {
   const response = await Client().query(
     [
@@ -218,9 +276,17 @@ export const getProjectsPage = async (page: number = 1) => {
       Prismic.Predicates.has("my.project.uid"),
     ],
     {
+      fetch: [
+        "project.uid",
+        "project.title",
+        "project.image",
+        "project.summary",
+        "project.tags",
+      ],
+      fetchLinks: ["tag.name"],
       orderings: `[last_publication_date]`,
       page,
-      pageSize: BLOG_POST_PAGE_SIZE,
+      pageSize: PROJECT_PAGE_SIZE,
     }
   )
 
@@ -235,7 +301,7 @@ export const getTotalProjectsPages = async () => {
     ],
     {
       fetch: ["project.uid"],
-      pageSize: BLOG_POST_PAGE_SIZE,
+      pageSize: PROJECT_PAGE_SIZE,
     }
   )
   return response.total_pages
@@ -250,7 +316,6 @@ export const getProjectSlugs = async () => {
 
   do {
     const page: number = response ? response.page + 1 : 1
-    // console.log(`getBlogSlugs: Fetching page ${page}`)
     response = await Client().query(
       [
         Prismic.Predicates.at("document.type", "project"),
@@ -269,3 +334,132 @@ export const getProjectSlugs = async () => {
 
   return slugs
 }
+
+///////////////////////////
+///////////////////////////
+// Utility Functions
+///////////////////////////
+///////////////////////////
+
+export const blogPostDocumentsToBlogrollItemProps = (
+  blogPostDocuments: BlogPostDocument[]
+): BlogrollItemProps[] =>
+  blogPostDocuments.map((blogPost) => {
+    let meta: string | Date = new Date(blogPost.last_publication_date)
+    if (blogPost.first_publication_date !== blogPost.last_publication_date)
+      meta = `Last Updated: ${dayjs(blogPost.last_publication_date).format(
+        "MMMM D, YYYY"
+      )}`
+    return {
+      href: blogPost.url ?? "/",
+      meta,
+      thumbnailProps: {
+        src: blogPost.data.thumbnail.url,
+        alt: blogPost.data.thumbnail.alt,
+      },
+      primary: blogPost.data.title,
+      secondary: blogPost.data.excerpt,
+    }
+  })
+
+export const generateRichTextSliceData = (): RichTextSlice =>
+  ({
+    slice_type: "rich_text",
+    slice_label: null,
+    version: "ameteumblanditiis",
+    variation: "default-slice",
+    primary: {
+      content: [
+        {
+          type: "paragraph",
+          text: "Itaque rerum aut qui vel possimus omnis ut. Consequatur laborum tenetur. Saepe quae impedit iste asperiores aliquid tempore et. Voluptas facere laudantium eveniet et voluptatem doloremque animi placeat. Et dolores fugit. Aperiam incidunt quas eos recusandae velit in quidem sint.",
+          spans: [],
+        },
+        {
+          type: "paragraph",
+          text: "Deserunt labore molestiae et harum saepe illo fuga. Natus est magni nesciunt id. Sit neque cum magni porro aspernatur omnis adipisci molestiae qui.",
+          spans: [
+            {
+              start: 10,
+              end: 22,
+              type: "strong",
+            },
+          ],
+        },
+        {
+          type: "paragraph",
+          text: "Recusandae doloremque sed eius eos velit. Mollitia in nihil animi illum aliquam dolores laboriosam. Omnis maiores eius. In et aperiam cum omnis cum accusantium commodi perspiciatis. Repudiandae aut molestiae sunt culpa autem accusamus.",
+          spans: [
+            {
+              start: 55,
+              end: 67,
+              type: "strong",
+            },
+            {
+              start: 55,
+              end: 67,
+              type: "hyperlink",
+              data: {
+                link_type: "Web",
+                url: "https://www.google.com/",
+                target: "_blank",
+              },
+            },
+          ],
+        },
+        {
+          type: "list-item",
+          text: "Et sit harum quo voluptate enim quia et pariatur",
+          spans: [],
+        },
+        {
+          type: "list-item",
+          text: "Fuga voluptas voluptatem in atque iste",
+          spans: [],
+        },
+        {
+          type: "list-item",
+          text: "Non accusantium eligendi",
+          spans: [],
+        },
+      ],
+    },
+    items: [{}],
+  } as RichTextSlice)
+
+export const generateBlogPostDocument = (
+  overrides?: Partial<BlogPostDocument>
+) =>
+  ({
+    uid: "vel-aut-sit",
+    first_publication_date: new Date("6/13/1993").toISOString(),
+    last_publication_date: new Date("6/13/1993").toISOString(),
+    url: "/blog/post/vel-aut-sit",
+    ...overrides,
+    data: {
+      slices: [generateRichTextSliceData()],
+      title: "Libero est voluptatem eligendi voluptatibus a et.",
+      thumbnail: {
+        alt: "random alt text",
+        url: "https://picsum.photos/1920/1080",
+        copyright: null,
+        dimensions: {
+          height: 1080,
+          width: 1920,
+        },
+      },
+      excerpt:
+        "Et perferendis facere dignissimos ullam. Aut molestiae cum minima sequi soluta occaecati voluptas nesciunt.",
+      tags: [
+        {
+          tag: {
+            id: "id-corporis",
+            uid: "corporis",
+            data: { name: "corporis" },
+            url: "/tag/corporis/1",
+          },
+        },
+      ] as any,
+      ...overrides?.data,
+    },
+  } as BlogPostDocument)

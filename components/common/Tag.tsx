@@ -6,19 +6,25 @@ import { linkResolver } from "prismicConfiguration"
 import { TagDocument } from "lib/prismic/types"
 
 export interface TagProps {
-  tag: TagDocument
+  tag: TagDocument | string
 }
 
-const Tag = ({ tag, ...rest }: TagProps) => (
-  <NextLink href={linkResolver(tag)} passHref>
-    <Chip
-      color="primary"
-      size="small"
-      component="a"
-      clickable
-      label={tag.data.name}
-    />
-  </NextLink>
-)
+const Tag = ({ tag }: TagProps) => {
+  if (typeof tag === "string") {
+    return <Chip color="primary" size="small" variant="outlined" label={tag} />
+  }
+
+  return (
+    <NextLink href={linkResolver(tag)} passHref>
+      <Chip
+        color="primary"
+        size="small"
+        component="a"
+        clickable
+        label={tag.data.name}
+      />
+    </NextLink>
+  )
+}
 
 export default Tag
