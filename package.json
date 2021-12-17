@@ -59,7 +59,13 @@
     "type-check": "tsc --noEmit",
     "storybook": "start-storybook -p 6006 -s public",
     "sm": "start-slicemachine",
-    "deploy": "firebase deploy"
+    "deploy": "firebase deploy",
+    "emulate": "firebase emulators:start",
+    "deploy:functions": "firebase deploy --only functions",
+    "config:get": "firebase functions:config:get",
+    "config:set": "firebase functions:config:set",
+    "config:unset": "firebase functions:config:unset",
+    "config:fetch": "firebase functions:config:get > .runtimeconfig.json"
   },
   "eslintConfig": {
     "extends": [
