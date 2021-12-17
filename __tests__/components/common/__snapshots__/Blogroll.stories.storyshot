@@ -1,0 +1,146 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Components/Blogroll Basic 1`] = `
+<div
+  className="css-pnq1z9-MuiStack-root"
+>
+  <div
+    className="css-1okj3ks-MuiStack-root"
+  >
+    <a
+      className="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-1v8iln7-MuiTypography-root-MuiLink-root"
+      href="/"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseEnter={[Function]}
+    >
+      <img
+        alt="some random photo"
+        className="MuiBox-root css-1yvukyl"
+        src="https://picsum.photos/1920/1080"
+      />
+    </a>
+    <span
+      className="MuiTypography-root MuiTypography-caption css-1g32ni6-MuiTypography-root"
+    >
+      June 13, 1993
+    </span>
+    <a
+      className="MuiTypography-root MuiTypography-h6 MuiLink-root MuiLink-underlineAlways css-s7pgp9-MuiTypography-root-MuiLink-root"
+      href="/"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseEnter={[Function]}
+    >
+      Quis nulla magna ad dolor.
+    </a>
+    <p
+      className="MuiTypography-root MuiTypography-body1 css-fik8n3-MuiTypography-root"
+    >
+      Et nisi laboris nisi culpa consequat. Veniam sint fugiat est duis sint ullamco officia et incididunt exercitation commodo. Sint et quis ad consectetur dolor excepteur consectetur. Excepteur laboris ad cillum minim tempor. Exercitation excepteur aute minim laborum ipsum laboris amet adipisicing ad non fugiat. Sint magna mollit mollit labore sit. Reprehenderit esse aliqua aliqua ipsum aute in elit eiusmod consequat cupidatat ullamco.
+    </p>
+  </div>
+  <hr
+    className="MuiDivider-root MuiDivider-fullWidth css-9mgopn-MuiDivider-root"
+  />
+  <div
+    className="css-1okj3ks-MuiStack-root"
+  >
+    <a
+      className="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-1v8iln7-MuiTypography-root-MuiLink-root"
+      href="/"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseEnter={[Function]}
+    >
+      <img
+        alt="some random photo"
+        className="MuiBox-root css-1yvukyl"
+        src="https://picsum.photos/1920/1080"
+      />
+    </a>
+    <span
+      className="MuiTypography-root MuiTypography-caption css-1g32ni6-MuiTypography-root"
+    >
+      June 14, 1993
+    </span>
+    <a
+      className="MuiTypography-root MuiTypography-h6 MuiLink-root MuiLink-underlineAlways css-s7pgp9-MuiTypography-root-MuiLink-root"
+      href="/"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseEnter={[Function]}
+    >
+      Est pariatur sit reprehenderit excepteur veniam eu quis enim irure ea dolor eiusmod.
+    </a>
+    <p
+      className="MuiTypography-root MuiTypography-body1 css-fik8n3-MuiTypography-root"
+    >
+      Esse quis esse quis velit amet magna exercitation excepteur veniam eiusmod labore eiusmod nostrud labore. Dolor exercitation amet qui sint. Excepteur enim esse ex eiusmod incididunt adipisicing commodo ex. Ex do eu do consectetur sit nostrud magna laborum sit. Anim cillum id nulla nostrud pariatur est velit cupidatat. Ad cillum laborum laboris ea reprehenderit sint.
+    </p>
+  </div>
+  <hr
+    className="MuiDivider-root MuiDivider-fullWidth css-9mgopn-MuiDivider-root"
+  />
+  <div
+    className="css-1okj3ks-MuiStack-root"
+  >
+    <a
+      className="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-1v8iln7-MuiTypography-root-MuiLink-root"
+      href="/"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseEnter={[Function]}
+    >
+      <img
+        alt="some random photo"
+        className="MuiBox-root css-1yvukyl"
+        src="https://picsum.photos/1920/1080"
+      />
+    </a>
+    <span
+      className="MuiTypography-root MuiTypography-caption css-1g32ni6-MuiTypography-root"
+    >
+      June 15, 1993
+    </span>
+    <a
+      className="MuiTypography-root MuiTypography-h6 MuiLink-root MuiLink-underlineAlways css-s7pgp9-MuiTypography-root-MuiLink-root"
+      href="/"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseEnter={[Function]}
+    >
+      Culpa officia ipsum eu laboris dolor incididunt elit eiusmod tempor aliquip.
+    </a>
+    <p
+      className="MuiTypography-root MuiTypography-body1 css-fik8n3-MuiTypography-root"
+    >
+      Veniam occaecat commodo adipisicing cillum officia fugiat. Eiusmod eiusmod minim id dolor ex cupidatat magna consectetur magna enim. Minim amet exercitation elit proident duis pariatur sint. Cillum occaecat veniam non exercitation non consequat. Reprehenderit ex exercitation reprehenderit fugiat.
+    </p>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Components/Blogroll Empty 1`] = `
+<div
+  className="css-pnq1z9-MuiStack-root"
+>
+  <p
+    className="MuiTypography-root MuiTypography-body1 MuiTypography-alignCenter css-1yzr3uv-MuiTypography-root"
+  >
+    No Items.
+  </p>
+</div>
+`;
+
+exports[`Storyshots Components/Blogroll Loading 1`] = `
+<div
+  className="css-pnq1z9-MuiStack-root"
+/>
+`;

@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Components/OnMobile Basic 1`] = `
+<div
+  className="MuiBox-root css-hbsnkx"
+>
+  Only visible when 
+  
+  on mobile!
+</div>
+`;

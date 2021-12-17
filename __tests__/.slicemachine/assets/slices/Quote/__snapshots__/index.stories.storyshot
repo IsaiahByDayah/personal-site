@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots slices/Quote Default slice 1`] = `
+<h3
+  className="MuiTypography-root MuiTypography-h3 MuiTypography-alignCenter css-1u1pk8f-MuiTypography-root"
+>
+  "
+  morph B2C experiences
+  "
+</h3>
+`;

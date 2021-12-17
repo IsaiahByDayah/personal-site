@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots slices/RichText Default slice 1`] = `
+<p
+  className="MuiTypography-root MuiTypography-body1 css-17l2ekb-MuiTypography-root"
+>
+  Consequat ex ullamco ea non sunt incididunt quis. Anim elit cupidatat labore ut nostrud ea laboris. Lorem mollit fugiat voluptate do ipsum laboris ut dolor deserunt velit.
+</p>
+`;

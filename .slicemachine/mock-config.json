@@ -1,0 +1,17 @@
+{
+  "_cts": {
+    "about": {},
+    "about_page": {},
+    "blog-post": {
+      "tags": {},
+      "projects": {}
+    },
+    "about-page": {},
+    "homepage": {},
+    "project": {
+      "tags": {}
+    },
+    "tag": {}
+  },
+  "slices": {}
+}

@@ -1,0 +1,116 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Components/BlogrollItem Basic 1`] = `
+<div
+  className="css-1okj3ks-MuiStack-root"
+>
+  <a
+    className="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-1v8iln7-MuiTypography-root-MuiLink-root"
+    href="/"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onMouseEnter={[Function]}
+  >
+    <img
+      alt="some alt text"
+      className="MuiBox-root css-1yvukyl"
+      src="https://picsum.photos/1920/1080"
+    />
+  </a>
+  <span
+    className="MuiTypography-root MuiTypography-caption css-1g32ni6-MuiTypography-root"
+  >
+    Custom meta information
+  </span>
+  <a
+    className="MuiTypography-root MuiTypography-h6 MuiLink-root MuiLink-underlineAlways css-s7pgp9-MuiTypography-root-MuiLink-root"
+    href="/"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onMouseEnter={[Function]}
+  >
+    Primary Text Here
+  </a>
+  <p
+    className="MuiTypography-root MuiTypography-body1 css-fik8n3-MuiTypography-root"
+  >
+    Secondary text here. In dolorem consequatur non. Est non ex magni quibusdam numquam non dolor et quos. Occaecati vel qui.
+  </p>
+  <div
+    className="MuiBox-root css-0"
+  >
+    <div
+      className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-1 css-a5rdam-MuiGrid-root"
+    >
+      <div
+        className="MuiGrid-root MuiGrid-item css-13i4rnv-MuiGrid-root"
+      >
+        <div
+          className="MuiChip-root MuiChip-outlined MuiChip-sizeSmall MuiChip-colorPrimary MuiChip-outlinedPrimary css-gho882-MuiChip-root"
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+        >
+          <span
+            className="MuiChip-label MuiChip-labelSmall css-wjsjww-MuiChip-label"
+          >
+            hello
+          </span>
+        </div>
+      </div>
+      <div
+        className="MuiGrid-root MuiGrid-item css-13i4rnv-MuiGrid-root"
+      >
+        <div
+          className="MuiChip-root MuiChip-outlined MuiChip-sizeSmall MuiChip-colorPrimary MuiChip-outlinedPrimary css-gho882-MuiChip-root"
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+        >
+          <span
+            className="MuiChip-label MuiChip-labelSmall css-wjsjww-MuiChip-label"
+          >
+            world
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Components/BlogrollItem Minimal 1`] = `
+<div
+  className="css-1okj3ks-MuiStack-root"
+>
+  <a
+    className="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-1v8iln7-MuiTypography-root-MuiLink-root"
+    href="/"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onMouseEnter={[Function]}
+  >
+    <img
+      alt="some alt text"
+      className="MuiBox-root css-1yvukyl"
+      src="https://picsum.photos/1920/1080"
+    />
+  </a>
+  <span
+    className="MuiTypography-root MuiTypography-caption css-1g32ni6-MuiTypography-root"
+  >
+    June 13, 1993
+  </span>
+  <a
+    className="MuiTypography-root MuiTypography-h6 MuiLink-root MuiLink-underlineAlways css-s7pgp9-MuiTypography-root-MuiLink-root"
+    href="/"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onMouseEnter={[Function]}
+  >
+    Primary Text Here
+  </a>
+</div>
+`;
