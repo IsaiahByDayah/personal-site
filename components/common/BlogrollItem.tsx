@@ -49,6 +49,7 @@ const BlogrollItem = ({
             width={1}
             borderRadius={1}
             boxShadow={4}
+            sx={{ aspectRatio: "16 / 9", objectFit: "cover" }}
             component="img"
             {...thumbnailProps}
           />
