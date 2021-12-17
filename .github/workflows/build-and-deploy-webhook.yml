@@ -1,8 +1,11 @@
 # REF: https://kontent.ai/blog/how-to-trigger-github-action-using-webhook-with-no-code
+# REF: https://dev.to/teamhive/triggering-github-actions-using-repository-dispatches-39d1
 
 name: Deploy to Firebase Hosting on Webhook
 
-on: respository_dispatch
+on:
+  repository_dispatch:
+    types: [build-and-deploy]
 
 jobs:
   build_and_deploy:
