@@ -14,7 +14,7 @@ export interface BlogrollProps {
 const Blogroll = ({ sx, items, emptyMessage, children }: BlogrollProps) => (
   <Stack sx={sx} divider={<Divider />} spacing={5}>
     {items?.map((item, index) => (
-      <BlogrollItem key={`${item.title}-${index}`} {...item} />
+      <BlogrollItem key={`${item.primary}-${index}`} {...item} />
     ))}
     {items?.length === 0 && (
       <Typography align="center">{emptyMessage ?? "No Items."}</Typography>
