@@ -2,10 +2,7 @@
 
 name: Deploy to Firebase Hosting on Webhook
 
-on:
-  respository_dispatch:
-    types:
-      - build-and-deploy
+on: respository_dispatch
 
 jobs:
   build_and_deploy:
