@@ -14,7 +14,7 @@ exports[`Storyshots Components/BlogrollItem Basic 1`] = `
   >
     <img
       alt="some alt text"
-      className="MuiBox-root css-1yvukyl"
+      className="MuiBox-root css-19ii73e"
       src="https://picsum.photos/1920/1080"
     />
   </a>
@@ -93,7 +93,7 @@ exports[`Storyshots Components/BlogrollItem Minimal 1`] = `
   >
     <img
       alt="some alt text"
-      className="MuiBox-root css-1yvukyl"
+      className="MuiBox-root css-19ii73e"
       src="https://picsum.photos/1920/1080"
     />
   </a>
