@@ -1,6 +1,7 @@
 // REF: https://prismic.io/docs/technologies/nextjs#3.2.-prismic-helpers
 
-import { Typography, Box, Link, Stack } from "@mui/material"
+import { Theme, Typography, Box, Link, Stack } from "@mui/material"
+import { SystemStyleObject } from "@mui/system"
 import Prismic from "@prismicio/client"
 import { JSXMapSerializer, SliceZoneComponents } from "@prismicio/react"
 import NextLink from "next/link"
@@ -35,30 +36,35 @@ export const PROJECT_PAGE_SIZE = 20
 ///////////////////////////
 ///////////////////////////
 
-export const richTextComponents: JSXMapSerializer = {
-  paragraph: ({ children, key }) => (
-    <Typography key={key}>{children}</Typography>
+export const richTextComponents = (
+  getSx?: (type: keyof JSXMapSerializer) => SystemStyleObject<Theme>
+): JSXMapSerializer => ({
+  paragraph: ({ children, key, type }) => (
+    <Typography key={key} sx={getSx?.(type)}>
+      {children}
+    </Typography>
   ),
-  hyperlink: ({ children, node, key }) => {
+  hyperlink: ({ children, node, key, type }) => {
     return (
       // TODO: check the final href and if internal, use next/link, else use a tag (see PrismicLink compoennt)
       <NextLink key={key} href={linkResolver(node.data)} passHref>
-        <Link rel="none" target={(node.data as any).target}>
+        <Link sx={getSx?.(type)} rel="none" target={(node.data as any).target}>
           {children}
         </Link>
       </NextLink>
     )
   },
-  image: ({ node, key }) => (
+  image: ({ node, key, type }) => (
     <Box
       key={key}
+      sx={getSx?.(type)}
       maxWidth={1}
       component="img"
       src={node.url}
       alt={node.alt ?? undefined}
     />
   ),
-}
+})
 
 export const sliceZoneComponents: SliceZoneComponents<Slices> = {
   rich_text: (props) => (
@@ -170,14 +176,15 @@ export const getBlogSlugs = async () => {
 }
 
 export const getBlogBySlug = async (slug: string) => {
-  const document = await Client().getByUID("blog-post", slug, {})
+  const document = await Client().getByUID("blog-post", slug, {
+    fetchLinks: ["tag.name"],
+  })
   return document as BlogPostDocument
 }
 
 export const getSurroundingBlogPosts = async (blogId: string) => {
   const previous = (
     await Client().query(Prismic.Predicates.at("document.type", "blog-post"), {
-      fetchLinks: ["tag.name"],
       pageSize: 1,
       after: blogId,
       orderings: "[document.last_publication_date desc]",
@@ -186,7 +193,6 @@ export const getSurroundingBlogPosts = async (blogId: string) => {
 
   const next = (
     await Client().query(Prismic.Predicates.at("document.type", "blog-post"), {
-      fetchLinks: ["tag.name"],
       pageSize: 1,
       after: blogId,
       orderings: "[document.last_publication_date]",
@@ -212,6 +218,7 @@ export const getTagPage = async (tagId: string, page: number = 1) => {
         "blog-post.title",
         "blog-post.thumbnail",
         "blog-post.excerpt",
+        "blog-post.tags",
       ],
       fetchLinks: ["tag.name"],
       orderings: `[last_publication_date]`,
@@ -359,6 +366,7 @@ export const blogPostDocumentsToBlogrollItemProps = (
       },
       primary: blogPost.data.title,
       secondary: blogPost.data.excerpt,
+      tags: blogPost.data.tags.map((t) => t.tag as unknown as TagDocument),
     }
   })
 
