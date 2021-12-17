@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Storyshots Common/InsetBox Basic 1`] = `
-<div
-  className="commoninsetbox-basic-muibox-root-1 commoninsetbox-basic-muibox-root-2 commoninsetbox-basic-makestyles-root-1 commoninsetbox-basic-makestyles-root-2"
-/>
-`;

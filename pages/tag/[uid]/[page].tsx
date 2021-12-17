@@ -1,7 +1,8 @@
 import { GetStaticProps, GetStaticPaths, GetStaticPathsResult } from "next"
 import { castArray, head } from "lodash"
-import { Pagination } from "@mui/material"
+import { Pagination, Stack, Typography } from "@mui/material"
 import { useRouter } from "next/router"
+import { RichTextField } from "@prismicio/types"
 
 import {
   getTagByUID,
@@ -16,6 +17,7 @@ import { TagsContext } from "components/scaffold/TagsProvider"
 import TwoColumnLayout from "components/scaffold/TwoColumnLayout"
 
 import Blogroll from "components/common/Blogroll"
+import MuiRichText from "components/common/MuiRichText"
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths: GetStaticPathsResult["paths"] = []
@@ -58,7 +60,7 @@ export const getStaticProps: GetStaticProps<TagPageProps> = async ({
 
   const tag = await getTagByUID(uid)
 
-  const blogPosts = await getTagPage(tag.id)
+  const blogPosts = await getTagPage(tag.id, page)
 
   const totalPages = await getTotalTagPages(tag.id)
 
@@ -88,20 +90,32 @@ const TagPage = ({ tag, page, totalPages, blogPosts, tags }: TagPageProps) => {
   return (
     <TagsContext.Provider value={tags}>
       <TwoColumnLayout sx={{ py: 2 }}>
-        <Blogroll items={blogPostDocumentsToBlogrollItemProps(blogPosts)}>
-          {totalPages > 1 && (
-            <Pagination
-              sx={{
-                alignSelf: "center",
-              }}
-              count={totalPages}
-              page={page}
-              onChange={(_, page) => router.push(`/blog/${page}`)}
-              hidePrevButton={page === 1}
-              hideNextButton={page === totalPages}
+        <Stack direction="column" spacing={5}>
+          <Stack direction="column" spacing={1}>
+            <Typography variant="h4" fontWeight={900} align="center">
+              {tag.data.name}
+            </Typography>
+            <MuiRichText
+              field={tag.data.description as RichTextField}
+              getSx={() => ({ textAlign: "center" })}
             />
-          )}
-        </Blogroll>
+          </Stack>
+
+          <Blogroll items={blogPostDocumentsToBlogrollItemProps(blogPosts)}>
+            {totalPages > 1 && (
+              <Pagination
+                sx={{
+                  alignSelf: "center",
+                }}
+                count={totalPages}
+                page={page}
+                onChange={(_, page) => router.push(`/blog/${page}`)}
+                hidePrevButton={page === 1}
+                hideNextButton={page === totalPages}
+              />
+            )}
+          </Blogroll>
+        </Stack>
       </TwoColumnLayout>
     </TagsContext.Provider>
   )

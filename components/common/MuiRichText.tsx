@@ -1,9 +1,19 @@
-import { PrismicRichText, PrismicRichTextProps } from "@prismicio/react"
+import { Theme } from "@mui/material"
+import { SystemStyleObject } from "@mui/system"
+import {
+  PrismicRichText,
+  PrismicRichTextProps,
+  JSXMapSerializer,
+} from "@prismicio/react"
 
 import { richTextComponents } from "lib/prismic/util"
 
-const MuiRichText = (props: PrismicRichTextProps) => (
-  <PrismicRichText components={richTextComponents} {...props} />
+export interface MuiRichTextProps extends PrismicRichTextProps {
+  getSx?: (type: keyof JSXMapSerializer) => SystemStyleObject<Theme>
+}
+
+const MuiRichText = ({ getSx, ...props }: MuiRichTextProps) => (
+  <PrismicRichText components={richTextComponents(getSx)} {...props} />
 )
 
 export default MuiRichText

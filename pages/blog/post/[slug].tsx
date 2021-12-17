@@ -10,10 +10,11 @@ import {
   getBlogBySlug,
   getSurroundingBlogPosts,
 } from "lib/prismic/util"
-import { BlogPostDocument } from "lib/prismic/types"
+import { BlogPostDocument, TagDocument } from "lib/prismic/types"
 
 import TwoColumnLayout from "components/scaffold/TwoColumnLayout"
 
+import Tags from "components/common/Tags"
 import OtherPosts from "components/common/OtherPosts"
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -78,37 +79,44 @@ const BlogPost = ({ document, previous, next }: BlogPostProps) => {
 
   return (
     <TwoColumnLayout sx={{ py: 2 }}>
-      <Stack direction="column" spacing={2}>
-        <Box
-          maxWidth={({ breakpoints }) =>
-            `min(100% ,${breakpoints.values.md}px)`
-          }
-          alignSelf="center"
-          borderRadius={1}
-          boxShadow={4}
-          component="img"
-          src={document.data.thumbnail.url}
-          alt={document.data.thumbnail.alt}
-        />
+      <Stack direction="column" spacing={4}>
+        <Stack direction="column" spacing={2}>
+          <Box
+            maxWidth={({ breakpoints }) =>
+              `min(100% ,${breakpoints.values.md}px)`
+            }
+            alignSelf="center"
+            borderRadius={1}
+            boxShadow={4}
+            component="img"
+            src={document.data.thumbnail.url}
+            alt={document.data.thumbnail.alt}
+          />
 
-        <Box display="flex" flexWrap="wrap">
-          {publishDates.map((value) => (
-            <Typography
-              mr={2}
-              key={value}
-              variant="caption"
-              color="primary.main"
-            >
-              {value}
-            </Typography>
-          ))}
-        </Box>
+          <Box display="flex" flexWrap="wrap">
+            {publishDates.map((value) => (
+              <Typography
+                mr={2}
+                key={value}
+                variant="caption"
+                color="primary.main"
+              >
+                {value}
+              </Typography>
+            ))}
+          </Box>
 
-        <Typography variant="h4" fontWeight={900}>
-          {document.data.title}
-        </Typography>
+          <Typography variant="h4" fontWeight={900}>
+            {document.data.title}
+          </Typography>
 
-        <Box display="flex" flexWrap="wrap" alignItems="space-between"></Box>
+          <Tags
+            tags={document.data.tags.map(
+              (t) => t.tag as unknown as TagDocument
+            )}
+            label={false}
+          />
+        </Stack>
 
         <SliceZone
           slices={document.data.slices}

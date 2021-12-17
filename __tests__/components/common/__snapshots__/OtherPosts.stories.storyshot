@@ -58,7 +58,7 @@ exports[`Storyshots Components/OtherPosts Both 1`] = `
         >
           <img
             alt="random alt text"
-            className="MuiBox-root css-1yvukyl"
+            className="MuiBox-root css-19ii73e"
             src="https://picsum.photos/1920/1080"
           />
         </a>
@@ -123,7 +123,7 @@ exports[`Storyshots Components/OtherPosts Both 1`] = `
         >
           <img
             alt="random alt text"
-            className="MuiBox-root css-1yvukyl"
+            className="MuiBox-root css-19ii73e"
             src="https://picsum.photos/1920/1080"
           />
         </a>
@@ -206,7 +206,7 @@ exports[`Storyshots Components/OtherPosts Next Only 1`] = `
         >
           <img
             alt="random alt text"
-            className="MuiBox-root css-1yvukyl"
+            className="MuiBox-root css-19ii73e"
             src="https://picsum.photos/1920/1080"
           />
         </a>
@@ -284,7 +284,7 @@ exports[`Storyshots Components/OtherPosts Previous Only 1`] = `
         >
           <img
             alt="random alt text"
-            className="MuiBox-root css-1yvukyl"
+            className="MuiBox-root css-19ii73e"
             src="https://picsum.photos/1920/1080"
           />
         </a>
