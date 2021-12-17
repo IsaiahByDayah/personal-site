@@ -5,6 +5,7 @@ name: Deploy to Firebase Hosting on Webhook
 
 on:
   repository_dispatch:
+    types: [build-and-deploy]
 
 jobs:
   build_and_deploy:
