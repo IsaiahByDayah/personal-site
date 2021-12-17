@@ -35,6 +35,8 @@ const MyApp = ({
                   name="viewport"
                   content="width=device-width, initial-scale=1"
                 />
+
+                <title>✌🏾 | Isaiah Smith</title>
               </Head>
               <Header />
               <Toolbar />
