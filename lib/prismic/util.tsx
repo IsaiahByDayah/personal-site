@@ -4,8 +4,10 @@ import { Theme, Typography, Box, Link, Stack } from "@mui/material"
 import { SystemStyleObject } from "@mui/system"
 import Prismic from "@prismicio/client"
 import { JSXMapSerializer, SliceZoneComponents } from "@prismicio/react"
+import { RichTextField, LinkType } from "@prismicio/types"
 import NextLink from "next/link"
 import dayjs from "dayjs"
+
 import {
   apiEndpoint,
   accessToken,
@@ -342,6 +344,13 @@ export const getProjectSlugs = async () => {
   return slugs
 }
 
+export const getProjectBySlug = async (slug: string) => {
+  const document = await Client().getByUID("project", slug, {
+    fetchLinks: ["tag.name"],
+  })
+  return document as ProjectDocument
+}
+
 ///////////////////////////
 ///////////////////////////
 // Utility Functions
@@ -370,6 +379,69 @@ export const blogPostDocumentsToBlogrollItemProps = (
     }
   })
 
+export const generateSimpleRichTextFieldData = (): RichTextField => [
+  {
+    type: "paragraph",
+    text: "Architecto magni nihil accusantium.",
+    spans: [],
+  },
+]
+
+export const generateComplexRichTextFieldData = (): RichTextField => [
+  {
+    type: "paragraph",
+    text: "Itaque rerum aut qui vel possimus omnis ut. Consequatur laborum tenetur. Saepe quae impedit iste asperiores aliquid tempore et. Voluptas facere laudantium eveniet et voluptatem doloremque animi placeat. Et dolores fugit. Aperiam incidunt quas eos recusandae velit in quidem sint.",
+    spans: [],
+  },
+  {
+    type: "paragraph",
+    text: "Deserunt labore molestiae et harum saepe illo fuga. Natus est magni nesciunt id. Sit neque cum magni porro aspernatur omnis adipisci molestiae qui.",
+    spans: [
+      {
+        start: 10,
+        end: 22,
+        type: "strong",
+      },
+    ],
+  },
+  {
+    type: "paragraph",
+    text: "Recusandae doloremque sed eius eos velit. Mollitia in nihil animi illum aliquam dolores laboriosam. Omnis maiores eius. In et aperiam cum omnis cum accusantium commodi perspiciatis. Repudiandae aut molestiae sunt culpa autem accusamus.",
+    spans: [
+      {
+        start: 55,
+        end: 67,
+        type: "strong",
+      },
+      {
+        start: 55,
+        end: 67,
+        type: "hyperlink",
+        data: {
+          link_type: "Web",
+          url: "https://www.google.com/",
+          target: "_blank",
+        },
+      },
+    ],
+  },
+  {
+    type: "list-item",
+    text: "Et sit harum quo voluptate enim quia et pariatur",
+    spans: [],
+  },
+  {
+    type: "list-item",
+    text: "Fuga voluptas voluptatem in atque iste",
+    spans: [],
+  },
+  {
+    type: "list-item",
+    text: "Non accusantium eligendi",
+    spans: [],
+  },
+]
+
 export const generateRichTextSliceData = (): RichTextSlice =>
   ({
     slice_type: "rich_text",
@@ -377,67 +449,14 @@ export const generateRichTextSliceData = (): RichTextSlice =>
     version: "ameteumblanditiis",
     variation: "default-slice",
     primary: {
-      content: [
-        {
-          type: "paragraph",
-          text: "Itaque rerum aut qui vel possimus omnis ut. Consequatur laborum tenetur. Saepe quae impedit iste asperiores aliquid tempore et. Voluptas facere laudantium eveniet et voluptatem doloremque animi placeat. Et dolores fugit. Aperiam incidunt quas eos recusandae velit in quidem sint.",
-          spans: [],
-        },
-        {
-          type: "paragraph",
-          text: "Deserunt labore molestiae et harum saepe illo fuga. Natus est magni nesciunt id. Sit neque cum magni porro aspernatur omnis adipisci molestiae qui.",
-          spans: [
-            {
-              start: 10,
-              end: 22,
-              type: "strong",
-            },
-          ],
-        },
-        {
-          type: "paragraph",
-          text: "Recusandae doloremque sed eius eos velit. Mollitia in nihil animi illum aliquam dolores laboriosam. Omnis maiores eius. In et aperiam cum omnis cum accusantium commodi perspiciatis. Repudiandae aut molestiae sunt culpa autem accusamus.",
-          spans: [
-            {
-              start: 55,
-              end: 67,
-              type: "strong",
-            },
-            {
-              start: 55,
-              end: 67,
-              type: "hyperlink",
-              data: {
-                link_type: "Web",
-                url: "https://www.google.com/",
-                target: "_blank",
-              },
-            },
-          ],
-        },
-        {
-          type: "list-item",
-          text: "Et sit harum quo voluptate enim quia et pariatur",
-          spans: [],
-        },
-        {
-          type: "list-item",
-          text: "Fuga voluptas voluptatem in atque iste",
-          spans: [],
-        },
-        {
-          type: "list-item",
-          text: "Non accusantium eligendi",
-          spans: [],
-        },
-      ],
+      content: generateComplexRichTextFieldData(),
     },
     items: [{}],
   } as RichTextSlice)
 
 export const generateBlogPostDocument = (
   overrides?: Partial<BlogPostDocument>
-) =>
+): BlogPostDocument =>
   ({
     uid: "vel-aut-sit",
     first_publication_date: new Date("6/13/1993").toISOString(),
@@ -471,3 +490,64 @@ export const generateBlogPostDocument = (
       ...overrides?.data,
     },
   } as BlogPostDocument)
+
+export const generateProjectDocument = (
+  overrides?: Partial<ProjectDocument>
+): ProjectDocument =>
+  ({
+    uid: "vel-aut-sit",
+    first_publication_date: new Date("6/13/1993").toISOString(),
+    last_publication_date: new Date("6/13/1993").toISOString(),
+    url: "/blog/post/vel-aut-sit",
+    ...overrides,
+    data: {
+      title: "Granite Tuna JS",
+      image: {
+        alt: "random alt text",
+        url: "https://picsum.photos/1920/1080",
+        copyright: null,
+        dimensions: {
+          height: 1080,
+          width: 1920,
+        },
+      },
+      summary:
+        "Et perferendis facere dignissimos ullam. Aut molestiae cum minima sequi soluta occaecati voluptas nesciunt.",
+      tags: [
+        {
+          tag: {
+            id: "id-corporis",
+            uid: "corporis",
+            data: { name: "corporis" },
+            url: "/tag/corporis/1",
+          },
+        },
+      ] as any,
+      description: generateComplexRichTextFieldData(),
+      highlights: [
+        { highlight: generateSimpleRichTextFieldData() },
+        { highlight: generateSimpleRichTextFieldData() },
+        { highlight: generateSimpleRichTextFieldData() },
+      ],
+      client: [
+        {
+          name: "Cremin, Grant and Kutch",
+          site: {
+            link_type: LinkType.Web,
+            url: "http://example.com",
+          },
+          bio: generateSimpleRichTextFieldData(),
+          photo: {
+            alt: "random alt text",
+            url: "https://picsum.photos/1920/1080",
+            copyright: null,
+            dimensions: {
+              height: 1080,
+              width: 1920,
+            },
+          },
+        },
+      ],
+      ...overrides?.data,
+    },
+  } as ProjectDocument)
