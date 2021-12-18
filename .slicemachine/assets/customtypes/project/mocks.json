@@ -1,6 +1,6 @@
 {
-  "id": "fcd1cd3b-31d7-446d-8934-242d5299792d",
-  "uid": "est-quibusdam-quia",
+  "id": "cd2fb748-00f6-48a2-8957-779544e9988e",
+  "uid": "unde-aspernatur-aperiam",
   "type": "project",
   "data": {
     "image": {
@@ -10,18 +10,18 @@
       },
       "alt": "Placeholder image",
       "copyright": null,
-      "url": "https://images.unsplash.com/photo-1593642633279-1796119d5482?w=900&h=500&fit=crop"
+      "url": "https://images.unsplash.com/photo-1587614295999-6c1c13675117?w=900&h=500&fit=crop"
     },
-    "title": "orchestrate wireless e-markets",
-    "summary": "maximize ubiquitous technologies",
+    "title": "embrace e-business markets",
+    "summary": "matrix revolutionary metrics",
     "url": {
       "link_type": "Web",
-      "url": "https://prismic.io"
+      "url": "https://slicemachine.dev"
     },
     "description": [
       {
         "type": "paragraph",
-        "text": "Reprehenderit ipsum deserunt magna quis ut dolore consectetur officia adipisicing sunt proident cupidatat officia Lorem. Incididunt est cillum officia eiusmod ipsum dolore non. Aute consequat fugiat laborum veniam consequat exercitation ex id mollit fugiat consequat in non.",
+        "text": "Nulla ut pariatur tempor aliquip.",
         "spans": []
       }
     ],
@@ -30,7 +30,7 @@
         "highlight": [
           {
             "type": "paragraph",
-            "text": "Sunt laborum irure dolor aliqua consequat. Laborum est reprehenderit eiusmod enim.",
+            "text": "Mollit aute do consectetur reprehenderit sunt elit aliqua esse.",
             "spans": []
           }
         ]
@@ -39,7 +39,7 @@
         "highlight": [
           {
             "type": "paragraph",
-            "text": "Aute culpa deserunt ad nisi.",
+            "text": "Culpa tempor ex voluptate do incididunt ipsum cillum et velit ullamco sit cupidatat. Aute ut ex consequat velit in Lorem nulla aute consequat do veniam tempor est ullamco ad. Est nulla aute officia adipisicing nulla quis in duis.",
             "spans": []
           }
         ]
@@ -48,7 +48,16 @@
         "highlight": [
           {
             "type": "paragraph",
-            "text": "Adipisicing non cillum culpa.",
+            "text": "Do ad sunt eiusmod cupidatat tempor ullamco exercitation ad aliquip. Eiusmod consequat consequat consequat.",
+            "spans": []
+          }
+        ]
+      },
+      {
+        "highlight": [
+          {
+            "type": "paragraph",
+            "text": "Adipisicing culpa eiusmod Lorem et et velit proident Lorem ad dolore proident et mollit aliquip. Id mollit exercitation cillum ad et. Mollit non consectetur occaecat ad exercitation aliqua reprehenderit proident nostrud in cillum elit.",
             "spans": []
           }
         ]
@@ -76,10 +85,10 @@
     ],
     "client": [
       {
-        "name": "morph customized e-business",
-        "url": {
+        "name": "mesh granular synergies",
+        "site": {
           "link_type": "Web",
-          "url": "http://google.com"
+          "url": "https://slicemachine.dev"
         },
         "photo": {
           "dimensions": {
@@ -88,19 +97,19 @@
           },
           "alt": "Placeholder image",
           "copyright": null,
-          "url": "https://images.unsplash.com/photo-1589652717521-10c0d092dea9?w=900&h=500&fit=crop"
+          "url": "https://images.unsplash.com/photo-1596195689404-24d8a8d1c6ea?w=900&h=500&fit=crop"
         },
         "bio": [
           {
             "type": "paragraph",
-            "text": "Sunt enim pariatur deserunt elit. Nulla eiusmod exercitation magna exercitation et incididunt.",
+            "text": "Minim consequat esse adipisicing dolor.",
             "spans": []
           }
         ]
       },
       {
-        "name": "leverage efficient ROI",
-        "url": {
+        "name": "whiteboard robust methodologies",
+        "site": {
           "link_type": "Web",
           "url": "http://google.com"
         },
@@ -111,35 +120,12 @@
           },
           "alt": "Placeholder image",
           "copyright": null,
-          "url": "https://images.unsplash.com/photo-1600804931749-2da4ce26c869?w=900&h=500&fit=crop"
+          "url": "https://images.unsplash.com/photo-1593642532973-d31b6557fa68?w=900&h=500&fit=crop"
         },
         "bio": [
           {
             "type": "paragraph",
-            "text": "Culpa ut exercitation id voluptate amet est deserunt fugiat aute laborum. Ad aliquip esse tempor tempor ad id et adipisicing nulla est eu eu adipisicing. Culpa do ad cupidatat aute magna exercitation.",
-            "spans": []
-          }
-        ]
-      },
-      {
-        "name": "leverage distributed paradigms",
-        "url": {
-          "link_type": "Web",
-          "url": "http://google.com"
-        },
-        "photo": {
-          "dimensions": {
-            "width": 900,
-            "height": 500
-          },
-          "alt": "Placeholder image",
-          "copyright": null,
-          "url": "https://images.unsplash.com/photo-1587614295999-6c1c13675117?w=900&h=500&fit=crop"
-        },
-        "bio": [
-          {
-            "type": "paragraph",
-            "text": "Eu aute sint Lorem aliquip deserunt incididunt cupidatat pariatur qui exercitation sint proident veniam consectetur tempor.",
+            "text": "Proident fugiat veniam ea.",
             "spans": []
           }
         ]

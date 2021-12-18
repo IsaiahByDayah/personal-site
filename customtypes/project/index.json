@@ -101,9 +101,9 @@
               },
               "type": "Text"
             },
-            "url": {
+            "site": {
               "config": {
-                "label": "url",
+                "label": "site",
                 "placeholder": "",
                 "select": "web",
                 "allowTargetBlank": false
