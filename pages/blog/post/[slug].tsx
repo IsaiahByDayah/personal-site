@@ -1,4 +1,5 @@
 import { Box, Divider, Stack, Typography } from "@mui/material"
+import { Content } from "@prismicio/client"
 import dayjs from "dayjs"
 import { castArray, head } from "lodash"
 import { GetStaticPaths, GetStaticProps } from "next"
@@ -7,27 +8,32 @@ import OtherPosts from "components/common/OtherPosts"
 import SliceZone from "components/common/SliceZone"
 import Tags from "components/common/Tags"
 import TwoColumnLayout from "components/scaffold/TwoColumnLayout"
-import { BlogPostDocument, TagDocument } from "lib/prismic/types"
 import {
-  getBlogBySlug,
-  getBlogSlugs,
-  getSurroundingBlogPosts,
+  BASE_BLOG_POSTS_FETCH_LINKS,
+  BASE_BLOG_POSTS_PREDICATES,
+  createClient,
 } from "lib/prismic/util"
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const slugs = await getBlogSlugs()
+  const client = createClient()
+
+  const blogPosts = await client.getAllByType("blog-post", {
+    predicates: BASE_BLOG_POSTS_PREDICATES,
+    fetch: "blog-post.uid",
+  })
 
   return {
-    paths: slugs.map((slug) => ({
-      params: { slug },
+    paths: blogPosts.map((blogPost) => ({
+      params: { slug: blogPost.uid },
     })),
-    fallback: false,
+    fallback: "blocking",
   }
 }
 
 export const getStaticProps: GetStaticProps<BlogPostProps> = async ({
   params,
 }) => {
+  const client = createClient()
   const slug = head(castArray(params?.slug))
 
   if (!slug)
@@ -35,40 +41,59 @@ export const getStaticProps: GetStaticProps<BlogPostProps> = async ({
       notFound: true,
     }
 
-  const document = await getBlogBySlug(slug)
+  const blogPost = await client.getByUID("blog-post", slug, {
+    fetchLinks: BASE_BLOG_POSTS_FETCH_LINKS,
+  })
 
-  const { previous, next } = await getSurroundingBlogPosts(document.id)
+  const previousQuery = await client.getByType("blog-post", {
+    pageSize: 1,
+    after: blogPost.id,
+    orderings: {
+      field: "document.last_publication_date",
+      direction: "desc",
+    },
+  })
+
+  const nextQuery = await client.getByType("blog-post", {
+    pageSize: 1,
+    after: blogPost.id,
+    orderings: {
+      field: "document.last_publication_date",
+      direction: "asc",
+    },
+  })
 
   return {
     props: {
-      document,
-      previous,
-      next,
+      blogPost,
+      previous: previousQuery.results.at(0) ?? null,
+      next: nextQuery.results.at(0) ?? null,
     },
+    revalidate: 60,
   }
 }
 
 export interface BlogPostProps {
-  document: BlogPostDocument
-  previous: BlogPostDocument | null
-  next: BlogPostDocument | null
+  blogPost: Content.BlogPostDocument
+  previous: Content.BlogPostDocument | null
+  next: Content.BlogPostDocument | null
 }
 
-const BlogPost = ({ document, previous, next }: BlogPostProps) => {
+const BlogPost = ({ blogPost, previous, next }: BlogPostProps) => {
   const publishDates: string[] = []
 
-  if (document.first_publication_date === document.last_publication_date) {
+  if (blogPost.first_publication_date === blogPost.last_publication_date) {
     publishDates.push(
-      dayjs(document.first_publication_date).format("MMMM D, YYYY")
+      dayjs(blogPost.first_publication_date).format("MMMM D, YYYY")
     )
   } else {
     publishDates.push(
-      `First Published: ${dayjs(document.first_publication_date).format(
+      `First Published: ${dayjs(blogPost.first_publication_date).format(
         "MMMM D, YYYY"
       )}`
     )
     publishDates.push(
-      `Last Updated: ${dayjs(document.last_publication_date).format(
+      `Last Updated: ${dayjs(blogPost.last_publication_date).format(
         "MMMM D, YYYY"
       )}`
     )
@@ -82,12 +107,16 @@ const BlogPost = ({ document, previous, next }: BlogPostProps) => {
             maxWidth={({ breakpoints }) =>
               `min(100% ,${breakpoints.values.md}px)`
             }
+            sx={{
+              aspectRatio: "16 / 9",
+              objectFit: "cover",
+            }}
             alignSelf="center"
             borderRadius={1}
             boxShadow={4}
             component="img"
-            src={document.data.thumbnail.url}
-            alt={document.data.thumbnail.alt}
+            src={blogPost.data.thumbnail.url}
+            alt={blogPost.data.thumbnail.alt}
           />
 
           <Box display="flex" flexWrap="wrap">
@@ -104,18 +133,18 @@ const BlogPost = ({ document, previous, next }: BlogPostProps) => {
           </Box>
 
           <Typography variant="h4" fontWeight={900}>
-            {document.data.title}
+            {blogPost.data.title}
           </Typography>
 
           <Tags
-            tags={document.data.tags.map(
-              (t) => t.tag as unknown as TagDocument
+            tags={blogPost.data.tags.map(
+              (t) => t.tag as unknown as Content.TagDocument
             )}
             label={false}
           />
         </Stack>
 
-        <SliceZone slices={document.data.slices} />
+        <SliceZone slices={blogPost.data.slices} />
         <Divider />
         <OtherPosts previous={previous} next={next} />
       </Stack>

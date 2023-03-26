@@ -1,7 +1,6 @@
-import { PropsWithChildren } from "react"
+import { Content } from "@prismicio/client"
 import { Meta, Story } from "@storybook/react"
-
-import { TagDocument } from "lib/prismic/types"
+import { PropsWithChildren } from "react"
 
 import Tag, { TagProps } from "components/common/Tag"
 
@@ -27,5 +26,5 @@ FromDocument.args = {
       name: "Assumenda",
     },
     url: "/assumenda",
-  } as TagDocument,
+  } as Content.TagDocument,
 }

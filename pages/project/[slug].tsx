@@ -1,26 +1,35 @@
-import { GetStaticProps, GetStaticPaths } from "next"
-import Head from "next/head"
+import { Box, Stack, Typography } from "@mui/material"
+import { Content } from "@prismicio/client"
 import { RichTextField } from "@prismicio/types"
-import { castArray, head } from "lodash"
-import { Typography, Box, Stack } from "@mui/material"
 import dayjs from "dayjs"
+import { castArray, head } from "lodash"
+import { GetStaticPaths, GetStaticProps } from "next"
+import Head from "next/head"
 
-import { getProjectSlugs, getProjectBySlug } from "lib/prismic/util"
-import { ProjectDocument, TagDocument } from "lib/prismic/types"
+import {
+  BASE_PROJECTS_FETCH_LINKS,
+  BASE_PROJECTS_PREDICATES,
+  createClient,
+} from "lib/prismic/util"
 
 import TwoColumnLayout from "components/scaffold/TwoColumnLayout"
 
-import Tags from "components/common/Tags"
 import MuiRichText from "components/common/MuiRichText"
+import Tags from "components/common/Tags"
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const slugs = await getProjectSlugs()
+  const client = createClient()
+
+  const projects = await client.getAllByType("project", {
+    predicates: BASE_PROJECTS_PREDICATES,
+    fetch: ["project.uid"],
+  })
 
   return {
-    paths: slugs.map((slug) => ({
-      params: { slug },
+    paths: projects.map((project) => ({
+      params: { slug: project.uid },
     })),
-    fallback: false,
+    fallback: "blocking",
   }
 }
 
@@ -34,7 +43,11 @@ export const getStaticProps: GetStaticProps<ProjectProps> = async ({
       notFound: true,
     }
 
-  const document = await getProjectBySlug(slug)
+  const client = createClient()
+
+  const project = await client.getByUID("project", slug, {
+    fetchLinks: BASE_PROJECTS_FETCH_LINKS,
+  })
 
   if (!document)
     return {
@@ -43,24 +56,24 @@ export const getStaticProps: GetStaticProps<ProjectProps> = async ({
 
   return {
     props: {
-      document,
+      project,
     },
   }
 }
 
 export interface ProjectProps {
-  document: ProjectDocument
+  project: Content.ProjectDocument
 }
 
-const Project = ({ document }: ProjectProps) => {
+const Project = ({ project }: ProjectProps) => {
   return (
     <TwoColumnLayout sx={{ py: 2 }}>
       <Head>
-        <title>{document.data.title} | Isaiah Smith</title>
+        <title>{project.data.title} | Isaiah Smith</title>
       </Head>
       <Stack direction="column" spacing={4}>
         <Stack direction="column" spacing={2}>
-          {Boolean(document.data.image.url) && (
+          {Boolean(project.data.image.url) && (
             <Box
               maxWidth={({ breakpoints }) =>
                 `min(100% ,${breakpoints.values.md}px)`
@@ -69,32 +82,32 @@ const Project = ({ document }: ProjectProps) => {
               borderRadius={1}
               boxShadow={4}
               component="img"
-              src={document.data.image.url!}
-              alt={document.data.image.alt ?? ""}
+              src={project.data.image.url!}
+              alt={project.data.image.alt ?? ""}
             />
           )}
           <Typography variant="caption" color="primary.main">
             Last Updated:{" "}
-            {dayjs(document.last_publication_date).format("MMMM D, YYYY")}
+            {dayjs(project.last_publication_date).format("MMMM D, YYYY")}
           </Typography>
           <Typography variant="h4" fontWeight={900}>
-            {document.data.title}
+            {project.data.title}
           </Typography>
           <Tags
-            tags={document.data.tags.map(
-              (t) => (t.tag as unknown as TagDocument).data.name
+            tags={project.data.tags.map(
+              (t) => (t.tag as unknown as Content.TagDocument).data.name
             )}
             label={false}
           />
         </Stack>
-        <MuiRichText field={document.data.description as RichTextField} />
-        {Boolean(document.data.highlights.length) && (
+        <MuiRichText field={project.data.description as RichTextField} />
+        {Boolean(project.data.highlights.length) && (
           <Stack direction="column">
             <Typography variant="h6" fontWeight={900}>
               Project Highlights
             </Typography>
             <ul>
-              {document.data.highlights.map((h, index) => (
+              {project.data.highlights.map((h, index) => (
                 <li key={index}>
                   <MuiRichText field={h.highlight as RichTextField} />
                 </li>

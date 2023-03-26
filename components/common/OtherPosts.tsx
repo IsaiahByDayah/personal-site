@@ -1,15 +1,14 @@
-import { Theme, Box, Stack, Typography } from "@mui/material"
+import { Box, Stack, Theme, Typography } from "@mui/material"
 import { SystemStyleObject } from "@mui/system"
+import { Content } from "@prismicio/client"
 import { HiOutlineArrowSmLeft, HiOutlineArrowSmRight } from "react-icons/hi"
-
-import { BlogPostDocument } from "lib/prismic/types"
 
 import BlogrollItem from "components/common/BlogrollItem"
 
 export interface OtherPostsProps {
   sx?: SystemStyleObject<Theme>
-  previous?: BlogPostDocument | null
-  next?: BlogPostDocument | null
+  previous?: Content.BlogPostDocument | null
+  next?: Content.BlogPostDocument | null
   disableArrows?: boolean
   previousLabel?: string
   nextLabel?: string

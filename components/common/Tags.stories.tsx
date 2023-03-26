@@ -1,10 +1,7 @@
+import { Content } from "@prismicio/client"
 import { Meta, Story } from "@storybook/react"
 
-import { TagDocument } from "lib/prismic/types"
-
-import { TagsContext } from "components/scaffold/TagsProvider"
-
-import Tags, { TagsProps } from "components/common/Tags"
+import Tags from "components/common/Tags"
 
 export default {
   component: Tags,
@@ -14,7 +11,7 @@ export default {
   },
 } as Meta
 
-const Template: Story<{ tags?: TagDocument[] }> = ({ tags }) => (
+const Template: Story<{ tags?: Content.TagDocument[] }> = ({ tags }) => (
   <Tags tags={tags} />
 )
 
@@ -27,35 +24,35 @@ Basic.args = {
       data: {
         name: "Molestias",
       },
-    } as TagDocument,
+    } as Content.TagDocument,
     {
       id: "facilis",
       url: "/facilis",
       data: {
         name: "Facilis",
       },
-    } as TagDocument,
+    } as Content.TagDocument,
     {
       id: "delectus",
       url: "/delectus",
       data: {
         name: "Delectus",
       },
-    } as TagDocument,
+    } as Content.TagDocument,
     {
       id: "repudiandae",
       url: "/repudiandae",
       data: {
         name: "Repudiandae",
       },
-    } as TagDocument,
+    } as Content.TagDocument,
     {
       id: "sunt",
       url: "/sunt",
       data: {
         name: "Sunt",
       },
-    } as TagDocument,
+    } as Content.TagDocument,
   ],
 }
 

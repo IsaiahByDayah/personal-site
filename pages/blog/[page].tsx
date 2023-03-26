@@ -1,14 +1,17 @@
 import { Pagination } from "@mui/material"
+import { Content } from "@prismicio/client"
 import { castArray, head } from "lodash"
 import { GetStaticPaths, GetStaticProps } from "next"
 import { useRouter } from "next/router"
 
-import { BlogPostDocument, TagDocument } from "lib/prismic/types"
 import {
+  BASE_BLOG_POSTS_FETCH_FIELDS,
+  BASE_BLOG_POSTS_FETCH_LINKS,
+  BASE_BLOG_POSTS_PREDICATES,
   blogPostDocumentsToBlogrollItemProps,
-  getAllTags,
-  getBlogPage,
-  getTotalBlogPages,
+  BLOG_POSTS_DEFAULT_ORDERING,
+  BLOG_POST_PAGE_SIZE,
+  createClient,
 } from "lib/prismic/util"
 
 import { TagsContext } from "components/scaffold/TagsProvider"
@@ -17,15 +20,21 @@ import TwoColumnLayout from "components/scaffold/TwoColumnLayout"
 import Blogroll from "components/common/Blogroll"
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const totalBlogPages = await getTotalBlogPages()
+  const client = createClient()
 
-  const pages = Array(totalBlogPages)
+  const blogPostsQuery = await client.getByType("blog-post", {
+    predicates: BASE_BLOG_POSTS_PREDICATES,
+    fetch: ["blog-post.uid"],
+    pageSize: BLOG_POST_PAGE_SIZE,
+  })
+
+  const pages = Array(blogPostsQuery.total_pages)
     .fill(null)
     .map((_, index) => `${index + 1}`)
 
   return {
     paths: pages.map((page) => ({ params: { page } })),
-    fallback: false,
+    fallback: "blocking",
   }
 }
 
@@ -34,24 +43,31 @@ export const getStaticProps: GetStaticProps<BlogPageProps> = async ({
 }) => {
   const page = parseInt(head(castArray(params?.page)) ?? "")
 
-  if (isNaN(page))
+  if (isNaN(page)) {
     return {
       notFound: true,
     }
+  }
 
-  const blogPosts = await getBlogPage(page)
+  const client = createClient()
 
-  console.log({ blogPosts })
+  // const blogPosts = await getBlogPage(page)
+  const blogPostsQuery = await client.getByType("blog-post", {
+    predicates: BASE_BLOG_POSTS_PREDICATES,
+    fetch: BASE_BLOG_POSTS_FETCH_FIELDS,
+    fetchLinks: BASE_BLOG_POSTS_FETCH_LINKS,
+    orderings: BLOG_POSTS_DEFAULT_ORDERING,
+    pageSize: BLOG_POST_PAGE_SIZE,
+    page,
+  })
 
-  const totalPages = await getTotalBlogPages()
-
-  const tags = await getAllTags()
+  const tags = await client.getAllByType("tag")
 
   return {
     props: {
       page,
-      totalPages,
-      blogPosts,
+      totalPages: blogPostsQuery.total_pages,
+      blogPosts: blogPostsQuery.results,
       tags,
     },
   }
@@ -60,8 +76,8 @@ export const getStaticProps: GetStaticProps<BlogPageProps> = async ({
 export interface BlogPageProps {
   page: number
   totalPages: number
-  blogPosts: BlogPostDocument[]
-  tags: TagDocument[]
+  blogPosts: Content.BlogPostDocument[]
+  tags: Content.TagDocument[]
 }
 
 const BlogPage = ({ page, totalPages, blogPosts, tags }: BlogPageProps) => {
