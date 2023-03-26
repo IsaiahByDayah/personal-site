@@ -1,9 +1,8 @@
 import { Chip } from "@mui/material"
 import NextLink from "next/link"
 
-import { linkResolver } from "prismicConfiguration"
-
 import { TagDocument } from "lib/prismic/types"
+import { linkResolver } from "lib/prismic/util"
 
 export interface TagProps {
   tag: TagDocument | string

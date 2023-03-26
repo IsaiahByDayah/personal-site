@@ -57,10 +57,6 @@ export const linkResolver = (doc: any) => {
     case LinkType.Document:
       if (doc.url) return doc.url
       // MARK: Handle custom client side paths here
-      if (doc.type === "article") {
-        if (Boolean(doc.data?.type)) return `/${doc.data.type}/${doc.uid}`
-        return `/article/${doc.uid}`
-      }
       break
     case LinkType.Media:
       if (doc.url) return doc.url
