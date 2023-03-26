@@ -1,13 +1,14 @@
-import { Theme, Link } from "@mui/material"
+import { Link, Theme } from "@mui/material"
 import { SystemStyleObject } from "@mui/system"
 
 import { InsetBox } from "components/common/Inset"
 
 type FooterProps = {
   sx?: SystemStyleObject<Theme>
+  _testYear?: number
 }
 
-export const Footer = ({ sx }: FooterProps) => (
+export const Footer = ({ sx, _testYear }: FooterProps) => (
   <InsetBox
     sx={{
       backgroundColor: "secondary.main",
@@ -17,7 +18,7 @@ export const Footer = ({ sx }: FooterProps) => (
     p={2}
     component="footer"
   >
-    © {new Date().getFullYear()}, Made{" "}
+    © {_testYear ?? new Date().getFullYear()}, Made{" "}
     <Link
       href="https://www.twitch.tv/isaiahbydayah"
       target="_blank"
