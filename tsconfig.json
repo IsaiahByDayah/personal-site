@@ -24,7 +24,6 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "slices/index.js",
-    "slices/TextImageRight/index.js"
+    "./.slicemachine/prismicio.d.ts"
   ]
 }
