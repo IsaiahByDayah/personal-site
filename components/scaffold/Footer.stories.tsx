@@ -7,4 +7,4 @@ export default {
   component: Footer,
 } as Meta
 
-export const Basic: Story = () => <Footer />
+export const Basic: Story = () => <Footer _testYear={1993} />
