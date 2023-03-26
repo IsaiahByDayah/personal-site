@@ -14,15 +14,14 @@ const Tag = ({ tag }: TagProps) => {
   }
 
   return (
-    <NextLink href={linkResolver(tag)} passHref>
-      <Chip
-        color="primary"
-        size="small"
-        component="a"
-        clickable
-        label={tag.data.name}
-      />
-    </NextLink>
+    <Chip
+      color="primary"
+      size="small"
+      component={NextLink}
+      href={linkResolver(tag)}
+      clickable
+      label={tag.data.name}
+    />
   )
 }
 

@@ -70,12 +70,17 @@ export const richTextComponents = (
   ),
   hyperlink: ({ children, node, key, type }) => {
     return (
-      // TODO: check the final href and if internal, use next/link, else use a tag (see PrismicLink compoennt)
-      <NextLink key={key} href={linkResolver(node.data)} passHref>
-        <Link sx={getSx?.(type)} rel="none" target={(node.data as any).target}>
-          {children}
-        </Link>
-      </NextLink>
+      // TODO: check the final href and if internal, use next/link, else use a tag (see PrismicLink component)
+      <Link
+        key={key}
+        sx={getSx?.(type)}
+        rel="none"
+        target={(node.data as any).target}
+        component={NextLink}
+        href={linkResolver(node.data)}
+      >
+        {children}
+      </Link>
     )
   },
   image: ({ node, key, type }) => (

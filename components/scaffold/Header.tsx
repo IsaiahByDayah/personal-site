@@ -1,19 +1,19 @@
-import { useContext } from "react"
+import { MenuRounded } from "@mui/icons-material"
 import {
   alpha,
   AppBar,
-  Toolbar,
-  IconButton,
   Avatar,
-  Stack,
+  IconButton,
   Link,
+  Stack,
+  Toolbar,
 } from "@mui/material"
-import { MenuRounded } from "@mui/icons-material"
 import NextLink from "next/link"
+import { useContext } from "react"
 
 import { DrawerContext } from "components/scaffold/DrawerProvider"
 
-import { onMobileSx, getOffMobileSx } from "components/common/OnMobile"
+import { getOffMobileSx, onMobileSx } from "components/common/OnMobile"
 import Socials from "components/common/Socials"
 
 export const Header = () => {
@@ -48,25 +48,25 @@ export const Header = () => {
             src="/images/profile-pic.png"
             alt="avatar photo"
           />
-          <NextLink href="/" passHref>
-            <Link
-              sx={{
-                textDecoration: "none",
+          <Link
+            sx={{
+              textDecoration: "none",
 
-                "&:link": {
-                  color: "secondary.contrastText",
-                },
+              "&:link": {
+                color: "secondary.contrastText",
+              },
 
-                "&:visited": {
-                  color: "secondary.contrastText",
-                },
-              }}
-              variant="h6"
-              fontWeight={900}
-            >
-              Isaiah Smith
-            </Link>
-          </NextLink>
+              "&:visited": {
+                color: "secondary.contrastText",
+              },
+            }}
+            variant="h6"
+            fontWeight={900}
+            component={NextLink}
+            href="/"
+          >
+            Isaiah Smith
+          </Link>
         </Stack>
 
         <IconButton
