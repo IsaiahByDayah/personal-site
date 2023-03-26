@@ -1,21 +1,18 @@
-import { GetStaticProps, GetStaticPaths } from "next"
-import { SliceZone } from "@prismicio/react"
-import { castArray, head } from "lodash"
-import { Box, Stack, Typography, Divider } from "@mui/material"
+import { Box, Divider, Stack, Typography } from "@mui/material"
 import dayjs from "dayjs"
+import { castArray, head } from "lodash"
+import { GetStaticPaths, GetStaticProps } from "next"
 
+import OtherPosts from "components/common/OtherPosts"
+import SliceZone from "components/common/SliceZone"
+import Tags from "components/common/Tags"
+import TwoColumnLayout from "components/scaffold/TwoColumnLayout"
+import { BlogPostDocument, TagDocument } from "lib/prismic/types"
 import {
-  sliceZoneComponents,
-  getBlogSlugs,
   getBlogBySlug,
+  getBlogSlugs,
   getSurroundingBlogPosts,
 } from "lib/prismic/util"
-import { BlogPostDocument, TagDocument } from "lib/prismic/types"
-
-import TwoColumnLayout from "components/scaffold/TwoColumnLayout"
-
-import Tags from "components/common/Tags"
-import OtherPosts from "components/common/OtherPosts"
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const slugs = await getBlogSlugs()
@@ -118,10 +115,7 @@ const BlogPost = ({ document, previous, next }: BlogPostProps) => {
           />
         </Stack>
 
-        <SliceZone
-          slices={document.data.slices}
-          components={sliceZoneComponents}
-        />
+        <SliceZone slices={document.data.slices} />
         <Divider />
         <OtherPosts previous={previous} next={next} />
       </Stack>

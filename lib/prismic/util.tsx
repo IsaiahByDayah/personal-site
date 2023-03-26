@@ -1,32 +1,39 @@
 // REF: https://prismic.io/docs/technologies/nextjs#3.2.-prismic-helpers
 
-import { Theme, Typography, Box, Link, Stack } from "@mui/material"
+import { Box, Link, Stack, Theme, Typography } from "@mui/material"
 import { SystemStyleObject } from "@mui/system"
-import Prismic from "@prismicio/client"
+import * as prismic from "@prismicio/client"
+import * as prismicNext from "@prismicio/next"
 import { JSXMapSerializer, SliceZoneComponents } from "@prismicio/react"
-import { RichTextField, LinkType } from "@prismicio/types"
-import NextLink from "next/link"
-import dayjs from "dayjs"
-
 import {
-  apiEndpoint,
-  accessToken,
-  linkResolver,
-  Router,
-} from "prismicConfiguration"
+  LinkField,
+  LinkType,
+  PrismicDocument,
+  RichTextField,
+} from "@prismicio/types"
+import dayjs from "dayjs"
+import NextLink from "next/link"
+
+import sm from "sm.json"
 
 import {
   AboutPageDocument,
   BlogPostDocument,
-  TagDocument,
   ProjectDocument,
+  TagDocument,
 } from "lib/prismic/types"
 
-import Slices from "slices/slice-types"
-import RichText, { RichTextSlice } from "slices/RichText"
 import Quote from "slices/Quote"
+import RichText, { RichTextSlice } from "slices/RichText"
+import Slices from "slices/slice-types"
 
 import { BlogrollItemProps } from "components/common/BlogrollItem"
+
+type AllDocumentTypes =
+  | AboutPageDocument
+  | BlogPostDocument
+  | ProjectDocument
+  | TagDocument
 
 export const MAX_PAGE_SIZE = 100
 export const BLOG_POST_PAGE_SIZE = 20
@@ -37,6 +44,38 @@ export const PROJECT_PAGE_SIZE = 20
 // Setup Helpers & Modules
 ///////////////////////////
 ///////////////////////////
+
+////////////////////////////
+// REF: https://prismic.io/docs/core-concepts/link-resolver-route-resolver
+// TODO: Look into proper typing for this function :/ - IS 12/28/2022
+////////////////////////////
+export const linkResolver = (doc: any) => {
+  switch (doc.link_type) {
+    case LinkType.Web:
+      if (doc.url) return doc.url
+      break
+    case LinkType.Document:
+      if (doc.url) return doc.url
+      // MARK: Handle custom client side paths here
+      if (doc.type === "article") {
+        if (Boolean(doc.data?.type)) return `/${doc.data.type}/${doc.uid}`
+        return `/article/${doc.uid}`
+      }
+      break
+    case LinkType.Media:
+      if (doc.url) return doc.url
+      break
+  }
+
+  if (doc.url) return doc.url
+  return "/"
+}
+
+export type DocumentLinkField<T extends PrismicDocument> = LinkField<
+  T["type"],
+  T["lang"],
+  T["data"]
+>
 
 export const richTextComponents = (
   getSx?: (type: keyof JSXMapSerializer) => SystemStyleObject<Theme>
@@ -83,94 +122,150 @@ export const sliceZoneComponents: SliceZoneComponents<Slices> = {
 ///////////////////////////
 ///////////////////////////
 
-// -- @prismicio/client initialisation
-// Initialises the Prismic Client that's used for querying the API and passes it any query options.
-export const Client = (req = null) =>
-  Prismic.client(apiEndpoint, createClientOptions(req, accessToken, Router))
+export const PRISMIC_REPO_NAME = prismic.getRepositoryName(sm.apiEndpoint)
 
-// Options to be passed to the Client
-const createClientOptions = (
-  req = null,
-  prismicAccessToken: string | null | undefined = null,
-  routes: any = null
-) => {
-  const reqOption = req ? { req } : {}
-  const accessTokenOption = prismicAccessToken
-    ? { accessToken: prismicAccessToken }
-    : {}
-  const routesOption = routes ? { routes: Router.routes } : {}
-  return {
-    ...reqOption,
-    ...accessTokenOption,
-    ...routesOption,
-  }
+const routes = [
+  {
+    type: "homepage",
+    path: "/",
+  },
+  {
+    type: "about-page",
+    path: "/about",
+  },
+  {
+    type: "blog-post",
+    path: "/blog/post/:uid",
+  },
+  {
+    type: "tag",
+    path: "/tag/:uid/1",
+  },
+  {
+    type: "project",
+    path: "/project/:uid",
+  },
+]
+
+export const createClient = (config: prismicNext.CreateClientConfig = {}) => {
+  // const client = prismic.createClient<prismic.Content.AllDocumentTypes>(
+  const client = prismic.createClient<AllDocumentTypes>(sm.apiEndpoint, {
+    routes,
+    ...config,
+  })
+
+  // prismicNext.enableAutoPreviews({
+  //   client,
+  //   previewData: config.previewData,
+  //   req: config.req,
+  // })
+
+  return client
 }
 
+///////////////////////////
+// Blog Posts
+///////////////////////////
+
+export const BASE_BLOG_POSTS_PREDICATES = [
+  prismic.predicate.has("my.blog-post.uid"),
+]
+
+export const BASE_BLOG_POSTS_FETCH_FIELDS = [
+  "blog-post.uid",
+  "blog-post.title",
+  "blog-post.thumbnail",
+  "blog-post.excerpt",
+  "blog-post.tags",
+]
+
+export const BASE_BLOG_POSTS_FETCH_LINKS = ["tag.name"]
+
+export const BLOG_POSTS_DESC_UPDATED_AT_ORDERING: prismic.Ordering = {
+  field: "document.last_publication_date",
+  direction: "desc",
+}
+export const BLOG_POSTS_DEFAULT_ORDERING = BLOG_POSTS_DESC_UPDATED_AT_ORDERING
+
+///////////////////////////
+// Tags
+///////////////////////////
+
+export const BASE_TAGS_PREDICATES = [prismic.predicate.has("my.tag.uid")]
+
+///////////////////////////
+// Projects
+///////////////////////////
+
+export const BASE_PROJECTS_PREDICATES = [
+  prismic.predicate.has("my.project.uid"),
+]
+
+export const BASE_PROJECTS_FETCH_FIELDS = [
+  "project.uid",
+  "project.title",
+  "project.image",
+  "project.summary",
+  "project.tags",
+]
+
+export const BASE_PROJECTS_FETCH_LINKS = ["tag.name"]
+
+export const PROJECTS_DESC_UPDATED_AT_ORDERING: prismic.Ordering = {
+  field: "document.last_publication_date",
+  direction: "desc",
+}
+export const PROJECTS_DEFAULT_ORDERING = PROJECTS_DESC_UPDATED_AT_ORDERING
+
 export const getAboutPage = async () => {
-  const document = await Client().getSingle("about-page", {})
+  const client = createClient()
+  const document = await client.getSingle("about-page", {})
   return document as AboutPageDocument
 }
 
 export const getBlogPage = async (page: number = 1) => {
-  const response = await Client().query(
-    [
-      Prismic.Predicates.at("document.type", "blog-post"),
-      Prismic.Predicates.has("my.blog-post.uid"),
-    ],
-    {
-      fetch: [
-        "blog-post.uid",
-        "blog-post.title",
-        "blog-post.thumbnail",
-        "blog-post.excerpt",
-        "blog-post.tags",
-      ],
-      fetchLinks: ["tag.name"],
-      orderings: `[last_publication_date]`,
-      page,
-      pageSize: BLOG_POST_PAGE_SIZE,
-    }
-  )
+  const client = createClient()
+  const response = await client.getByType("blog-post", {
+    predicates: BASE_BLOG_POSTS_PREDICATES,
+    fetch: BASE_BLOG_POSTS_FETCH_FIELDS,
+    fetchLinks: BASE_BLOG_POSTS_FETCH_LINKS,
+    orderings: BLOG_POSTS_DEFAULT_ORDERING,
+    page,
+    pageSize: BLOG_POST_PAGE_SIZE,
+  })
 
   return response.results as BlogPostDocument[]
 }
 
 export const getTotalBlogPages = async () => {
-  const response = await Client().query(
-    [
-      Prismic.Predicates.at("document.type", "blog-post"),
-      Prismic.Predicates.has("my.blog-post.uid"),
-    ],
-    {
-      fetch: ["blog-post.uid"],
-      pageSize: BLOG_POST_PAGE_SIZE,
-    }
-  )
+  const client = createClient()
+  const response = await client.getByType("blog-post", {
+    predicates: BASE_BLOG_POSTS_PREDICATES,
+    fetch: ["blog-post.uid"],
+    pageSize: BLOG_POST_PAGE_SIZE,
+  })
   return response.total_pages
 }
 
 export const getBlogSlugs = async () => {
+  const client = createClient()
+
   const slugs: string[] = []
 
-  let response:
-    | Awaited<ReturnType<ReturnType<typeof Client>["query"]>>
-    | undefined = undefined
+  let response: any = undefined
 
   do {
     const page: number = response ? response.page + 1 : 1
-    response = await Client().query(
-      [
-        Prismic.Predicates.at("document.type", "blog-post"),
-        Prismic.Predicates.has("my.blog-post.uid"),
-      ],
-      {
-        fetch: "blog-post.uid",
-        pageSize: MAX_PAGE_SIZE,
-        page,
-      }
-    )
+    response = await client.getByType("blog-post", {
+      predicates: BASE_BLOG_POSTS_PREDICATES,
+      fetch: "blog-post.uid",
+      pageSize: MAX_PAGE_SIZE,
+      page,
+    })
 
-    const responseSlugs = response.results.map((blogPost) => blogPost.uid!)
+    const responseSlugs = response.results.map(
+      (blogPost: BlogPostDocument) => blogPost.uid!
+    )
     slugs.push(...responseSlugs)
   } while (slugs.length < response.total_results_size)
 
@@ -178,26 +273,34 @@ export const getBlogSlugs = async () => {
 }
 
 export const getBlogBySlug = async (slug: string) => {
-  const document = await Client().getByUID("blog-post", slug, {
-    fetchLinks: ["tag.name"],
+  const client = createClient()
+  const document = await client.getByUID("blog-post", slug, {
+    fetchLinks: BASE_BLOG_POSTS_FETCH_LINKS,
   })
   return document as BlogPostDocument
 }
 
 export const getSurroundingBlogPosts = async (blogId: string) => {
+  const client = createClient()
   const previous = (
-    await Client().query(Prismic.Predicates.at("document.type", "blog-post"), {
+    await client.getByType("blog-post", {
       pageSize: 1,
       after: blogId,
-      orderings: "[document.last_publication_date desc]",
+      orderings: {
+        field: "document.last_publication_date",
+        direction: "desc",
+      },
     })
   ).results[0] as BlogPostDocument | undefined
 
   const next = (
-    await Client().query(Prismic.Predicates.at("document.type", "blog-post"), {
+    await client.getByType("blog-post", {
       pageSize: 1,
       after: blogId,
-      orderings: "[document.last_publication_date]",
+      orderings: {
+        field: "document.last_publication_date",
+        direction: "asc",
+      },
     })
   ).results[0] as BlogPostDocument | undefined
 
@@ -208,64 +311,48 @@ export const getSurroundingBlogPosts = async (blogId: string) => {
 }
 
 export const getTagPage = async (tagId: string, page: number = 1) => {
-  const response = await Client().query(
-    [
-      Prismic.Predicates.at("document.type", "blog-post"),
-      Prismic.Predicates.has("my.blog-post.uid"),
-      Prismic.Predicates.at("my.blog-post.tags.tag", tagId),
+  const client = createClient()
+  const response = await client.getByType("blog-post", {
+    predicates: [
+      ...BASE_BLOG_POSTS_PREDICATES,
+      prismic.predicate.at("my.blog-post.tags.tag", tagId),
     ],
-    {
-      fetch: [
-        "blog-post.uid",
-        "blog-post.title",
-        "blog-post.thumbnail",
-        "blog-post.excerpt",
-        "blog-post.tags",
-      ],
-      fetchLinks: ["tag.name"],
-      orderings: `[last_publication_date]`,
-      page,
-      pageSize: BLOG_POST_PAGE_SIZE,
-    }
-  )
+    fetch: BASE_BLOG_POSTS_FETCH_FIELDS,
+    fetchLinks: BASE_BLOG_POSTS_FETCH_LINKS,
+    orderings: BLOG_POSTS_DEFAULT_ORDERING,
+    page,
+    pageSize: BLOG_POST_PAGE_SIZE,
+  })
 
   return response.results as BlogPostDocument[]
 }
 
 export const getTotalTagPages = async (tagId: string) => {
-  const response = await Client().query(
-    [
-      Prismic.Predicates.at("document.type", "blog-post"),
-      Prismic.Predicates.has("my.blog-post.uid"),
-      Prismic.Predicates.at("my.blog-post.tags.tag", tagId),
+  const client = createClient()
+  const response = await client.getByType("blog-post", {
+    predicates: [
+      ...BASE_BLOG_POSTS_PREDICATES,
+      prismic.predicate.at("my.blog-post.tags.tag", tagId),
     ],
-    {
-      fetch: ["blog-post.uid"],
-      pageSize: BLOG_POST_PAGE_SIZE,
-    }
-  )
+    fetch: ["blog-post.uid"],
+    pageSize: BLOG_POST_PAGE_SIZE,
+  })
   return response.total_pages
 }
 
 export const getAllTags = async () => {
+  const client = createClient()
   const tags: TagDocument[] = []
 
-  let response:
-    | Awaited<ReturnType<ReturnType<typeof Client>["query"]>>
-    | undefined = undefined
+  let response: any = undefined
 
   do {
     const page: number = response ? response.page + 1 : 1
-    response = await Client().query(
-      [
-        Prismic.Predicates.at("document.type", "tag"),
-        Prismic.Predicates.has("my.tag.uid"),
-      ],
-      {
-        pageSize: MAX_PAGE_SIZE,
-        page,
-      }
-    )
+    response = await client.getByType("tag", {
+      predicates: BASE_TAGS_PREDICATES,
+      pageSize: MAX_PAGE_SIZE,
+      page,
+    })
 
     tags.push(...(response.results as TagDocument[]))
   } while (tags.length < response.total_results_size)
@@ -274,70 +361,55 @@ export const getAllTags = async () => {
 }
 
 export const getTagByUID = async (uid: string) => {
-  const tag = await Client().getByUID("tag", uid, {})
+  const client = createClient()
+  const tag = await client.getByUID("tag", uid, {
+    predicates: BASE_TAGS_PREDICATES,
+  })
   return tag as TagDocument
 }
 
 export const getProjectsPage = async (page: number = 1) => {
-  const response = await Client().query(
-    [
-      Prismic.Predicates.at("document.type", "project"),
-      Prismic.Predicates.has("my.project.uid"),
-    ],
-    {
-      fetch: [
-        "project.uid",
-        "project.title",
-        "project.image",
-        "project.summary",
-        "project.tags",
-      ],
-      fetchLinks: ["tag.name"],
-      orderings: `[last_publication_date]`,
-      page,
-      pageSize: PROJECT_PAGE_SIZE,
-    }
-  )
+  const client = createClient()
+  const response = await client.getByType("project", {
+    predicates: BASE_PROJECTS_PREDICATES,
+    fetch: BASE_PROJECTS_FETCH_FIELDS,
+    fetchLinks: BASE_PROJECTS_FETCH_LINKS,
+    orderings: PROJECTS_DEFAULT_ORDERING,
+    page,
+    pageSize: PROJECT_PAGE_SIZE,
+  })
 
   return response.results as ProjectDocument[]
 }
 
 export const getTotalProjectsPages = async () => {
-  const response = await Client().query(
-    [
-      Prismic.Predicates.at("document.type", "project"),
-      Prismic.Predicates.has("my.project.uid"),
-    ],
-    {
-      fetch: ["project.uid"],
-      pageSize: PROJECT_PAGE_SIZE,
-    }
-  )
+  const client = createClient()
+  const response = await client.getByType("project", {
+    predicates: BASE_PROJECTS_PREDICATES,
+    fetch: ["project.uid"],
+    pageSize: PROJECT_PAGE_SIZE,
+  })
   return response.total_pages
 }
 
 export const getProjectSlugs = async () => {
+  const client = createClient()
   const slugs: string[] = []
 
-  let response:
-    | Awaited<ReturnType<ReturnType<typeof Client>["query"]>>
-    | undefined = undefined
+  let response: any = undefined
 
   do {
     const page: number = response ? response.page + 1 : 1
-    response = await Client().query(
-      [
-        Prismic.Predicates.at("document.type", "project"),
-        Prismic.Predicates.has("my.project.uid"),
-      ],
-      {
-        fetch: "project.uid",
-        pageSize: MAX_PAGE_SIZE,
-        page,
-      }
-    )
+    response = await client.getByType("project", {
+      predicates: BASE_PROJECTS_PREDICATES,
+      fetch: ["project.uid"],
+      pageSize: MAX_PAGE_SIZE,
+      page,
+    })
 
-    const responseSlugs = response.results.map((blogPost) => blogPost.uid!)
+    const responseSlugs = response.results.map(
+      (project: ProjectDocument) => project.uid!
+    )
     slugs.push(...responseSlugs)
   } while (slugs.length < response.total_results_size)
 
@@ -345,8 +417,9 @@ export const getProjectSlugs = async () => {
 }
 
 export const getProjectBySlug = async (slug: string) => {
-  const document = await Client().getByUID("project", slug, {
-    fetchLinks: ["tag.name"],
+  const client = createClient()
+  const document = await client.getByUID("project", slug, {
+    fetchLinks: BASE_PROJECTS_FETCH_LINKS,
   })
   return document as ProjectDocument
 }

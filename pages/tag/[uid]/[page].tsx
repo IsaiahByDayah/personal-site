@@ -1,17 +1,17 @@
-import { GetStaticProps, GetStaticPaths, GetStaticPathsResult } from "next"
-import { castArray, head } from "lodash"
 import { Pagination, Stack, Typography } from "@mui/material"
-import { useRouter } from "next/router"
 import { RichTextField } from "@prismicio/types"
+import { castArray, head } from "lodash"
+import { GetStaticPaths, GetStaticPathsResult, GetStaticProps } from "next"
+import { useRouter } from "next/router"
 
+import { BlogPostDocument, TagDocument } from "lib/prismic/types"
 import {
-  getTagByUID,
+  blogPostDocumentsToBlogrollItemProps,
   getAllTags,
+  getTagByUID,
   getTagPage,
   getTotalTagPages,
-  blogPostDocumentsToBlogrollItemProps,
 } from "lib/prismic/util"
-import { BlogPostDocument, TagDocument } from "lib/prismic/types"
 
 import { TagsContext } from "components/scaffold/TagsProvider"
 import TwoColumnLayout from "components/scaffold/TwoColumnLayout"

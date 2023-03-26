@@ -13,7 +13,8 @@
     "@mui/lab": "^5.0.0-alpha.54",
     "@mui/material": "^5.1.0",
     "@mui/system": "^5.1.0",
-    "@prismicio/client": "^5.1.0",
+    "@prismicio/client": "^6.7.3",
+    "@prismicio/next": "^1.0.3",
     "@prismicio/react": "^2.0.0",
     "dayjs": "^1.10.7",
     "lodash": "^4.17.21",
@@ -24,7 +25,7 @@
     "react-share": "^4.2.1"
   },
   "devDependencies": {
-    "@prismicio/types": "^0.1.19",
+    "@prismicio/types": "^0.2.7",
     "@storybook/addon-a11y": "^6.0.21",
     "@storybook/addon-actions": "^6.0.21",
     "@storybook/addon-essentials": "^6.0.21",
@@ -44,13 +45,13 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.4.3",
     "prettier": "^2.5.1",
-    "slice-machine-ui": "^0.1.2",
+    "slice-machine-ui": "^0.7.1",
     "typescript": "^4.0.2"
   },
   "scripts": {
     "dev": "next dev",
     "debug": "NODE_OPTIONS='--inspect' next dev",
-    "build": "next build && next export",
+    "build": "next build",
     "start": "next start -p $PORT",
     "lint": "next lint",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",

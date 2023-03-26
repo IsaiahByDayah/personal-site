@@ -1,15 +1,15 @@
-import { GetStaticProps, GetStaticPaths } from "next"
-import { castArray, head } from "lodash"
 import { Pagination } from "@mui/material"
+import { castArray, head } from "lodash"
+import { GetStaticPaths, GetStaticProps } from "next"
 import { useRouter } from "next/router"
 
-import {
-  getTotalBlogPages,
-  getBlogPage,
-  getAllTags,
-  blogPostDocumentsToBlogrollItemProps,
-} from "lib/prismic/util"
 import { BlogPostDocument, TagDocument } from "lib/prismic/types"
+import {
+  blogPostDocumentsToBlogrollItemProps,
+  getAllTags,
+  getBlogPage,
+  getTotalBlogPages,
+} from "lib/prismic/util"
 
 import { TagsContext } from "components/scaffold/TagsProvider"
 import TwoColumnLayout from "components/scaffold/TwoColumnLayout"
@@ -40,6 +40,8 @@ export const getStaticProps: GetStaticProps<BlogPageProps> = async ({
     }
 
   const blogPosts = await getBlogPage(page)
+
+  console.log({ blogPosts })
 
   const totalPages = await getTotalBlogPages()
 

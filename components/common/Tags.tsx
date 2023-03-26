@@ -1,5 +1,4 @@
-import { useContext } from "react"
-import { Theme, Grid, Box, Typography } from "@mui/material"
+import { Box, Grid, Theme, Typography } from "@mui/material"
 import { SystemStyleObject } from "@mui/system"
 
 import { TagDocument } from "lib/prismic/types"
