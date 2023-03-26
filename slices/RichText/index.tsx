@@ -1,16 +1,9 @@
+import { Content } from "@prismicio/client"
 import { SliceComponentProps } from "@prismicio/react"
-import { Slice, RichTextField } from "@prismicio/types"
 
 import MuiRichText from "components/common/MuiRichText"
 
-export type RichTextSlice = Slice<
-  "rich_text",
-  {
-    content: RichTextField
-  }
->
-
-const RichText = ({ slice }: SliceComponentProps<RichTextSlice>) => (
+const RichText = ({ slice }: SliceComponentProps<Content.RichTextSlice>) => (
   <MuiRichText field={slice.primary.content} />
 )
 

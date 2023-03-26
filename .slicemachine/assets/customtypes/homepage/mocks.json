@@ -1,8 +1,6 @@
 {
-  "id": "0bf48551-ebbe-4631-b21d-5499152916b3",
-  "uid": "aut-error-esse",
-  "type": "homepage",
-  "data": {
-    "dummy": true
+  "dummy": {
+    "__TYPE__": "BooleanContent",
+    "value": true
   }
 }

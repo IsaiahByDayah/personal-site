@@ -1,133 +1,163 @@
 {
-  "id": "cd2fb748-00f6-48a2-8957-779544e9988e",
-  "uid": "unde-aspernatur-aperiam",
-  "type": "project",
-  "data": {
-    "image": {
-      "dimensions": {
-        "width": 900,
-        "height": 500
+  "uid": {
+    "__TYPE__": "UIDContent",
+    "value": "dinner"
+  },
+  "image": {
+    "__TYPE__": "ImageContent",
+    "origin": {
+      "id": "main",
+      "url": "https://images.unsplash.com/photo-1531771686035-25f47595c87a",
+      "width": 3024,
+      "height": 3778
+    },
+    "url": "https://images.unsplash.com/photo-1531771686035-25f47595c87a",
+    "width": 3024,
+    "height": 3778,
+    "edit": {
+      "zoom": 1,
+      "crop": {
+        "x": 0,
+        "y": 0
       },
-      "alt": "Placeholder image",
-      "copyright": null,
-      "url": "https://images.unsplash.com/photo-1587614295999-6c1c13675117?w=900&h=500&fit=crop"
+      "background": "transparent"
     },
-    "title": "embrace e-business markets",
-    "summary": "matrix revolutionary metrics",
-    "url": {
-      "link_type": "Web",
-      "url": "https://slicemachine.dev"
-    },
-    "description": [
+    "thumbnails": {}
+  },
+  "title": {
+    "__TYPE__": "FieldContent",
+    "value": "simple",
+    "type": "Text"
+  },
+  "summary": {
+    "__TYPE__": "FieldContent",
+    "value": "son",
+    "type": "Text"
+  },
+  "url": {
+    "__TYPE__": "LinkContent",
+    "value": {
+      "__TYPE__": "ExternalLink",
+      "url": "https://prismic.io"
+    }
+  },
+  "description": {
+    "__TYPE__": "StructuredTextContent",
+    "value": [
       {
         "type": "paragraph",
-        "text": "Nulla ut pariatur tempor aliquip.",
-        "spans": []
-      }
-    ],
-    "highlights": [
-      {
-        "highlight": [
-          {
-            "type": "paragraph",
-            "text": "Mollit aute do consectetur reprehenderit sunt elit aliqua esse.",
-            "spans": []
-          }
-        ]
-      },
-      {
-        "highlight": [
-          {
-            "type": "paragraph",
-            "text": "Culpa tempor ex voluptate do incididunt ipsum cillum et velit ullamco sit cupidatat. Aute ut ex consequat velit in Lorem nulla aute consequat do veniam tempor est ullamco ad. Est nulla aute officia adipisicing nulla quis in duis.",
-            "spans": []
-          }
-        ]
-      },
-      {
-        "highlight": [
-          {
-            "type": "paragraph",
-            "text": "Do ad sunt eiusmod cupidatat tempor ullamco exercitation ad aliquip. Eiusmod consequat consequat consequat.",
-            "spans": []
-          }
-        ]
-      },
-      {
-        "highlight": [
-          {
-            "type": "paragraph",
-            "text": "Adipisicing culpa eiusmod Lorem et et velit proident Lorem ad dolore proident et mollit aliquip. Id mollit exercitation cillum ad et. Mollit non consectetur occaecat ad exercitation aliqua reprehenderit proident nostrud in cillum elit.",
-            "spans": []
-          }
-        ]
-      }
-    ],
-    "tags": [
-      {
-        "tag": {
-          "link_type": "Web",
-          "url": "http://twitter.com"
-        }
-      },
-      {
-        "tag": {
-          "link_type": "Web",
-          "url": "https://slicemachine.dev"
-        }
-      },
-      {
-        "tag": {
-          "link_type": "Web",
-          "url": "https://slicemachine.dev"
+        "content": {
+          "text": "Eu cillum dolore elit non sunt laborum. In reprehenderit cupidatat proident in Lorem duis esse ullamco ad cillum excepteur aute nostrud ut. Voluptate ea dolor anim."
         }
       }
-    ],
-    "client": [
+    ]
+  },
+  "highlights": {
+    "__TYPE__": "GroupContentType",
+    "value": [
       {
-        "name": "mesh granular synergies",
-        "site": {
-          "link_type": "Web",
-          "url": "https://slicemachine.dev"
-        },
-        "photo": {
-          "dimensions": {
-            "width": 900,
-            "height": 500
-          },
-          "alt": "Placeholder image",
-          "copyright": null,
-          "url": "https://images.unsplash.com/photo-1596195689404-24d8a8d1c6ea?w=900&h=500&fit=crop"
-        },
-        "bio": [
-          {
-            "type": "paragraph",
-            "text": "Minim consequat esse adipisicing dolor.",
-            "spans": []
-          }
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          [
+            "highlight",
+            {
+              "__TYPE__": "StructuredTextContent",
+              "value": [
+                {
+                  "type": "paragraph",
+                  "content": {
+                    "text": "Nostrud pariatur fugiat esse ad culpa sint velit in irure commodo. Aliqua duis ea non eiusmod adipisicing qui non commodo mollit voluptate aliqua ipsum. Aliqua labore incididunt esse officia ullamco eiusmod mollit."
+                  }
+                }
+              ]
+            }
+          ]
         ]
-      },
+      }
+    ]
+  },
+  "tags": {
+    "__TYPE__": "GroupContentType",
+    "value": [
       {
-        "name": "whiteboard robust methodologies",
-        "site": {
-          "link_type": "Web",
-          "url": "http://google.com"
-        },
-        "photo": {
-          "dimensions": {
-            "width": 900,
-            "height": 500
-          },
-          "alt": "Placeholder image",
-          "copyright": null,
-          "url": "https://images.unsplash.com/photo-1593642532973-d31b6557fa68?w=900&h=500&fit=crop"
-        },
-        "bio": [
-          {
-            "type": "paragraph",
-            "text": "Proident fugiat veniam ea.",
-            "spans": []
-          }
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          [
+            "tag",
+            {
+              "__TYPE__": "LinkContent",
+              "value": {
+                "__TYPE__": "DocumentLink",
+                "id": "mock_document_id"
+              }
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  "client": {
+    "__TYPE__": "GroupContentType",
+    "value": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          [
+            "name",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "remain",
+              "type": "Text"
+            }
+          ],
+          [
+            "site",
+            {
+              "__TYPE__": "LinkContent",
+              "value": {
+                "__TYPE__": "ExternalLink",
+                "url": "http://twitter.com"
+              }
+            }
+          ],
+          [
+            "photo",
+            {
+              "__TYPE__": "ImageContent",
+              "origin": {
+                "id": "main",
+                "url": "https://images.unsplash.com/photo-1579931794097-0ad001e51edb",
+                "width": 3958,
+                "height": 3958
+              },
+              "url": "https://images.unsplash.com/photo-1579931794097-0ad001e51edb",
+              "width": 3958,
+              "height": 3958,
+              "edit": {
+                "zoom": 1,
+                "crop": {
+                  "x": 0,
+                  "y": 0
+                },
+                "background": "transparent"
+              },
+              "thumbnails": {}
+            }
+          ],
+          [
+            "bio",
+            {
+              "__TYPE__": "StructuredTextContent",
+              "value": [
+                {
+                  "type": "paragraph",
+                  "content": {
+                    "text": "Nisi non veniam ea enim tempor ipsum non. Fugiat fugiat esse nostrud exercitation ea id commodo est ex sit consequat irure mollit. Magna in velit aliquip eiusmod irure nisi pariatur culpa irure ea esse non ex."
+                  }
+                }
+              ]
+            }
+          ]
         ]
       }
     ]
