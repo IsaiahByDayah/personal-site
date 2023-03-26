@@ -4,6 +4,26 @@
   "description": "My personal site and blog powered by NextJS and Prismic",
   "version": "2.0.0",
   "author": "Isaiah Smith <jordankid93@gmail.com>",
+  "scripts": {
+    "dev": "next dev",
+    "debug": "NODE_OPTIONS='--inspect' next dev",
+    "build": "next build",
+    "start": "next start -p $PORT",
+    "lint": "next lint",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "test": "jest --watch",
+    "test:ci": "jest --verbose && yarn lint",
+    "type-check": "tsc --noEmit",
+    "storybook": "start-storybook -p 6006 -s public",
+    "sm": "start-slicemachine",
+    "deploy": "firebase deploy",
+    "emulate": "firebase emulators:start",
+    "deploy:functions": "firebase deploy --only functions",
+    "config:get": "firebase functions:config:get",
+    "config:set": "firebase functions:config:set",
+    "config:unset": "firebase functions:config:unset",
+    "config:fetch": "firebase functions:config:get > .runtimeconfig.json"
+  },
   "dependencies": {
     "@emotion/cache": "^11.5.0",
     "@emotion/react": "^11.5.0",
@@ -47,26 +67,6 @@
     "prettier": "^2.5.1",
     "slice-machine-ui": "^0.7.1",
     "typescript": "^4.0.2"
-  },
-  "scripts": {
-    "dev": "next dev",
-    "debug": "NODE_OPTIONS='--inspect' next dev",
-    "build": "next build",
-    "start": "next start -p $PORT",
-    "lint": "next lint",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
-    "test": "jest --watch",
-    "test:ci": "jest --verbose && yarn lint",
-    "type-check": "tsc --noEmit",
-    "storybook": "start-storybook -p 6006 -s public",
-    "sm": "start-slicemachine",
-    "deploy": "firebase deploy",
-    "emulate": "firebase emulators:start",
-    "deploy:functions": "firebase deploy --only functions",
-    "config:get": "firebase functions:config:get",
-    "config:set": "firebase functions:config:set",
-    "config:unset": "firebase functions:config:unset",
-    "config:fetch": "firebase functions:config:get > .runtimeconfig.json"
   },
   "eslintConfig": {
     "extends": [
