@@ -87,22 +87,13 @@ export const getStaticProps: GetStaticProps<TagPageProps> = async ({
     page,
   })
 
-  const totalPages = await client.getByType("blog-post", {
-    predicates: [
-      ...BASE_BLOG_POSTS_PREDICATES,
-      predicate.at("my.blog-post.tags.tag", tag.id),
-    ],
-    fetch: ["blog-post.uid"],
-    pageSize: BLOG_POST_PAGE_SIZE,
-  })
-
   const tags = await client.getAllByType("tag")
 
   return {
     props: {
       tag,
       page,
-      totalPages,
+      totalPages: blogPostsQuery.total_pages,
       blogPosts: blogPostsQuery.results,
       tags,
     },

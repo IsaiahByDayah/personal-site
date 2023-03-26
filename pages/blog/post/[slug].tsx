@@ -115,8 +115,8 @@ const BlogPost = ({ blogPost, previous, next }: BlogPostProps) => {
             borderRadius={1}
             boxShadow={4}
             component="img"
-            src={blogPost.data.thumbnail.url}
-            alt={blogPost.data.thumbnail.alt}
+            src={blogPost.data.thumbnail.url ?? undefined}
+            alt={blogPost.data.thumbnail.alt ?? undefined}
           />
 
           <Box display="flex" flexWrap="wrap">

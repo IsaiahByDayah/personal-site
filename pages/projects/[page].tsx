@@ -1,4 +1,5 @@
 import { Pagination } from "@mui/material"
+import { Content } from "@prismicio/client"
 import { castArray, head } from "lodash"
 import { GetStaticPaths, GetStaticProps } from "next"
 import { useRouter } from "next/router"
@@ -15,6 +16,7 @@ import {
 import TwoColumnLayout from "components/scaffold/TwoColumnLayout"
 
 import Blogroll from "components/common/Blogroll"
+import { isNonNullable } from "lib/utils"
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const client = createClient()
@@ -69,7 +71,7 @@ export const getStaticProps: GetStaticProps<BlogPageProps> = async ({
 export interface BlogPageProps {
   page: number
   totalPages: number
-  projects: ProjectDocument[]
+  projects: Content.ProjectDocument[]
 }
 
 const BlogPage = ({ page, totalPages, projects }: BlogPageProps) => {
@@ -81,14 +83,14 @@ const BlogPage = ({ page, totalPages, projects }: BlogPageProps) => {
         items={projects.map((project) => ({
           href: project.url ?? "/",
           thumbnailProps: {
-            src: project.data.image.url,
-            alt: project.data.image.alt,
+            src: project.data.image.url ?? undefined,
+            alt: project.data.image.alt ?? undefined,
           },
-          primary: project.data.title,
-          secondary: project.data.summary,
-          tags: project.data.tags.map(
-            (t) => (t.tag as unknown as TagDocument).data.name
-          ),
+          primary: project.data.title ?? "",
+          secondary: project.data.summary ?? undefined,
+          tags: project.data.tags
+            .map((t) => (t.tag as unknown as Content.TagDocument).data.name)
+            .filter(isNonNullable),
         }))}
         emptyMessage="No Projects."
       >

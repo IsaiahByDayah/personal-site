@@ -1,6 +1,5 @@
-import { RichTextSlice } from "./RichText"
-import { QuoteSlice } from "./Quote"
+import { Content } from "@prismicio/client"
 
-type Slices = RichTextSlice | QuoteSlice
+type Slices = Content.QuoteSlice | Content.RichTextSlice
 
 export default Slices

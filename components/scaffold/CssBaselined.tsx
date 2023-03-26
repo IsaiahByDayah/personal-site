@@ -1,7 +1,11 @@
-import { FC } from "react"
 import { CssBaseline } from "@mui/material"
+import { ReactNode } from "react"
 
-const CssBaselined: FC = ({ children }) => (
+export interface ICssBaselinedProps {
+  children?: ReactNode
+}
+
+const CssBaselined = ({ children }: ICssBaselinedProps) => (
   <>
     <CssBaseline />
     {children}

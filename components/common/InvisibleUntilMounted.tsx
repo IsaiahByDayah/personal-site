@@ -1,11 +1,15 @@
-import { useState, useEffect, FC } from "react"
 import { styled } from "@mui/material"
+import { ReactNode, useEffect, useState } from "react"
 
 const Invisible = styled("div")({
   visibility: "hidden",
 })
 
-const InvisibleUntilMounted: FC = ({ children }) => {
+export interface IInvisibleUntilMountedProps {
+  children?: ReactNode
+}
+
+const InvisibleUntilMounted = ({ children }: IInvisibleUntilMountedProps) => {
   const [mounted, setMounted] = useState(false)
   useEffect(() => {
     setMounted(true)

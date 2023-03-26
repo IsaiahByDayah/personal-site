@@ -16,6 +16,7 @@ import TwoColumnLayout from "components/scaffold/TwoColumnLayout"
 
 import MuiRichText from "components/common/MuiRichText"
 import Tags from "components/common/Tags"
+import { isNonNullable } from "lib/utils"
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const client = createClient()
@@ -94,9 +95,9 @@ const Project = ({ project }: ProjectProps) => {
             {project.data.title}
           </Typography>
           <Tags
-            tags={project.data.tags.map(
-              (t) => (t.tag as unknown as Content.TagDocument).data.name
-            )}
+            tags={project.data.tags
+              .map((t) => (t.tag as unknown as Content.TagDocument).data.name)
+              .filter(isNonNullable)}
             label={false}
           />
         </Stack>
