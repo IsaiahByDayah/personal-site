@@ -1,5 +1,11 @@
-import { useCallback, createContext, FC, Dispatch, SetStateAction } from "react"
 import { useMediaQuery } from "@mui/material"
+import {
+  createContext,
+  Dispatch,
+  ReactNode,
+  SetStateAction,
+  useCallback,
+} from "react"
 
 import useLocalStorage from "hooks/useLocalStorage"
 
@@ -21,7 +27,11 @@ export const ThemeSelectionContext = createContext<ThemeSelectionContextValue>({
   toggleThemeSelection: () => null,
 })
 
-const ThemeSelectionProvider: FC = ({ children }) => {
+export interface IThemeSelectionProviderProps {
+  children?: ReactNode
+}
+
+const ThemeSelectionProvider = ({ children }: IThemeSelectionProviderProps) => {
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)")
   const [themeSelection, setThemeSelection] = useLocalStorage<ThemeSelection>(
     THEME_SELECTION_VALUE_KEY,

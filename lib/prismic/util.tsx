@@ -1,30 +1,24 @@
 // REF: https://prismic.io/docs/technologies/nextjs#3.2.-prismic-helpers
 
-import { Theme, Typography, Box, Link, Stack } from "@mui/material"
+import { Box, Link, Stack, Theme, Typography } from "@mui/material"
 import { SystemStyleObject } from "@mui/system"
-import Prismic from "@prismicio/client"
+import * as prismic from "@prismicio/client"
+import * as prismicNext from "@prismicio/next"
 import { JSXMapSerializer, SliceZoneComponents } from "@prismicio/react"
-import { RichTextField, LinkType } from "@prismicio/types"
-import NextLink from "next/link"
+import {
+  LinkField,
+  LinkType,
+  PrismicDocument,
+  RichTextField,
+} from "@prismicio/types"
 import dayjs from "dayjs"
+import NextLink from "next/link"
 
-import {
-  apiEndpoint,
-  accessToken,
-  linkResolver,
-  Router,
-} from "prismicConfiguration"
+import sm from "sm.json"
 
-import {
-  AboutPageDocument,
-  BlogPostDocument,
-  TagDocument,
-  ProjectDocument,
-} from "lib/prismic/types"
-
-import Slices from "slices/slice-types"
-import RichText, { RichTextSlice } from "slices/RichText"
 import Quote from "slices/Quote"
+import RichText from "slices/RichText"
+import Slices from "slices/slice-types"
 
 import { BlogrollItemProps } from "components/common/BlogrollItem"
 
@@ -37,6 +31,34 @@ export const PROJECT_PAGE_SIZE = 20
 // Setup Helpers & Modules
 ///////////////////////////
 ///////////////////////////
+
+////////////////////////////
+// REF: https://prismic.io/docs/core-concepts/link-resolver-route-resolver
+// TODO: Look into proper typing for this function :/ - IS 12/28/2022
+////////////////////////////
+export const linkResolver = (doc: any) => {
+  switch (doc.link_type) {
+    case LinkType.Web:
+      if (doc.url) return doc.url
+      break
+    case LinkType.Document:
+      if (doc.url) return doc.url
+      // MARK: Handle custom client side paths here
+      break
+    case LinkType.Media:
+      if (doc.url) return doc.url
+      break
+  }
+
+  if (doc.url) return doc.url
+  return "/"
+}
+
+export type DocumentLinkField<T extends PrismicDocument> = LinkField<
+  T["type"],
+  T["lang"],
+  T["data"]
+>
 
 export const richTextComponents = (
   getSx?: (type: keyof JSXMapSerializer) => SystemStyleObject<Theme>
@@ -83,273 +105,102 @@ export const sliceZoneComponents: SliceZoneComponents<Slices> = {
 ///////////////////////////
 ///////////////////////////
 
-// -- @prismicio/client initialisation
-// Initialises the Prismic Client that's used for querying the API and passes it any query options.
-export const Client = (req = null) =>
-  Prismic.client(apiEndpoint, createClientOptions(req, accessToken, Router))
+export const PRISMIC_REPO_NAME = prismic.getRepositoryName(sm.apiEndpoint)
 
-// Options to be passed to the Client
-const createClientOptions = (
-  req = null,
-  prismicAccessToken: string | null | undefined = null,
-  routes: any = null
-) => {
-  const reqOption = req ? { req } : {}
-  const accessTokenOption = prismicAccessToken
-    ? { accessToken: prismicAccessToken }
-    : {}
-  const routesOption = routes ? { routes: Router.routes } : {}
-  return {
-    ...reqOption,
-    ...accessTokenOption,
-    ...routesOption,
-  }
-}
+const routes = [
+  {
+    type: "homepage",
+    path: "/",
+  },
+  {
+    type: "about-page",
+    path: "/about",
+  },
+  {
+    type: "blog-post",
+    path: "/blog/post/:uid",
+  },
+  {
+    type: "tag",
+    path: "/tag/:uid/1",
+  },
+  {
+    type: "project",
+    path: "/project/:uid",
+  },
+]
 
-export const getAboutPage = async () => {
-  const document = await Client().getSingle("about-page", {})
-  return document as AboutPageDocument
-}
-
-export const getBlogPage = async (page: number = 1) => {
-  const response = await Client().query(
-    [
-      Prismic.Predicates.at("document.type", "blog-post"),
-      Prismic.Predicates.has("my.blog-post.uid"),
-    ],
+export const createClient = (config: prismicNext.CreateClientConfig = {}) => {
+  const client = prismic.createClient<prismic.Content.AllDocumentTypes>(
+    sm.apiEndpoint,
     {
-      fetch: [
-        "blog-post.uid",
-        "blog-post.title",
-        "blog-post.thumbnail",
-        "blog-post.excerpt",
-        "blog-post.tags",
-      ],
-      fetchLinks: ["tag.name"],
-      orderings: `[last_publication_date]`,
-      page,
-      pageSize: BLOG_POST_PAGE_SIZE,
+      routes,
+      ...config,
     }
   )
 
-  return response.results as BlogPostDocument[]
+  // prismicNext.enableAutoPreviews({
+  //   client,
+  //   previewData: config.previewData,
+  //   req: config.req,
+  // })
+
+  return client
 }
 
-export const getTotalBlogPages = async () => {
-  const response = await Client().query(
-    [
-      Prismic.Predicates.at("document.type", "blog-post"),
-      Prismic.Predicates.has("my.blog-post.uid"),
-    ],
-    {
-      fetch: ["blog-post.uid"],
-      pageSize: BLOG_POST_PAGE_SIZE,
-    }
-  )
-  return response.total_pages
+///////////////////////////
+// Blog Posts
+///////////////////////////
+
+export const BASE_BLOG_POSTS_PREDICATES = [
+  prismic.predicate.has("my.blog-post.uid"),
+]
+
+export const BASE_BLOG_POSTS_FETCH_FIELDS = [
+  "blog-post.uid",
+  "blog-post.title",
+  "blog-post.thumbnail",
+  "blog-post.excerpt",
+  "blog-post.tags",
+]
+
+export const BASE_BLOG_POSTS_FETCH_LINKS = ["tag.name"]
+
+export const BLOG_POSTS_DESC_UPDATED_AT_ORDERING: prismic.Ordering = {
+  field: "document.last_publication_date",
+  direction: "desc",
 }
+export const BLOG_POSTS_DEFAULT_ORDERING = BLOG_POSTS_DESC_UPDATED_AT_ORDERING
 
-export const getBlogSlugs = async () => {
-  const slugs: string[] = []
+///////////////////////////
+// Tags
+///////////////////////////
 
-  let response:
-    | Awaited<ReturnType<ReturnType<typeof Client>["query"]>>
-    | undefined = undefined
+export const BASE_TAGS_PREDICATES = [prismic.predicate.has("my.tag.uid")]
 
-  do {
-    const page: number = response ? response.page + 1 : 1
-    response = await Client().query(
-      [
-        Prismic.Predicates.at("document.type", "blog-post"),
-        Prismic.Predicates.has("my.blog-post.uid"),
-      ],
-      {
-        fetch: "blog-post.uid",
-        pageSize: MAX_PAGE_SIZE,
-        page,
-      }
-    )
+///////////////////////////
+// Projects
+///////////////////////////
 
-    const responseSlugs = response.results.map((blogPost) => blogPost.uid!)
-    slugs.push(...responseSlugs)
-  } while (slugs.length < response.total_results_size)
+export const BASE_PROJECTS_PREDICATES = [
+  prismic.predicate.has("my.project.uid"),
+]
 
-  return slugs
+export const BASE_PROJECTS_FETCH_FIELDS = [
+  "project.uid",
+  "project.title",
+  "project.image",
+  "project.summary",
+  "project.tags",
+]
+
+export const BASE_PROJECTS_FETCH_LINKS = ["tag.name"]
+
+export const PROJECTS_DESC_UPDATED_AT_ORDERING: prismic.Ordering = {
+  field: "document.last_publication_date",
+  direction: "desc",
 }
-
-export const getBlogBySlug = async (slug: string) => {
-  const document = await Client().getByUID("blog-post", slug, {
-    fetchLinks: ["tag.name"],
-  })
-  return document as BlogPostDocument
-}
-
-export const getSurroundingBlogPosts = async (blogId: string) => {
-  const previous = (
-    await Client().query(Prismic.Predicates.at("document.type", "blog-post"), {
-      pageSize: 1,
-      after: blogId,
-      orderings: "[document.last_publication_date desc]",
-    })
-  ).results[0] as BlogPostDocument | undefined
-
-  const next = (
-    await Client().query(Prismic.Predicates.at("document.type", "blog-post"), {
-      pageSize: 1,
-      after: blogId,
-      orderings: "[document.last_publication_date]",
-    })
-  ).results[0] as BlogPostDocument | undefined
-
-  return {
-    previous: previous ?? null,
-    next: next ?? null,
-  }
-}
-
-export const getTagPage = async (tagId: string, page: number = 1) => {
-  const response = await Client().query(
-    [
-      Prismic.Predicates.at("document.type", "blog-post"),
-      Prismic.Predicates.has("my.blog-post.uid"),
-      Prismic.Predicates.at("my.blog-post.tags.tag", tagId),
-    ],
-    {
-      fetch: [
-        "blog-post.uid",
-        "blog-post.title",
-        "blog-post.thumbnail",
-        "blog-post.excerpt",
-        "blog-post.tags",
-      ],
-      fetchLinks: ["tag.name"],
-      orderings: `[last_publication_date]`,
-      page,
-      pageSize: BLOG_POST_PAGE_SIZE,
-    }
-  )
-
-  return response.results as BlogPostDocument[]
-}
-
-export const getTotalTagPages = async (tagId: string) => {
-  const response = await Client().query(
-    [
-      Prismic.Predicates.at("document.type", "blog-post"),
-      Prismic.Predicates.has("my.blog-post.uid"),
-      Prismic.Predicates.at("my.blog-post.tags.tag", tagId),
-    ],
-    {
-      fetch: ["blog-post.uid"],
-      pageSize: BLOG_POST_PAGE_SIZE,
-    }
-  )
-  return response.total_pages
-}
-
-export const getAllTags = async () => {
-  const tags: TagDocument[] = []
-
-  let response:
-    | Awaited<ReturnType<ReturnType<typeof Client>["query"]>>
-    | undefined = undefined
-
-  do {
-    const page: number = response ? response.page + 1 : 1
-    response = await Client().query(
-      [
-        Prismic.Predicates.at("document.type", "tag"),
-        Prismic.Predicates.has("my.tag.uid"),
-      ],
-      {
-        pageSize: MAX_PAGE_SIZE,
-        page,
-      }
-    )
-
-    tags.push(...(response.results as TagDocument[]))
-  } while (tags.length < response.total_results_size)
-
-  return tags
-}
-
-export const getTagByUID = async (uid: string) => {
-  const tag = await Client().getByUID("tag", uid, {})
-  return tag as TagDocument
-}
-
-export const getProjectsPage = async (page: number = 1) => {
-  const response = await Client().query(
-    [
-      Prismic.Predicates.at("document.type", "project"),
-      Prismic.Predicates.has("my.project.uid"),
-    ],
-    {
-      fetch: [
-        "project.uid",
-        "project.title",
-        "project.image",
-        "project.summary",
-        "project.tags",
-      ],
-      fetchLinks: ["tag.name"],
-      orderings: `[last_publication_date]`,
-      page,
-      pageSize: PROJECT_PAGE_SIZE,
-    }
-  )
-
-  return response.results as ProjectDocument[]
-}
-
-export const getTotalProjectsPages = async () => {
-  const response = await Client().query(
-    [
-      Prismic.Predicates.at("document.type", "project"),
-      Prismic.Predicates.has("my.project.uid"),
-    ],
-    {
-      fetch: ["project.uid"],
-      pageSize: PROJECT_PAGE_SIZE,
-    }
-  )
-  return response.total_pages
-}
-
-export const getProjectSlugs = async () => {
-  const slugs: string[] = []
-
-  let response:
-    | Awaited<ReturnType<ReturnType<typeof Client>["query"]>>
-    | undefined = undefined
-
-  do {
-    const page: number = response ? response.page + 1 : 1
-    response = await Client().query(
-      [
-        Prismic.Predicates.at("document.type", "project"),
-        Prismic.Predicates.has("my.project.uid"),
-      ],
-      {
-        fetch: "project.uid",
-        pageSize: MAX_PAGE_SIZE,
-        page,
-      }
-    )
-
-    const responseSlugs = response.results.map((blogPost) => blogPost.uid!)
-    slugs.push(...responseSlugs)
-  } while (slugs.length < response.total_results_size)
-
-  return slugs
-}
-
-export const getProjectBySlug = async (slug: string) => {
-  const document = await Client().getByUID("project", slug, {
-    fetchLinks: ["tag.name"],
-  })
-  return document as ProjectDocument
-}
+export const PROJECTS_DEFAULT_ORDERING = PROJECTS_DESC_UPDATED_AT_ORDERING
 
 ///////////////////////////
 ///////////////////////////
@@ -358,7 +209,7 @@ export const getProjectBySlug = async (slug: string) => {
 ///////////////////////////
 
 export const blogPostDocumentsToBlogrollItemProps = (
-  blogPostDocuments: BlogPostDocument[]
+  blogPostDocuments: prismic.Content.BlogPostDocument[]
 ): BlogrollItemProps[] =>
   blogPostDocuments.map((blogPost) => {
     let meta: string | Date = new Date(blogPost.last_publication_date)
@@ -370,12 +221,14 @@ export const blogPostDocumentsToBlogrollItemProps = (
       href: blogPost.url ?? "/",
       meta,
       thumbnailProps: {
-        src: blogPost.data.thumbnail.url,
-        alt: blogPost.data.thumbnail.alt,
+        src: blogPost.data.thumbnail.url ?? undefined,
+        alt: blogPost.data.thumbnail.alt ?? undefined,
       },
-      primary: blogPost.data.title,
-      secondary: blogPost.data.excerpt,
-      tags: blogPost.data.tags.map((t) => t.tag as unknown as TagDocument),
+      primary: blogPost.data.title ?? "",
+      secondary: blogPost.data.excerpt ?? undefined,
+      tags: blogPost.data.tags.map(
+        (t) => t.tag as unknown as prismic.Content.TagDocument
+      ),
     }
   })
 
@@ -442,112 +295,140 @@ export const generateComplexRichTextFieldData = (): RichTextField => [
   },
 ]
 
-export const generateRichTextSliceData = (): RichTextSlice =>
-  ({
-    slice_type: "rich_text",
-    slice_label: null,
-    version: "ameteumblanditiis",
-    variation: "default-slice",
-    primary: {
-      content: generateComplexRichTextFieldData(),
-    },
-    items: [{}],
-  } as RichTextSlice)
+export const generateRichTextSlice = (): prismic.Content.RichTextSlice => ({
+  slice_type: "rich_text",
+  slice_label: null,
+  version: "ameteumblanditiis",
+  variation: "default-slice",
+  primary: {
+    content: generateComplexRichTextFieldData(),
+  },
+  items: [],
+})
 
 export const generateBlogPostDocument = (
-  overrides?: Partial<BlogPostDocument>
-): BlogPostDocument =>
-  ({
-    uid: "vel-aut-sit",
-    first_publication_date: new Date("6/13/1993").toISOString(),
-    last_publication_date: new Date("6/13/1993").toISOString(),
-    url: "/blog/post/vel-aut-sit",
-    ...overrides,
-    data: {
-      slices: [generateRichTextSliceData()],
-      title: "Libero est voluptatem eligendi voluptatibus a et.",
-      thumbnail: {
-        alt: "random alt text",
-        url: "https://picsum.photos/1920/1080",
-        copyright: null,
-        dimensions: {
-          height: 1080,
-          width: 1920,
-        },
+  overrides?: Partial<prismic.Content.BlogPostDocument>
+): prismic.Content.BlogPostDocument => ({
+  id: "vel-aut-sit",
+  uid: "vel-aut-sit",
+  type: "blog-post",
+  href: "",
+  alternate_languages: [],
+  lang: "",
+  tags: [],
+  linked_documents: [],
+  first_publication_date: new Date("6/13/1993").toISOString(),
+  last_publication_date: new Date("6/13/1993").toISOString(),
+  url: "/blog/post/vel-aut-sit",
+  slugs: [],
+  ...overrides,
+  data: {
+    slices: [generateRichTextSlice()],
+    title: "Libero est voluptatem eligendi voluptatibus a et.",
+    thumbnail: {
+      alt: "random alt text",
+      url: "https://picsum.photos/1920/1080",
+      copyright: null,
+      dimensions: {
+        height: 1080,
+        width: 1920,
       },
-      excerpt:
-        "Et perferendis facere dignissimos ullam. Aut molestiae cum minima sequi soluta occaecati voluptas nesciunt.",
-      tags: [
-        {
-          tag: {
-            id: "id-corporis",
-            uid: "corporis",
-            data: { name: "corporis" },
-            url: "/tag/corporis/1",
-          },
-        },
-      ] as any,
-      ...overrides?.data,
     },
-  } as BlogPostDocument)
+    excerpt:
+      "Et perferendis facere dignissimos ullam. Aut molestiae cum minima sequi soluta occaecati voluptas nesciunt.",
+    tags: [],
+    projects: [],
+    ...overrides?.data,
+  },
+})
 
 export const generateProjectDocument = (
-  overrides?: Partial<ProjectDocument>
-): ProjectDocument =>
-  ({
-    uid: "vel-aut-sit",
-    first_publication_date: new Date("6/13/1993").toISOString(),
-    last_publication_date: new Date("6/13/1993").toISOString(),
-    url: "/blog/post/vel-aut-sit",
-    ...overrides,
-    data: {
-      title: "Granite Tuna JS",
-      image: {
-        alt: "random alt text",
-        url: "https://picsum.photos/1920/1080",
-        copyright: null,
-        dimensions: {
-          height: 1080,
-          width: 1920,
+  overrides?: Partial<prismic.Content.ProjectDocument>
+): prismic.Content.ProjectDocument => ({
+  id: "vel-aut-sit",
+  uid: "vel-aut-sit",
+  type: "project",
+  href: "",
+  alternate_languages: [],
+  lang: "",
+  tags: [],
+  linked_documents: [],
+  first_publication_date: new Date("6/13/1993").toISOString(),
+  last_publication_date: new Date("6/13/1993").toISOString(),
+  url: "/blog/post/vel-aut-sit",
+  slugs: [],
+  ...overrides,
+  data: {
+    title: "Granite Tuna JS",
+    image: {
+      alt: "random alt text",
+      url: "https://picsum.photos/1920/1080",
+      copyright: null,
+      dimensions: {
+        height: 1080,
+        width: 1920,
+      },
+    },
+    summary:
+      "Et perferendis facere dignissimos ullam. Aut molestiae cum minima sequi soluta occaecati voluptas nesciunt.",
+    tags: [],
+    description: generateComplexRichTextFieldData(),
+    highlights: [
+      { highlight: generateSimpleRichTextFieldData() },
+      { highlight: generateSimpleRichTextFieldData() },
+      { highlight: generateSimpleRichTextFieldData() },
+    ],
+    client: [
+      {
+        name: "Cremin, Grant and Kutch",
+        site: {
+          link_type: LinkType.Web,
+          url: "http://example.com",
+        },
+        bio: generateSimpleRichTextFieldData(),
+        photo: {
+          alt: "random alt text",
+          url: "https://picsum.photos/1920/1080",
+          copyright: null,
+          dimensions: {
+            height: 1080,
+            width: 1920,
+          },
         },
       },
-      summary:
-        "Et perferendis facere dignissimos ullam. Aut molestiae cum minima sequi soluta occaecati voluptas nesciunt.",
-      tags: [
-        {
-          tag: {
-            id: "id-corporis",
-            uid: "corporis",
-            data: { name: "corporis" },
-            url: "/tag/corporis/1",
-          },
-        },
-      ] as any,
-      description: generateComplexRichTextFieldData(),
-      highlights: [
-        { highlight: generateSimpleRichTextFieldData() },
-        { highlight: generateSimpleRichTextFieldData() },
-        { highlight: generateSimpleRichTextFieldData() },
-      ],
-      client: [
-        {
-          name: "Cremin, Grant and Kutch",
-          site: {
-            link_type: LinkType.Web,
-            url: "http://example.com",
-          },
-          bio: generateSimpleRichTextFieldData(),
-          photo: {
-            alt: "random alt text",
-            url: "https://picsum.photos/1920/1080",
-            copyright: null,
-            dimensions: {
-              height: 1080,
-              width: 1920,
-            },
-          },
-        },
-      ],
-      ...overrides?.data,
+    ],
+    url: {
+      link_type: "ExternalLink",
     },
-  } as ProjectDocument)
+    ...overrides?.data,
+  },
+})
+
+export const generateTagDocument = (
+  overrides?: Partial<prismic.Content.TagDocument>
+): prismic.Content.TagDocument => ({
+  id: "quas-fugit-atque",
+  uid: "quas-fugit-atque",
+  type: "tag",
+  href: "",
+  alternate_languages: [],
+  lang: "",
+  tags: [],
+  linked_documents: [],
+  first_publication_date: new Date("6/13/1993").toISOString(),
+  last_publication_date: new Date("6/13/1993").toISOString(),
+  url: "/blog/post/quas-fugit-atque",
+  slugs: [], // @deprecated
+  ...overrides,
+  data: {
+    name: "explicabo",
+    description: [
+      {
+        type: "paragraph",
+        text: "Assumenda voluptatem optio sapiente sunt enim praesentium nihil ea tempora",
+        spans: [],
+      },
+    ],
+    ...overrides?.data,
+  },
+})

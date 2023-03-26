@@ -1,5 +1,6 @@
+import { Content } from "@prismicio/client"
 import { createContext } from "react"
 
-import { TagDocument } from "lib/prismic/types"
-
-export const TagsContext = createContext<TagDocument[] | undefined>(undefined)
+export const TagsContext = createContext<Content.TagDocument[] | undefined>(
+  undefined
+)

@@ -16,13 +16,13 @@ const Template: Story<ProjectProps> = (args) => <Project {...args} />
 
 export const Basic = Template.bind({})
 Basic.args = {
-  document: generateProjectDocument(),
+  project: generateProjectDocument(),
 }
 
 export const Updated = Template.bind({})
 Updated.args = {
   ...Basic.args,
-  document: generateProjectDocument({
+  project: generateProjectDocument({
     last_publication_date: new Date("12/25/2000").toISOString(),
   }),
 }

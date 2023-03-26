@@ -1,6 +1,55 @@
 {
-  "id": "61364ab0-91ff-4bb9-9e76-87b8d6ef52d7",
-  "uid": "magnam-dolor-velit",
-  "type": "about-page",
-  "data": {}
+  "slices": {
+    "__TYPE__": "SliceContentType",
+    "value": [
+      {
+        "key": "rich_text$5c466a01-92bf-401b-af1a-2754a202d574",
+        "name": "rich_text",
+        "widget": {
+          "__TYPE__": "SharedSliceContent",
+          "variation": "default-slice",
+          "primary": {
+            "content": {
+              "__TYPE__": "StructuredTextContent",
+              "value": [
+                {
+                  "type": "paragraph",
+                  "content": {
+                    "text": "Consectetur voluptate exercitation voluptate adipisicing irure aute enim."
+                  }
+                }
+              ]
+            }
+          },
+          "items": [
+            {
+              "__TYPE__": "GroupItemContent",
+              "value": []
+            }
+          ]
+        }
+      },
+      {
+        "key": "quote$2ca2803e-0a6b-465e-b732-c1686b2370af",
+        "name": "quote",
+        "widget": {
+          "__TYPE__": "SharedSliceContent",
+          "variation": "default-slice",
+          "primary": {
+            "content": {
+              "__TYPE__": "FieldContent",
+              "value": "probably",
+              "type": "Text"
+            }
+          },
+          "items": [
+            {
+              "__TYPE__": "GroupItemContent",
+              "value": []
+            }
+          ]
+        }
+      }
+    ]
+  }
 }

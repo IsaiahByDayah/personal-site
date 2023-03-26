@@ -1,15 +1,13 @@
-import { useContext } from "react"
-import { Theme, Grid, Box, Typography } from "@mui/material"
+import { Box, Grid, Theme, Typography } from "@mui/material"
 import { SystemStyleObject } from "@mui/system"
-
-import { TagDocument } from "lib/prismic/types"
+import { Content } from "@prismicio/client"
 
 import Tag from "components/common/Tag"
 
 export type TagsProps = {
   sx?: SystemStyleObject<Theme>
   label?: string | false
-  tags?: (TagDocument | string)[]
+  tags?: (Content.TagDocument | string)[]
 }
 
 export const Tags = ({ sx, label = "Tags", tags }: TagsProps) => {
@@ -23,7 +21,7 @@ export const Tags = ({ sx, label = "Tags", tags }: TagsProps) => {
         </Typography>
       )}
       <Grid container spacing={1}>
-        {tags.map((tag: string | TagDocument) => (
+        {tags.map((tag: string | Content.TagDocument) => (
           <Grid key={typeof tag === "string" ? tag : tag.id} item>
             <Tag tag={tag} />
           </Grid>

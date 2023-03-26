@@ -1,14 +1,17 @@
-import { GetStaticProps } from "next"
 import { Pagination } from "@mui/material"
+import { Content } from "@prismicio/client"
+import { GetStaticProps } from "next"
 import { useRouter } from "next/router"
 
 import {
+  BASE_BLOG_POSTS_FETCH_FIELDS,
+  BASE_BLOG_POSTS_FETCH_LINKS,
+  BASE_BLOG_POSTS_PREDICATES,
   blogPostDocumentsToBlogrollItemProps,
-  getAllTags,
-  getBlogPage,
-  getTotalBlogPages,
+  BLOG_POSTS_DEFAULT_ORDERING,
+  BLOG_POST_PAGE_SIZE,
+  createClient,
 } from "lib/prismic/util"
-import { BlogPostDocument, TagDocument } from "lib/prismic/types"
 
 import { TagsContext } from "components/scaffold/TagsProvider"
 import TwoColumnLayout from "components/scaffold/TwoColumnLayout"
@@ -16,16 +19,24 @@ import TwoColumnLayout from "components/scaffold/TwoColumnLayout"
 import Blogroll from "components/common/Blogroll"
 
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
-  const blogPosts = await getBlogPage()
+  const client = createClient()
 
-  const totalPages = await getTotalBlogPages()
+  // const blogPosts = await getBlogPage()
+  const blogPostsQuery = await client.getByType("blog-post", {
+    predicates: BASE_BLOG_POSTS_PREDICATES,
+    fetch: BASE_BLOG_POSTS_FETCH_FIELDS,
+    fetchLinks: BASE_BLOG_POSTS_FETCH_LINKS,
+    orderings: BLOG_POSTS_DEFAULT_ORDERING,
+    pageSize: BLOG_POST_PAGE_SIZE,
+    page: 1,
+  })
 
-  const tags = await getAllTags()
+  const tags = await client.getAllByType("tag")
 
   return {
     props: {
-      totalPages,
-      blogPosts,
+      totalPages: blogPostsQuery.total_pages,
+      blogPosts: blogPostsQuery.results,
       tags,
     },
   }
@@ -33,8 +44,8 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
 
 export interface HomeProps {
   totalPages: number
-  blogPosts: BlogPostDocument[]
-  tags: TagDocument[]
+  blogPosts: Content.BlogPostDocument[]
+  tags: Content.TagDocument[]
 }
 
 const Home = ({ totalPages, blogPosts, tags }: HomeProps) => {

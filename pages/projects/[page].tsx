@@ -1,19 +1,33 @@
-import { GetStaticProps, GetStaticPaths } from "next"
-import { castArray, head } from "lodash"
 import { Pagination } from "@mui/material"
+import { Content } from "@prismicio/client"
+import { castArray, head } from "lodash"
+import { GetStaticPaths, GetStaticProps } from "next"
 import { useRouter } from "next/router"
 
-import { getTotalProjectsPages, getProjectsPage } from "lib/prismic/util"
-import { ProjectDocument, TagDocument } from "lib/prismic/types"
+import {
+  BASE_PROJECTS_FETCH_FIELDS,
+  BASE_PROJECTS_FETCH_LINKS,
+  BASE_PROJECTS_PREDICATES,
+  createClient,
+  PROJECTS_DEFAULT_ORDERING,
+  PROJECT_PAGE_SIZE,
+} from "lib/prismic/util"
 
 import TwoColumnLayout from "components/scaffold/TwoColumnLayout"
 
 import Blogroll from "components/common/Blogroll"
+import { isNonNullable } from "lib/utils"
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const totalPages = await getTotalProjectsPages()
+  const client = createClient()
 
-  const pages = Array(totalPages)
+  const projectsQuery = await client.getByType("project", {
+    predicates: BASE_PROJECTS_PREDICATES,
+    fetch: ["project.uid"],
+    pageSize: PROJECT_PAGE_SIZE,
+  })
+
+  const pages = Array(projectsQuery.total_pages)
     .fill(null)
     .map((_, index) => `${index + 1}`)
 
@@ -28,20 +42,28 @@ export const getStaticProps: GetStaticProps<BlogPageProps> = async ({
 }) => {
   const page = parseInt(head(castArray(params?.page)) ?? "")
 
-  if (isNaN(page))
+  if (isNaN(page)) {
     return {
       notFound: true,
     }
+  }
 
-  const projects = await getProjectsPage(page)
+  const client = createClient()
 
-  const totalPages = await getTotalProjectsPages()
+  const projectsQuery = await client.getByType("project", {
+    predicates: BASE_PROJECTS_PREDICATES,
+    fetch: BASE_PROJECTS_FETCH_FIELDS,
+    fetchLinks: BASE_PROJECTS_FETCH_LINKS,
+    orderings: PROJECTS_DEFAULT_ORDERING,
+    pageSize: PROJECT_PAGE_SIZE,
+    page,
+  })
 
   return {
     props: {
       page,
-      totalPages,
-      projects,
+      totalPages: projectsQuery.total_pages,
+      projects: projectsQuery.results,
     },
   }
 }
@@ -49,7 +71,7 @@ export const getStaticProps: GetStaticProps<BlogPageProps> = async ({
 export interface BlogPageProps {
   page: number
   totalPages: number
-  projects: ProjectDocument[]
+  projects: Content.ProjectDocument[]
 }
 
 const BlogPage = ({ page, totalPages, projects }: BlogPageProps) => {
@@ -61,14 +83,14 @@ const BlogPage = ({ page, totalPages, projects }: BlogPageProps) => {
         items={projects.map((project) => ({
           href: project.url ?? "/",
           thumbnailProps: {
-            src: project.data.image.url,
-            alt: project.data.image.alt,
+            src: project.data.image.url ?? undefined,
+            alt: project.data.image.alt ?? undefined,
           },
-          primary: project.data.title,
-          secondary: project.data.summary,
-          tags: project.data.tags.map(
-            (t) => (t.tag as unknown as TagDocument).data.name
-          ),
+          primary: project.data.title ?? "",
+          secondary: project.data.summary ?? undefined,
+          tags: project.data.tags
+            .map((t) => (t.tag as unknown as Content.TagDocument).data.name)
+            .filter(isNonNullable),
         }))}
         emptyMessage="No Projects."
       >

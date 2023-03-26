@@ -1,15 +1,8 @@
 import { Typography } from "@mui/material"
+import { Content } from "@prismicio/client"
 import { SliceComponentProps } from "@prismicio/react"
-import { Slice, KeyTextField } from "@prismicio/types"
 
-export type QuoteSlice = Slice<
-  "quote",
-  {
-    content: KeyTextField
-  }
->
-
-const Quote = ({ slice }: SliceComponentProps<QuoteSlice>) => (
+const Quote = ({ slice }: SliceComponentProps<Content.QuoteSlice>) => (
   <Typography
     variant="h3"
     color="primary.main"

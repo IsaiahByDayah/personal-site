@@ -1,12 +1,11 @@
 import { Chip } from "@mui/material"
+import { Content } from "@prismicio/client"
 import NextLink from "next/link"
 
-import { linkResolver } from "prismicConfiguration"
-
-import { TagDocument } from "lib/prismic/types"
+import { linkResolver } from "lib/prismic/util"
 
 export interface TagProps {
-  tag: TagDocument | string
+  tag: Content.TagDocument | string
 }
 
 const Tag = ({ tag }: TagProps) => {

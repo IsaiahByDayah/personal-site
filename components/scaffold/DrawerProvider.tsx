@@ -1,10 +1,10 @@
 import {
-  useCallback,
   createContext,
-  useState,
-  FC,
   Dispatch,
+  ReactNode,
   SetStateAction,
+  useCallback,
+  useState,
 } from "react"
 
 interface DrawerContextValue {
@@ -19,7 +19,11 @@ export const DrawerContext = createContext<DrawerContextValue>({
   toggleDrawer: () => null,
 })
 
-const DrawerProvider: FC = ({ children }) => {
+export interface IDrawerProviderProps {
+  children?: ReactNode
+}
+
+const DrawerProvider = ({ children }: IDrawerProviderProps) => {
   const [drawerOpen, setDrawerOpen] = useState(false)
 
   const toggleDrawer = useCallback(

@@ -16,7 +16,7 @@ const Template: Story<BlogPostProps> = (args) => <BlogPost {...args} />
 
 export const Basic = Template.bind({})
 Basic.args = {
-  document: generateBlogPostDocument(),
+  blogPost: generateBlogPostDocument(),
   previous: generateBlogPostDocument(),
   next: generateBlogPostDocument(),
 }
@@ -24,7 +24,7 @@ Basic.args = {
 export const Updated = Template.bind({})
 Updated.args = {
   ...Basic.args,
-  document: generateBlogPostDocument({
+  blogPost: generateBlogPostDocument({
     last_publication_date: new Date("12/25/2000").toISOString(),
   }),
 }

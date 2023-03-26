@@ -1,17 +1,20 @@
-import { GetStaticProps, GetStaticPaths, GetStaticPathsResult } from "next"
-import { castArray, head } from "lodash"
 import { Pagination, Stack, Typography } from "@mui/material"
-import { useRouter } from "next/router"
+import { Content, predicate } from "@prismicio/client"
 import { RichTextField } from "@prismicio/types"
+import { castArray, head } from "lodash"
+import { GetStaticPaths, GetStaticPathsResult, GetStaticProps } from "next"
+import { useRouter } from "next/router"
 
 import {
-  getTagByUID,
-  getAllTags,
-  getTagPage,
-  getTotalTagPages,
+  BASE_BLOG_POSTS_FETCH_FIELDS,
+  BASE_BLOG_POSTS_FETCH_LINKS,
+  BASE_BLOG_POSTS_PREDICATES,
+  BASE_TAGS_PREDICATES,
   blogPostDocumentsToBlogrollItemProps,
+  BLOG_POSTS_DEFAULT_ORDERING,
+  BLOG_POST_PAGE_SIZE,
+  createClient,
 } from "lib/prismic/util"
-import { BlogPostDocument, TagDocument } from "lib/prismic/types"
 
 import { TagsContext } from "components/scaffold/TagsProvider"
 import TwoColumnLayout from "components/scaffold/TwoColumnLayout"
@@ -20,14 +23,22 @@ import Blogroll from "components/common/Blogroll"
 import MuiRichText from "components/common/MuiRichText"
 
 export const getStaticPaths: GetStaticPaths = async () => {
+  const client = createClient()
   const paths: GetStaticPathsResult["paths"] = []
 
-  const tags = await getAllTags()
+  const tags = await client.getAllByType("tag")
 
   for (const tag of tags) {
-    const totalTagPages = await getTotalTagPages(tag.id)
+    const blogPostsQuery = await client.getByType("blog-post", {
+      predicates: [
+        ...BASE_BLOG_POSTS_PREDICATES,
+        predicate.at("my.blog-post.tags.tag", tag.id),
+      ],
+      fetch: ["blog-post.uid"],
+      pageSize: BLOG_POST_PAGE_SIZE,
+    })
 
-    const pages = Array(Math.max(1, totalTagPages))
+    const pages = Array(Math.max(1, blogPostsQuery.total_pages))
       .fill(null)
       .map((_, index) => `${index + 1}`)
 
@@ -58,31 +69,43 @@ export const getStaticProps: GetStaticProps<TagPageProps> = async ({
     }
   }
 
-  const tag = await getTagByUID(uid)
+  const client = createClient()
 
-  const blogPosts = await getTagPage(tag.id, page)
+  const tag = await client.getByUID("tag", uid, {
+    predicates: BASE_TAGS_PREDICATES,
+  })
 
-  const totalPages = await getTotalTagPages(tag.id)
+  const blogPostsQuery = await client.getByType("blog-post", {
+    predicates: [
+      ...BASE_BLOG_POSTS_PREDICATES,
+      predicate.at("my.blog-post.tags.tag", tag.id),
+    ],
+    fetch: BASE_BLOG_POSTS_FETCH_FIELDS,
+    fetchLinks: BASE_BLOG_POSTS_FETCH_LINKS,
+    orderings: BLOG_POSTS_DEFAULT_ORDERING,
+    pageSize: BLOG_POST_PAGE_SIZE,
+    page,
+  })
 
-  const tags = await getAllTags()
+  const tags = await client.getAllByType("tag")
 
   return {
     props: {
       tag,
       page,
-      totalPages,
-      blogPosts,
+      totalPages: blogPostsQuery.total_pages,
+      blogPosts: blogPostsQuery.results,
       tags,
     },
   }
 }
 
 export interface TagPageProps {
-  tag: TagDocument
+  tag: Content.TagDocument
   page: number
   totalPages: number
-  blogPosts: BlogPostDocument[]
-  tags: TagDocument[]
+  blogPosts: Content.BlogPostDocument[]
+  tags: Content.TagDocument[]
 }
 
 const TagPage = ({ tag, page, totalPages, blogPosts, tags }: TagPageProps) => {

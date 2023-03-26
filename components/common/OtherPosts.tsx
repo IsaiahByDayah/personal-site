@@ -1,15 +1,14 @@
-import { Theme, Box, Stack, Typography } from "@mui/material"
+import { Box, Stack, Theme, Typography } from "@mui/material"
 import { SystemStyleObject } from "@mui/system"
+import { Content } from "@prismicio/client"
 import { HiOutlineArrowSmLeft, HiOutlineArrowSmRight } from "react-icons/hi"
-
-import { BlogPostDocument } from "lib/prismic/types"
 
 import BlogrollItem from "components/common/BlogrollItem"
 
 export interface OtherPostsProps {
   sx?: SystemStyleObject<Theme>
-  previous?: BlogPostDocument | null
-  next?: BlogPostDocument | null
+  previous?: Content.BlogPostDocument | null
+  next?: Content.BlogPostDocument | null
   disableArrows?: boolean
   previousLabel?: string
   nextLabel?: string
@@ -38,11 +37,11 @@ const OtherPosts = ({
             </Stack>
             <BlogrollItem
               thumbnailProps={{
-                src: previous.data.thumbnail.url,
-                alt: previous.data.thumbnail.alt,
+                src: previous.data.thumbnail.url ?? undefined,
+                alt: previous.data.thumbnail.alt ?? undefined,
               }}
               href={previous.url ?? "/"}
-              primary={previous.data.title}
+              primary={previous.data.title ?? ""}
             />
           </Stack>
         )}
@@ -59,11 +58,11 @@ const OtherPosts = ({
             </Stack>
             <BlogrollItem
               thumbnailProps={{
-                src: next.data.thumbnail.url,
-                alt: next.data.thumbnail.alt,
+                src: next.data.thumbnail.url ?? undefined,
+                alt: next.data.thumbnail.alt ?? undefined,
               }}
               href={next.url ?? "/"}
-              primary={next.data.title}
+              primary={next.data.title ?? ""}
             />
           </Stack>
         )}

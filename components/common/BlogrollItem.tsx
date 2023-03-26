@@ -1,10 +1,9 @@
-import { ImgHTMLAttributes } from "react"
-import { Theme, Box, Stack, Typography, Link } from "@mui/material"
+import { Box, Link, Stack, Theme, Typography } from "@mui/material"
 import { SystemStyleObject } from "@mui/system"
-import NextLink from "next/link"
+import { Content } from "@prismicio/client"
 import dayjs from "dayjs"
-
-import { TagDocument } from "lib/prismic/types"
+import NextLink from "next/link"
+import { ImgHTMLAttributes } from "react"
 
 import Tags from "components/common/Tags"
 
@@ -15,7 +14,7 @@ export interface BlogrollItemProps {
   primary: string
   secondary?: string
   href: string
-  tags?: (TagDocument | string)[]
+  tags?: (Content.TagDocument | string)[]
 }
 
 const BlogrollItem = ({

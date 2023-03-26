@@ -1,7 +1,7 @@
 import { GitHub, MoreVertRounded, Twitter, YouTube } from "@mui/icons-material"
 import { Grid, IconButton, Popover, Stack, Theme, Tooltip } from "@mui/material"
 import { SystemStyleObject } from "@mui/system"
-import { FC, useState } from "react"
+import { useState } from "react"
 import { BiHive } from "react-icons/bi"
 import { SiMastodon, SiPatreon, SiTwitch } from "react-icons/si"
 
@@ -35,7 +35,7 @@ export interface SocialsProps {
   sx?: SystemStyleObject<Theme>
 }
 
-const Socials: FC<SocialsProps> = ({ sx }) => {
+const Socials = ({ sx }: SocialsProps) => {
   const [moreAnchorEl, setMoreAnchorEl] = useState<HTMLElement | null>(null)
 
   const open = Boolean(moreAnchorEl)

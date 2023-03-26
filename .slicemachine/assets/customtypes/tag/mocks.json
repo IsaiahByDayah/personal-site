@@ -1,14 +1,21 @@
 {
-  "id": "aec963e7-c141-4dca-9914-c0266122acc7",
-  "uid": "praesentium-autem-porro",
-  "type": "tag",
-  "data": {
-    "name": "strategize value-added e-services",
-    "description": [
+  "uid": {
+    "__TYPE__": "UIDContent",
+    "value": "sitting"
+  },
+  "name": {
+    "__TYPE__": "FieldContent",
+    "value": "have",
+    "type": "Text"
+  },
+  "description": {
+    "__TYPE__": "StructuredTextContent",
+    "value": [
       {
         "type": "paragraph",
-        "text": "Aliqua amet ipsum Lorem fugiat ut nulla sit proident aliquip labore minim magna magna. Dolor nisi sint consequat id tempor ipsum id id Lorem irure. Exercitation deserunt incididunt aliqua.",
-        "spans": []
+        "content": {
+          "text": "Proident ullamco reprehenderit consectetur ad esse consectetur consequat commodo nulla et mollit culpa aliqua. Cillum ex aliquip amet elit occaecat veniam commodo Lorem commodo ullamco sit laborum nulla sint non. Ad amet laboris aliquip exercitation ut."
+        }
       }
     ]
   }

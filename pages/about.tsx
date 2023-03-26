@@ -1,53 +1,38 @@
+import { Content } from "@prismicio/client"
 import { GetStaticProps } from "next"
-import { SliceZone } from "@prismicio/react"
 
-import { getAboutPage, getAllTags, sliceZoneComponents } from "lib/prismic/util"
-
-import { AboutPageDocument, TagDocument } from "lib/prismic/types"
-
+import SliceZone from "components/common/SliceZone"
 import { TagsContext } from "components/scaffold/TagsProvider"
 import TwoColumnLayout from "components/scaffold/TwoColumnLayout"
+import { createClient } from "lib/prismic/util"
 
 export const getStaticProps: GetStaticProps<AboutProps> = async () => {
-  const document = await getAboutPage()
+  const client = createClient()
 
-  const tags = await getAllTags()
+  const document = await client.getSingle("about-page")
+
+  const tags = await client.getAllByType("tag")
 
   return {
     props: {
       document,
       tags,
     },
+    revalidate: 60 * 60 * 24, // 60s * 60m * 24h
   }
 }
 
 interface AboutProps {
-  document: AboutPageDocument
-  tags: TagDocument[]
+  document: Content.AboutPageDocument
+  tags: Content.TagDocument[]
 }
 
-const About = ({ document, tags }: AboutProps) => {
-  console.log("About Document Slices: ", document.data.slices)
-  return (
-    <TagsContext.Provider value={tags}>
-      <TwoColumnLayout sx={{ py: 2 }}>
-        <SliceZone
-          slices={document.data.slices}
-          components={sliceZoneComponents}
-        />
-      </TwoColumnLayout>
-    </TagsContext.Provider>
-  )
-}
-// const About = ({ document, tags }: AboutProps) => (
-//   <TagsContext.Provider value={tags}>
-//     <TwoColumnLayout sx={{ py: 2 }}>
-//       <SliceZone
-//         slices={document.data.slices}
-//         components={sliceZoneComponents}
-//       />
-//     </TwoColumnLayout>
-//   </TagsContext.Provider>
-// )
+const About = ({ document, tags }: AboutProps) => (
+  <TagsContext.Provider value={tags}>
+    <TwoColumnLayout sx={{ py: 2 }}>
+      <SliceZone slices={document.data.slices} />
+    </TwoColumnLayout>
+  </TagsContext.Provider>
+)
 
 export default About
