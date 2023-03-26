@@ -28,57 +28,58 @@ const BlogrollItem = ({
 }: BlogrollItemProps) => {
   return (
     <Stack sx={sx} spacing={1}>
-      <NextLink href={href} passHref>
-        <Link
-          sx={{
-            display: "flex",
-            textDecoration: "none",
-            "&:hover": {
-              textDecoration: "underline",
-            },
-            "&:link": {
-              color: "text.primary",
-            },
-            "&:visited": {
-              color: "text.primary",
-            },
-          }}
-        >
-          <Box
-            width={1}
-            borderRadius={1}
-            boxShadow={4}
-            sx={{ aspectRatio: "16 / 9", objectFit: "cover" }}
-            component="img"
-            {...thumbnailProps}
-          />
-        </Link>
-      </NextLink>
+      <Link
+        sx={{
+          display: "flex",
+          textDecoration: "none",
+          "&:hover": {
+            textDecoration: "underline",
+          },
+          "&:link": {
+            color: "text.primary",
+          },
+          "&:visited": {
+            color: "text.primary",
+          },
+        }}
+        component={NextLink}
+        href={href}
+      >
+        <Box
+          width={1}
+          borderRadius={1}
+          boxShadow={4}
+          sx={{ aspectRatio: "16 / 9", objectFit: "cover" }}
+          component="img"
+          {...thumbnailProps}
+        />
+      </Link>
       {meta && (
         <Typography color="primary" variant="caption">
           {typeof meta === "string" ? meta : dayjs(meta).format("MMMM D, YYYY")}
         </Typography>
       )}
-      <NextLink href={href} passHref>
-        <Link
-          sx={{
-            textDecoration: "none",
-            "&:hover": {
-              textDecoration: "underline",
-            },
-            "&:link": {
-              color: "text.primary",
-            },
-            "&:visited": {
-              color: "text.primary",
-            },
-          }}
-          variant="h6"
-          fontWeight={900}
-        >
-          {primary}
-        </Link>
-      </NextLink>
+      <Link
+        sx={{
+          textDecoration: "none",
+          "&:hover": {
+            textDecoration: "underline",
+          },
+          "&:link": {
+            color: "text.primary",
+          },
+          "&:visited": {
+            color: "text.primary",
+          },
+        }}
+        variant="h6"
+        fontWeight={900}
+        component={NextLink}
+        href={href}
+      >
+        {primary}
+      </Link>
+
       {secondary && <Typography color="text.secondary">{secondary}</Typography>}
       <Tags label={false} tags={tags} />
     </Stack>

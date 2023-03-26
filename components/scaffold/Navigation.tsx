@@ -1,4 +1,4 @@
-import { Theme, Stack } from "@mui/material"
+import { Stack, Theme } from "@mui/material"
 import { SystemStyleObject } from "@mui/system"
 import NextLink from "next/link"
 
@@ -10,17 +10,17 @@ export type NavigationProps = {
 
 export const Navigation = ({ sx }: NavigationProps) => (
   <Stack sx={sx} spacing={1}>
-    <NextLink href="/" passHref>
-      <NavigationButton fullWidth>Home</NavigationButton>
-    </NextLink>
+    <NavigationButton fullWidth LinkComponent={NextLink} href="/">
+      Home
+    </NavigationButton>
 
-    <NextLink href="/projects/1" passHref>
-      <NavigationButton fullWidth>Projects</NavigationButton>
-    </NextLink>
+    <NavigationButton fullWidth LinkComponent={NextLink} href="/projects/1">
+      Projects
+    </NavigationButton>
 
-    <NextLink href="/about" passHref>
-      <NavigationButton fullWidth>About</NavigationButton>
-    </NextLink>
+    <NavigationButton fullWidth LinkComponent={NextLink} href="/about">
+      About
+    </NavigationButton>
   </Stack>
 )
 
