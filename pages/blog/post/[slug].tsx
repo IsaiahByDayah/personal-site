@@ -36,14 +36,21 @@ export const getStaticProps: GetStaticProps<BlogPostProps> = async ({
   const client = createClient()
   const slug = head(castArray(params?.slug))
 
-  if (!slug)
+  if (!slug) {
     return {
       notFound: true,
     }
+  }
 
   const blogPost = await client.getByUID("blog-post", slug, {
     fetchLinks: BASE_BLOG_POSTS_FETCH_LINKS,
   })
+
+  if (!blogPost) {
+    return {
+      notFound: true,
+    }
+  }
 
   const previousQuery = await client.getByType("blog-post", {
     pageSize: 1,

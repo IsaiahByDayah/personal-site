@@ -39,10 +39,11 @@ export const getStaticProps: GetStaticProps<ProjectProps> = async ({
 }) => {
   const slug = head(castArray(params?.slug))
 
-  if (!slug)
+  if (!slug) {
     return {
       notFound: true,
     }
+  }
 
   const client = createClient()
 
@@ -50,10 +51,11 @@ export const getStaticProps: GetStaticProps<ProjectProps> = async ({
     fetchLinks: BASE_PROJECTS_FETCH_LINKS,
   })
 
-  if (!document)
+  if (!project) {
     return {
       notFound: true,
     }
+  }
 
   return {
     props: {
