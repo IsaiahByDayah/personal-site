@@ -21,7 +21,7 @@ export const Tags = ({ sx, label = "Tags", tags }: TagsProps) => {
         </Typography>
       )}
       <Grid container spacing={1}>
-        {tags.map((tag: string | TagDocument) => (
+        {tags.map((tag: string | Content.TagDocument) => (
           <Grid key={typeof tag === "string" ? tag : tag.id} item>
             <Tag tag={tag} />
           </Grid>
