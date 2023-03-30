@@ -40,6 +40,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps<BlogPageProps> = async ({
   params,
+  previewData,
 }) => {
   const page = parseInt(head(castArray(params?.page)) ?? "")
 
@@ -49,7 +50,7 @@ export const getStaticProps: GetStaticProps<BlogPageProps> = async ({
     }
   }
 
-  const client = createClient()
+  const client = createClient({ previewData })
 
   // const blogPosts = await getBlogPage(page)
   const blogPostsQuery = await client.getByType("blog-post", {

@@ -36,6 +36,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps<ProjectProps> = async ({
   params,
+  previewData,
 }) => {
   const slug = head(castArray(params?.slug))
 
@@ -45,7 +46,7 @@ export const getStaticProps: GetStaticProps<ProjectProps> = async ({
     }
   }
 
-  const client = createClient()
+  const client = createClient({ previewData })
 
   const project = await client.getByUID("project", slug, {
     fetchLinks: BASE_PROJECTS_FETCH_LINKS,

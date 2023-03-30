@@ -32,8 +32,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps<BlogPostProps> = async ({
   params,
+  previewData,
 }) => {
-  const client = createClient()
+  const client = createClient({ previewData })
   const slug = head(castArray(params?.slug))
 
   if (!slug) {

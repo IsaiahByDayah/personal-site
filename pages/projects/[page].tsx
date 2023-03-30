@@ -33,12 +33,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths: pages.map((page) => ({ params: { page } })),
-    fallback: false,
+    fallback: "blocking",
   }
 }
 
 export const getStaticProps: GetStaticProps<BlogPageProps> = async ({
   params,
+  previewData,
 }) => {
   const page = parseInt(head(castArray(params?.page)) ?? "")
 
@@ -48,7 +49,7 @@ export const getStaticProps: GetStaticProps<BlogPageProps> = async ({
     }
   }
 
-  const client = createClient()
+  const client = createClient({ previewData })
 
   const projectsQuery = await client.getByType("project", {
     predicates: BASE_PROJECTS_PREDICATES,

@@ -48,12 +48,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths,
-    fallback: false,
+    fallback: "blocking",
   }
 }
 
 export const getStaticProps: GetStaticProps<TagPageProps> = async ({
   params,
+  previewData,
 }) => {
   const uid = head(castArray(params?.uid))
   if (!uid) {
@@ -69,7 +70,7 @@ export const getStaticProps: GetStaticProps<TagPageProps> = async ({
     }
   }
 
-  const client = createClient()
+  const client = createClient({ previewData })
 
   const tag = await client.getByUID("tag", uid, {
     predicates: BASE_TAGS_PREDICATES,
