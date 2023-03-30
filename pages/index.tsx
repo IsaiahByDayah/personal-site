@@ -41,7 +41,6 @@ export const getStaticProps: GetStaticProps<HomeProps> = async ({
       blogPosts: blogPostsQuery.results,
       tags,
     },
-    revalidate: 60,
   }
 }
 

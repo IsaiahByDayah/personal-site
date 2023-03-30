@@ -98,7 +98,6 @@ export const getStaticProps: GetStaticProps<TagPageProps> = async ({
       blogPosts: blogPostsQuery.results,
       tags,
     },
-    revalidate: 60,
   }
 }
 

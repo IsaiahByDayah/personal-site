@@ -77,7 +77,6 @@ export const getStaticProps: GetStaticProps<BlogPostProps> = async ({
       previous: previousQuery.results.at(0) ?? null,
       next: nextQuery.results.at(0) ?? null,
     },
-    revalidate: 60,
   }
 }
 
