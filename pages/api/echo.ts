@@ -13,7 +13,7 @@ import { NextApiHandler } from "next"
  */
 const handler: NextApiHandler = async (req, res) => {
   console.log("[DEBUG] echo:", req)
-  return res.json(req.body)
+  res.json(req.body)
 }
 
 export default handler

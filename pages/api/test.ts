@@ -13,7 +13,7 @@ import { NextApiHandler } from "next"
  */
 const handler: NextApiHandler = async (req, res) => {
   console.log("[DEBUG] /test:", { body: req.body, query: req.query })
-  return res.json({ foo: "bar" })
+  res.json({ foo: "bar" })
 }
 
 export default handler
