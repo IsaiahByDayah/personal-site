@@ -6,8 +6,10 @@ import { TagsContext } from "components/scaffold/TagsProvider"
 import TwoColumnLayout from "components/scaffold/TwoColumnLayout"
 import { createClient } from "lib/prismic/util"
 
-export const getStaticProps: GetStaticProps<AboutProps> = async () => {
-  const client = createClient()
+export const getStaticProps: GetStaticProps<AboutProps> = async ({
+  previewData,
+}) => {
+  const client = createClient({ previewData })
 
   const document = await client.getSingle("about-page")
 
@@ -18,7 +20,7 @@ export const getStaticProps: GetStaticProps<AboutProps> = async () => {
       document,
       tags,
     },
-    revalidate: 60 * 60 * 24, // 60s * 60m * 24h
+    revalidate: 60,
   }
 }
 

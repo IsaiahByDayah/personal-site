@@ -28,7 +28,7 @@
     "@mui/system": "^5.11.14",
     "@prismicio/client": "^6.7.3",
     "@prismicio/next": "^1.0.3",
-    "@prismicio/react": "^2.0.0",
+    "@prismicio/react": "^2.5.2",
     "dayjs": "^1.10.7",
     "lodash": "^4.17.21",
     "next": "^13.2.4",

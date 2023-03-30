@@ -18,8 +18,10 @@ import TwoColumnLayout from "components/scaffold/TwoColumnLayout"
 
 import Blogroll from "components/common/Blogroll"
 
-export const getStaticProps: GetStaticProps<HomeProps> = async () => {
-  const client = createClient()
+export const getStaticProps: GetStaticProps<HomeProps> = async ({
+  previewData,
+}) => {
+  const client = createClient({ previewData })
 
   // const blogPosts = await getBlogPage()
   const blogPostsQuery = await client.getByType("blog-post", {
@@ -39,6 +41,7 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
       blogPosts: blogPostsQuery.results,
       tags,
     },
+    revalidate: 60,
   }
 }
 
