@@ -14,6 +14,7 @@ import { createClient, linkResolver } from "lib/prismic/util"
  * The Prismic webhook must send the correct secret.
  */
 const handler: NextApiHandler = async (req, res) => {
+  console.log("[DEBUG]:", req)
   if (req.body.type === "api-update" && req.body.documents.length > 0) {
     // Check for secret to confirm this is a valid request
     if (req.body.secret !== process.env.PRISMIC_WEBHOOK_SECRET) {
@@ -28,6 +29,8 @@ const handler: NextApiHandler = async (req, res) => {
     const documents = await client.getAllByIDs(req.body.documents)
     const urls = documents.map((doc) => prismicH.asLink(doc, linkResolver))
 
+    console.log("[DEBUG]:", { urls })
+    
     try {
       // Revalidate the URLs for those documents
       await Promise.all(urls.map(async (url) => await res.revalidate(url)))
