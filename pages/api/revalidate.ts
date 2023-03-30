@@ -30,7 +30,7 @@ const handler: NextApiHandler = async (req, res) => {
     const urls = documents.map((doc) => prismicH.asLink(doc, linkResolver))
 
     console.log("[DEBUG]:", { urls })
-
+    
     try {
       // Revalidate the URLs for those documents
       await Promise.all(urls.map(async (url) => await res.revalidate(url)))
