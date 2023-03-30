@@ -66,6 +66,7 @@ export const getStaticProps: GetStaticProps<BlogPageProps> = async ({
       totalPages: projectsQuery.total_pages,
       projects: projectsQuery.results,
     },
+    revalidate: 60,
   }
 }
 

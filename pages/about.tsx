@@ -20,7 +20,7 @@ export const getStaticProps: GetStaticProps<AboutProps> = async ({
       document,
       tags,
     },
-    revalidate: 60 * 60 * 24, // 60s * 60m * 24h
+    revalidate: 60,
   }
 }
 
