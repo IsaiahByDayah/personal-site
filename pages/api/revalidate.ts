@@ -18,8 +18,7 @@ const handler: NextApiHandler = async (req, res) => {
   if (req.body.type === "api-update" && req.body.documents.length > 0) {
     // Check for secret to confirm this is a valid request
     if (req.body.secret !== process.env.PRISMIC_WEBHOOK_SECRET) {
-      res.status(401).json({ message: "Invalid token" })
-      return
+      return res.status(401).json({ message: "Invalid token" })
     }
 
     // If you have a `createClient()` function defined elsewhere in
@@ -36,18 +35,16 @@ const handler: NextApiHandler = async (req, res) => {
       // Revalidate the URLs for those documents
       await Promise.all(urls.map(async (url) => await res.revalidate(url)))
 
-      res.json({ revalidated: true })
-      return
+      return res.json({ revalidated: true })
     } catch (err) {
       // If there was an error, Next.js will continue to show
       // the last successfully generated page
-      res.status(500).send("Error revalidating")
-      return
+      return res.status(500).send("Error revalidating")
     }
   }
 
   // If the request's body is unknown, tell the requester
-  res.status(400).json({ message: "Invalid body" })
+  return res.status(400).json({ message: "Invalid body" })
 }
 
 export default handler
