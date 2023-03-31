@@ -30,4 +30,9 @@ module.exports = {
       permanent: false,
     },
   ],
+  modularizeImports: {
+    "@mui/icons-material": {
+      transform: "@mui/icons-material/{{member}}",
+    },
+  },
 }
