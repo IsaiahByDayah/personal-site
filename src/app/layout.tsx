@@ -14,13 +14,6 @@ export const metadata: Metadata = {
   description: "👋🏾",
 }
 
-/**
- * NOTE: ran into issue where font variable just would not load for whatever reason.
- *
- * Solution was to rm .next folder and run `pnpm dev` again.
- * REF: https://github.com/vercel/next.js/discussions/47741
- */
-
 interface RootLayoutProps {
   children?: ReactNode
 }
