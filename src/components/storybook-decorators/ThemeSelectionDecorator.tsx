@@ -3,6 +3,8 @@ import { Story, StoryContext } from "@storybook/react"
 
 import { ThemeSelectionContext } from "components/scaffold/ThemeSelectionProvider"
 
+import type { JSX } from "react";
+
 const ThemeSelectionDecorator = (
   Story: Story,
   context: StoryContext,
