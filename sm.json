@@ -1,7 +1,0 @@
-{
-  "apiEndpoint": "https://isaiah.cdn.prismic.io/api/v2",
-  "libraries": ["@/slices"],
-  "storybook": "http://localhost:6006",
-  "_latest": "0.3.0",
-  "framework": "next"
-}

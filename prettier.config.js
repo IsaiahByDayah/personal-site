@@ -11,8 +11,7 @@ module.exports = {
     "",
     "<THIRD_PARTY_MODULES>", // Imports not matched by other special words or groups.
     "",
-    "^(app|components|hooks|lib|pages|slices)(/.*)$",
-    "^slices$",
+    "^(app|hooks|lib)(/.*)$",
     "",
     "^[.]", // relative imports
   ],
