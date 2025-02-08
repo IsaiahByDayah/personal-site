@@ -1,9 +1,12 @@
-module.exports = {
-  eslint: {
-    // REF: https://nextjs.org/docs/basic-features/eslint#linting-custom-directories-and-files
-    dirs: ["pages", "components", "lib", "hooks"],
-  },
+import type { NextConfig } from "next"
+
+const nextConfig: NextConfig = {
   redirects: async () => [
+    {
+      source: "/bluesky",
+      destination: "https://bsky.app/profile/isaiahsmith.dev",
+      permanent: false,
+    },
     {
       source: "/twitter",
       destination: "https://twitter.com/IsaiahByDayah",
@@ -30,9 +33,6 @@ module.exports = {
       permanent: false,
     },
   ],
-  modularizeImports: {
-    "@mui/icons-material": {
-      transform: "@mui/icons-material/{{member}}",
-    },
-  },
 }
+
+export default nextConfig
