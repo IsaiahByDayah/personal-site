@@ -57,14 +57,5 @@
     "prettier": "^2.5.1",
     "slice-machine-ui": "^0.7.1",
     "typescript": "^5.0.2"
-  },
-  "eslintConfig": {
-    "extends": [
-      "next/core-web-vitals",
-      "prettier"
-    ],
-    "rules": {
-      "@next/next/no-img-element": "off"
-    }
   }
 }
