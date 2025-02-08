@@ -15,15 +15,15 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "preserve",
-    "baseUrl": ".",
+    "baseUrl": "src",
     "typeRoots": ["@types", "./node_modules/@types"],
     "incremental": true
   },
-  "exclude": ["node_modules", "functions"],
   "include": [
     "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
+    "src/**/*.ts",
+    "src/**/*.tsx",
     "./.slicemachine/prismicio.d.ts"
-  ]
+  ],
+  "exclude": ["node_modules"]
 }
