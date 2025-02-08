@@ -1,1 +1,1 @@
-Personal site for [Isaiah Smith](https://twitter.com/isaiahbydayah) built with NextJS and Prismic.
+Personal site for [Isaiah Smith](https://bsky.app/profile/isaiahsmith.dev) built with NextJS.
