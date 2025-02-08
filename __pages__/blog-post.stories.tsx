@@ -1,6 +1,6 @@
 import { Meta, Story } from "@storybook/react"
 
-import BlogPost, { BlogPostProps } from "pages/blog/post/[slug]"
+import BlogPost, { BlogPostProps } from "src/pages/blog/post/[slug]"
 
 import { generateBlogPostDocument } from "lib/prismic/util"
 
