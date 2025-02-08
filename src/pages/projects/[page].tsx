@@ -4,18 +4,16 @@ import { castArray, head } from "lodash"
 import { GetStaticPaths, GetStaticProps } from "next"
 import { useRouter } from "next/router"
 
+import Blogroll from "components/common/Blogroll"
+import TwoColumnLayout from "components/scaffold/TwoColumnLayout"
 import {
   BASE_PROJECTS_FETCH_FIELDS,
   BASE_PROJECTS_FETCH_LINKS,
   BASE_PROJECTS_PREDICATES,
   createClient,
-  PROJECTS_DEFAULT_ORDERING,
   PROJECT_PAGE_SIZE,
+  PROJECTS_DEFAULT_ORDERING,
 } from "lib/prismic/util"
-
-import TwoColumnLayout from "components/scaffold/TwoColumnLayout"
-
-import Blogroll from "components/common/Blogroll"
 import { isNonNullable } from "lib/utils"
 
 export const getStaticPaths: GetStaticPaths = async () => {

@@ -1,11 +1,10 @@
-import { useContext } from "react"
 import { Theme, Typography } from "@mui/material"
 import { SystemStyleObject } from "@mui/system"
+import { useContext } from "react"
 
-import { ThemeSelectionContext } from "components/scaffold/ThemeSelectionProvider"
-
-import { InsetStack, InsetBoxVariant } from "components/common/Inset"
 import DarkModeToggle from "components/common/DarkModeToggle"
+import { InsetBoxVariant, InsetStack } from "components/common/Inset"
+import { ThemeSelectionContext } from "components/scaffold/ThemeSelectionProvider"
 
 export type DarkModeToggleInsetProps = {
   sx?: SystemStyleObject<Theme>

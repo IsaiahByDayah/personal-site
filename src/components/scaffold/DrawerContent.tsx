@@ -1,14 +1,13 @@
-import { useContext } from "react"
-import { Theme, Stack, Box, Typography, Avatar } from "@mui/material"
+import { Avatar, Box, Stack, Theme, Typography } from "@mui/material"
 import { SystemStyleObject } from "@mui/system"
+import { useContext } from "react"
 
-import Navigation from "components/scaffold/Navigation"
-import { TagsContext } from "components/scaffold/TagsProvider"
-
+import DarkModeToggleInset from "components/common/DarkModeToggleInset"
 import { InsetStack } from "components/common/Inset"
 import Socials from "components/common/Socials"
-import DarkModeToggleInset from "components/common/DarkModeToggleInset"
 import Tags from "components/common/Tags"
+import Navigation from "components/scaffold/Navigation"
+import { TagsContext } from "components/scaffold/TagsProvider"
 
 export type DrawerContentProps = {
   sx?: SystemStyleObject<Theme>

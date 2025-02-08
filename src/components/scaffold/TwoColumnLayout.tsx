@@ -1,14 +1,13 @@
-import { ReactNode, useContext } from "react"
-import { Theme, Stack, Container, Grid } from "@mui/material"
+import { Container, Grid, Stack, Theme } from "@mui/material"
 import { SystemStyleObject } from "@mui/system"
-
-import Drawer from "components/scaffold/Drawer"
-import Navigation from "components/scaffold/Navigation"
-import { TagsContext } from "components/scaffold/TagsProvider"
+import { ReactNode, useContext } from "react"
 
 import DarkModeToggleInset from "components/common/DarkModeToggleInset"
 import { getOffMobileSx } from "components/common/OnMobile"
 import Tags from "components/common/Tags"
+import Drawer from "components/scaffold/Drawer"
+import Navigation from "components/scaffold/Navigation"
+import { TagsContext } from "components/scaffold/TagsProvider"
 
 export interface TwoColumnLayoutProps {
   sx?: SystemStyleObject<Theme>

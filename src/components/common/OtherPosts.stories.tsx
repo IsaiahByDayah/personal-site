@@ -1,9 +1,8 @@
-import { PropsWithChildren } from "react"
 import { Meta, Story } from "@storybook/react"
-
-import { generateBlogPostDocument } from "lib/prismic/util"
+import { PropsWithChildren } from "react"
 
 import OtherPosts, { OtherPostsProps } from "components/common/OtherPosts"
+import { generateBlogPostDocument } from "lib/prismic/util"
 
 export default {
   component: OtherPosts,

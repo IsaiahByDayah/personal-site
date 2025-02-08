@@ -10,4 +10,6 @@ export default {
   },
 } as Meta
 
-export const Basic: Story = args => <InvisibleUntilMounted {...args}>Content goes here.</InvisibleUntilMounted>
+export const Basic: Story = (args) => (
+  <InvisibleUntilMounted {...args}>Content goes here.</InvisibleUntilMounted>
+)

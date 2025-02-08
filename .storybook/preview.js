@@ -1,13 +1,11 @@
 import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport"
 
-import decorator from "lib/decorator"
-
 import CssBaselined from "components/scaffold/CssBaselined"
 import ThemeProvider from "components/scaffold/ThemeProvider"
-
-import ThemeSelectionDecorator from "components/storybook-decorators/ThemeSelectionDecorator"
 import DrawerDecorator from "components/storybook-decorators/DrawerDecorator"
 import NextRouterDecorator from "components/storybook-decorators/NextRouterDecorator"
+import ThemeSelectionDecorator from "components/storybook-decorators/ThemeSelectionDecorator"
+import decorator from "lib/decorator"
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },

@@ -13,14 +13,12 @@ import {
 } from "@prismicio/types"
 import dayjs from "dayjs"
 import NextLink from "next/link"
-
 import sm from "sm.json"
 
+import { BlogrollItemProps } from "components/common/BlogrollItem"
 import Quote from "slices/Quote"
 import RichText from "slices/RichText"
 import Slices from "slices/slice-types"
-
-import { BlogrollItemProps } from "components/common/BlogrollItem"
 
 export const MAX_PAGE_SIZE = 100
 export const BLOG_POST_PAGE_SIZE = 20
@@ -61,7 +59,7 @@ export type DocumentLinkField<T extends PrismicDocument> = LinkField<
 >
 
 export const richTextComponents = (
-  getSx?: (type: keyof JSXMapSerializer) => SystemStyleObject<Theme>
+  getSx?: (type: keyof JSXMapSerializer) => SystemStyleObject<Theme>,
 ): JSXMapSerializer => ({
   paragraph: ({ children, key, type }) => (
     <Typography key={key} sx={getSx?.(type)}>
@@ -141,7 +139,7 @@ export const createClient = (config: prismicNext.CreateClientConfig = {}) => {
     {
       routes,
       ...config,
-    }
+    },
   )
 
   prismicNext.enableAutoPreviews({
@@ -214,13 +212,13 @@ export const PROJECTS_DEFAULT_ORDERING = PROJECTS_DESC_UPDATED_AT_ORDERING
 ///////////////////////////
 
 export const blogPostDocumentsToBlogrollItemProps = (
-  blogPostDocuments: prismic.Content.BlogPostDocument[]
+  blogPostDocuments: prismic.Content.BlogPostDocument[],
 ): BlogrollItemProps[] =>
   blogPostDocuments.map((blogPost) => {
     let meta: string | Date = new Date(blogPost.last_publication_date)
     if (blogPost.first_publication_date !== blogPost.last_publication_date)
       meta = `Last Updated: ${dayjs(blogPost.last_publication_date).format(
-        "MMMM D, YYYY"
+        "MMMM D, YYYY",
       )}`
     return {
       href: blogPost.url ?? "/",
@@ -232,7 +230,7 @@ export const blogPostDocumentsToBlogrollItemProps = (
       primary: blogPost.data.title ?? "",
       secondary: blogPost.data.excerpt ?? undefined,
       tags: blogPost.data.tags.map(
-        (t) => t.tag as unknown as prismic.Content.TagDocument
+        (t) => t.tag as unknown as prismic.Content.TagDocument,
       ),
     }
   })
@@ -312,7 +310,7 @@ export const generateRichTextSlice = (): prismic.Content.RichTextSlice => ({
 })
 
 export const generateBlogPostDocument = (
-  overrides?: Partial<prismic.Content.BlogPostDocument>
+  overrides?: Partial<prismic.Content.BlogPostDocument>,
 ): prismic.Content.BlogPostDocument => ({
   id: "vel-aut-sit",
   uid: "vel-aut-sit",
@@ -348,7 +346,7 @@ export const generateBlogPostDocument = (
 })
 
 export const generateProjectDocument = (
-  overrides?: Partial<prismic.Content.ProjectDocument>
+  overrides?: Partial<prismic.Content.ProjectDocument>,
 ): prismic.Content.ProjectDocument => ({
   id: "vel-aut-sit",
   uid: "vel-aut-sit",
@@ -410,7 +408,7 @@ export const generateProjectDocument = (
 })
 
 export const generateTagDocument = (
-  overrides?: Partial<prismic.Content.TagDocument>
+  overrides?: Partial<prismic.Content.TagDocument>,
 ): prismic.Content.TagDocument => ({
   id: "quas-fugit-atque",
   uid: "quas-fugit-atque",

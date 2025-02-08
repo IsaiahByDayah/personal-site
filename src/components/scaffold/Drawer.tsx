@@ -1,12 +1,11 @@
-import { useContext, useEffect } from "react"
-import { Theme, SwipeableDrawer } from "@mui/material"
+import { SwipeableDrawer, Theme } from "@mui/material"
 import { SystemStyleObject } from "@mui/system"
 import { useRouter } from "next/router"
-
-import { DrawerContext } from "components/scaffold/DrawerProvider"
-import DrawerContent from "components/scaffold/DrawerContent"
+import { useContext, useEffect } from "react"
 
 import { onMobileSx } from "components/common/OnMobile"
+import DrawerContent from "components/scaffold/DrawerContent"
+import { DrawerContext } from "components/scaffold/DrawerProvider"
 
 export interface DrawerProps {
   sx?: SystemStyleObject<Theme>

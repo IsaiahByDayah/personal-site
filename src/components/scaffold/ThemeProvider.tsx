@@ -1,9 +1,8 @@
 import { ThemeProvider as MuiThemeProvider } from "@mui/material"
 import { ReactNode, useContext } from "react"
 
-import { getTheme } from "lib/themes"
-
 import { ThemeSelectionContext } from "components/scaffold/ThemeSelectionProvider"
+import { getTheme } from "lib/themes"
 
 export interface IThemeProviderProps {
   children?: ReactNode

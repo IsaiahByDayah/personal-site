@@ -1,5 +1,4 @@
 import { Meta, Story } from "@storybook/react"
-
 import Home, { HomeProps } from "src/pages/index"
 
 import { generateBlogPostDocument } from "lib/prismic/util"

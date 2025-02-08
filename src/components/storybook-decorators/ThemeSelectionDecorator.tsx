@@ -1,11 +1,11 @@
-import { StoryContext, Story } from "@storybook/react"
 import { action } from "@storybook/addon-actions"
+import { Story, StoryContext } from "@storybook/react"
 
 import { ThemeSelectionContext } from "components/scaffold/ThemeSelectionProvider"
 
 const ThemeSelectionDecorator = (
   Story: Story,
-  context: StoryContext
+  context: StoryContext,
 ): JSX.Element => (
   <ThemeSelectionContext.Provider
     value={{

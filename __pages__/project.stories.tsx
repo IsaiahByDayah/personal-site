@@ -1,5 +1,4 @@
 import { Meta, Story } from "@storybook/react"
-
 import Project, { ProjectProps } from "src/pages/project/[slug]"
 
 import { generateProjectDocument } from "lib/prismic/util"

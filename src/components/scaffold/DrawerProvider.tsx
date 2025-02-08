@@ -28,7 +28,7 @@ const DrawerProvider = ({ children }: IDrawerProviderProps) => {
 
   const toggleDrawer = useCallback(
     () => setDrawerOpen((curr) => !curr),
-    [setDrawerOpen]
+    [setDrawerOpen],
   )
 
   return (

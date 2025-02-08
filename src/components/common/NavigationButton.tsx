@@ -1,6 +1,6 @@
-import { forwardRef } from "react"
-import { Button, ButtonProps } from "@mui/material"
 import { ChevronRightRounded } from "@mui/icons-material"
+import { Button, ButtonProps } from "@mui/material"
+import { forwardRef } from "react"
 
 export type NavigationButtonProps = ButtonProps
 
@@ -20,7 +20,7 @@ const NavigationButton = forwardRef<HTMLButtonElement, NavigationButtonProps>(
       endIcon={<ChevronRightRounded />}
       {...rest}
     />
-  )
+  ),
 )
 NavigationButton.displayName = "NavigationButton"
 

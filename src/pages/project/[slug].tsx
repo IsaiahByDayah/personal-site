@@ -6,16 +6,14 @@ import { castArray, head } from "lodash"
 import { GetStaticPaths, GetStaticProps } from "next"
 import Head from "next/head"
 
+import MuiRichText from "components/common/MuiRichText"
+import Tags from "components/common/Tags"
+import TwoColumnLayout from "components/scaffold/TwoColumnLayout"
 import {
   BASE_PROJECTS_FETCH_LINKS,
   BASE_PROJECTS_PREDICATES,
   createClient,
 } from "lib/prismic/util"
-
-import TwoColumnLayout from "components/scaffold/TwoColumnLayout"
-
-import MuiRichText from "components/common/MuiRichText"
-import Tags from "components/common/Tags"
 import { isNonNullable } from "lib/utils"
 
 export const getStaticPaths: GetStaticPaths = async () => {

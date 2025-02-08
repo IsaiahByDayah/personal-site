@@ -1,6 +1,6 @@
-import { ReactNode } from "react"
-import { Theme, Stack, Divider, Typography } from "@mui/material"
+import { Divider, Stack, Theme, Typography } from "@mui/material"
 import { SystemStyleObject } from "@mui/system"
+import { ReactNode } from "react"
 
 import BlogrollItem, { BlogrollItemProps } from "components/common/BlogrollItem"
 

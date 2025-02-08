@@ -1,8 +1,8 @@
-import { useContext } from "react"
 import { Icon, IconButton } from "@mui/material"
 import { SystemStyleObject } from "@mui/system"
+import { useContext } from "react"
 // import { Brightness2Rounded, Brightness5Rounded } from "@mui/icons-material"
-import { RiMoonFill, RiLightbulbLine } from "react-icons/ri"
+import { RiLightbulbLine, RiMoonFill } from "react-icons/ri"
 
 import { ThemeSelectionContext } from "components/scaffold/ThemeSelectionProvider"
 
@@ -12,7 +12,7 @@ export interface DarkModeToggleProps {
 
 const DarkModeToggle = ({ sx }: DarkModeToggleProps) => {
   const { themeSelection, toggleThemeSelection } = useContext(
-    ThemeSelectionContext
+    ThemeSelectionContext,
   )
 
   const iconSx: SystemStyleObject = {

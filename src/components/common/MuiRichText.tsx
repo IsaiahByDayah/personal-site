@@ -1,9 +1,9 @@
 import { Theme } from "@mui/material"
 import { SystemStyleObject } from "@mui/system"
 import {
+  JSXMapSerializer,
   PrismicRichText,
   PrismicRichTextProps,
-  JSXMapSerializer,
 } from "@prismicio/react"
 
 import { richTextComponents } from "lib/prismic/util"

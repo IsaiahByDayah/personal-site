@@ -11,10 +11,9 @@ import {
 import NextLink from "next/link"
 import { useContext } from "react"
 
-import { DrawerContext } from "components/scaffold/DrawerProvider"
-
 import { getOffMobileSx, onMobileSx } from "components/common/OnMobile"
 import Socials from "components/common/Socials"
+import { DrawerContext } from "components/scaffold/DrawerProvider"
 
 export const Header = () => {
   const { toggleDrawer } = useContext(DrawerContext)
@@ -24,7 +23,7 @@ export const Header = () => {
         boxShadow: ({ spacing, palette }) =>
           `inset 0px -${spacing(0.5)} ${spacing(0.5)} -${spacing(0.5)} ${alpha(
             palette.common.black,
-            0.25
+            0.25,
           )}`,
       }}
       elevation={0}

@@ -7,9 +7,8 @@ import {
   useCallback,
 } from "react"
 
-import useLocalStorage from "hooks/useLocalStorage"
-
 import InvisibleUntilMounted from "components/common/InvisibleUntilMounted"
+import useLocalStorage from "hooks/useLocalStorage"
 
 const THEME_SELECTION_VALUE_KEY = "THEME_SELECTION_VALUE"
 
@@ -35,12 +34,12 @@ const ThemeSelectionProvider = ({ children }: IThemeSelectionProviderProps) => {
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)")
   const [themeSelection, setThemeSelection] = useLocalStorage<ThemeSelection>(
     THEME_SELECTION_VALUE_KEY,
-    prefersDarkMode ? "dark" : "light"
+    prefersDarkMode ? "dark" : "light",
   )
 
   const toggleThemeSelection = useCallback(
     () => setThemeSelection((curr) => (curr === "light" ? "dark" : "light")),
-    [setThemeSelection]
+    [setThemeSelection],
   )
 
   return (

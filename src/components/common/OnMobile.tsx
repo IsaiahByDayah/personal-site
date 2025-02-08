@@ -1,10 +1,10 @@
+import { Box, useMediaQuery } from "@mui/material"
+import { AllSystemCSSProperties, SystemStyleObject, Theme } from "@mui/system"
 import { ReactNode } from "react"
-import { useMediaQuery, Box } from "@mui/material"
-import { SystemStyleObject, AllSystemCSSProperties, Theme } from "@mui/system"
 
 export const onMobileSx: SystemStyleObject = { display: { sm: "none" } }
 export const getOffMobileSx = (
-  sm: AllSystemCSSProperties["display"]
+  sm: AllSystemCSSProperties["display"],
 ): SystemStyleObject => ({
   display: { xs: "none", sm },
 })
@@ -27,7 +27,7 @@ const OnMobile = ({
   ...rest
 }: OnMobileProps) => {
   const mobile = useMediaQuery<Theme>(({ breakpoints }) =>
-    breakpoints.only("xs")
+    breakpoints.only("xs"),
   )
   if (implamentation === "js")
     return (!not && mobile) || (not && !mobile) ? <>{children}</> : null

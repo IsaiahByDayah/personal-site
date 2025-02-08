@@ -4,7 +4,6 @@ import { getRepositoryName } from "@prismicio/client"
 import { PrismicPreview } from "@prismicio/next"
 import { AppProps } from "next/app"
 import Head from "next/head"
-
 import sm from "sm.json"
 
 import CssBaselined from "components/scaffold/CssBaselined"

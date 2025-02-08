@@ -4,20 +4,18 @@ import { castArray, head } from "lodash"
 import { GetStaticPaths, GetStaticProps } from "next"
 import { useRouter } from "next/router"
 
+import Blogroll from "components/common/Blogroll"
+import { TagsContext } from "components/scaffold/TagsProvider"
+import TwoColumnLayout from "components/scaffold/TwoColumnLayout"
 import {
   BASE_BLOG_POSTS_FETCH_FIELDS,
   BASE_BLOG_POSTS_FETCH_LINKS,
   BASE_BLOG_POSTS_PREDICATES,
-  blogPostDocumentsToBlogrollItemProps,
-  BLOG_POSTS_DEFAULT_ORDERING,
   BLOG_POST_PAGE_SIZE,
+  BLOG_POSTS_DEFAULT_ORDERING,
+  blogPostDocumentsToBlogrollItemProps,
   createClient,
 } from "lib/prismic/util"
-
-import { TagsContext } from "components/scaffold/TagsProvider"
-import TwoColumnLayout from "components/scaffold/TwoColumnLayout"
-
-import Blogroll from "components/common/Blogroll"
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const client = createClient()

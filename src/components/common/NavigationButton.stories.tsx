@@ -1,5 +1,5 @@
-import { PropsWithChildren } from "react"
 import { Meta, Story } from "@storybook/react"
+import { PropsWithChildren } from "react"
 
 import NavigationButton, {
   NavigationButtonProps,
@@ -14,7 +14,7 @@ export default {
 } as Meta
 
 export const Basic: Story<PropsWithChildren<NavigationButtonProps>> = (
-  args
+  args,
 ) => <NavigationButton {...args} />
 Basic.args = {
   children: "Hello, World!",

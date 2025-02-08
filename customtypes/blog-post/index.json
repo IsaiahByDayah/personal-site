@@ -41,9 +41,7 @@
             "tag": {
               "config": {
                 "label": "tag",
-                "customtypes": [
-                  "tag"
-                ],
+                "customtypes": ["tag"],
                 "select": "document"
               },
               "type": "Link"
@@ -59,9 +57,7 @@
             "project": {
               "config": {
                 "label": "project",
-                "customtypes": [
-                  "project"
-                ],
+                "customtypes": ["project"],
                 "select": "document"
               },
               "type": "Link"

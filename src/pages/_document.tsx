@@ -1,8 +1,8 @@
 // REF: https://github.com/mui-org/material-ui/blob/master/examples/nextjs/pages/_document.js
 
-import { Children } from "react"
-import Document, { Html, Head, Main, NextScript } from "next/document"
 import createEmotionServer from "@emotion/server/create-instance"
+import Document, { Head, Html, Main, NextScript } from "next/document"
+import { Children } from "react"
 
 import createEmotionCache from "lib/createEmotionCache"
 import theme from "lib/themes/light"
@@ -93,8 +93,9 @@ MyDocument.getInitialProps = async (ctx) => {
   ctx.renderPage = () =>
     originalRenderPage({
       // eslint-disable-next-line react/display-name
-      enhanceApp: (App: any) => (props) =>
-        <App emotionCache={cache} {...props} />,
+      enhanceApp: (App: any) => (props) => (
+        <App emotionCache={cache} {...props} />
+      ),
     })
 
   const initialProps = await Document.getInitialProps(ctx)

@@ -91,18 +91,18 @@ const BlogPost = ({ blogPost, previous, next }: BlogPostProps) => {
 
   if (blogPost.first_publication_date === blogPost.last_publication_date) {
     publishDates.push(
-      dayjs(blogPost.first_publication_date).format("MMMM D, YYYY")
+      dayjs(blogPost.first_publication_date).format("MMMM D, YYYY"),
     )
   } else {
     publishDates.push(
       `First Published: ${dayjs(blogPost.first_publication_date).format(
-        "MMMM D, YYYY"
-      )}`
+        "MMMM D, YYYY",
+      )}`,
     )
     publishDates.push(
       `Last Updated: ${dayjs(blogPost.last_publication_date).format(
-        "MMMM D, YYYY"
-      )}`
+        "MMMM D, YYYY",
+      )}`,
     )
   }
 
@@ -145,7 +145,7 @@ const BlogPost = ({ blogPost, previous, next }: BlogPostProps) => {
 
           <Tags
             tags={blogPost.data.tags.map(
-              (t) => t.tag as unknown as Content.TagDocument
+              (t) => t.tag as unknown as Content.TagDocument,
             )}
             label={false}
           />
