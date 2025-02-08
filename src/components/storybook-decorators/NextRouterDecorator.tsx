@@ -5,8 +5,7 @@ import { action } from "@storybook/addon-actions"
 import { Story, StoryContext } from "@storybook/react"
 import { RouterContext } from "next/dist/shared/lib/router-context"
 import Router, { NextRouter } from "next/router"
-
-import type { JSX } from "react";
+import type { JSX } from "react"
 
 const NextRouterDecorator = (
   Story: Story,

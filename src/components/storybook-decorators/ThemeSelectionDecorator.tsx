@@ -1,9 +1,8 @@
 import { action } from "@storybook/addon-actions"
 import { Story, StoryContext } from "@storybook/react"
+import type { JSX } from "react"
 
 import { ThemeSelectionContext } from "components/scaffold/ThemeSelectionProvider"
-
-import type { JSX } from "react";
 
 const ThemeSelectionDecorator = (
   Story: Story,

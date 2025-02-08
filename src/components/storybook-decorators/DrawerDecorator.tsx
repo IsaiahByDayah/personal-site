@@ -1,8 +1,7 @@
 import { Story, StoryContext } from "@storybook/react"
+import type { JSX } from "react"
 
 import { DrawerContext } from "components/scaffold/DrawerProvider"
-
-import type { JSX } from "react";
 
 const DrawerDecorator = (Story: Story, context: StoryContext): JSX.Element => {
   return (
