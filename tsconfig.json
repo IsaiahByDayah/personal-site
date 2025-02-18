@@ -19,7 +19,10 @@
         "name": "next"
       }
     ],
-    "baseUrl": "src"
+    "baseUrl": "src",
+    "paths": {
+      "@payload-config": ["./payload/payload.config.ts"]
+    }
   },
   "include": [
     "next-env.d.ts",
