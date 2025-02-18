@@ -7,6 +7,7 @@ import { buildConfig } from "payload"
 import sharp from "sharp"
 
 import { Users } from "payload/collections/users"
+import { migrations } from "payload/migrations"
 
 if (!process.env.PAYLOAD_SECRET) {
   throw new Error("PAYLOAD_SECRET missing from env.")
@@ -38,6 +39,8 @@ export default buildConfig({
     client: {
       url: process.env.DATABASE_URL,
     },
+    migrationDir: path.resolve(dirname, "migrations"),
+    prodMigrations: migrations,
   }),
 
   // For image manipulation
