@@ -1,8 +1,8 @@
 {
   "name": "personal-site",
   "private": true,
-  "description": "My personal site and blog powered by NextJS and Prismic",
-  "version": "2.0.0",
+  "description": "My personal site and blog powered by NextJS and Payload CMS",
+  "version": "2.0.1",
   "author": "Isaiah Smith <jordankid93@gmail.com>",
   "type": "module",
   "scripts": {
