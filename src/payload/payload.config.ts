@@ -52,4 +52,8 @@ export default buildConfig({
   routes: {
     api: "/payload-api",
   },
+
+  graphQL: {
+    disable: true,
+  },
 })
