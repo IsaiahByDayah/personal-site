@@ -4,6 +4,7 @@
   "description": "My personal site and blog powered by NextJS and Prismic",
   "version": "2.0.0",
   "author": "Isaiah Smith <jordankid93@gmail.com>",
+  "type": "module",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
