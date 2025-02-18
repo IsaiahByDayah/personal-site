@@ -508,5 +508,5 @@ $RECYCLE.BIN/
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,linux,windows,firebase,node,react,reactnative,vscode,flutter
 
-# Storybook static build (https://storybook.js.org/)
-storybook-static
+# Payload local db
+payload.db
