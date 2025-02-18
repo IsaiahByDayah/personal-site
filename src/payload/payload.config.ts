@@ -41,4 +41,9 @@ export default buildConfig({
   typescript: {
     outputFile: path.resolve(dirname, "payload-types.ts"),
   },
+
+  // Update default payload routes
+  routes: {
+    api: "/payload-api",
+  },
 })

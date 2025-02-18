@@ -1,1 +1,2 @@
-**/payload-types.ts
+src/payload/payload-types.ts
+src/app/(payload)/**
