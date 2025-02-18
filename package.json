@@ -13,7 +13,8 @@
     "format": "prettier --check \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "format:fix": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "test": "node --experimental-strip-types --test **/*.test.ts",
-    "test:watch": "node --experimental-strip-types --test --watch **/*.test.ts"
+    "test:watch": "node --experimental-strip-types --test --watch **/*.test.ts",
+    "payload": "payload"
   },
   "dependencies": {
     "@libsql/client": "^0.14.0",
