@@ -6,6 +6,8 @@ import { lexicalEditor } from "@payloadcms/richtext-lexical"
 import { buildConfig } from "payload"
 import sharp from "sharp"
 
+import { Users } from "payload/collections/users"
+
 if (!process.env.PAYLOAD_SECRET) {
   throw new Error("PAYLOAD_SECRET missing from env.")
 }
@@ -18,11 +20,15 @@ const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
 export default buildConfig({
+  admin: {
+    user: Users.slug,
+  },
+
   // If you'd like to use Rich Text, pass your editor here
   editor: lexicalEditor(),
 
   // Define and configure your collections in this array
-  collections: [],
+  collections: [Users],
 
   // Your Payload secret - should be a complex and secure string, unguessable
   secret: process.env.PAYLOAD_SECRET,
