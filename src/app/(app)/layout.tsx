@@ -2,7 +2,7 @@ import { Metadata } from "next"
 import PlausibleProvider from "next-plausible"
 import { type ReactNode } from "react"
 
-import { CUSTOM_DOMAIN, DOMAIN } from "lib/plausible"
+import { CUSTOM_DOMAIN, DOMAIN } from "@/lib/plausible"
 
 import "./main.css"
 
