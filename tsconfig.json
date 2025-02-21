@@ -19,9 +19,10 @@
         "name": "next"
       }
     ],
-    "baseUrl": "src",
+    "baseUrl": ".",
     "paths": {
-      "@payload-config": ["./payload/payload.config.ts"]
+      "@/*": ["./src/*"],
+      "@payload-config": ["./src/payload/payload.config.ts"]
     }
   },
   "include": [

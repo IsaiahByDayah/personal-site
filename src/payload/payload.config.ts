@@ -7,8 +7,8 @@ import { lexicalEditor } from "@payloadcms/richtext-lexical"
 import { buildConfig } from "payload"
 import sharp from "sharp"
 
-import { Users } from "payload/collections/users"
-import { migrations } from "payload/migrations"
+import { Users } from "@/payload/collections/users"
+import { migrations } from "@/payload/migrations"
 
 if (!process.env.PAYLOAD_SECRET) {
   throw new Error("PAYLOAD_SECRET missing from env.")
