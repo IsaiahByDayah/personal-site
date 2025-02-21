@@ -2,6 +2,7 @@ import path from "path"
 import { fileURLToPath } from "url"
 
 import { sqliteAdapter } from "@payloadcms/db-sqlite"
+import { resendAdapter } from "@payloadcms/email-resend"
 import { lexicalEditor } from "@payloadcms/richtext-lexical"
 import { buildConfig } from "payload"
 import sharp from "sharp"
@@ -59,4 +60,10 @@ export default buildConfig({
   graphQL: {
     disable: true,
   },
+
+  email: resendAdapter({
+    defaultFromAddress: "noreply@smaaws.com",
+    defaultFromName: "Personal Site",
+    apiKey: process.env.RESEND_API_KEY || "",
+  }),
 })
