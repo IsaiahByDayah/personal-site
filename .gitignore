@@ -510,3 +510,6 @@ $RECYCLE.BIN/
 
 # Payload local db
 payload.db
+
+# Payload local media
+media/
