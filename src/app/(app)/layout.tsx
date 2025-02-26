@@ -1,5 +1,6 @@
 import { Metadata } from "next"
 import PlausibleProvider from "next-plausible"
+import { Nunito } from "next/font/google"
 import { type ReactNode } from "react"
 
 import { CUSTOM_DOMAIN, DOMAIN } from "@/lib/plausible"
@@ -14,6 +15,14 @@ export const metadata: Metadata = {
   description: "👋🏾",
 }
 
+const nunito = Nunito({
+  subsets: ["latin"],
+  weight: ["200", "300", "400", "500", "600", "700", "800", "900", "1000"],
+  style: ["normal", "italic"],
+  display: "swap",
+  variable: "--font-nunito",
+})
+
 interface RootLayoutProps {
   children?: ReactNode
 }
@@ -21,7 +30,7 @@ interface RootLayoutProps {
 const RootLayout = ({ children }: RootLayoutProps) => {
   return (
     <html lang="en">
-      <body>
+      <body className={nunito.variable}>
         <PlausibleProvider
           customDomain={CUSTOM_DOMAIN}
           domain={DOMAIN}

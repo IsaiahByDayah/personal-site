@@ -3,4 +3,11 @@
 @tailwind utilities;
 
 @layer base {
+  body {
+    @apply font-nunito bg-[--background] text-[--jet] antialiased [--background:theme(colors.anti-flash-white)] [--primary:theme(colors.indigo-dye)] [--secondary:theme(colors.flame)] data-[foo=foo]:text-[hsl(from_var(--primary)_h_s_l_/_80%)];
+  }
+
+  a {
+    @apply font-semibold text-[--secondary] visited:text-[--secondary] hover:underline;
+  }
 }
