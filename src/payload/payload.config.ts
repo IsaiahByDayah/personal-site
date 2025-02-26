@@ -7,6 +7,8 @@ import { lexicalEditor } from "@payloadcms/richtext-lexical"
 import { buildConfig } from "payload"
 import sharp from "sharp"
 
+import { Media } from "@/payload/collections/media"
+import { Posts } from "@/payload/collections/posts"
 import { Users } from "@/payload/collections/users"
 import { migrations } from "@/payload/migrations"
 
@@ -30,7 +32,7 @@ export default buildConfig({
   editor: lexicalEditor(),
 
   // Define and configure your collections in this array
-  collections: [Users],
+  collections: [Users, Media, Posts],
 
   // Your Payload secret - should be a complex and secure string, unguessable
   secret: process.env.PAYLOAD_SECRET,
