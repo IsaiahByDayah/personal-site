@@ -14,6 +14,11 @@ const nextConfig: NextConfig = {
       permanent: false,
     },
     {
+      source: "/x",
+      destination: "https://x.com/IsaiahByDayah",
+      permanent: false,
+    },
+    {
       source: "/twitch",
       destination: "https://www.twitch.tv/isaiahbydayah",
       permanent: false,
