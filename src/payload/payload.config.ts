@@ -4,9 +4,13 @@ import { fileURLToPath } from "url"
 import { sqliteAdapter } from "@payloadcms/db-sqlite"
 import { resendAdapter } from "@payloadcms/email-resend"
 import { lexicalEditor } from "@payloadcms/richtext-lexical"
+import { s3Storage } from "@payloadcms/storage-s3"
 import { buildConfig } from "payload"
 import sharp from "sharp"
 
+import { B2RequestHandler } from "@/payload/b2RequestHandler"
+import { Media } from "@/payload/collections/media"
+import { Posts } from "@/payload/collections/posts"
 import { Users } from "@/payload/collections/users"
 import { migrations } from "@/payload/migrations"
 
@@ -16,6 +20,26 @@ if (!process.env.PAYLOAD_SECRET) {
 
 if (!process.env.DATABASE_URL) {
   throw new Error("DATABASE_URL missing from env.")
+}
+
+if (!process.env.S3_BUCKET) {
+  throw new Error("S3_BUCKET missing from env.")
+}
+
+if (!process.env.S3_ACCESS_KEY) {
+  throw new Error("S3_ACCESS_KEY missing from env.")
+}
+
+if (!process.env.S3_SECRET_KEY) {
+  throw new Error("S3_SECRET_KEY missing from env.")
+}
+
+if (!process.env.S3_REGION) {
+  throw new Error("S3_REGION missing from env.")
+}
+
+if (!process.env.S3_ENDPOINT) {
+  throw new Error("S3_ENDPOINT missing from env.")
 }
 
 const filename = fileURLToPath(import.meta.url)
@@ -30,7 +54,7 @@ export default buildConfig({
   editor: lexicalEditor(),
 
   // Define and configure your collections in this array
-  collections: [Users],
+  collections: [Users, Media, Posts],
 
   // Your Payload secret - should be a complex and secure string, unguessable
   secret: process.env.PAYLOAD_SECRET,
@@ -66,4 +90,23 @@ export default buildConfig({
     defaultFromName: "Personal Site",
     apiKey: process.env.RESEND_API_KEY || "",
   }),
+
+  plugins: [
+    s3Storage({
+      collections: {
+        media: true,
+      },
+      bucket: process.env.S3_BUCKET,
+      config: {
+        credentials: {
+          accessKeyId: process.env.S3_ACCESS_KEY,
+          secretAccessKey: process.env.S3_SECRET_KEY,
+        },
+        endpoint: process.env.S3_ENDPOINT,
+        region: process.env.S3_REGION,
+        requestHandler: new B2RequestHandler(),
+      },
+      enabled: process.env.NODE_ENV === "production",
+    }),
+  ],
 })
