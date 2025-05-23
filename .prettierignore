@@ -1,3 +1,1 @@
-src/payload/payload-types.ts
-src/payload/migrations/**
-src/app/(payload)/**
+.github/pull_request_template.md

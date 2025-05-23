@@ -1,0 +1,73 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/forms";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --font-sans: var(--font-nunito-sans), sans-serif;
+
+  /* REF: https://www.tints.dev/ */
+  /* #353535 */
+  --color-jet-50: #ebebeb;
+  --color-jet-100: #d6d6d6;
+  --color-jet-200: #adadad;
+  --color-jet-300: #858585;
+  --color-jet-400: #5e5e5e;
+  --color-jet-500: #353535;
+  --color-jet-600: #2b2b2b;
+  --color-jet-700: #1f1f1f;
+  --color-jet-800: #141414;
+  --color-jet-900: #0a0a0a;
+  --color-jet-950: #050505;
+
+  /* #284B63 */
+  --color-mist-50: oklch(94.71% 0.013 236.63);
+  --color-mist-100: oklch(88.42% 0.027 237.61);
+  --color-mist-200: oklch(77.36% 0.054 237.94);
+  --color-mist-300: oklch(65.54% 0.083 238.98);
+  --color-mist-400: oklch(53.78% 0.082 240.54);
+  --color-mist-500: oklch(39.75% 0.058 240.3);
+  --color-mist-600: oklch(34.63% 0.048 238.98);
+  --color-mist-700: oklch(28.3% 0.037 240.33);
+  --color-mist-800: oklch(22.73% 0.028 240.61);
+  --color-mist-900: oklch(15.83% 0.014 232.74);
+  --color-mist-950: oklch(13.01% 0.011 233.79);
+
+  /* #3C6E71 */
+  --color-teal-50: oklch(95.39% 0.011 204.12);
+  --color-teal-100: oklch(91.42% 0.02 200.63);
+  --color-teal-200: oklch(82.71% 0.041 200.25);
+  --color-teal-300: oklch(73.38% 0.061 199.95);
+  --color-teal-400: oklch(63.88% 0.071 200.36);
+  --color-teal-500: oklch(50.44% 0.054 200.61);
+  --color-teal-600: oklch(43.19% 0.045 199.78);
+  --color-teal-700: oklch(35.28% 0.036 201.16);
+  --color-teal-800: oklch(28.4% 0.027 199.62);
+  --color-teal-900: oklch(19.41% 0.016 195.92);
+  --color-teal-950: oklch(13.83% 0.01 196.09);
+
+  /* #CCA43B */
+  --color-wheat-50: oklch(97.13% 0.014 84.58);
+  --color-wheat-100: oklch(94.38% 0.029 89.57);
+  --color-wheat-200: oklch(89.41% 0.057 89.24);
+  --color-wheat-300: oklch(83.87% 0.084 89.24);
+  --color-wheat-400: oklch(78.48% 0.11 88.32);
+  --color-wheat-500: oklch(73.65% 0.128 87.44);
+  --color-wheat-600: oklch(62.75% 0.111 86.29);
+  --color-wheat-700: oklch(51.28% 0.089 86.8);
+  --color-wheat-800: oklch(39.24% 0.066 86.82);
+  --color-wheat-900: oklch(24.73% 0.036 88.74);
+  --color-wheat-950: oklch(17.43% 0.023 91.5);
+
+  /* #D9D9D9 */
+  --color-platinum-50: #fcfcfc;
+  --color-platinum-100: #f7f7f7;
+  --color-platinum-200: #f0f0f0;
+  --color-platinum-300: #e8e8e8;
+  --color-platinum-400: #e0e0e0;
+  --color-platinum-500: #d9d9d9;
+  --color-platinum-600: #adadad;
+  --color-platinum-700: #828282;
+  --color-platinum-800: #575757;
+  --color-platinum-900: #2b2b2b;
+  --color-platinum-950: #171717;
+}

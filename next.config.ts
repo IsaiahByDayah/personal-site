@@ -1,4 +1,3 @@
-import { withPayload } from "@payloadcms/next/withPayload"
 import type { NextConfig } from "next"
 
 const nextConfig: NextConfig = {
@@ -11,6 +10,11 @@ const nextConfig: NextConfig = {
     {
       source: "/twitter",
       destination: "https://twitter.com/IsaiahByDayah",
+      permanent: false,
+    },
+    {
+      source: "/x",
+      destination: "https://x.com/IsaiahByDayah",
       permanent: false,
     },
     {
@@ -36,4 +40,4 @@ const nextConfig: NextConfig = {
   ],
 }
 
-export default withPayload(nextConfig)
+export default nextConfig

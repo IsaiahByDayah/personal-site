@@ -21,14 +21,14 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"],
-      "@payload-config": ["./src/payload/payload.config.ts"]
+      "@/*": ["./src/*"]
     }
   },
   "include": [
     "next-env.d.ts",
     "src/**/*.ts",
     "src/**/*.tsx",
+    "prismicio-types.d.ts",
     ".next/types/**/*.ts"
   ],
   "exclude": ["node_modules"]
