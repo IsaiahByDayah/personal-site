@@ -4,6 +4,8 @@ import PlausibleProvider from "next-plausible"
 import { Nunito_Sans } from "next/font/google"
 import { type ReactNode } from "react"
 
+import { Footer } from "@/app/_components/Footer"
+import { Header } from "@/app/_components/Header"
 import { CUSTOM_DOMAIN, DOMAIN } from "@/lib/plausible"
 import { repositoryName } from "@/lib/prismicio"
 
@@ -40,7 +42,9 @@ const RootLayout = ({ children }: RootLayoutProps) => {
           trackOutboundLinks
           selfHosted
         >
+          <Header />
           {children}
+          <Footer />
         </PlausibleProvider>
         <PrismicPreview repositoryName={repositoryName} />
       </body>
