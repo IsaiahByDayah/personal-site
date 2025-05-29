@@ -42,9 +42,13 @@ const RootLayout = ({ children }: RootLayoutProps) => {
           trackOutboundLinks
           selfHosted
         >
-          <Header />
+          <div className="px-2">
+            <Header className="m-auto w-full max-w-5xl py-2" />
+          </div>
           {children}
-          <Footer />
+          <div className="px-2">
+            <Footer className="m-auto w-full max-w-5xl py-2" />
+          </div>
         </PlausibleProvider>
         <PrismicPreview repositoryName={repositoryName} />
       </body>
