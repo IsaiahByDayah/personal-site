@@ -1,5 +1,6 @@
 import clsx from "clsx"
 import Link from "next/link"
+import { SiBluesky, SiGithub, SiLinkedin } from "react-icons/si"
 
 interface FooterProps {
   className?: string
@@ -11,29 +12,18 @@ export const Footer = ({ className }: FooterProps) => {
       className={clsx("flex flex-row items-center justify-between", className)}
     >
       <span>Copyright © {new Date().getFullYear()}</span>
-      <div className="flex flex-row gap-4">
-        <Link
-          className="hover:bg-jet-500 rounded-full border px-4 py-1.5 transition-colors hover:text-white"
-          href="#"
-        >
-          LinkedIn
+      <div className="flex flex-row items-center gap-6">
+        <Link className="btn btn-icon btn-ghost btn--jet" href="#">
+          <SiLinkedin data-role="icon" />
         </Link>
-        <Link
-          className="hover:bg-jet-500 rounded-full border px-4 py-1.5 transition-colors hover:text-white"
-          href="#"
-        >
-          GitHub
+        <Link className="btn btn-icon btn-ghost btn--jet" href="#">
+          <SiGithub data-role="icon" />
         </Link>
-        <Link
-          className="hover:bg-jet-500 rounded-full border px-4 py-1.5 transition-colors hover:text-white"
-          href="#"
-        >
-          BlueSky
+        <Link className="btn btn-icon btn-ghost btn--jet" href="#">
+          <SiBluesky data-role="icon" />
         </Link>
       </div>
-      <button className="cursor-pointer rounded-full border px-4 py-1.5 transition-colors hover:bg-teal-500 hover:text-white">
-        Contact Me
-      </button>
+      <button className="btn btn-fill btn--teal">Contact Me</button>
     </footer>
   )
 }

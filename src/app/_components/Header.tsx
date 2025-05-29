@@ -13,34 +13,32 @@ export const Header = ({ className }: HeaderProps) => {
     <header
       className={clsx("flex flex-row items-center justify-between", className)}
     >
-      <div className="flex flex-row items-center gap-2">
+      <div className="flex shrink-0 flex-row items-center gap-2">
         <Image
-          className="bg-platinum-500 size-14 rounded-full"
+          className="bg-platinum-500 size-12 rounded-full"
           src={bust}
           alt="Isaiah bust"
         />
-        <span className="font-extrabold">isaiah</span>
+        <span className="text-xl font-extrabold uppercase">isaiah</span>
       </div>
       <nav className="flex flex-row gap-4">
-        <Link className="px-2 hover:underline" href="#">
+        <Link className="link px-2" href="#">
           Home
         </Link>
-        <Link className="px-2 hover:underline" href="#">
+        <Link className="link px-2" href="#">
           About
         </Link>
-        <Link className="px-2 hover:underline" href="#">
+        <Link className="link px-2" href="#">
           Services
         </Link>
-        <Link className="px-2 hover:underline" href="#">
+        <Link className="link px-2" href="#">
           Works
         </Link>
-        <Link className="px-2 hover:underline" href="#">
+        <Link className="link px-2" href="#">
           Blog
         </Link>
       </nav>
-      <button className="cursor-pointer rounded-full border px-4 py-1.5 transition-colors hover:bg-teal-500 hover:text-white">
-        Contact Me
-      </button>
+      <button className="btn btn-fill btn--teal shrink-0">Contact Me</button>
     </header>
   )
 }
