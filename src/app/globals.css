@@ -84,7 +84,7 @@
 
 @utility btn-icon {
   @apply aspect-square [--btn-x:calc(var(--spacing)_*_3)] [--btn-y:calc(var(--spacing)_*_3)];
-  > [data-role="icon"] {
+  > [data-slot="icon"] {
     @apply size-full;
   }
 }
@@ -105,6 +105,12 @@
   @apply [--btn-ghost-active:color-mix(in_oklab,_var(--color-jet-500)_25%,_transparent)] [--btn-ghost-hover:color-mix(in_oklab,_var(--color-jet-500)_10%,_transparent)] [--btn-ghost-text:var(--color-jet-500)];
   @apply [--btn-outline-active:var(--color-jet-700)] [--btn-outline-base-text:var(--color-jet-600)] [--btn-outline-hover:var(--color-jet-600)] [--btn-outline-text:var(--color-white)];
   @apply [--btn-fill-active:var(--color-jet-700)] [--btn-fill-bg:var(--color-jet-500)] [--btn-fill-hover:var(--color-jet-600)] [--btn-fill-text:var(--color-white)];
+}
+
+@utility btn--platinum {
+  @apply [--btn-ghost-active:color-mix(in_oklab,_var(--color-platinum-500)_25%,_transparent)] [--btn-ghost-hover:color-mix(in_oklab,_var(--color-platinum-500)_10%,_transparent)] [--btn-ghost-text:var(--color-platinum-500)];
+  @apply [--btn-outline-active:var(--color-platinum-700)] [--btn-outline-base-text:var(--color-platinum-600)] [--btn-outline-hover:var(--color-platinum-600)] [--btn-outline-text:var(--color-jet-500)];
+  @apply [--btn-fill-active:var(--color-platinum-700)] [--btn-fill-bg:var(--color-platinum-500)] [--btn-fill-hover:var(--color-platinum-600)] [--btn-fill-text:var(--color-jet-500)];
 }
 
 @utility btn--teal {

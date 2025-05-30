@@ -1,0 +1,235 @@
+{
+  "format": "page",
+  "id": "home",
+  "label": "Home",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Hero": {
+      "greeting": {
+        "type": "Text",
+        "config": {
+          "label": "Greeting",
+          "placeholder": ""
+        }
+      },
+      "job_title": {
+        "type": "Text",
+        "config": {
+          "label": "Job Title",
+          "placeholder": ""
+        }
+      },
+      "description": {
+        "type": "Text",
+        "config": {
+          "label": "Description",
+          "placeholder": ""
+        }
+      },
+      "photo": {
+        "type": "Image",
+        "config": {
+          "label": "Photo",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {}
+        }
+      }
+    },
+    "SEO & Metadata": {
+      "meta_title": {
+        "config": {
+          "label": "Meta Title",
+          "placeholder": "A title of the page used for social media and search engines"
+        },
+        "type": "Text"
+      },
+      "meta_description": {
+        "config": {
+          "label": "Meta Description",
+          "placeholder": "A brief summary of the page"
+        },
+        "type": "Text"
+      },
+      "meta_image": {
+        "config": {
+          "constraint": {
+            "height": 1260,
+            "width": 2400
+          },
+          "label": "Meta Image",
+          "thumbnails": []
+        },
+        "type": "Image"
+      }
+    },
+    "About": {
+      "about_title": {
+        "type": "Text",
+        "config": {
+          "label": "About Title",
+          "placeholder": ""
+        }
+      },
+      "about_blurb": {
+        "type": "StructuredText",
+        "config": {
+          "label": "About Blurb",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      }
+    },
+    "Skills": {
+      "skills_title": {
+        "type": "Text",
+        "config": {
+          "label": "Skills Title",
+          "placeholder": ""
+        }
+      },
+      "skills_blurb": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Skills Blurb",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
+      "skills": {
+        "type": "Group",
+        "config": {
+          "label": "Skills",
+          "repeat": true,
+          "fields": {
+            "label": {
+              "type": "Text",
+              "config": {
+                "label": "Label",
+                "placeholder": ""
+              }
+            },
+            "image": {
+              "type": "Image",
+              "config": {
+                "label": "Image",
+                "constraint": {},
+                "thumbnails": []
+              }
+            },
+            "url": {
+              "type": "Link",
+              "config": {
+                "label": "URL",
+                "placeholder": "",
+                "select": null,
+                "allowTargetBlank": true,
+                "allowText": true,
+                "repeat": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "Projects": {
+      "projects_title": {
+        "type": "Text",
+        "config": {
+          "label": "Projects Title",
+          "placeholder": ""
+        }
+      },
+      "projects_blurb": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Projects Blurb",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
+      "projects": {
+        "type": "Group",
+        "config": {
+          "label": "Projects",
+          "repeat": true,
+          "fields": {
+            "project": {
+              "type": "Link",
+              "config": {
+                "label": "Project",
+                "select": "document",
+                "repeat": false,
+                "customtypes": ["project"]
+              }
+            }
+          }
+        }
+      }
+    },
+    "Testimonials": {
+      "testimonials_title": {
+        "type": "Text",
+        "config": {
+          "label": "Testimonials Title",
+          "placeholder": ""
+        }
+      },
+      "testimonials_blurb": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Testimonials Blurb",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
+      "testimonials": {
+        "type": "Group",
+        "config": {
+          "label": "Testimonials",
+          "repeat": true,
+          "fields": {
+            "testomonial": {
+              "type": "Link",
+              "config": {
+                "label": "Testomonial",
+                "select": "document",
+                "repeat": false,
+                "customtypes": ["testimonial"]
+              }
+            }
+          }
+        }
+      }
+    },
+    "Blog": {
+      "blog_title": {
+        "type": "Text",
+        "config": {
+          "label": "Blog Title",
+          "placeholder": ""
+        }
+      },
+      "blog_blurb": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Blog Blurb",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      }
+    }
+  }
+}

@@ -1,29 +1,37 @@
+import { PrismicNextLink } from "@prismicio/next"
 import clsx from "clsx"
-import Link from "next/link"
-import { SiBluesky, SiGithub, SiLinkedin } from "react-icons/si"
+
+import { ContactMe } from "@/components/ContactMe"
+import { ImageIcon } from "@/components/ImageIcon"
+import { createClient } from "@/lib/prismicio"
 
 interface FooterProps {
   className?: string
 }
 
-export const Footer = ({ className }: FooterProps) => {
+export const Footer = async ({ className }: FooterProps) => {
+  const prismic = createClient()
+  const socials = await prismic.getSingle("socials").catch(() => null)
+
   return (
     <footer
       className={clsx("flex flex-row items-center justify-between", className)}
     >
-      <span>Copyright © {new Date().getFullYear()}</span>
+      <span className="text-sm">Copyright © {new Date().getFullYear()}</span>
       <div className="flex flex-row items-center gap-6">
-        <Link className="btn btn-icon btn-ghost btn--jet" href="#">
-          <SiLinkedin data-role="icon" />
-        </Link>
-        <Link className="btn btn-icon btn-ghost btn--jet" href="#">
-          <SiGithub data-role="icon" />
-        </Link>
-        <Link className="btn btn-icon btn-ghost btn--jet" href="#">
-          <SiBluesky data-role="icon" />
-        </Link>
+        {socials?.data.social_links.map((socialLink) =>
+          socialLink.icon.url ? (
+            <PrismicNextLink
+              key={`${socialLink.platform}-${socialLink.url.text}`}
+              className="btn btn-icon btn-ghost btn--platinum"
+              field={socialLink.url}
+            >
+              <ImageIcon data-slot="icon" src={socialLink.icon.url} />
+            </PrismicNextLink>
+          ) : null,
+        )}
       </div>
-      <button className="btn btn-fill btn--teal">Contact Me</button>
+      <ContactMe className="shrink-0" />
     </footer>
   )
 }

@@ -43,10 +43,10 @@ const RootLayout = ({ children }: RootLayoutProps) => {
           selfHosted
         >
           <div className="px-2">
-            <Header className="m-auto w-full max-w-5xl py-2" />
+            <Header className="border-b-jet-500/50 m-auto w-full max-w-5xl border-b py-2" />
           </div>
           {children}
-          <div className="px-2">
+          <div className="bg-jet-500 text-platinum-500 px-2">
             <Footer className="m-auto w-full max-w-5xl py-2" />
           </div>
         </PlausibleProvider>

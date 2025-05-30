@@ -1,6 +1,10 @@
+import { PrismicNextLink } from "@prismicio/next"
 import clsx from "clsx"
 import Image from "next/image"
-import Link from "next/link"
+import { HiBars3 } from "react-icons/hi2"
+
+import { ContactMe } from "@/components/ContactMe"
+import { createClient } from "@/lib/prismicio"
 
 import bust from "./bust.svg"
 
@@ -8,7 +12,12 @@ interface HeaderProps {
   className?: string
 }
 
-export const Header = ({ className }: HeaderProps) => {
+export const Header = async ({ className }: HeaderProps) => {
+  const prismic = createClient()
+  const header = await prismic.getSingle("header").catch(() => null)
+
+  console.log({ header })
+
   return (
     <header
       className={clsx("flex flex-row items-center justify-between", className)}
@@ -21,24 +30,22 @@ export const Header = ({ className }: HeaderProps) => {
         />
         <span className="text-xl font-extrabold uppercase">isaiah</span>
       </div>
-      <nav className="flex flex-row gap-4">
-        <Link className="link px-2" href="#">
-          Home
-        </Link>
-        <Link className="link px-2" href="#">
-          About
-        </Link>
-        <Link className="link px-2" href="#">
-          Services
-        </Link>
-        <Link className="link px-2" href="#">
-          Works
-        </Link>
-        <Link className="link px-2" href="#">
-          Blog
-        </Link>
+
+      <nav className="hidden flex-row gap-4 sm:flex">
+        {header?.data.navigation.map((navItem) => (
+          <PrismicNextLink
+            key={navItem.key}
+            className="link px-2"
+            field={navItem}
+          />
+        ))}
       </nav>
-      <button className="btn btn-fill btn--teal shrink-0">Contact Me</button>
+
+      <button className="btn btn-icon btn-ghost btn--jet sm:hidden">
+        <HiBars3 data-slot="icon" />
+      </button>
+      <ContactMe className="hidden shrink-0 sm:max-md:block" variant="icon" />
+      <ContactMe className="hidden shrink-0 md:block" variant="full" />
     </header>
   )
 }

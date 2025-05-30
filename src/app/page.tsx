@@ -1,5 +1,5 @@
 const Page = async () => {
-  return <>Hey 👋🏾 - Isaiah</>
+  return <div className="">Hey 👋🏾 - Isaiah</div>
 }
 
 export default Page
