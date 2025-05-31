@@ -74,6 +74,17 @@ export type BlogPostDocument<Lang extends string = string> =
  */
 interface HeaderDocumentData {
   /**
+   * Logo field in *Header*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: header.logo
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  logo: prismic.ImageField<never>
+
+  /**
    * Navigation field in *Header*
    *
    * - **Field Type**: Link
@@ -199,13 +210,13 @@ interface HomeDocumentData {
   /**
    * Description field in *Home*
    *
-   * - **Field Type**: Text
+   * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
    * - **API ID Path**: home.description
    * - **Tab**: Hero
-   * - **Documentation**: https://prismic.io/docs/field#key-text
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
-  description: prismic.KeyTextField
+  description: prismic.RichTextField
 
   /**
    * Photo field in *Home*

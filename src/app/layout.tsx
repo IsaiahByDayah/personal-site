@@ -35,7 +35,7 @@ interface RootLayoutProps {
 const RootLayout = ({ children }: RootLayoutProps) => {
   return (
     <html lang="en" className={nunitoSans.variable}>
-      <body>
+      <body className="text-jet-700">
         <PlausibleProvider
           customDomain={CUSTOM_DOMAIN}
           domain={DOMAIN}

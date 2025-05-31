@@ -27,7 +27,7 @@ export const ContactMe = ({
     case "icon":
       return (
         <Link
-          className={clsx("btn btn-icon btn-fill btn--teal", className)}
+          className={clsx("btn btn-icon btn-fill btn--wheat", className)}
           href="/#contact-me"
         >
           <HiEnvelope data-slot="icon" />
@@ -36,7 +36,7 @@ export const ContactMe = ({
     case "full":
       return (
         <Link
-          className={clsx("btn btn-fill btn--teal", className)}
+          className={clsx("btn btn-fill btn--wheat", className)}
           href="/#contact-me"
         >
           Contact Me
