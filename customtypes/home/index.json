@@ -232,6 +232,49 @@
           "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
         }
       }
+    },
+    "Services": {
+      "services_title": {
+        "type": "Text",
+        "config": {
+          "label": "Services Title",
+          "placeholder": ""
+        }
+      },
+      "services_blurb": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Services Blurb",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
+      "services": {
+        "type": "Group",
+        "config": {
+          "label": "Services",
+          "repeat": true,
+          "fields": {
+            "services_title": {
+              "type": "Text",
+              "config": {
+                "label": "Services Title",
+                "placeholder": ""
+              }
+            },
+            "service_description": {
+              "type": "StructuredText",
+              "config": {
+                "label": "Service Description",
+                "placeholder": "",
+                "allowTargetBlank": true,
+                "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

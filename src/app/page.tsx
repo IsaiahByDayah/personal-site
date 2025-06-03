@@ -17,6 +17,18 @@ const Page = async () => {
           description={home?.data.description}
           photo={home?.data.photo}
         />
+
+        {/* Services */}
+
+        {/* Projects */}
+
+        {/* Testimonials */}
+
+        {/* About */}
+
+        {/* Skills */}
+
+        {/* Blog */}
       </div>
     </div>
   )

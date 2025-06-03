@@ -182,6 +182,31 @@ export interface HomeDocumentDataTestimonialsItem {
 }
 
 /**
+ * Item in *Home → Services*
+ */
+export interface HomeDocumentDataServicesItem {
+  /**
+   * Services Title field in *Home → Services*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.services[].services_title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  services_title: prismic.KeyTextField
+
+  /**
+   * Service Description field in *Home → Services*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.services[].service_description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  service_description: prismic.RichTextField
+}
+
+/**
  * Content for Home documents
  */
 interface HomeDocumentData {
@@ -404,7 +429,38 @@ interface HomeDocumentData {
    * - **Tab**: Blog
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
-  blog_blurb: prismic.RichTextField
+  blog_blurb: prismic.RichTextField /**
+   * Services Title field in *Home*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.services_title
+   * - **Tab**: Services
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  services_title: prismic.KeyTextField
+
+  /**
+   * Services Blurb field in *Home*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.services_blurb
+   * - **Tab**: Services
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  services_blurb: prismic.RichTextField
+
+  /**
+   * Services field in *Home*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.services[]
+   * - **Tab**: Services
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  services: prismic.GroupField<Simplify<HomeDocumentDataServicesItem>>
 }
 
 /**
@@ -615,6 +671,7 @@ declare module "@prismicio/client" {
       HomeDocumentDataSkillsItem,
       HomeDocumentDataProjectsItem,
       HomeDocumentDataTestimonialsItem,
+      HomeDocumentDataServicesItem,
       ProjectDocument,
       ProjectDocumentData,
       SocialsDocument,
