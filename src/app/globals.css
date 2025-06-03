@@ -73,6 +73,12 @@
   --color-platinum-950: #171717;
 }
 
+@custom-variant light-on-dark (&:where(.light-on-dark *));
+
+@utility light-on-dark {
+  @apply text-platinum-500 btn--platinum;
+}
+
 @utility link {
   @apply font-semibold hover:underline;
 }
@@ -130,4 +136,16 @@
   @apply [--btn-ghost-active:--alpha(var(--color-wheat-500)_/_25%)] [--btn-ghost-hover:--alpha(var(--color-wheat-500)_/_10%)] [--btn-ghost-text:var(--color-wheat-500)];
   @apply [--btn-outline-active:var(--color-wheat-700)] [--btn-outline-base-text:var(--color-wheat-500)] [--btn-outline-hover:var(--color-wheat-600)] [--btn-outline-text:var(--color-jet-800)];
   @apply [--btn-fill-active:var(--color-wheat-700)] [--btn-fill-bg:var(--color-wheat-500)] [--btn-fill-hover:var(--color-wheat-600)] [--btn-fill-text:var(--color-jet-800)];
+}
+
+@utility txt-heading {
+  @apply text-3xl font-black;
+}
+
+@utility txt-subheading {
+  @apply text-lg font-semibold;
+}
+
+@utility txt-prose {
+  @apply prose-jet light-on-dark:prose-platinum leading-snug;
 }

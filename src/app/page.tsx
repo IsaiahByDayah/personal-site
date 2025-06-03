@@ -1,4 +1,5 @@
 import { Hero } from "@/app/_components/Hero"
+import { Services } from "@/app/_components/Services"
 import { createClient } from "@/lib/prismicio"
 
 const Page = async () => {
@@ -9,9 +10,9 @@ const Page = async () => {
 
   return (
     <div>
-      <div className="px-2">
+      <div className="">
         <Hero
-          className="m-auto w-full max-w-5xl py-8 md:px-4 lg:px-20"
+          className="m-auto w-full max-w-5xl px-2 pt-8 pb-16 md:px-4 lg:px-20"
           greeting={home?.data.greeting}
           title={home?.data.job_title}
           description={home?.data.description}
@@ -19,6 +20,14 @@ const Page = async () => {
         />
 
         {/* Services */}
+        <div className="bg-mist-500 light-on-dark">
+          <Services
+            className="m-auto w-full max-w-5xl py-16 md:px-4 lg:px-20"
+            title={home?.data.services_title}
+            description={home?.data.services_blurb}
+            services={home?.data.services}
+          />
+        </div>
 
         {/* Projects */}
 

@@ -23,7 +23,7 @@ export const Footer = async ({ className }: FooterProps) => {
           socialLink.icon.url ? (
             <PrismicNextLink
               key={`${socialLink.platform}-${socialLink.url.text}`}
-              className="btn btn-icon btn-ghost btn--platinum"
+              className="btn btn-icon btn-ghost"
               field={socialLink.url}
             >
               <ImageIcon data-slot="icon" src={socialLink.icon.url} />

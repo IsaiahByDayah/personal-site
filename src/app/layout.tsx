@@ -46,7 +46,7 @@ const RootLayout = ({ children }: RootLayoutProps) => {
             <Header className="border-b-jet-500/50 m-auto w-full max-w-5xl border-b py-2" />
           </div>
           {children}
-          <div className="bg-jet-500 text-platinum-500 px-2">
+          <div className="bg-jet-500 light-on-dark px-2">
             <Footer className="m-auto w-full max-w-5xl py-2" />
           </div>
         </PlausibleProvider>
