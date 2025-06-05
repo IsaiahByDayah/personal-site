@@ -25,7 +25,7 @@ export const Hero = ({
     )}
   >
     <PrismicNextImage
-      className="border-jet-500 bg-jet-500 col-span-full row-span-1 row-start-1 m-auto max-w-xs rounded-lg border-4 md:col-span-1 md:col-start-2 md:row-span-full"
+      className="border-jet-500 bg-jet-500 col-span-full row-span-1 row-start-1 m-auto max-w-xs rotate-1 rounded-lg border-4 md:col-span-1 md:col-start-2 md:row-span-full"
       field={photo}
     />
     <p className="col-span-full row-span-1 row-start-2 text-center text-lg font-semibold md:col-span-1 md:col-start-1 md:row-start-2 md:text-start">

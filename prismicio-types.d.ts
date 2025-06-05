@@ -186,24 +186,14 @@ export interface HomeDocumentDataTestimonialsItem {
  */
 export interface HomeDocumentDataServicesItem {
   /**
-   * Services Title field in *Home → Services*
+   * Service field in *Home → Services*
    *
-   * - **Field Type**: Text
+   * - **Field Type**: Content Relationship
    * - **Placeholder**: *None*
-   * - **API ID Path**: home.services[].services_title
-   * - **Documentation**: https://prismic.io/docs/field#key-text
+   * - **API ID Path**: home.services[].service
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  services_title: prismic.KeyTextField
-
-  /**
-   * Service Description field in *Home → Services*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: home.services[].service_description
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  service_description: prismic.RichTextField
+  service: prismic.ContentRelationshipField<"service">
 }
 
 /**
@@ -490,6 +480,126 @@ export type ProjectDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<ProjectDocumentData>, "project", Lang>
 
 /**
+ * Item in *Service → Items*
+ */
+export interface ServiceDocumentDataItemsItem {
+  /**
+   * Description field in *Service → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service.items[].description
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  description: prismic.KeyTextField
+
+  /**
+   * Is Included field in *Service → Items*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: true
+   * - **API ID Path**: service.items[].is_included
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  is_included: prismic.BooleanField
+}
+
+/**
+ * Content for Service documents
+ */
+interface ServiceDocumentData {
+  /**
+   * Name field in *Service*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service.name
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  name: prismic.KeyTextField
+
+  /**
+   * Description field in *Service*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service.description
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  description: prismic.KeyTextField
+
+  /**
+   * Color field in *Service*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service.color
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#color
+   */
+  color: prismic.ColorField
+
+  /**
+   * Price Amount field in *Service*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: $999 - $9,999
+   * - **API ID Path**: service.price_amount
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  price_amount: prismic.KeyTextField
+
+  /**
+   * Price Label field in *Service*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: (One Time)
+   * - **API ID Path**: service.price_label
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  price_label: prismic.KeyTextField
+
+  /**
+   * Timeline field in *Service*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: 1-2 Weeks
+   * - **API ID Path**: service.timeline
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  timeline: prismic.KeyTextField
+
+  /**
+   * Items field in *Service*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service.items[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  items: prismic.GroupField<Simplify<ServiceDocumentDataItemsItem>>
+}
+
+/**
+ * Service document from Prismic
+ *
+ * - **API ID**: `service`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ServiceDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<Simplify<ServiceDocumentData>, "service", Lang>
+
+/**
  * Item in *Socials → Social Links*
  */
 export interface SocialsDocumentDataSocialLinksItem {
@@ -636,6 +746,7 @@ export type AllDocumentTypes =
   | HeaderDocument
   | HomeDocument
   | ProjectDocument
+  | ServiceDocument
   | SocialsDocument
   | TestimonialDocument
 
@@ -674,6 +785,9 @@ declare module "@prismicio/client" {
       HomeDocumentDataServicesItem,
       ProjectDocument,
       ProjectDocumentData,
+      ServiceDocument,
+      ServiceDocumentData,
+      ServiceDocumentDataItemsItem,
       SocialsDocument,
       SocialsDocumentData,
       SocialsDocumentDataSocialLinksItem,
