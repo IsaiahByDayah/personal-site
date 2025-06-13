@@ -1,6 +1,5 @@
 import { KeyTextField, RichTextField } from "@prismicio/client"
 import { PrismicRichText } from "@prismicio/react"
-import clsx from "clsx"
 import { ServiceDocument } from "prismicio-types"
 
 import { ServiceCard } from "@/app/_components/ServiceCard"
@@ -18,12 +17,12 @@ export const Services = ({
   description,
   services,
 }: ServicesProps) => (
-  <div className={clsx("", className)}>
+  <div id="services" className={className}>
     <h2 className="txt-heading text-center">{title}</h2>
     <div className="prose txt-prose mt-4 max-w-none text-center text-balance">
       <PrismicRichText field={description} />
     </div>
-    <div className="mt-10 flex flex-col flex-wrap justify-center gap-4 px-4 sm:flex-row">
+    <div className="mt-10 flex flex-col flex-wrap justify-center gap-4 sm:flex-row">
       {services?.map((service) => (
         <ServiceCard
           key={service.uid}
