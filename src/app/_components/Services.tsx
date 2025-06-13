@@ -3,6 +3,7 @@ import { PrismicRichText } from "@prismicio/react"
 import { ServiceDocument } from "prismicio-types"
 
 import { ServiceCard } from "@/app/_components/ServiceCard"
+import { ContactMe } from "@/components/ContactMe"
 
 interface ServicesProps {
   className?: string
@@ -30,6 +31,12 @@ export const Services = ({
           service={service}
         />
       ))}
+    </div>
+    <div className="mt-10 text-center">
+      <p>Ready to start your next project?</p>
+      <ContactMe className="mt-2 inline-block" variant="full">
+        Get In Touch
+      </ContactMe>
     </div>
   </div>
 )

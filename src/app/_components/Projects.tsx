@@ -1,7 +1,9 @@
 import { KeyTextField, RichTextField } from "@prismicio/client"
 import { PrismicRichText } from "@prismicio/react"
 import clsx from "clsx"
+import Link from "next/link"
 import { ProjectDocument } from "prismicio-types"
+import { HiArrowSmallRight } from "react-icons/hi2"
 
 import { ProjectCard } from "@/app/_components/ProjectCard"
 
@@ -27,6 +29,15 @@ export const Projects = ({
       {projects?.map((project, idx) => (
         <ProjectCard key={project.uid} project={project} flip={idx % 2 === 1} />
       ))}
+    </div>
+    <div className="mt-10 text-center">
+      <Link
+        className="btn btn-ghost btn--mist inline-flex flex-row items-center gap-1"
+        href="/projects"
+      >
+        View All Projects
+        <HiArrowSmallRight className="stroke-[0.5]" />
+      </Link>
     </div>
   </div>
 )

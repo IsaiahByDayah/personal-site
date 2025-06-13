@@ -37,10 +37,10 @@ export const ProjectCard = ({
           </p>
           <p className="mt-2">{project.data.summary}</p>
           <Link
-            className="btn btn-outline btn--jet mt-4 inline-flex flex-row items-center gap-1 font-bold"
+            className="btn btn-outline btn--jet mt-4 inline-flex flex-row items-center gap-1"
             href={`/project/${project.uid}`}
           >
-            Read More <HiArrowSmallRight className="stroke-2" />
+            Read More <HiArrowSmallRight className="stroke-[0.5]" />
           </Link>
         </div>
       </div>

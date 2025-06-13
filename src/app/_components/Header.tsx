@@ -1,5 +1,6 @@
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next"
 import clsx from "clsx"
+import Link from "next/link"
 import { HiBars3 } from "react-icons/hi2"
 
 import { ContactMe } from "@/components/ContactMe"
@@ -17,14 +18,14 @@ export const Header = async ({ className }: HeaderProps) => {
     <header
       className={clsx("flex flex-row items-center justify-between", className)}
     >
-      <div className="flex shrink-0 flex-row items-center gap-2">
+      <Link className="flex shrink-0 flex-row items-center gap-2" href="/">
         <PrismicNextImage
           className="bg-platinum-500 size-12 rounded-full"
           field={header?.data.logo}
           priority
         />
         <span className="text-xl font-extrabold uppercase">isaiah</span>
-      </div>
+      </Link>
 
       <nav className="hidden flex-row gap-4 sm:flex">
         {header?.data.navigation.map((navItem) => (
