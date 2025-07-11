@@ -172,7 +172,18 @@
                 "label": "Project",
                 "select": "document",
                 "repeat": false,
-                "customtypes": ["project"]
+                "customtypes": [
+                  {
+                    "id": "project",
+                    "fields": [
+                      "thumbnail",
+                      "title",
+                      "summary",
+                      "description",
+                      "urls"
+                    ]
+                  }
+                ]
               }
             }
           }
@@ -262,7 +273,23 @@
                 "label": "Service",
                 "select": "document",
                 "repeat": false,
-                "customtypes": ["service"]
+                "customtypes": [
+                  {
+                    "id": "service",
+                    "fields": [
+                      "name",
+                      "description",
+                      "color",
+                      "price_amount",
+                      "price_label",
+                      "timeline",
+                      {
+                        "id": "items",
+                        "fields": ["description", "is_included"]
+                      }
+                    ]
+                  }
+                ]
               }
             }
           }
