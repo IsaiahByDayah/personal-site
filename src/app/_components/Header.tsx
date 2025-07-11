@@ -1,8 +1,8 @@
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next"
 import clsx from "clsx"
 import Link from "next/link"
-import { HiBars3 } from "react-icons/hi2"
 
+import { MobileNav } from "@/app/_components/MobileNav"
 import { ContactMe } from "@/components/ContactMe"
 import { createClient } from "@/lib/prismicio"
 
@@ -37,9 +37,8 @@ export const Header = async ({ className }: HeaderProps) => {
         ))}
       </nav>
 
-      <button className="btn btn-icon btn-ghost btn--jet sm:hidden">
-        <HiBars3 data-slot="icon" />
-      </button>
+      <MobileNav className="sm:hidden" navItems={header?.data.navigation} />
+
       <ContactMe className="hidden shrink-0 sm:max-md:block" variant="icon" />
       <ContactMe className="hidden shrink-0 md:block" variant="full" />
     </header>
