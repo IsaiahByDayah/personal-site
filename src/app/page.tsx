@@ -83,6 +83,18 @@ const Page = async () => {
         photo={home?.data.photo}
       />
 
+      {/* About */}
+
+      {/* Skills */}
+
+      {/* Projects */}
+      <Projects
+        className="m-auto w-full max-w-5xl px-2 py-16 md:px-4 lg:px-20"
+        title={home?.data.projects_title}
+        description={home?.data.projects_blurb}
+        projects={projects}
+      />
+
       {/* Services */}
       <div className="bg-mist-50">
         <Services
@@ -93,23 +105,24 @@ const Page = async () => {
         />
       </div>
 
-      {/* Projects */}
-      <Projects
-        className="m-auto w-full max-w-5xl px-2 py-16 md:px-4 lg:px-20"
-        title={home?.data.projects_title}
-        description={home?.data.projects_blurb}
-        projects={projects}
-      />
-
       {/* Testimonials */}
 
-      {/* About */}
-
-      {/* Skills */}
-
       {/* Blog */}
+
+      {/* Contact Form */}
     </div>
   )
 }
+
+/**
+ * what you do
+ * how long youve been doing it
+ * are you taking clients
+ * how to contact you
+ * examples of work
+ * whats your vibe?
+ *
+ *
+ */
 
 export default Page
