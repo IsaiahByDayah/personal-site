@@ -250,7 +250,9 @@ export interface HomeDocumentDataTestimonialsItem {
    * - **API ID Path**: home.testimonials[].testomonial
    * - **Documentation**: https://prismic.io/docs/fields/content-relationship
    */
-  testomonial: prismic.ContentRelationshipField<"testimonial">
+  testomonial: ContentRelationshipFieldWithData<
+    [{ id: "testimonial"; fields: ["photo", "name", "role", "content"] }]
+  >
 }
 
 /**

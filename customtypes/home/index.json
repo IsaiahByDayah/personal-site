@@ -219,7 +219,12 @@
                 "label": "Testomonial",
                 "select": "document",
                 "repeat": false,
-                "customtypes": ["testimonial"]
+                "customtypes": [
+                  {
+                    "id": "testimonial",
+                    "fields": ["photo", "name", "role", "content"]
+                  }
+                ]
               }
             }
           }

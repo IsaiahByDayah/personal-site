@@ -10,29 +10,7 @@ import { isNonNullable } from "@/utils"
 
 const Page = async () => {
   const prismic = createClient()
-  const home = await prismic
-    .getSingle("home", {
-      graphQuery: `
-      {
-        home {
-          ...homeFields
-          services {
-            ...servicesFields
-            service {
-              ...serviceFields
-            }
-          }
-          projects {
-            ...projectsFields
-            project {
-              ...projectFields
-            }
-          }
-        }
-      }
-    `,
-    })
-    .catch(() => null)
+  const home = await prismic.getSingle("home").catch(() => null)
 
   console.log({ home })
 
