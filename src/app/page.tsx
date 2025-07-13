@@ -1,6 +1,7 @@
 import { isFilled } from "@prismicio/client"
 import { ProjectDocument, ServiceDocument } from "prismicio-types"
 
+import { About } from "@/app/_components/About"
 import { Hero } from "@/app/_components/Hero"
 import { Projects } from "@/app/_components/Projects"
 import { Services } from "@/app/_components/Services"
@@ -84,6 +85,13 @@ const Page = async () => {
       />
 
       {/* About */}
+      <div className="bg-mist-50">
+        <About
+          className="m-auto w-full max-w-5xl px-2 py-16 md:px-4 lg:px-20"
+          title={home?.data.about_title}
+          description={home?.data.about_blurb}
+        />
+      </div>
 
       {/* Skills */}
 
