@@ -11,7 +11,7 @@ interface AboutProps {
 export const About = ({ className, title, description }: AboutProps) => (
   <div id="about" className={clsx("", className)}>
     <h2 className="txt-heading text-center">{title}</h2>
-    <div className="prose txt-prose mt-4 max-w-none">
+    <div className="prose txt-prose mt-4 max-w-none text-center text-balance">
       <PrismicRichText field={description} />
     </div>
   </div>
