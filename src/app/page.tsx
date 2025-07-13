@@ -5,6 +5,7 @@ import { About } from "@/app/_components/About"
 import { Hero } from "@/app/_components/Hero"
 import { Projects } from "@/app/_components/Projects"
 import { Services } from "@/app/_components/Services"
+import { Skills } from "@/app/_components/Skills"
 import { createClient } from "@/lib/prismicio"
 import { isNonNullable } from "@/utils"
 
@@ -72,14 +73,22 @@ const Page = async () => {
       </div>
 
       {/* Skills */}
+      <Skills
+        className="m-auto w-full max-w-5xl px-2 py-16 md:px-4 lg:px-20"
+        title={home?.data.skills_title}
+        description={home?.data.skills_blurb}
+        skills={home?.data.skills}
+      />
 
       {/* Projects */}
-      <Projects
-        className="m-auto w-full max-w-5xl px-2 py-16 md:px-4 lg:px-20"
-        title={home?.data.projects_title}
-        description={home?.data.projects_blurb}
-        projects={projects}
-      />
+      <div className="bg-mist-50">
+        <Projects
+          className="m-auto w-full max-w-5xl px-2 py-16 md:px-4 lg:px-20"
+          title={home?.data.projects_title}
+          description={home?.data.projects_blurb}
+          projects={projects}
+        />
+      </div>
 
       {/* Services */}
       <div className="bg-mist-50">
