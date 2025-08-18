@@ -243,14 +243,14 @@ export interface HomeDocumentDataProjectsItem {
  */
 export interface HomeDocumentDataTestimonialsItem {
   /**
-   * Testomonial field in *Home → Testimonials*
+   * Testimonial field in *Home → Testimonials*
    *
    * - **Field Type**: Content Relationship
    * - **Placeholder**: *None*
-   * - **API ID Path**: home.testimonials[].testomonial
+   * - **API ID Path**: home.testimonials[].testimonial
    * - **Documentation**: https://prismic.io/docs/fields/content-relationship
    */
-  testomonial: ContentRelationshipFieldWithData<
+  testimonial: ContentRelationshipFieldWithData<
     [{ id: "testimonial"; fields: ["photo", "name", "role", "content"] }]
   >
 }
@@ -865,13 +865,13 @@ interface TestimonialDocumentData {
   /**
    * Content field in *Testimonial*
    *
-   * - **Field Type**: Rich Text
+   * - **Field Type**: Text
    * - **Placeholder**: *None*
    * - **API ID Path**: testimonial.content
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   * - **Documentation**: https://prismic.io/docs/fields/text
    */
-  content: prismic.RichTextField
+  content: prismic.KeyTextField
 }
 
 /**

@@ -213,10 +213,10 @@
           "label": "Testimonials",
           "repeat": true,
           "fields": {
-            "testomonial": {
+            "testimonial": {
               "type": "Link",
               "config": {
-                "label": "Testomonial",
+                "label": "Testimonial",
                 "select": "document",
                 "repeat": false,
                 "customtypes": [
