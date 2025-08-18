@@ -1,4 +1,3 @@
-import { isFilled } from "@prismicio/client"
 import { ProjectDocument, ServiceDocument } from "prismicio-types"
 
 import { About } from "@/app/_components/About"
@@ -8,6 +7,7 @@ import { Services } from "@/app/_components/Services"
 import { Skills } from "@/app/_components/Skills"
 import { createClient } from "@/lib/prismicio"
 import { isNonNullable } from "@/utils"
+import { parseDocumentFromRelationshipField } from "@/utils/prismic"
 
 const Page = async () => {
   const prismic = createClient()
@@ -16,41 +16,19 @@ const Page = async () => {
   console.log({ home })
 
   const services = home?.data.services
-    .map((item) => {
-      if (
-        item.service.link_type !== "Document" ||
-        !isFilled.contentRelationship(item.service)
-      ) {
-        return null
-      }
-
-      const service = item.service as typeof item.service & ServiceDocument
-
-      if (service.isBroken) {
-        return null
-      }
-
-      return service
-    })
+    .map((item) =>
+      parseDocumentFromRelationshipField<ServiceDocument, typeof item.service>(
+        item.service,
+      ),
+    )
     .filter(isNonNullable)
 
   const projects = home?.data.projects
-    .map((item) => {
-      if (
-        item.project.link_type !== "Document" ||
-        !isFilled.contentRelationship(item.project)
-      ) {
-        return null
-      }
-
-      const project = item.project as typeof item.project & ProjectDocument
-
-      if (project.isBroken) {
-        return null
-      }
-
-      return project
-    })
+    .map((item) =>
+      parseDocumentFromRelationshipField<ProjectDocument, typeof item.project>(
+        item.project,
+      ),
+    )
     .filter(isNonNullable)
 
   return (
