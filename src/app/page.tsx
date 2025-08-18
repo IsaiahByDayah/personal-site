@@ -59,14 +59,12 @@ const Page = async () => {
       />
 
       {/* Projects */}
-      <div className="bg-mist-50">
-        <Projects
-          className="m-auto w-full max-w-5xl px-2 py-16 md:px-4 lg:px-20"
-          title={home?.data.projects_title}
-          description={home?.data.projects_blurb}
-          projects={projects}
-        />
-      </div>
+      <Projects
+        className="m-auto w-full max-w-5xl px-2 py-16 md:px-4 lg:px-20"
+        title={home?.data.projects_title}
+        description={home?.data.projects_blurb}
+        projects={projects}
+      />
 
       {/* Services */}
       <div className="bg-mist-50">
