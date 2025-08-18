@@ -28,7 +28,7 @@ export const ProjectCard = ({
         })}
       >
         <PrismicNextImage
-          className="border-jet-500 bg-jet-500 min-w-0 basis-1/2 self-start rounded-lg border-4 shadow-xl"
+          className="border-jet-500 bg-jet-500 min-w-0 basis-1/2 self-start rounded-lg border-4"
           field={project.data.thumbnail}
         />
         <div className="basis-1/2">

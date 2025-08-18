@@ -16,7 +16,7 @@ export const ServiceCard = ({ className, service }: ServiceCardProps) => {
   return (
     <div
       className={clsx(
-        "text-jet-500 flex flex-col gap-12 rounded-2xl border-4 border-(--service-color) bg-white p-4 shadow",
+        "text-jet-500 flex flex-col gap-12 rounded-lg border-4 border-(--service-color) bg-white p-4",
         className,
       )}
       style={
