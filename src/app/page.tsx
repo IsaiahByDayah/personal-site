@@ -1,10 +1,15 @@
-import { ProjectDocument, ServiceDocument } from "prismicio-types"
+import {
+  ProjectDocument,
+  ServiceDocument,
+  TestimonialDocument,
+} from "prismicio-types"
 
 import { About } from "@/app/_components/About"
 import { Hero } from "@/app/_components/Hero"
 import { Projects } from "@/app/_components/Projects"
 import { Services } from "@/app/_components/Services"
 import { Skills } from "@/app/_components/Skills"
+import { Testimonials } from "@/app/_components/Testimonials"
 import { createClient } from "@/lib/prismicio"
 import { isNonNullable } from "@/utils"
 import { parseDocumentFromRelationshipField } from "@/utils/prismic"
@@ -28,6 +33,15 @@ const Page = async () => {
       parseDocumentFromRelationshipField<ProjectDocument, typeof item.project>(
         item.project,
       ),
+    )
+    .filter(isNonNullable)
+
+  const testimonials = home?.data.testimonials
+    .map((item) =>
+      parseDocumentFromRelationshipField<
+        TestimonialDocument,
+        typeof item.testimonial
+      >(item.testimonial),
     )
     .filter(isNonNullable)
 
@@ -77,6 +91,14 @@ const Page = async () => {
       </div>
 
       {/* Testimonials */}
+      <div className="bg-mist-50">
+        <Testimonials
+          className="m-auto w-full max-w-5xl px-2 py-16 md:px-4 lg:px-20"
+          title={home?.data.testimonials_title}
+          description={home?.data.testimonials_blurb}
+          testimonials={testimonials}
+        />
+      </div>
 
       {/* Blog */}
 
