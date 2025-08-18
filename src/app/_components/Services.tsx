@@ -1,7 +1,7 @@
 import { KeyTextField, RichTextField } from "@prismicio/client"
-import { PrismicRichText } from "@prismicio/react"
 import { ServiceDocument } from "prismicio-types"
 
+import { HomepageSection } from "@/app/_components/HomepageSection"
 import { ServiceCard } from "@/app/_components/ServiceCard"
 import { ContactMe } from "@/components/ContactMe"
 
@@ -18,11 +18,12 @@ export const Services = ({
   description,
   services,
 }: ServicesProps) => (
-  <div id="services" className={className}>
-    <h2 className="txt-heading text-center">{title}</h2>
-    <div className="prose txt-prose mt-4 max-w-none text-center text-balance">
-      <PrismicRichText field={description} />
-    </div>
+  <HomepageSection
+    id="services"
+    className={className}
+    title={title}
+    description={description}
+  >
     <div className="mt-10 flex flex-col flex-wrap justify-center gap-4 sm:flex-row">
       {services?.map((service) => (
         <ServiceCard
@@ -38,5 +39,5 @@ export const Services = ({
         Get In Touch
       </ContactMe>
     </div>
-  </div>
+  </HomepageSection>
 )

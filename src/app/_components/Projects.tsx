@@ -1,10 +1,10 @@
 import { KeyTextField, RichTextField } from "@prismicio/client"
-import { PrismicRichText } from "@prismicio/react"
 import clsx from "clsx"
 import Link from "next/link"
 import { ProjectDocument } from "prismicio-types"
 import { HiArrowSmallRight } from "react-icons/hi2"
 
+import { HomepageSection } from "@/app/_components/HomepageSection"
 import { ProjectCard } from "@/app/_components/ProjectCard"
 
 interface ProjectsProps {
@@ -20,11 +20,12 @@ export const Projects = ({
   description,
   projects,
 }: ProjectsProps) => (
-  <div id="projects" className={clsx("", className)}>
-    <h2 className="txt-heading text-center">{title}</h2>
-    <div className="prose txt-prose mt-4 max-w-none text-center text-balance">
-      <PrismicRichText field={description} />
-    </div>
+  <HomepageSection
+    id="projects"
+    className={clsx("", className)}
+    title={title}
+    description={description}
+  >
     <div className="mt-10 flex flex-col gap-4">
       {projects?.map((project, idx) => (
         <ProjectCard key={project.uid} project={project} flip={idx % 2 === 1} />
@@ -39,5 +40,5 @@ export const Projects = ({
         <HiArrowSmallRight className="stroke-[0.5]" />
       </Link>
     </div>
-  </div>
+  </HomepageSection>
 )

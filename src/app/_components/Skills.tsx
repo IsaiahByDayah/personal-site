@@ -1,9 +1,9 @@
 import { KeyTextField, RichTextField } from "@prismicio/client"
-import { PrismicRichText } from "@prismicio/react"
 import clsx from "clsx"
 import { HomeDocumentDataSkillsItem } from "prismicio-types"
 import Marquee from "react-fast-marquee"
 
+import { HomepageSection } from "@/app/_components/HomepageSection"
 import { SkillLink } from "@/app/_components/SkillLink"
 
 const MARQUEE_SPEED = 20
@@ -25,13 +25,13 @@ export const Skills = ({
   const topSkills = skills?.slice(0, skillsHalfIndex)
   const bottomSkills = skills?.slice(skillsHalfIndex)
 
-  console.log({ skillsHalfIndex, topSkills, bottomSkills })
   return (
-    <div id="skills" className={clsx("", className)}>
-      <h2 className="txt-heading text-center">{title}</h2>
-      <div className="prose txt-prose mt-4 max-w-none text-center text-balance">
-        <PrismicRichText field={description} />
-      </div>
+    <HomepageSection
+      id="skills"
+      className={clsx("", className)}
+      title={title}
+      description={description}
+    >
       <Marquee
         className="mt-4"
         direction="right"
@@ -54,6 +54,6 @@ export const Skills = ({
           <SkillLink key={skill.label} className="mx-2" skill={skill} />
         ))}
       </Marquee>
-    </div>
+    </HomepageSection>
   )
 }
