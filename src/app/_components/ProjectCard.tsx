@@ -32,9 +32,7 @@ export const ProjectCard = ({
           field={project.data.thumbnail}
         />
         <div className="basis-1/2">
-          <p className="text-xl font-black text-(--service-color)">
-            {project.data.title}
-          </p>
+          <p className="text-xl font-black">{project.data.title}</p>
           <p className="mt-2">{project.data.summary}</p>
           <Link
             className="btn btn-outline btn--jet mt-4 inline-flex flex-row items-center gap-1"

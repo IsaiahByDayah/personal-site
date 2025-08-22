@@ -1,10 +1,12 @@
 import {
+  BlogPostDocument,
   ProjectDocument,
   ServiceDocument,
   TestimonialDocument,
 } from "prismicio-types"
 
 import { About } from "@/app/_components/About"
+import { BlogPosts } from "@/app/_components/BlogPosts"
 import { Hero } from "@/app/_components/Hero"
 import { Projects } from "@/app/_components/Projects"
 import { Services } from "@/app/_components/Services"
@@ -16,6 +18,7 @@ import { parseDocumentFromRelationshipField } from "@/utils/prismic"
 
 const Page = async () => {
   const prismic = createClient()
+
   const home = await prismic.getSingle("home").catch(() => null)
 
   console.log({ home })
@@ -44,6 +47,21 @@ const Page = async () => {
       >(item.testimonial),
     )
     .filter(isNonNullable)
+
+  const blogPosts = home?.data.blog_posts
+    .map((item) =>
+      parseDocumentFromRelationshipField<
+        BlogPostDocument,
+        typeof item.blog_post
+      >(item.blog_post),
+    )
+    .filter(isNonNullable)
+
+  console.log({ blogPosts })
+
+  const bp = blogPosts?.at(0)!
+  const _bp = await prismic.getByUID("blog_post", bp?.uid)
+  console.log({ bp, _bp })
 
   return (
     <div>
@@ -101,6 +119,12 @@ const Page = async () => {
       </div>
 
       {/* Blog */}
+      <BlogPosts
+        className="m-auto w-full max-w-5xl px-2 py-16 md:px-4 lg:px-20"
+        title={home?.data.blog_title}
+        description={home?.data.blog_blurb}
+        blogPosts={blogPosts}
+      />
 
       {/* Contact Form */}
     </div>

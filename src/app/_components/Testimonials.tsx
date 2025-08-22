@@ -27,12 +27,11 @@ export const Testimonials = ({
     <div className="mx-auto mt-16 flow-root max-w-2xl sm:mt-20 lg:mx-0 lg:max-w-none">
       <div className="-mt-8 sm:-mx-4 sm:columns-2 sm:text-[0] lg:columns-3">
         {testimonials?.map((testimonial) => (
-          <div
+          <TestimonialCard
             key={testimonial.uid}
             className="pt-8 sm:inline-block sm:w-full sm:px-4"
-          >
-            <TestimonialCard key={testimonial.uid} testimonial={testimonial} />
-          </div>
+            testimonial={testimonial}
+          />
         ))}
       </div>
     </div>

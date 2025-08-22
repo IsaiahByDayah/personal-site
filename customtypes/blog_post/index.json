@@ -12,6 +12,28 @@
           "label": "Slug"
         }
       },
+      "title": {
+        "type": "Text",
+        "config": {
+          "label": "Title",
+          "placeholder": ""
+        }
+      },
+      "description": {
+        "type": "Text",
+        "config": {
+          "label": "Description",
+          "placeholder": ""
+        }
+      },
+      "image": {
+        "type": "Image",
+        "config": {
+          "label": "Image",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",

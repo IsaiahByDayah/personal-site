@@ -247,6 +247,36 @@
           "allowTargetBlank": true,
           "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
         }
+      },
+      "blog_posts": {
+        "type": "Group",
+        "config": {
+          "label": "Blog Posts",
+          "repeat": true,
+          "fields": {
+            "blog_post": {
+              "type": "Link",
+              "config": {
+                "label": "Blog Post",
+                "select": "document",
+                "repeat": false,
+                "customtypes": [
+                  {
+                    "id": "blog_post",
+                    "fields": [
+                      "meta_title",
+                      "meta_description",
+                      "meta_image",
+                      "title",
+                      "description",
+                      "image"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        }
       }
     },
     "Services": {

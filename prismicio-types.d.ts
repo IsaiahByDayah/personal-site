@@ -76,6 +76,39 @@ type BlogPostDocumentDataSlicesSlice = never
  */
 interface BlogPostDocumentData {
   /**
+   * Title field in *Blog Post*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_post.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  title: prismic.KeyTextField
+
+  /**
+   * Description field in *Blog Post*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_post.description
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  description: prismic.KeyTextField
+
+  /**
+   * Image field in *Blog Post*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_post.image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  image: prismic.ImageField<never>
+
+  /**
    * Slice Zone field in *Blog Post*
    *
    * - **Field Type**: Slice Zone
@@ -252,6 +285,35 @@ export interface HomeDocumentDataTestimonialsItem {
    */
   testimonial: ContentRelationshipFieldWithData<
     [{ id: "testimonial"; fields: ["photo", "name", "role", "content"] }]
+  >
+}
+
+/**
+ * Item in *Home → Blog Posts*
+ */
+export interface HomeDocumentDataBlogPostsItem {
+  /**
+   * Blog Post field in *Home → Blog Posts*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.blog_posts[].blog_post
+   * - **Documentation**: https://prismic.io/docs/fields/content-relationship
+   */
+  blog_post: ContentRelationshipFieldWithData<
+    [
+      {
+        id: "blog_post"
+        fields: [
+          "meta_title",
+          "meta_description",
+          "meta_image",
+          "title",
+          "description",
+          "image",
+        ]
+      },
+    ]
   >
 }
 
@@ -508,7 +570,18 @@ interface HomeDocumentData {
    * - **Tab**: Blog
    * - **Documentation**: https://prismic.io/docs/fields/rich-text
    */
-  blog_blurb: prismic.RichTextField /**
+  blog_blurb: prismic.RichTextField
+
+  /**
+   * Blog Posts field in *Home*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.blog_posts[]
+   * - **Tab**: Blog
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  blog_posts: prismic.GroupField<Simplify<HomeDocumentDataBlogPostsItem>> /**
    * Services Title field in *Home*
    *
    * - **Field Type**: Text
@@ -931,6 +1004,7 @@ declare module "@prismicio/client" {
       HomeDocumentDataSkillsItem,
       HomeDocumentDataProjectsItem,
       HomeDocumentDataTestimonialsItem,
+      HomeDocumentDataBlogPostsItem,
       HomeDocumentDataServicesItem,
       ProjectDocument,
       ProjectDocumentData,
