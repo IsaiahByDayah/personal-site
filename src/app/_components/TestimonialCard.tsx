@@ -32,7 +32,7 @@ export const TestimonialCard = ({
         />
         <div>
           <div className="font-semibold">{testimonial.data.name}</div>
-          <div className="text-jet-400">{testimonial.data.role}</div>
+          <div className="text-jet-400 text-sm">{testimonial.data.role}</div>
         </div>
       </figcaption>
     </figure>
