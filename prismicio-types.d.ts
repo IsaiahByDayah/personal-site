@@ -109,6 +109,28 @@ interface BlogPostDocumentData {
   image: prismic.ImageField<never>
 
   /**
+   * Publication DateTime field in *Blog Post*
+   *
+   * - **Field Type**: Timestamp
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_post.publication_datetime
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/timestamp
+   */
+  publication_datetime: prismic.TimestampField
+
+  /**
+   * Content field in *Blog Post*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_post.content
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  content: prismic.RichTextField
+
+  /**
    * Slice Zone field in *Blog Post*
    *
    * - **Field Type**: Slice Zone
@@ -311,6 +333,8 @@ export interface HomeDocumentDataBlogPostsItem {
           "title",
           "description",
           "image",
+          "publication_datetime",
+          "content",
         ]
       },
     ]
