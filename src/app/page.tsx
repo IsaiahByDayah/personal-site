@@ -57,12 +57,6 @@ const Page = async () => {
     )
     .filter(isNonNullable)
 
-  console.log({ blogPosts })
-
-  const bp = blogPosts?.at(0)!
-  const _bp = await prismic.getByUID("blog_post", bp?.uid)
-  console.log({ bp, _bp })
-
   return (
     <div>
       <Hero
