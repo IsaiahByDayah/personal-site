@@ -86,7 +86,7 @@
 @utility btn {
   @apply [--btn-x:--spacing(4)] [--btn-y:--spacing(1)];
   @apply [--btn-px:var(--btn-x)] [--btn-py:var(--btn-y)];
-  @apply box-border cursor-pointer rounded-full px-(--btn-px) py-(--btn-py) font-semibold transition-colors;
+  @apply box-border cursor-pointer rounded-full px-(--btn-px) py-(--btn-py) font-semibold transition-colors disabled:cursor-not-allowed;
 }
 
 @utility btn-icon {
@@ -97,15 +97,15 @@
 }
 
 @utility btn-ghost {
-  @apply text-(--btn-ghost-text) hover:bg-(--btn-ghost-hover) active:bg-(--btn-ghost-active);
+  @apply text-(--btn-ghost-text) hover:bg-(--btn-ghost-hover) active:bg-(--btn-ghost-active) disabled:bg-transparent disabled:text-gray-400;
 }
 
 @utility btn-outline {
-  @apply border border-[--alpha(var(--btn-outline-base-text)_/_50%)] text-(--btn-outline-base-text) [--btn-px:calc((var(--btn-x))_-_1px)] [--btn-py:calc((var(--btn-y))_-_1px)] hover:border-(--btn-outline-hover) hover:bg-(--btn-outline-hover) hover:text-(--btn-outline-text) active:border-(--btn-outline-active) active:bg-(--btn-outline-active) active:text-(--btn-outline-text);
+  @apply border border-[--alpha(var(--btn-outline-base-text)_/_50%)] text-(--btn-outline-base-text) [--btn-px:calc((var(--btn-x))_-_1px)] [--btn-py:calc((var(--btn-y))_-_1px)] hover:border-(--btn-outline-hover) hover:bg-(--btn-outline-hover) hover:text-(--btn-outline-text) active:border-(--btn-outline-active) active:bg-(--btn-outline-active) active:text-(--btn-outline-text) disabled:border-gray-300 disabled:bg-transparent disabled:text-gray-400;
 }
 
 @utility btn-fill {
-  @apply bg-(--btn-fill-bg) text-(--btn-fill-text) hover:bg-(--btn-fill-hover) active:bg-(--btn-fill-active);
+  @apply bg-(--btn-fill-bg) text-(--btn-fill-text) hover:bg-(--btn-fill-hover) active:bg-(--btn-fill-active) disabled:bg-gray-300 disabled:text-gray-400;
 }
 
 @utility btn--jet {
