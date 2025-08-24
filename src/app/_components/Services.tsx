@@ -10,6 +10,7 @@ interface ServicesProps {
   title?: KeyTextField
   description?: RichTextField
   services?: ServiceDocument[]
+  isContactEnabled?: boolean
 }
 
 export const Services = ({
@@ -17,6 +18,7 @@ export const Services = ({
   title,
   description,
   services,
+  isContactEnabled,
 }: ServicesProps) => (
   <HomepageSection
     id="services"
@@ -33,11 +35,13 @@ export const Services = ({
         />
       ))}
     </div>
-    <div className="mt-10 text-center">
-      <p>Ready to start your next project?</p>
-      <ContactMe className="mt-2 inline-block" variant="full">
-        Get In Touch
-      </ContactMe>
-    </div>
+    {isContactEnabled ? (
+      <div className="mt-10 text-center">
+        <p>Ready to start your next project?</p>
+        <ContactMe className="mt-2 inline-block" variant="full">
+          Get In Touch
+        </ContactMe>
+      </div>
+    ) : null}
   </HomepageSection>
 )

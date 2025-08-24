@@ -68,57 +68,70 @@ const Page = async () => {
       />
 
       {/* About */}
-      <div className="bg-mist-50">
-        <About
-          className="m-auto w-full max-w-5xl px-2 py-16 md:px-4 lg:px-20"
-          title={home?.data.about_title}
-          description={home?.data.about_blurb}
-        />
-      </div>
+      {home?.data.about_enabled ? (
+        <div className="bg-mist-50">
+          <About
+            className="m-auto w-full max-w-5xl px-2 py-16 md:px-4 lg:px-20"
+            title={home?.data.about_title}
+            description={home?.data.about_blurb}
+          />
+        </div>
+      ) : null}
 
       {/* Skills */}
-      <Skills
-        className="m-auto w-full max-w-5xl px-2 py-16 md:px-4 lg:px-20"
-        title={home?.data.skills_title}
-        description={home?.data.skills_blurb}
-        skills={home?.data.skills}
-      />
+      {home?.data.skills_enabled ? (
+        <Skills
+          className="m-auto w-full max-w-5xl px-2 py-16 md:px-4 lg:px-20"
+          title={home?.data.skills_title}
+          description={home?.data.skills_blurb}
+          skills={home?.data.skills}
+        />
+      ) : null}
 
       {/* Projects */}
-      <Projects
-        className="m-auto w-full max-w-5xl px-2 py-16 md:px-4 lg:px-20"
-        title={home?.data.projects_title}
-        description={home?.data.projects_blurb}
-        projects={projects}
-      />
+      {home?.data.projects_enabled ? (
+        <Projects
+          className="m-auto w-full max-w-5xl px-2 py-16 md:px-4 lg:px-20"
+          title={home?.data.projects_title}
+          description={home?.data.projects_blurb}
+          projects={projects}
+        />
+      ) : null}
 
       {/* Services */}
-      <div className="bg-mist-50">
-        <Services
-          className="m-auto w-full max-w-7xl px-2 py-16 md:px-4 lg:px-20"
-          title={home?.data.services_title}
-          description={home?.data.services_blurb}
-          services={services}
-        />
-      </div>
+      {home?.data.services_enabled ? (
+        <div className="bg-mist-50">
+          <Services
+            className="m-auto w-full max-w-7xl px-2 py-16 md:px-4 lg:px-20"
+            title={home?.data.services_title}
+            description={home?.data.services_blurb}
+            services={services}
+            isContactEnabled={home?.data.contact_enabled}
+          />
+        </div>
+      ) : null}
 
       {/* Testimonials */}
-      <div className="bg-mist-50">
-        <Testimonials
-          className="m-auto w-full max-w-5xl px-2 py-16 md:px-4 lg:px-20"
-          title={home?.data.testimonials_title}
-          description={home?.data.testimonials_blurb}
-          testimonials={testimonials}
-        />
-      </div>
+      {home?.data.testimonials_enabled ? (
+        <div className="bg-mist-50">
+          <Testimonials
+            className="m-auto w-full max-w-5xl px-2 py-16 md:px-4 lg:px-20"
+            title={home?.data.testimonials_title}
+            description={home?.data.testimonials_blurb}
+            testimonials={testimonials}
+          />
+        </div>
+      ) : null}
 
       {/* Blog */}
-      <BlogPosts
-        className="m-auto w-full max-w-5xl px-2 py-16 md:px-4 lg:px-20"
-        title={home?.data.blog_title}
-        description={home?.data.blog_blurb}
-        blogPosts={blogPosts}
-      />
+      {home?.data.blog_enabled ? (
+        <BlogPosts
+          className="m-auto w-full max-w-5xl px-2 py-16 md:px-4 lg:px-20"
+          title={home?.data.blog_title}
+          description={home?.data.blog_blurb}
+          blogPosts={blogPosts}
+        />
+      ) : null}
 
       {/* Contact Form */}
     </div>

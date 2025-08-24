@@ -73,6 +73,15 @@
       }
     },
     "About": {
+      "about_enabled": {
+        "type": "Boolean",
+        "config": {
+          "label": "About Enabled",
+          "placeholder_false": "false",
+          "placeholder_true": "true",
+          "default_value": false
+        }
+      },
       "about_title": {
         "type": "Text",
         "config": {
@@ -91,6 +100,15 @@
       }
     },
     "Skills": {
+      "skills_enabled": {
+        "type": "Boolean",
+        "config": {
+          "label": "Skills Enabled",
+          "placeholder_false": "false",
+          "placeholder_true": "true",
+          "default_value": false
+        }
+      },
       "skills_title": {
         "type": "Text",
         "config": {
@@ -144,6 +162,15 @@
       }
     },
     "Projects": {
+      "projects_enabled": {
+        "type": "Boolean",
+        "config": {
+          "label": "Projects Enabled",
+          "placeholder_false": "false",
+          "placeholder_true": "true",
+          "default_value": false
+        }
+      },
       "projects_title": {
         "type": "Text",
         "config": {
@@ -191,6 +218,15 @@
       }
     },
     "Testimonials": {
+      "testimonials_enabled": {
+        "type": "Boolean",
+        "config": {
+          "label": "Testimonials Enabled",
+          "placeholder_false": "false",
+          "placeholder_true": "true",
+          "default_value": false
+        }
+      },
       "testimonials_title": {
         "type": "Text",
         "config": {
@@ -232,6 +268,15 @@
       }
     },
     "Blog": {
+      "blog_enabled": {
+        "type": "Boolean",
+        "config": {
+          "label": "Blog Enabled",
+          "placeholder_false": "false",
+          "placeholder_true": "true",
+          "default_value": false
+        }
+      },
       "blog_title": {
         "type": "Text",
         "config": {
@@ -282,6 +327,15 @@
       }
     },
     "Services": {
+      "services_enabled": {
+        "type": "Boolean",
+        "config": {
+          "label": "Services Enabled",
+          "placeholder_false": "false",
+          "placeholder_true": "true",
+          "default_value": false
+        }
+      },
       "services_title": {
         "type": "Text",
         "config": {
@@ -330,6 +384,33 @@
               }
             }
           }
+        }
+      }
+    },
+    "Contact": {
+      "contact_enabled": {
+        "type": "Boolean",
+        "config": {
+          "label": "Contact Enabled",
+          "placeholder_false": "false",
+          "placeholder_true": "true",
+          "default_value": false
+        }
+      },
+      "contact_title": {
+        "type": "Text",
+        "config": {
+          "label": "Contact Title",
+          "placeholder": ""
+        }
+      },
+      "contact_blurb": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Contact Blurb",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
         }
       }
     }

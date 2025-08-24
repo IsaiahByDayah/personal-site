@@ -460,6 +460,18 @@ interface HomeDocumentData {
    * - **Documentation**: https://prismic.io/docs/fields/image
    */
   meta_image: prismic.ImageField<never> /**
+   * About Enabled field in *Home*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: home.about_enabled
+   * - **Tab**: About
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  about_enabled: prismic.BooleanField
+
+  /**
    * About Title field in *Home*
    *
    * - **Field Type**: Text
@@ -480,6 +492,18 @@ interface HomeDocumentData {
    * - **Documentation**: https://prismic.io/docs/fields/rich-text
    */
   about_blurb: prismic.RichTextField /**
+   * Skills Enabled field in *Home*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: home.skills_enabled
+   * - **Tab**: Skills
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  skills_enabled: prismic.BooleanField
+
+  /**
    * Skills Title field in *Home*
    *
    * - **Field Type**: Text
@@ -511,6 +535,18 @@ interface HomeDocumentData {
    * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
    */
   skills: prismic.GroupField<Simplify<HomeDocumentDataSkillsItem>> /**
+   * Projects Enabled field in *Home*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: home.projects_enabled
+   * - **Tab**: Projects
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  projects_enabled: prismic.BooleanField
+
+  /**
    * Projects Title field in *Home*
    *
    * - **Field Type**: Text
@@ -542,6 +578,18 @@ interface HomeDocumentData {
    * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
    */
   projects: prismic.GroupField<Simplify<HomeDocumentDataProjectsItem>> /**
+   * Testimonials Enabled field in *Home*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: home.testimonials_enabled
+   * - **Tab**: Testimonials
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  testimonials_enabled: prismic.BooleanField
+
+  /**
    * Testimonials Title field in *Home*
    *
    * - **Field Type**: Text
@@ -575,6 +623,18 @@ interface HomeDocumentData {
   testimonials: prismic.GroupField<
     Simplify<HomeDocumentDataTestimonialsItem>
   > /**
+   * Blog Enabled field in *Home*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: home.blog_enabled
+   * - **Tab**: Blog
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  blog_enabled: prismic.BooleanField
+
+  /**
    * Blog Title field in *Home*
    *
    * - **Field Type**: Text
@@ -606,6 +666,18 @@ interface HomeDocumentData {
    * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
    */
   blog_posts: prismic.GroupField<Simplify<HomeDocumentDataBlogPostsItem>> /**
+   * Services Enabled field in *Home*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: home.services_enabled
+   * - **Tab**: Services
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  services_enabled: prismic.BooleanField
+
+  /**
    * Services Title field in *Home*
    *
    * - **Field Type**: Text
@@ -636,7 +708,39 @@ interface HomeDocumentData {
    * - **Tab**: Services
    * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
    */
-  services: prismic.GroupField<Simplify<HomeDocumentDataServicesItem>>
+  services: prismic.GroupField<Simplify<HomeDocumentDataServicesItem>> /**
+   * Contact Enabled field in *Home*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: home.contact_enabled
+   * - **Tab**: Contact
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  contact_enabled: prismic.BooleanField
+
+  /**
+   * Contact Title field in *Home*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.contact_title
+   * - **Tab**: Contact
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  contact_title: prismic.KeyTextField
+
+  /**
+   * Contact Blurb field in *Home*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.contact_blurb
+   * - **Tab**: Contact
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  contact_blurb: prismic.RichTextField
 }
 
 /**
