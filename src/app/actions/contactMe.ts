@@ -2,7 +2,8 @@
 
 import z from "zod"
 
-import { wait } from "@/utils"
+import { addRows } from "@/lib/google/sheets"
+import { serverEnv } from "@/utils/env/server"
 import {
   contactFormDataSchema,
   type ContactFormData,
@@ -30,11 +31,28 @@ export const contactMe = async (
     }
   }
 
-  // TODO: submit to google sheets api
-  await wait(1000)
+  try {
+    await addRows({
+      spreadsheetId: serverEnv.GOOGLE_SHEETS_CONTACT_ME_SPREADSHEET_ID,
+      values: [
+        [
+          contactFormData.name,
+          contactFormData.companyOrOrganization,
+          contactFormData.contact,
+          contactFormData.message,
+          "Unseen",
+        ],
+      ],
+    })
+  } catch (e) {
+    console.log("Error appending values to sheet", e)
+    return {
+      success: false,
+      error: "Unable to store submission",
+    }
+  }
 
   return {
-    success: false,
-    error: "TODO",
+    success: true,
   }
 }

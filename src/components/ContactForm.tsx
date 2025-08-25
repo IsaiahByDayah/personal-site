@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form"
 import { contactMe } from "@/app/actions/contactMe"
 import {
   contactFormDataSchema,
+  contactFormMessageMaxLength,
   type ContactFormData,
 } from "@/utils/schemas/contactForm"
 
@@ -29,6 +30,7 @@ export const ContactForm = ({ className }: ContactFormProps) => {
   })
 
   const {
+    watch,
     register,
     handleSubmit,
     formState: { errors, isValid },
@@ -36,6 +38,8 @@ export const ContactForm = ({ className }: ContactFormProps) => {
     mode: "onTouched",
     resolver: zodResolver(contactFormDataSchema),
   })
+
+  const messageLength = watch("message")?.length ?? 0
 
   if (isSuccess) {
     return (
@@ -125,9 +129,14 @@ export const ContactForm = ({ className }: ContactFormProps) => {
             {...register("message")}
           />
         </div>
-        {errors.message ? (
-          <p className="mt-2 text-sm text-red-500">{errors.message.message}</p>
-        ) : null}
+        <div className="mt-2 flex flex-row-reverse justify-between gap-4 text-sm">
+          <p className="text-jet-300 shrink-0">
+            {messageLength}/{contactFormMessageMaxLength}
+          </p>
+          {errors.message ? (
+            <p className="grow text-red-500">{errors.message.message}</p>
+          ) : null}
+        </div>
       </div>
 
       <div className="col-span-full">
