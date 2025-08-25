@@ -31,7 +31,7 @@ export const ContactMe = ({
       return (
         <Link
           className={clsx("btn btn-icon btn-fill btn--wheat", className)}
-          href="/#contact-me"
+          href="/#contact"
         >
           <HiEnvelope data-slot="icon" />
         </Link>
@@ -40,7 +40,7 @@ export const ContactMe = ({
       return (
         <Link
           className={clsx("btn btn-fill btn--wheat", className)}
-          href="/#contact-me"
+          href="/#contact"
         >
           {children}
         </Link>

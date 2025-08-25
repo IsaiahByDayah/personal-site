@@ -7,6 +7,7 @@ import {
 
 import { About } from "@/app/_components/About"
 import { BlogPosts } from "@/app/_components/BlogPosts"
+import { Contact } from "@/app/_components/Contact"
 import { Hero } from "@/app/_components/Hero"
 import { Projects } from "@/app/_components/Projects"
 import { Services } from "@/app/_components/Services"
@@ -134,6 +135,15 @@ const Page = async () => {
       ) : null}
 
       {/* Contact Form */}
+      {home?.data.contact_enabled ? (
+        <div className="bg-mist-50">
+          <Contact
+            className="m-auto w-full max-w-5xl px-2 py-16 md:px-4 lg:px-20"
+            title={home?.data.contact_title}
+            description={home?.data.contact_blurb}
+          />
+        </div>
+      ) : null}
     </div>
   )
 }
