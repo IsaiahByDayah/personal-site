@@ -43,7 +43,7 @@ export const BlogPostCard = ({ className, blogPost }: BlogPostCardProps) => {
         </div>
 
         <div className="group relative grow">
-          <h3 className="group-hover:text-jet-500 mt-2 text-xl font-black">
+          <h3 className="group-hover:text-jet-500 mt-2 line-clamp-2 text-xl font-black">
             <Link href={`/blog/${blogPost.uid}`}>
               <span className="absolute inset-0" />
               {blogPost.data.title}
