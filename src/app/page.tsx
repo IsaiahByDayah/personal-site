@@ -148,15 +148,4 @@ const Page = async () => {
   )
 }
 
-/**
- * what you do
- * how long youve been doing it
- * are you taking clients
- * how to contact you
- * examples of work
- * whats your vibe?
- *
- *
- */
-
 export default Page
