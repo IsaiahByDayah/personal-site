@@ -6,7 +6,7 @@
   "author": "Isaiah Smith <jordankid93@gmail.com>",
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "build": "next build --turbopack",
     "start": "next start",
     "lint": "next typegen && eslint . && tsc --noEmit --incremental",
     "format": "prettier --check \"**/*.{js,jsx,ts,tsx,json,md}\"",
