@@ -1,9 +1,13 @@
 import { createClient } from "@/lib/prismicio"
 
-const Page = async () => {
+const Page = async ({ params }: PageProps<"/blog/[slug]">) => {
+  const { slug } = await params
+
   const prismic = createClient()
 
-  return <div>Blog article!</div>
+  const blog = await prismic.getByUID("blog_post", slug)
+
+  return <div>{blog.data.title}</div>
 }
 
 export default Page

@@ -8,7 +8,7 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint && next typegen && tsc --noEmit --incremental",
+    "lint": "next typegen && eslint . && tsc --noEmit --incremental",
     "format": "prettier --check \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "format:fix": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "test": "node --experimental-strip-types --test **/*.test.ts",

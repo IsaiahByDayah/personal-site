@@ -36,7 +36,7 @@ export const ProjectCard = ({
           <p className="mt-2">{project.data.summary}</p>
           <Link
             className="btn btn-outline btn--jet mt-4 inline-flex flex-row items-center gap-1"
-            href={`/project/${project.uid}`}
+            href={`/projects/${project.uid}`}
           >
             Read More <HiArrowSmallRight className="stroke-[0.5]" />
           </Link>

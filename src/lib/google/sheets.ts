@@ -1,4 +1,4 @@
-import { google } from "googleapis"
+import { google, type sheets_v4 } from "googleapis"
 
 import "server-only"
 
@@ -19,7 +19,7 @@ const sheets = google.sheets({
 
 interface AddRowsOptions {
   spreadsheetId: string
-  values: any[][]
+  values: NonNullable<sheets_v4.Schema$ValueRange["values"]>
   range?: string
   valueInputOption?: string
 }
