@@ -28,7 +28,7 @@ export const Testimonials = ({
       {testimonials?.map((testimonial) => (
         <TestimonialCard
           key={testimonial.uid}
-          className="pt-8 sm:inline-block sm:w-full sm:px-4"
+          className="lg:px-4"
           testimonial={testimonial}
         />
       ))}
