@@ -31,10 +31,10 @@ export const Hero = ({
     <p className="col-span-full row-span-1 row-start-2 text-center text-lg font-semibold md:col-span-1 md:col-start-1 md:row-start-2 md:text-start">
       {greeting}
     </p>
-    <h2 className="col-span-full row-span-1 row-start-4 text-3xl font-black md:col-span-1 md:col-start-1 md:row-start-3">
+    <h2 className="col-span-full row-span-1 row-start-4 text-center text-3xl font-black text-balance md:col-span-1 md:col-start-1 md:row-start-3 md:text-start">
       {title}
     </h2>
-    <div className="prose txt-prose col-span-full row-span-1 row-start-5 text-balance md:col-span-1 md:col-start-1 md:row-start-4">
+    <div className="prose txt-prose col-span-full row-span-1 row-start-5 m-auto text-center text-balance md:col-span-1 md:col-start-1 md:row-start-4 md:m-0 md:text-start">
       <PrismicRichText field={description} />
     </div>
   </div>

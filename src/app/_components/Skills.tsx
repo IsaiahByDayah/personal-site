@@ -33,7 +33,7 @@ export const Skills = ({
       description={description}
     >
       <Marquee
-        className="mt-4"
+        className="mt-10"
         direction="right"
         autoFill
         gradient

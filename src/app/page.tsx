@@ -61,7 +61,7 @@ const Page = async () => {
   return (
     <div>
       <Hero
-        className="m-auto w-full max-w-5xl px-2 py-8 sm:py-16 md:px-4 md:py-24 lg:px-20"
+        className="m-auto w-full max-w-5xl px-6 py-8 sm:py-16 md:py-24 lg:px-20"
         greeting={home?.data.greeting}
         title={home?.data.job_title}
         description={home?.data.description}
@@ -72,7 +72,7 @@ const Page = async () => {
       {home?.data.about_enabled ? (
         <div className="bg-mist-50">
           <About
-            className="m-auto w-full max-w-5xl px-2 py-16 md:px-4 lg:px-20"
+            className="m-auto w-full max-w-5xl px-6 py-16 lg:px-20"
             title={home?.data.about_title}
             description={home?.data.about_blurb}
           />
@@ -82,7 +82,7 @@ const Page = async () => {
       {/* Skills */}
       {home?.data.skills_enabled ? (
         <Skills
-          className="m-auto w-full max-w-5xl px-2 py-16 md:px-4 lg:px-20"
+          className="m-auto w-full max-w-5xl px-6 py-16 lg:px-20"
           title={home?.data.skills_title}
           description={home?.data.skills_blurb}
           skills={home?.data.skills}
@@ -92,7 +92,7 @@ const Page = async () => {
       {/* Projects */}
       {home?.data.projects_enabled ? (
         <Projects
-          className="m-auto w-full max-w-5xl px-2 py-16 md:px-4 lg:px-20"
+          className="m-auto w-full max-w-5xl px-6 py-16 lg:px-20"
           title={home?.data.projects_title}
           description={home?.data.projects_blurb}
           projects={projects}
@@ -103,7 +103,7 @@ const Page = async () => {
       {home?.data.services_enabled ? (
         <div className="bg-mist-50">
           <Services
-            className="m-auto w-full max-w-7xl px-2 py-16 md:px-4 lg:px-20"
+            className="m-auto w-full max-w-7xl px-6 py-16 lg:px-20"
             title={home?.data.services_title}
             description={home?.data.services_blurb}
             services={services}
@@ -116,7 +116,7 @@ const Page = async () => {
       {home?.data.testimonials_enabled ? (
         <div className="bg-mist-50">
           <Testimonials
-            className="m-auto w-full max-w-5xl px-2 py-16 md:px-4 lg:px-20"
+            className="m-auto w-full max-w-5xl px-6 py-16 lg:px-20"
             title={home?.data.testimonials_title}
             description={home?.data.testimonials_blurb}
             testimonials={testimonials}
@@ -127,7 +127,7 @@ const Page = async () => {
       {/* Blog */}
       {home?.data.blog_enabled ? (
         <BlogPosts
-          className="m-auto w-full max-w-5xl px-2 py-16 md:px-4 lg:px-20"
+          className="m-auto w-full max-w-5xl px-6 py-16 lg:px-20"
           title={home?.data.blog_title}
           description={home?.data.blog_blurb}
           blogPosts={blogPosts}
@@ -138,7 +138,7 @@ const Page = async () => {
       {home?.data.contact_enabled ? (
         <div className="bg-mist-50">
           <Contact
-            className="m-auto w-full max-w-5xl px-2 py-16 md:px-4 lg:px-20"
+            className="m-auto w-full max-w-5xl px-6 py-16 lg:px-20"
             title={home?.data.contact_title}
             description={home?.data.contact_blurb}
           />

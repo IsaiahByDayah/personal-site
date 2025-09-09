@@ -189,6 +189,93 @@ export type BlogPostDocument<Lang extends string = string> =
     Lang
   >
 
+type BlogrollDocumentDataSlicesSlice = never
+
+/**
+ * Content for Blogroll documents
+ */
+interface BlogrollDocumentData {
+  /**
+   * title field in *Blogroll*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blogroll.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  title: prismic.KeyTextField
+
+  /**
+   * Description field in *Blogroll*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blogroll.description
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  description: prismic.RichTextField
+
+  /**
+   * Slice Zone field in *Blogroll*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blogroll.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/slices
+   */
+  slices: prismic.SliceZone<BlogrollDocumentDataSlicesSlice> /**
+   * Meta Title field in *Blogroll*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: blogroll.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  meta_title: prismic.KeyTextField
+
+  /**
+   * Meta Description field in *Blogroll*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: blogroll.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  meta_description: prismic.KeyTextField
+
+  /**
+   * Meta Image field in *Blogroll*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blogroll.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  meta_image: prismic.ImageField<never>
+}
+
+/**
+ * Blogroll document from Prismic
+ *
+ * - **API ID**: `blogroll`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type BlogrollDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<BlogrollDocumentData>,
+    "blogroll",
+    Lang
+  >
+
 /**
  * Content for Header documents
  */
@@ -829,6 +916,93 @@ interface ProjectDocumentData {
 export type ProjectDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<ProjectDocumentData>, "project", Lang>
 
+type ProjectsGalleryDocumentDataSlicesSlice = never
+
+/**
+ * Content for Projects Gallery documents
+ */
+interface ProjectsGalleryDocumentData {
+  /**
+   * Title field in *Projects Gallery*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: projects_gallery.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  title: prismic.KeyTextField
+
+  /**
+   * Description field in *Projects Gallery*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: projects_gallery.description
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  description: prismic.RichTextField
+
+  /**
+   * Slice Zone field in *Projects Gallery*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: projects_gallery.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/slices
+   */
+  slices: prismic.SliceZone<ProjectsGalleryDocumentDataSlicesSlice> /**
+   * Meta Title field in *Projects Gallery*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: projects_gallery.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  meta_title: prismic.KeyTextField
+
+  /**
+   * Meta Description field in *Projects Gallery*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: projects_gallery.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  meta_description: prismic.KeyTextField
+
+  /**
+   * Meta Image field in *Projects Gallery*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: projects_gallery.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  meta_image: prismic.ImageField<never>
+}
+
+/**
+ * Projects Gallery document from Prismic
+ *
+ * - **API ID**: `projects_gallery`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ProjectsGalleryDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<ProjectsGalleryDocumentData>,
+    "projects_gallery",
+    Lang
+  >
+
 /**
  * Item in *Service → Items*
  */
@@ -1093,9 +1267,11 @@ export type TestimonialDocument<Lang extends string = string> =
 
 export type AllDocumentTypes =
   | BlogPostDocument
+  | BlogrollDocument
   | HeaderDocument
   | HomeDocument
   | ProjectDocument
+  | ProjectsGalleryDocument
   | ServiceDocument
   | SocialsDocument
   | TestimonialDocument
@@ -1124,6 +1300,9 @@ declare module "@prismicio/client" {
       BlogPostDocument,
       BlogPostDocumentData,
       BlogPostDocumentDataSlicesSlice,
+      BlogrollDocument,
+      BlogrollDocumentData,
+      BlogrollDocumentDataSlicesSlice,
       HeaderDocument,
       HeaderDocumentData,
       HomeDocument,
@@ -1136,6 +1315,9 @@ declare module "@prismicio/client" {
       HomeDocumentDataServicesItem,
       ProjectDocument,
       ProjectDocumentData,
+      ProjectsGalleryDocument,
+      ProjectsGalleryDocumentData,
+      ProjectsGalleryDocumentDataSlicesSlice,
       ServiceDocument,
       ServiceDocumentData,
       ServiceDocumentDataItemsItem,
