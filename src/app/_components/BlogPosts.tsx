@@ -30,8 +30,8 @@ export const BlogPosts = ({
       {blogPosts?.map((blogPost) => (
         <BlogPostCard
           key={blogPost.uid}
-          className="sm:inline-block sm:w-full"
           blogPost={blogPost}
+          responsive={false}
         />
       ))}
     </div>
