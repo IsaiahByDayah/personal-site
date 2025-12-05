@@ -2,7 +2,7 @@
   "name": "personal-site",
   "private": true,
   "description": "My personal site and blog",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "author": "Isaiah Smith <jordankid93@gmail.com>",
   "scripts": {
     "dev": "next dev --turbopack",
