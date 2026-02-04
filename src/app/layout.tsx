@@ -1,10 +1,8 @@
 import { PrismicPreview } from "@prismicio/next"
 import { Metadata } from "next"
-import PlausibleProvider from "next-plausible"
 import { Nunito_Sans } from "next/font/google"
 import { type ReactNode } from "react"
 
-import { CUSTOM_DOMAIN, DOMAIN } from "@/lib/plausible"
 import { repositoryName } from "@/lib/prismicio"
 
 import "./globals.css"
@@ -34,14 +32,7 @@ const RootLayout = ({ children }: RootLayoutProps) => {
   return (
     <html lang="en" className={nunitoSans.variable}>
       <body>
-        <PlausibleProvider
-          customDomain={CUSTOM_DOMAIN}
-          domain={DOMAIN}
-          trackOutboundLinks
-          selfHosted
-        >
-          {children}
-        </PlausibleProvider>
+        {children}
         <PrismicPreview repositoryName={repositoryName} />
       </body>
     </html>
