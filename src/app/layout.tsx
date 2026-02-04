@@ -6,6 +6,7 @@ import { type ReactNode } from "react"
 import { Footer } from "@/app/_components/Footer"
 import { Header } from "@/app/_components/Header"
 import { TanstackProvider } from "@/app/_components/TanstackProvider"
+import { UmamiAnalytics } from "@/app/_components/UmamiAnalytics"
 import { repositoryName } from "@/lib/prismicio"
 
 import "./globals.css"
@@ -47,6 +48,7 @@ const RootLayout = ({ children }: RootLayoutProps) => {
           <PrismicPreview repositoryName={repositoryName} />
         </TanstackProvider>
       </body>
+      <UmamiAnalytics disabled={process.env.NODE_ENV === "development"} />
     </html>
   )
 }
