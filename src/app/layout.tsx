@@ -3,6 +3,7 @@ import { Metadata } from "next"
 import { Nunito_Sans } from "next/font/google"
 import { type ReactNode } from "react"
 
+import { UmamiAnalytics } from "@/app/UmamiAnalytics"
 import { repositoryName } from "@/lib/prismicio"
 
 import "./globals.css"
@@ -35,6 +36,7 @@ const RootLayout = ({ children }: RootLayoutProps) => {
         {children}
         <PrismicPreview repositoryName={repositoryName} />
       </body>
+      <UmamiAnalytics disabled={process.env.NODE_ENV === "development"} />
     </html>
   )
 }
