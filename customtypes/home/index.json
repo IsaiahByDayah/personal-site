@@ -1,0 +1,418 @@
+{
+  "format": "page",
+  "id": "home",
+  "label": "Home",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Hero": {
+      "greeting": {
+        "type": "Text",
+        "config": {
+          "label": "Greeting",
+          "placeholder": ""
+        }
+      },
+      "job_title": {
+        "type": "Text",
+        "config": {
+          "label": "Job Title",
+          "placeholder": ""
+        }
+      },
+      "description": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Description",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
+      "photo": {
+        "type": "Image",
+        "config": {
+          "label": "Photo",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {}
+        }
+      }
+    },
+    "SEO & Metadata": {
+      "meta_title": {
+        "config": {
+          "label": "Meta Title",
+          "placeholder": "A title of the page used for social media and search engines"
+        },
+        "type": "Text"
+      },
+      "meta_description": {
+        "config": {
+          "label": "Meta Description",
+          "placeholder": "A brief summary of the page"
+        },
+        "type": "Text"
+      },
+      "meta_image": {
+        "config": {
+          "constraint": {
+            "height": 1260,
+            "width": 2400
+          },
+          "label": "Meta Image",
+          "thumbnails": []
+        },
+        "type": "Image"
+      }
+    },
+    "About": {
+      "about_enabled": {
+        "type": "Boolean",
+        "config": {
+          "label": "About Enabled",
+          "placeholder_false": "false",
+          "placeholder_true": "true",
+          "default_value": false
+        }
+      },
+      "about_title": {
+        "type": "Text",
+        "config": {
+          "label": "About Title",
+          "placeholder": ""
+        }
+      },
+      "about_blurb": {
+        "type": "StructuredText",
+        "config": {
+          "label": "About Blurb",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      }
+    },
+    "Skills": {
+      "skills_enabled": {
+        "type": "Boolean",
+        "config": {
+          "label": "Skills Enabled",
+          "placeholder_false": "false",
+          "placeholder_true": "true",
+          "default_value": false
+        }
+      },
+      "skills_title": {
+        "type": "Text",
+        "config": {
+          "label": "Skills Title",
+          "placeholder": ""
+        }
+      },
+      "skills_blurb": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Skills Blurb",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
+      "skills": {
+        "type": "Group",
+        "config": {
+          "label": "Skills",
+          "repeat": true,
+          "fields": {
+            "label": {
+              "type": "Text",
+              "config": {
+                "label": "Label",
+                "placeholder": ""
+              }
+            },
+            "image": {
+              "type": "Image",
+              "config": {
+                "label": "Image",
+                "constraint": {},
+                "thumbnails": []
+              }
+            },
+            "url": {
+              "type": "Link",
+              "config": {
+                "label": "URL",
+                "placeholder": "",
+                "select": null,
+                "allowTargetBlank": true,
+                "allowText": true,
+                "repeat": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "Projects": {
+      "projects_enabled": {
+        "type": "Boolean",
+        "config": {
+          "label": "Projects Enabled",
+          "placeholder_false": "false",
+          "placeholder_true": "true",
+          "default_value": false
+        }
+      },
+      "projects_title": {
+        "type": "Text",
+        "config": {
+          "label": "Projects Title",
+          "placeholder": ""
+        }
+      },
+      "projects_blurb": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Projects Blurb",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
+      "projects": {
+        "type": "Group",
+        "config": {
+          "label": "Projects",
+          "repeat": true,
+          "fields": {
+            "project": {
+              "type": "Link",
+              "config": {
+                "label": "Project",
+                "select": "document",
+                "repeat": false,
+                "customtypes": [
+                  {
+                    "id": "project",
+                    "fields": [
+                      "thumbnail",
+                      "title",
+                      "summary",
+                      "description",
+                      "urls"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "Testimonials": {
+      "testimonials_enabled": {
+        "type": "Boolean",
+        "config": {
+          "label": "Testimonials Enabled",
+          "placeholder_false": "false",
+          "placeholder_true": "true",
+          "default_value": false
+        }
+      },
+      "testimonials_title": {
+        "type": "Text",
+        "config": {
+          "label": "Testimonials Title",
+          "placeholder": ""
+        }
+      },
+      "testimonials_blurb": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Testimonials Blurb",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
+      "testimonials": {
+        "type": "Group",
+        "config": {
+          "label": "Testimonials",
+          "repeat": true,
+          "fields": {
+            "testimonial": {
+              "type": "Link",
+              "config": {
+                "label": "Testimonial",
+                "select": "document",
+                "repeat": false,
+                "customtypes": [
+                  {
+                    "id": "testimonial",
+                    "fields": ["photo", "name", "role", "content"]
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "Blog": {
+      "blog_enabled": {
+        "type": "Boolean",
+        "config": {
+          "label": "Blog Enabled",
+          "placeholder_false": "false",
+          "placeholder_true": "true",
+          "default_value": false
+        }
+      },
+      "blog_title": {
+        "type": "Text",
+        "config": {
+          "label": "Blog Title",
+          "placeholder": ""
+        }
+      },
+      "blog_blurb": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Blog Blurb",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
+      "blog_posts": {
+        "type": "Group",
+        "config": {
+          "label": "Blog Posts",
+          "repeat": true,
+          "fields": {
+            "blog_post": {
+              "type": "Link",
+              "config": {
+                "label": "Blog Post",
+                "select": "document",
+                "repeat": false,
+                "customtypes": [
+                  {
+                    "id": "blog_post",
+                    "fields": [
+                      "meta_title",
+                      "meta_description",
+                      "meta_image",
+                      "title",
+                      "description",
+                      "image",
+                      "publication_datetime",
+                      "content"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "Services": {
+      "services_enabled": {
+        "type": "Boolean",
+        "config": {
+          "label": "Services Enabled",
+          "placeholder_false": "false",
+          "placeholder_true": "true",
+          "default_value": false
+        }
+      },
+      "services_title": {
+        "type": "Text",
+        "config": {
+          "label": "Services Title",
+          "placeholder": ""
+        }
+      },
+      "services_blurb": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Services Blurb",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
+      "services": {
+        "type": "Group",
+        "config": {
+          "label": "Services",
+          "repeat": true,
+          "fields": {
+            "service": {
+              "type": "Link",
+              "config": {
+                "label": "Service",
+                "select": "document",
+                "repeat": false,
+                "customtypes": [
+                  {
+                    "id": "service",
+                    "fields": [
+                      "name",
+                      "description",
+                      "color",
+                      "price_amount",
+                      "price_label",
+                      "timeline",
+                      {
+                        "id": "items",
+                        "fields": ["description", "is_included"]
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "Contact": {
+      "contact_enabled": {
+        "type": "Boolean",
+        "config": {
+          "label": "Contact Enabled",
+          "placeholder_false": "false",
+          "placeholder_true": "true",
+          "default_value": false
+        }
+      },
+      "contact_title": {
+        "type": "Text",
+        "config": {
+          "label": "Contact Title",
+          "placeholder": ""
+        }
+      },
+      "contact_blurb": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Contact Blurb",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      }
+    }
+  }
+}

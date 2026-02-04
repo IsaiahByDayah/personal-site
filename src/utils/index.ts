@@ -76,7 +76,7 @@ const buildPaginationItemsOptionsSchema = z
     boundaryCount: z.number().default(1),
     siblingCount: z.number().default(1),
   })
-  .default({})
+  .prefault({})
 
 // REF: https://github.com/mui/material-ui/blob/master/packages/mui-material/src/usePagination/usePagination.js#L4
 export const buildPaginationItems = (

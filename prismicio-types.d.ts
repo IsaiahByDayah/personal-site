@@ -4,26 +4,1329 @@ import type * as prismic from "@prismicio/client"
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] }
 
+type PickContentRelationshipFieldData<
+  TRelationship extends
+    | prismic.CustomTypeModelFetchCustomTypeLevel1
+    | prismic.CustomTypeModelFetchCustomTypeLevel2
+    | prismic.CustomTypeModelFetchGroupLevel1
+    | prismic.CustomTypeModelFetchGroupLevel2,
+  TData extends Record<
+    string,
+    | prismic.AnyRegularField
+    | prismic.GroupField
+    | prismic.NestedGroupField
+    | prismic.SliceZone
+  >,
+  TLang extends string,
+> =
+  // Content relationship fields
+  {
+    [TSubRelationship in Extract<
+      TRelationship["fields"][number],
+      prismic.CustomTypeModelFetchContentRelationshipLevel1
+    > as TSubRelationship["id"]]: ContentRelationshipFieldWithData<
+      TSubRelationship["customtypes"],
+      TLang
+    >
+  } & // Group
+  {
+    [TGroup in Extract<
+      TRelationship["fields"][number],
+      | prismic.CustomTypeModelFetchGroupLevel1
+      | prismic.CustomTypeModelFetchGroupLevel2
+    > as TGroup["id"]]: TData[TGroup["id"]] extends prismic.GroupField<
+      infer TGroupData
+    >
+      ? prismic.GroupField<
+          PickContentRelationshipFieldData<TGroup, TGroupData, TLang>
+        >
+      : never
+  } & // Other fields
+  {
+    [TFieldKey in Extract<
+      TRelationship["fields"][number],
+      string
+    >]: TFieldKey extends keyof TData ? TData[TFieldKey] : never
+  }
+
+type ContentRelationshipFieldWithData<
+  TCustomType extends
+    | readonly (prismic.CustomTypeModelFetchCustomTypeLevel1 | string)[]
+    | readonly (prismic.CustomTypeModelFetchCustomTypeLevel2 | string)[],
+  TLang extends string = string,
+> = {
+  [ID in Exclude<
+    TCustomType[number],
+    string
+  >["id"]]: prismic.ContentRelationshipField<
+    ID,
+    TLang,
+    PickContentRelationshipFieldData<
+      Extract<TCustomType[number], { id: ID }>,
+      Extract<prismic.Content.AllDocumentTypes, { type: ID }>["data"],
+      TLang
+    >
+  >
+}[Exclude<TCustomType[number], string>["id"]]
+
+type BlogPostDocumentDataSlicesSlice = never
+
+/**
+ * Content for Blog Post documents
+ */
+interface BlogPostDocumentData {
+  /**
+   * Title field in *Blog Post*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_post.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  title: prismic.KeyTextField
+
+  /**
+   * Description field in *Blog Post*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_post.description
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  description: prismic.KeyTextField
+
+  /**
+   * Image field in *Blog Post*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_post.image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  image: prismic.ImageField<never>
+
+  /**
+   * Publication DateTime field in *Blog Post*
+   *
+   * - **Field Type**: Timestamp
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_post.publication_datetime
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/timestamp
+   */
+  publication_datetime: prismic.TimestampField
+
+  /**
+   * Content field in *Blog Post*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_post.content
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  content: prismic.RichTextField
+
+  /**
+   * Slice Zone field in *Blog Post*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_post.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/slices
+   */
+  slices: prismic.SliceZone<BlogPostDocumentDataSlicesSlice> /**
+   * Meta Title field in *Blog Post*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: blog_post.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  meta_title: prismic.KeyTextField
+
+  /**
+   * Meta Description field in *Blog Post*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: blog_post.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  meta_description: prismic.KeyTextField
+
+  /**
+   * Meta Image field in *Blog Post*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_post.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  meta_image: prismic.ImageField<never>
+}
+
+/**
+ * Blog Post document from Prismic
+ *
+ * - **API ID**: `blog_post`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type BlogPostDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<BlogPostDocumentData>,
+    "blog_post",
+    Lang
+  >
+
+type BlogrollDocumentDataSlicesSlice = never
+
+/**
+ * Content for Blogroll documents
+ */
+interface BlogrollDocumentData {
+  /**
+   * title field in *Blogroll*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blogroll.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  title: prismic.KeyTextField
+
+  /**
+   * Description field in *Blogroll*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blogroll.description
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  description: prismic.RichTextField
+
+  /**
+   * Slice Zone field in *Blogroll*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blogroll.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/slices
+   */
+  slices: prismic.SliceZone<BlogrollDocumentDataSlicesSlice> /**
+   * Meta Title field in *Blogroll*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: blogroll.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  meta_title: prismic.KeyTextField
+
+  /**
+   * Meta Description field in *Blogroll*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: blogroll.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  meta_description: prismic.KeyTextField
+
+  /**
+   * Meta Image field in *Blogroll*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blogroll.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  meta_image: prismic.ImageField<never>
+}
+
+/**
+ * Blogroll document from Prismic
+ *
+ * - **API ID**: `blogroll`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type BlogrollDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<BlogrollDocumentData>,
+    "blogroll",
+    Lang
+  >
+
+/**
+ * Content for Header documents
+ */
+interface HeaderDocumentData {
+  /**
+   * Logo field in *Header*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: header.logo
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  logo: prismic.ImageField<never>
+
+  /**
+   * Navigation field in *Header*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: header.navigation
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  navigation: prismic.Repeatable<
+    prismic.LinkField<string, string, unknown, prismic.FieldState, never>
+  >
+}
+
+/**
+ * Header document from Prismic
+ *
+ * - **API ID**: `header`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type HeaderDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<HeaderDocumentData>,
+    "header",
+    Lang
+  >
+
+type HomeDocumentDataSlicesSlice = never
+
+/**
+ * Item in *Home → Skills*
+ */
+export interface HomeDocumentDataSkillsItem {
+  /**
+   * Label field in *Home → Skills*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.skills[].label
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  label: prismic.KeyTextField
+
+  /**
+   * Image field in *Home → Skills*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.skills[].image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  image: prismic.ImageField<never>
+
+  /**
+   * URL field in *Home → Skills*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.skills[].url
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  url: prismic.LinkField<string, string, unknown, prismic.FieldState, never>
+}
+
+/**
+ * Item in *Home → Projects*
+ */
+export interface HomeDocumentDataProjectsItem {
+  /**
+   * Project field in *Home → Projects*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.projects[].project
+   * - **Documentation**: https://prismic.io/docs/fields/content-relationship
+   */
+  project: ContentRelationshipFieldWithData<
+    [
+      {
+        id: "project"
+        fields: ["thumbnail", "title", "summary", "description", "urls"]
+      },
+    ]
+  >
+}
+
+/**
+ * Item in *Home → Testimonials*
+ */
+export interface HomeDocumentDataTestimonialsItem {
+  /**
+   * Testimonial field in *Home → Testimonials*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.testimonials[].testimonial
+   * - **Documentation**: https://prismic.io/docs/fields/content-relationship
+   */
+  testimonial: ContentRelationshipFieldWithData<
+    [{ id: "testimonial"; fields: ["photo", "name", "role", "content"] }]
+  >
+}
+
+/**
+ * Item in *Home → Blog Posts*
+ */
+export interface HomeDocumentDataBlogPostsItem {
+  /**
+   * Blog Post field in *Home → Blog Posts*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.blog_posts[].blog_post
+   * - **Documentation**: https://prismic.io/docs/fields/content-relationship
+   */
+  blog_post: ContentRelationshipFieldWithData<
+    [
+      {
+        id: "blog_post"
+        fields: [
+          "meta_title",
+          "meta_description",
+          "meta_image",
+          "title",
+          "description",
+          "image",
+          "publication_datetime",
+          "content",
+        ]
+      },
+    ]
+  >
+}
+
+/**
+ * Item in *Home → Services*
+ */
+export interface HomeDocumentDataServicesItem {
+  /**
+   * Service field in *Home → Services*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.services[].service
+   * - **Documentation**: https://prismic.io/docs/fields/content-relationship
+   */
+  service: ContentRelationshipFieldWithData<
+    [
+      {
+        id: "service"
+        fields: [
+          "name",
+          "description",
+          "color",
+          "price_amount",
+          "price_label",
+          "timeline",
+          { id: "items"; fields: ["description", "is_included"] },
+        ]
+      },
+    ]
+  >
+}
+
+/**
+ * Content for Home documents
+ */
+interface HomeDocumentData {
+  /**
+   * Greeting field in *Home*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.greeting
+   * - **Tab**: Hero
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  greeting: prismic.KeyTextField
+
+  /**
+   * Job Title field in *Home*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.job_title
+   * - **Tab**: Hero
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  job_title: prismic.KeyTextField
+
+  /**
+   * Description field in *Home*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.description
+   * - **Tab**: Hero
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  description: prismic.RichTextField
+
+  /**
+   * Photo field in *Home*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.photo
+   * - **Tab**: Hero
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  photo: prismic.ImageField<never>
+
+  /**
+   * Slice Zone field in *Home*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.slices[]
+   * - **Tab**: Hero
+   * - **Documentation**: https://prismic.io/docs/slices
+   */
+  slices: prismic.SliceZone<HomeDocumentDataSlicesSlice> /**
+   * Meta Title field in *Home*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: home.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  meta_title: prismic.KeyTextField
+
+  /**
+   * Meta Description field in *Home*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: home.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  meta_description: prismic.KeyTextField
+
+  /**
+   * Meta Image field in *Home*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  meta_image: prismic.ImageField<never> /**
+   * About Enabled field in *Home*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: home.about_enabled
+   * - **Tab**: About
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  about_enabled: prismic.BooleanField
+
+  /**
+   * About Title field in *Home*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.about_title
+   * - **Tab**: About
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  about_title: prismic.KeyTextField
+
+  /**
+   * About Blurb field in *Home*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.about_blurb
+   * - **Tab**: About
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  about_blurb: prismic.RichTextField /**
+   * Skills Enabled field in *Home*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: home.skills_enabled
+   * - **Tab**: Skills
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  skills_enabled: prismic.BooleanField
+
+  /**
+   * Skills Title field in *Home*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.skills_title
+   * - **Tab**: Skills
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  skills_title: prismic.KeyTextField
+
+  /**
+   * Skills Blurb field in *Home*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.skills_blurb
+   * - **Tab**: Skills
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  skills_blurb: prismic.RichTextField
+
+  /**
+   * Skills field in *Home*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.skills[]
+   * - **Tab**: Skills
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  skills: prismic.GroupField<Simplify<HomeDocumentDataSkillsItem>> /**
+   * Projects Enabled field in *Home*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: home.projects_enabled
+   * - **Tab**: Projects
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  projects_enabled: prismic.BooleanField
+
+  /**
+   * Projects Title field in *Home*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.projects_title
+   * - **Tab**: Projects
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  projects_title: prismic.KeyTextField
+
+  /**
+   * Projects Blurb field in *Home*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.projects_blurb
+   * - **Tab**: Projects
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  projects_blurb: prismic.RichTextField
+
+  /**
+   * Projects field in *Home*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.projects[]
+   * - **Tab**: Projects
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  projects: prismic.GroupField<Simplify<HomeDocumentDataProjectsItem>> /**
+   * Testimonials Enabled field in *Home*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: home.testimonials_enabled
+   * - **Tab**: Testimonials
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  testimonials_enabled: prismic.BooleanField
+
+  /**
+   * Testimonials Title field in *Home*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.testimonials_title
+   * - **Tab**: Testimonials
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  testimonials_title: prismic.KeyTextField
+
+  /**
+   * Testimonials Blurb field in *Home*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.testimonials_blurb
+   * - **Tab**: Testimonials
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  testimonials_blurb: prismic.RichTextField
+
+  /**
+   * Testimonials field in *Home*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.testimonials[]
+   * - **Tab**: Testimonials
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  testimonials: prismic.GroupField<
+    Simplify<HomeDocumentDataTestimonialsItem>
+  > /**
+   * Blog Enabled field in *Home*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: home.blog_enabled
+   * - **Tab**: Blog
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  blog_enabled: prismic.BooleanField
+
+  /**
+   * Blog Title field in *Home*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.blog_title
+   * - **Tab**: Blog
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  blog_title: prismic.KeyTextField
+
+  /**
+   * Blog Blurb field in *Home*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.blog_blurb
+   * - **Tab**: Blog
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  blog_blurb: prismic.RichTextField
+
+  /**
+   * Blog Posts field in *Home*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.blog_posts[]
+   * - **Tab**: Blog
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  blog_posts: prismic.GroupField<Simplify<HomeDocumentDataBlogPostsItem>> /**
+   * Services Enabled field in *Home*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: home.services_enabled
+   * - **Tab**: Services
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  services_enabled: prismic.BooleanField
+
+  /**
+   * Services Title field in *Home*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.services_title
+   * - **Tab**: Services
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  services_title: prismic.KeyTextField
+
+  /**
+   * Services Blurb field in *Home*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.services_blurb
+   * - **Tab**: Services
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  services_blurb: prismic.RichTextField
+
+  /**
+   * Services field in *Home*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.services[]
+   * - **Tab**: Services
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  services: prismic.GroupField<Simplify<HomeDocumentDataServicesItem>> /**
+   * Contact Enabled field in *Home*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: home.contact_enabled
+   * - **Tab**: Contact
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  contact_enabled: prismic.BooleanField
+
+  /**
+   * Contact Title field in *Home*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.contact_title
+   * - **Tab**: Contact
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  contact_title: prismic.KeyTextField
+
+  /**
+   * Contact Blurb field in *Home*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.contact_blurb
+   * - **Tab**: Contact
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  contact_blurb: prismic.RichTextField
+}
+
+/**
+ * Home document from Prismic
+ *
+ * - **API ID**: `home`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type HomeDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<Simplify<HomeDocumentData>, "home", Lang>
+
+/**
+ * Content for Project documents
+ */
+interface ProjectDocumentData {
+  /**
+   * Thumbnail field in *Project*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project.thumbnail
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  thumbnail: prismic.ImageField<never>
+
+  /**
+   * Title field in *Project*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  title: prismic.KeyTextField
+
+  /**
+   * Summary field in *Project*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project.summary
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  summary: prismic.KeyTextField
+
+  /**
+   * Description field in *Project*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project.description
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  description: prismic.RichTextField
+
+  /**
+   * URLs field in *Project*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project.urls
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  urls: prismic.Repeatable<
+    prismic.LinkField<string, string, unknown, prismic.FieldState, never>
+  >
+}
+
+/**
+ * Project document from Prismic
+ *
+ * - **API ID**: `project`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ProjectDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<Simplify<ProjectDocumentData>, "project", Lang>
+
+type ProjectsGalleryDocumentDataSlicesSlice = never
+
+/**
+ * Content for Projects Gallery documents
+ */
+interface ProjectsGalleryDocumentData {
+  /**
+   * Title field in *Projects Gallery*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: projects_gallery.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  title: prismic.KeyTextField
+
+  /**
+   * Description field in *Projects Gallery*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: projects_gallery.description
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  description: prismic.RichTextField
+
+  /**
+   * Slice Zone field in *Projects Gallery*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: projects_gallery.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/slices
+   */
+  slices: prismic.SliceZone<ProjectsGalleryDocumentDataSlicesSlice> /**
+   * Meta Title field in *Projects Gallery*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: projects_gallery.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  meta_title: prismic.KeyTextField
+
+  /**
+   * Meta Description field in *Projects Gallery*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: projects_gallery.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  meta_description: prismic.KeyTextField
+
+  /**
+   * Meta Image field in *Projects Gallery*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: projects_gallery.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  meta_image: prismic.ImageField<never>
+}
+
+/**
+ * Projects Gallery document from Prismic
+ *
+ * - **API ID**: `projects_gallery`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ProjectsGalleryDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<ProjectsGalleryDocumentData>,
+    "projects_gallery",
+    Lang
+  >
+
+/**
+ * Item in *Service → Items*
+ */
+export interface ServiceDocumentDataItemsItem {
+  /**
+   * Description field in *Service → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service.items[].description
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  description: prismic.KeyTextField
+
+  /**
+   * Is Included field in *Service → Items*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: true
+   * - **API ID Path**: service.items[].is_included
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  is_included: prismic.BooleanField
+}
+
+/**
+ * Content for Service documents
+ */
+interface ServiceDocumentData {
+  /**
+   * Name field in *Service*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service.name
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  name: prismic.KeyTextField
+
+  /**
+   * Description field in *Service*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service.description
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  description: prismic.KeyTextField
+
+  /**
+   * Color field in *Service*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service.color
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/color
+   */
+  color: prismic.ColorField
+
+  /**
+   * Price Amount field in *Service*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: $999 - $9,999
+   * - **API ID Path**: service.price_amount
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  price_amount: prismic.KeyTextField
+
+  /**
+   * Price Label field in *Service*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: (One Time)
+   * - **API ID Path**: service.price_label
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  price_label: prismic.KeyTextField
+
+  /**
+   * Timeline field in *Service*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: 1-2 Weeks
+   * - **API ID Path**: service.timeline
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  timeline: prismic.KeyTextField
+
+  /**
+   * Items field in *Service*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service.items[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  items: prismic.GroupField<Simplify<ServiceDocumentDataItemsItem>>
+}
+
+/**
+ * Service document from Prismic
+ *
+ * - **API ID**: `service`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ServiceDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<Simplify<ServiceDocumentData>, "service", Lang>
+
+/**
+ * Item in *Socials → Social Links*
+ */
+export interface SocialsDocumentDataSocialLinksItem {
+  /**
+   * Platform field in *Socials → Social Links*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: socials.social_links[].platform
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  platform: prismic.KeyTextField
+
+  /**
+   * URL field in *Socials → Social Links*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: socials.social_links[].url
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  url: prismic.LinkField<string, string, unknown, prismic.FieldState, never>
+
+  /**
+   * Icon field in *Socials → Social Links*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: socials.social_links[].icon
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  icon: prismic.ImageField<never>
+
+  /**
+   * Color field in *Socials → Social Links*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: *None*
+   * - **API ID Path**: socials.social_links[].color
+   * - **Documentation**: https://prismic.io/docs/fields/color
+   */
+  color: prismic.ColorField
+}
+
+/**
+ * Content for Socials documents
+ */
+interface SocialsDocumentData {
+  /**
+   * Social Links field in *Socials*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: socials.social_links[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  social_links: prismic.GroupField<Simplify<SocialsDocumentDataSocialLinksItem>>
+}
+
+/**
+ * Socials document from Prismic
+ *
+ * - **API ID**: `socials`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type SocialsDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<SocialsDocumentData>,
+    "socials",
+    Lang
+  >
+
+/**
+ * Content for Testimonial documents
+ */
+interface TestimonialDocumentData {
+  /**
+   * Photo field in *Testimonial*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonial.photo
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  photo: prismic.ImageField<never>
+
+  /**
+   * Name field in *Testimonial*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonial.name
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  name: prismic.KeyTextField
+
+  /**
+   * Role field in *Testimonial*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonial.role
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  role: prismic.KeyTextField
+
+  /**
+   * Content field in *Testimonial*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonial.content
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  content: prismic.KeyTextField
+}
+
+/**
+ * Testimonial document from Prismic
+ *
+ * - **API ID**: `testimonial`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type TestimonialDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<TestimonialDocumentData>,
+    "testimonial",
+    Lang
+  >
+
+export type AllDocumentTypes =
+  | BlogPostDocument
+  | BlogrollDocument
+  | HeaderDocument
+  | HomeDocument
+  | ProjectDocument
+  | ProjectsGalleryDocument
+  | ServiceDocument
+  | SocialsDocument
+  | TestimonialDocument
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
       repositoryNameOrEndpoint: string,
       options?: prismic.ClientConfig,
-    ): prismic.Client
+    ): prismic.Client<AllDocumentTypes>
   }
 
   interface CreateWriteClient {
     (
       repositoryNameOrEndpoint: string,
-      options?: prismic.WriteClientConfig,
-    ): prismic.WriteClient
+      options: prismic.WriteClientConfig,
+    ): prismic.WriteClient<AllDocumentTypes>
   }
 
   interface CreateMigration {
-    (): prismic.Migration
+    (): prismic.Migration<AllDocumentTypes>
   }
 
   namespace Content {
-    export type {}
+    export type {
+      BlogPostDocument,
+      BlogPostDocumentData,
+      BlogPostDocumentDataSlicesSlice,
+      BlogrollDocument,
+      BlogrollDocumentData,
+      BlogrollDocumentDataSlicesSlice,
+      HeaderDocument,
+      HeaderDocumentData,
+      HomeDocument,
+      HomeDocumentData,
+      HomeDocumentDataSlicesSlice,
+      HomeDocumentDataSkillsItem,
+      HomeDocumentDataProjectsItem,
+      HomeDocumentDataTestimonialsItem,
+      HomeDocumentDataBlogPostsItem,
+      HomeDocumentDataServicesItem,
+      ProjectDocument,
+      ProjectDocumentData,
+      ProjectsGalleryDocument,
+      ProjectsGalleryDocumentData,
+      ProjectsGalleryDocumentDataSlicesSlice,
+      ServiceDocument,
+      ServiceDocumentData,
+      ServiceDocumentDataItemsItem,
+      SocialsDocument,
+      SocialsDocumentData,
+      SocialsDocumentDataSocialLinksItem,
+      TestimonialDocument,
+      TestimonialDocumentData,
+      AllDocumentTypes,
+    }
   }
 }
