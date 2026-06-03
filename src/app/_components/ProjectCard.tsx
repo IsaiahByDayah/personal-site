@@ -1,6 +1,5 @@
-import { PrismicNextImage } from "@prismicio/next"
+import { PrismicNextImage, PrismicNextLink } from "@prismicio/next"
 import clsx from "clsx"
-import Link from "next/link"
 import { ProjectDocument } from "prismicio-types"
 import { HiArrowSmallRight } from "react-icons/hi2"
 
@@ -19,6 +18,8 @@ export const ProjectCard = ({
     return null
   }
 
+  console.log(project)
+
   return (
     <div className={clsx("@container", className)}>
       <div
@@ -34,12 +35,14 @@ export const ProjectCard = ({
         <div className="basis-1/2">
           <p className="text-xl font-black">{project.data.title}</p>
           <p className="mt-2">{project.data.summary}</p>
-          <Link
-            className="btn btn-outline btn--jet mt-4 inline-flex flex-row items-center gap-1"
-            href={`/projects/${project.uid}`}
-          >
-            Read More <HiArrowSmallRight className="stroke-[0.5]" />
-          </Link>
+          {project.data.primary_link && (
+            <PrismicNextLink
+              className="btn btn-outline btn--jet mt-4 inline-flex flex-row items-center gap-1"
+              field={project.data.primary_link}
+            >
+              View Project <HiArrowSmallRight className="stroke-[0.5]" />
+            </PrismicNextLink>
+          )}
         </div>
       </div>
     </div>

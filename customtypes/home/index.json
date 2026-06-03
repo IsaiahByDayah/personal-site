@@ -207,13 +207,23 @@
                       "title",
                       "summary",
                       "description",
-                      "urls"
+                      "urls",
+                      "primary_link"
                     ]
                   }
                 ]
               }
             }
           }
+        }
+      },
+      "link_to_all_projects": {
+        "type": "Boolean",
+        "config": {
+          "label": "Link To All Projects",
+          "placeholder_false": "false",
+          "placeholder_true": "true",
+          "default_value": false
         }
       }
     },

@@ -374,7 +374,14 @@ export interface HomeDocumentDataProjectsItem {
     [
       {
         id: "project"
-        fields: ["thumbnail", "title", "summary", "description", "urls"]
+        fields: [
+          "thumbnail",
+          "title",
+          "summary",
+          "description",
+          "urls",
+          "primary_link",
+        ]
       },
     ]
   >
@@ -664,7 +671,19 @@ interface HomeDocumentData {
    * - **Tab**: Projects
    * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
    */
-  projects: prismic.GroupField<Simplify<HomeDocumentDataProjectsItem>> /**
+  projects: prismic.GroupField<Simplify<HomeDocumentDataProjectsItem>>
+
+  /**
+   * Link To All Projects field in *Home*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: home.link_to_all_projects
+   * - **Tab**: Projects
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  link_to_all_projects: prismic.BooleanField /**
    * Testimonials Enabled field in *Home*
    *
    * - **Field Type**: Boolean
@@ -889,6 +908,23 @@ interface ProjectDocumentData {
    * - **Documentation**: https://prismic.io/docs/fields/rich-text
    */
   description: prismic.RichTextField
+
+  /**
+   * Primary Link field in *Project*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project.primary_link
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  primary_link: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >
 
   /**
    * URLs field in *Project*

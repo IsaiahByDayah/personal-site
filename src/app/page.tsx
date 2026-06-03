@@ -96,6 +96,7 @@ const Page = async () => {
           title={home?.data.projects_title}
           description={home?.data.projects_blurb}
           projects={projects}
+          linkToAll={home.data.link_to_all_projects}
         />
       ) : null}
 
@@ -114,14 +115,12 @@ const Page = async () => {
 
       {/* Testimonials */}
       {home?.data.testimonials_enabled ? (
-        <div className="bg-mist-50">
-          <Testimonials
-            className="m-auto w-full max-w-5xl px-6 py-16 lg:px-20"
-            title={home?.data.testimonials_title}
-            description={home?.data.testimonials_blurb}
-            testimonials={testimonials}
-          />
-        </div>
+        <Testimonials
+          className="m-auto w-full max-w-5xl px-6 py-16 lg:px-20"
+          title={home?.data.testimonials_title}
+          description={home?.data.testimonials_blurb}
+          testimonials={testimonials}
+        />
       ) : null}
 
       {/* Blog */}

@@ -18,7 +18,7 @@ export const TestimonialCard = ({
   return (
     <figure
       className={clsx(
-        "border-jet-500 rounded-lg border-4 bg-white p-8 text-sm/6",
+        "border-jet-500 bg-mist-50 rounded-lg border-4 p-8 text-sm/6",
         className,
       )}
     >

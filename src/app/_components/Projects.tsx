@@ -12,6 +12,7 @@ interface ProjectsProps {
   title?: KeyTextField
   description?: RichTextField
   projects?: ProjectDocument[]
+  linkToAll?: boolean
 }
 
 export const Projects = ({
@@ -19,6 +20,7 @@ export const Projects = ({
   title,
   description,
   projects,
+  linkToAll,
 }: ProjectsProps) => (
   <HomepageSection
     id="projects"
@@ -31,14 +33,16 @@ export const Projects = ({
         <ProjectCard key={project.uid} project={project} flip={idx % 2 === 1} />
       ))}
     </div>
-    <div className="mt-10 text-center">
-      <Link
-        className="btn btn-ghost btn--mist inline-flex flex-row items-center gap-1"
-        href="/projects"
-      >
-        View All Projects
-        <HiArrowSmallRight className="stroke-[0.5]" />
-      </Link>
-    </div>
+    {linkToAll && (
+      <div className="mt-10 text-center">
+        <Link
+          className="btn btn-ghost btn--mist inline-flex flex-row items-center gap-1"
+          href="/projects"
+        >
+          View All Projects
+          <HiArrowSmallRight className="stroke-[0.5]" />
+        </Link>
+      </div>
+    )}
   </HomepageSection>
 )
