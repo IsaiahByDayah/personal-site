@@ -2,6 +2,7 @@ import { KeyTextField, RichTextField } from "@prismicio/client"
 import clsx from "clsx"
 import Link from "next/link"
 import { ProjectDocument } from "prismicio-types"
+import { Fragment } from "react"
 import { HiArrowSmallRight } from "react-icons/hi2"
 
 import { HomepageSection } from "@/app/_components/HomepageSection"
@@ -28,9 +29,12 @@ export const Projects = ({
     title={title}
     description={description}
   >
-    <div className="mt-10 flex flex-col gap-4">
+    <div className="mt-10 flex flex-col gap-10">
       {projects?.map((project, idx) => (
-        <ProjectCard key={project.uid} project={project} flip={idx % 2 === 1} />
+        <Fragment key={project.uid}>
+          {idx !== 0 && <hr className="m-auto w-1/3" />}
+          <ProjectCard project={project} flip={idx % 2 === 1} />
+        </Fragment>
       ))}
     </div>
     {linkToAll && (
