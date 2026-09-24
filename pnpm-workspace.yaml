@@ -1,0 +1,11 @@
+onlyBuiltDependencies:
+  - "@scarf/scarf"
+  - "@tailwindcss/oxide"
+  - sharp
+  - unrs-resolver
+
+allowBuilds:
+  "@scarf/scarf": true
+  "@tailwindcss/oxide": true
+  sharp: true
+  unrs-resolver: true
