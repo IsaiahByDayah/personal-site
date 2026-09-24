@@ -1,0 +1,11 @@
+{
+  "name": "personal-site",
+  "user": "ubuntu",
+  "install": "pnpm install --frozen-lockfile && { [ -f .env ] || cp .example.env .env; }",
+  "terminals": [
+    {
+      "name": "next-dev",
+      "command": "pnpm dev"
+    }
+  ]
+}
