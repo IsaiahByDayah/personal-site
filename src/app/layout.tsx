@@ -3,7 +3,10 @@ import { Metadata } from "next"
 import { Nunito_Sans } from "next/font/google"
 import { type ReactNode } from "react"
 
-import { UmamiAnalytics } from "@/app/UmamiAnalytics"
+import { Footer } from "@/app/_components/Footer"
+import { Header } from "@/app/_components/Header"
+import { TanstackProvider } from "@/app/_components/TanstackProvider"
+import { UmamiAnalytics } from "@/app/_components/UmamiAnalytics"
 import { repositoryName } from "@/lib/prismicio"
 
 import "./globals.css"
@@ -32,9 +35,18 @@ interface RootLayoutProps {
 const RootLayout = ({ children }: RootLayoutProps) => {
   return (
     <html lang="en" className={nunitoSans.variable}>
-      <body>
-        {children}
-        <PrismicPreview repositoryName={repositoryName} />
+      <body className="text-jet-700">
+        <TanstackProvider>
+          <div className="px-2">
+            <Header className="border-b-jet-500/50 m-auto w-full max-w-5xl border-b py-2" />
+          </div>
+          {children}
+          <div className="bg-jet-500 light-on-dark px-2">
+            <Footer className="m-auto w-full max-w-5xl py-2" />
+          </div>
+
+          <PrismicPreview repositoryName={repositoryName} />
+        </TanstackProvider>
       </body>
       <UmamiAnalytics disabled={process.env.NODE_ENV === "development"} />
     </html>

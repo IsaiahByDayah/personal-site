@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/forms";
 @plugin "@tailwindcss/typography";
+@config "./tailwind.config.js";
 
 @theme {
   --font-sans: var(--font-nunito-sans), sans-serif;
@@ -70,4 +71,81 @@
   --color-platinum-800: #575757;
   --color-platinum-900: #2b2b2b;
   --color-platinum-950: #171717;
+}
+
+@custom-variant light-on-dark (&:where(.light-on-dark *));
+
+@utility light-on-dark {
+  @apply text-platinum-500 btn--platinum;
+}
+
+@utility link {
+  @apply font-semibold hover:underline;
+}
+
+@utility btn {
+  @apply [--btn-x:--spacing(4)] [--btn-y:--spacing(1)];
+  @apply [--btn-px:var(--btn-x)] [--btn-py:var(--btn-y)];
+  @apply box-border cursor-pointer rounded-full px-(--btn-px) py-(--btn-py) font-semibold transition-colors disabled:cursor-not-allowed;
+}
+
+@utility btn-icon {
+  @apply aspect-square [--btn-x:--spacing(3)] [--btn-y:--spacing(3)];
+  > [data-role="icon"] {
+    @apply size-full;
+  }
+}
+
+@utility btn-ghost {
+  @apply text-(--btn-ghost-text) hover:bg-(--btn-ghost-hover) active:bg-(--btn-ghost-active) disabled:bg-transparent disabled:text-gray-400;
+}
+
+@utility btn-outline {
+  @apply border border-[--alpha(var(--btn-outline-base-text)_/_50%)] text-(--btn-outline-base-text) [--btn-px:calc((var(--btn-x))_-_1px)] [--btn-py:calc((var(--btn-y))_-_1px)] hover:border-(--btn-outline-hover) hover:bg-(--btn-outline-hover) hover:text-(--btn-outline-text) active:border-(--btn-outline-active) active:bg-(--btn-outline-active) active:text-(--btn-outline-text) disabled:border-gray-300 disabled:bg-transparent disabled:text-gray-400;
+}
+
+@utility btn-fill {
+  @apply bg-(--btn-fill-bg) text-(--btn-fill-text) hover:bg-(--btn-fill-hover) active:bg-(--btn-fill-active) disabled:bg-gray-300 disabled:text-gray-400;
+}
+
+@utility btn--jet {
+  @apply [--btn-ghost-active:--alpha(var(--color-jet-500)_/_25%)] [--btn-ghost-hover:--alpha(var(--color-jet-500)_/_10%)] [--btn-ghost-text:var(--color-jet-500)];
+  @apply [--btn-outline-active:var(--color-jet-700)] [--btn-outline-base-text:var(--color-jet-600)] [--btn-outline-hover:var(--color-jet-600)] [--btn-outline-text:var(--color-white)];
+  @apply [--btn-fill-active:var(--color-jet-700)] [--btn-fill-bg:var(--color-jet-500)] [--btn-fill-hover:var(--color-jet-600)] [--btn-fill-text:var(--color-white)];
+}
+
+@utility btn--mist {
+  @apply [--btn-ghost-active:--alpha(var(--color-mist-500)_/_25%)] [--btn-ghost-hover:--alpha(var(--color-mist-500)_/_10%)] [--btn-ghost-text:var(--color-mist-500)];
+  @apply [--btn-outline-active:var(--color-mist-700)] [--btn-outline-base-text:var(--color-mist-600)] [--btn-outline-hover:var(--color-mist-600)] [--btn-outline-text:var(--color-white)];
+  @apply [--btn-fill-active:var(--color-mist-700)] [--btn-fill-bg:var(--color-mist-500)] [--btn-fill-hover:var(--color-mist-600)] [--btn-fill-text:var(--color-white)];
+}
+
+@utility btn--platinum {
+  @apply [--btn-ghost-active:--alpha(var(--color-platinum-500)_/_25%)] [--btn-ghost-hover:--alpha(var(--color-platinum-500)_/_10%)] [--btn-ghost-text:var(--color-platinum-500)];
+  @apply [--btn-outline-active:var(--color-platinum-700)] [--btn-outline-base-text:var(--color-platinum-600)] [--btn-outline-hover:var(--color-platinum-600)] [--btn-outline-text:var(--color-jet-500)];
+  @apply [--btn-fill-active:var(--color-platinum-700)] [--btn-fill-bg:var(--color-platinum-500)] [--btn-fill-hover:var(--color-platinum-600)] [--btn-fill-text:var(--color-jet-500)];
+}
+
+@utility btn--teal {
+  @apply [--btn-ghost-active:--alpha(var(--color-teal-500)_/_25%)] [--btn-ghost-hover:--alpha(var(--color-teal-500)_/_10%)] [--btn-ghost-text:var(--color-teal-500)];
+  @apply [--btn-outline-active:var(--color-teal-700)] [--btn-outline-base-text:var(--color-teal-500)] [--btn-outline-hover:var(--color-teal-600)] [--btn-outline-text:var(--color-white)];
+  @apply [--btn-fill-active:var(--color-teal-700)] [--btn-fill-bg:var(--color-teal-500)] [--btn-fill-hover:var(--color-teal-600)] [--btn-fill-text:var(--color-white)];
+}
+
+@utility btn--wheat {
+  @apply [--btn-ghost-active:--alpha(var(--color-wheat-500)_/_25%)] [--btn-ghost-hover:--alpha(var(--color-wheat-500)_/_10%)] [--btn-ghost-text:var(--color-wheat-500)];
+  @apply [--btn-outline-active:var(--color-wheat-700)] [--btn-outline-base-text:var(--color-wheat-500)] [--btn-outline-hover:var(--color-wheat-600)] [--btn-outline-text:var(--color-jet-800)];
+  @apply [--btn-fill-active:var(--color-wheat-700)] [--btn-fill-bg:var(--color-wheat-500)] [--btn-fill-hover:var(--color-wheat-600)] [--btn-fill-text:var(--color-jet-800)];
+}
+
+@utility txt-heading {
+  @apply text-3xl font-black;
+}
+
+@utility txt-subheading {
+  @apply text-lg font-semibold;
+}
+
+@utility txt-prose {
+  @apply prose-jet light-on-dark:prose-platinum leading-snug;
 }

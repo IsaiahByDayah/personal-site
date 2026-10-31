@@ -12,6 +12,9 @@ const envSchema = z.object({
     .pipe(z.boolean()),
 
   RESEND_API_KEY: z.string().nonempty(),
+  GOOGLE_SHEETS_CLIENT_EMAIL: z.string().nonempty(),
+  GOOGLE_SHEETS_PRIVATE_KEY: z.string().nonempty(),
+  GOOGLE_SHEETS_CONTACT_ME_SPREADSHEET_ID: z.string().nonempty(),
 })
 
 export const serverEnv = envSchema.parse(process.env)
